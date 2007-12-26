@@ -4,4 +4,4 @@
 = Introduction =
 a step by step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
 
-  * Install libgtk2.0-dev, intltool ( sudo apt-get install libgtk2.0-dev intltool in a terminal )
+  * Install libgtk2.0-dev, intltool,libwnck-1.0, libpanelapplet-2.0, gdk-2.0 ( sudo apt-get install libgtk2.0-dev intltool libwnck-1.0 libpanelapplet-2.0 gdk-2.0 in a terminal )
