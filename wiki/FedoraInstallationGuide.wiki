@@ -2,10 +2,10 @@
 
 = Ideas =
 
-== patch gtk2 ==
+== Patching gtk2 ==
 the patch's name is gtk2-aqd the origin position is on aur linux's website and also can be find at ubuntu's forum. Patching gtk2 is necessary. The patch is more like a hack, so it is still faraway form entering the gtk2 official release.
 
-== install a menubar server ==
+== Setuping a menubar server ==
 there was a gtk-macmenu-applet for gnome-panel.
 The newly completely rewritten version has been renamed into gnome2-globalmenu-applet
 
@@ -13,35 +13,42 @@ The newly completely rewritten version has been renamed into gnome2-globalmenu-a
 Here I list two ways to install global menu bar
 == By RPM ==
 
-http://gnome2-globalmenu.googlecode...-3.fc8.i386.rpm
-the gtk2-aqd rpm will obsolete gtk2 and provide gtk2, so the dependency tree will happy.
-There is no way to have gtk2 and gtk2-aqd parallel installed.
+[http://gnome2-globalmenu.googlecode.com/files/gtk2-aqd-2.12.3-3.fc8.i386.rpm]
 
-http://gnome2-globalmenu.googlecode...-1.fc8.i386.rpm
-after the rpms, right click on your top panel, choose add to panel, and select Global Menu
-all the new gtk programs menubar will display in the top panel, with the mnemonic keys working.
+It obsolete gtk2 and provide gtk2, so the dependency tree will happy.
+There is no way to have gtk2 and gtk2-aqd parallel installed. It also stops receiving further updates of gtk2 from fedora repositories.
 
-== svn ==
-Code:
+[http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet-0.2-1.fc8.i386.rpm]
 
+After Installing the applet's rpm do followings:
+  * Right click on your top panel
+  * Choose add to panel
+  * Type Global Menu.. until it shows up in the list
+  * Click on Global Menu Applet
+  * Press Add
+
+Then the new launched gtk programs' menubar will display in the top panel, with the mnemonic keys working.
+
+== By SVN ==
+{{{
 svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/ gnome2-globalmenu-read-only
+}}}
 
-
-then there will be 3 directories under gnome2-globalmenu-read-only:
+There will be 3 directories under gnome2-globalmenu-read-only:
   * gtk2-aqd
   * gnome2-globalmenu-applet
   * gnome2-globalmenu-test
-and one file
+And one file
   * runtest.sh
 
 === gtk2-aqd ===
-Suppose you have setup the rpm devel tree by `rpmdev-setuptree`.
+Suppose you have setup the rpm devel tree by `rpmdev-setuptree`. Do following steps to obtain a patched gtk2-aqd.spec and patched gtk2 at `gtk2-aqd/libs`.
 {{{
 env RPMDEVROOT={Your rpmdev tree root} make setup
 env RPMDEVROOT={Your rpmdev tree root} make patch
 }}}
 
-Then build the rpm package
+Then build the rpm package (if you want.)
 
 {{{
 rpmbulid -ba gtk2-aqd.spec
@@ -53,7 +60,7 @@ Alternatively, it is possible not to install but only have some of the applicati
 {{{
 env LD_LIBRARY_PATH={your gtk2-aqd directory}/libs
 }}}
-to your program. See `runtest.sh` for example.
+to your program. See `runtest.sh` as an example.
 
 === gnome2-globalmenu-applet ===
 
@@ -66,7 +73,7 @@ src/gnome2-globalmenu-applet
 }}}
 Then a new standalone application is launched, it acts as a menubar server and collects clients' menubars.
 
-It also can be placed into a panel. all you need is a bonobo .server file at correct location. Usually it requires root prilege to do this :(
+It also can be placed into a panel. All you need is a bonobo .server file at correct location. Usually it requires root prilege to do this :(
 
 Edit GNOME_GlobalMenuApplet.server.sample, APP_LOCATION with correct value and copy it(remove the .sample postfix) to `/usr/lib/bonobo/servers/`
 
