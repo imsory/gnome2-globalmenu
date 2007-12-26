@@ -4,4 +4,4 @@
 = Introduction =
 a step by step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
 
-  * Install libgtk2.0-dev ( apt://libgtk2.0-dev in your browser or sudo apt-get install libgtk2.0-dev in a terminal )
+  * Install libgtk2.0-dev, intltool ( sudo apt-get install libgtk2.0-dev intltool in a terminal )
