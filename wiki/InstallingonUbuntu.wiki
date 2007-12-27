@@ -16,6 +16,6 @@ a step by step guide which assumes that you've never compiled anything on your s
   * Create a file to tell Gnome about the existence of the applet
       sudo gedit GNOME_GlobalMenuApplet.server in a terminal
 
-  * Copy Paste the following code in the Text Editor that opens (replace APP_LOCATION by the correct part-coming later)
+  * Copy Paste the following code in the Text Editor that opens (replace APP_LOCATION by /usr/local/libexec)
 
 http://gnome2-globalmenu.googlecode.com/svn/branches/0.2.1/gnome2-globalmenu-applet/GNOME_GlobalMenuApplet.server.sample
