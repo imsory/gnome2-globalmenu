@@ -5,7 +5,7 @@ THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
 a step by step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
 
-  * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 ( {{{sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev}}}  in a terminal )
+==Installing gtk2-aqd==
 
   * Install gtk2-aqd (steps coming later)
     # {{{sudo apt-get install build-essential}}}
@@ -15,6 +15,11 @@ a step by step guide which assumes that you've never compiled anything on your s
     # ./configure --prefix=/usr
     # make
     # sudo make install
+
+
+==Installing the applet itself==
+
+  * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 ( {{{sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev}}}  in a terminal )
 
   * Download the tarball, extract it and open a terminal. using {{{cd}}} go to the newly extracted directory 
 
