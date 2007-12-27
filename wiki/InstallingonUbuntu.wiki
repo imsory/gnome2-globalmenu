@@ -35,8 +35,8 @@ a step by step guide which assumes that you've never compiled anything on your s
   * Install checkinstall
       {{{sudo aptitude install checkinstall}}}
   * Create a deb from the compiled program
-      {{{sudo checkinstall}}})
-  * We now have to add a bonobo server file where {{{APP_LOCATION}}} is {{{/usr/local/libexec}}})
+      {{{sudo checkinstall}}}
+  * We now have to add a bonobo server file where {{{APP_LOCATION}}} is {{{/usr/local/libexec}}}
 
   # Download it: {{{wget http://gnome2-globalmenu.googlecode.com/files/GNOME_GlobalMenuApplet.server}}}
   # Let's copy it in the right directory:  sudo cp GNOME_GlobalMenuApplet.server /usr/lib/bonobo/servers/GNOME_GlobalMenuApplet.server
