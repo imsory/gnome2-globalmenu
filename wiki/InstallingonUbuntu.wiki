@@ -5,17 +5,17 @@ THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
 a step by step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
 
-  * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 ( sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev  in a terminal )
+  * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 ( {{{sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev}}}  in a terminal )
 
   * Install gtk2-aqd (steps coming later)
 
-  * Configure the tarball (./configure)
+  * Configure the tarball ({{{./configure}}})
 
-  * Install the program (sudo make, followed by sudo aptitude install checkinstall and then sudo checkinstall)
+  * Install the program ({{{sudo make}}}, followed by {{{sudo aptitude install checkinstall}}} and then {{{sudo checkinstall}}})
 
   * Create a file to tell Gnome about the existence of the applet
-      sudo gedit GNOME_GlobalMenuApplet.server in a terminal
+     {{{ sudo gedit GNOME_GlobalMenuApplet.server }}} in a terminal
 
-  * Copy Paste the following code in the Text Editor that opens (replace APP_LOCATION by /usr/local/libexec)
+  * Copy Paste the following code in the Text Editor that opens (replace {{{APP_LOCATION}}} by {{{/usr/local/libexec}}})
 
 http://gnome2-globalmenu.googlecode.com/svn/branches/0.2.1/gnome2-globalmenu-applet/GNOME_GlobalMenuApplet.server.sample
