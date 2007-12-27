@@ -20,20 +20,22 @@ a step by step guide which assumes that you've never compiled anything on your s
 
 ==Installing the applet itself==
 
-  * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 ( {{{sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev}}}  in a terminal )
-
+  * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 
+      {{{sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev}}}
   * Download the tarball
       {{{wget http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet-0.2.1.tar.gz }}}
   * extract it 
       {{{tar zxvf gnome2-globalmenu-applet-0.2.1.tar.gz}}}
   * go to the newly extracted directory 
       {{{cd gnome2-globalmenu-applet-0.2.1}}} 
-
-  * Configure the tarball ({{{./configure}}})
-
-  * Install the program ({{{sudo make}}}, followed by {{{sudo aptitude install checkinstall}}} and then {{{sudo checkinstall}}})
-
-
+  * Configure the tarball 
+      {{{./configure}}}
+  * Compile the program 
+      {{{sudo make}}}
+  * Install checkinstall
+      {{{sudo aptitude install checkinstall}}}
+  * Create a deb from the compiled program
+      {{{sudo checkinstall}}})
   * We now have to add a bonobo server file where {{{APP_LOCATION}}} is {{{/usr/local/libexec}}})
 
   # Download it: {{{wget http://gnome2-globalmenu.googlecode.com/files/GNOME_GlobalMenuApplet.server}}}
