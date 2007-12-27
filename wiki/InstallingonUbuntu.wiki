@@ -8,6 +8,9 @@ a step by step guide which assumes that you've never compiled anything on your s
   * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 ( {{{sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev}}}  in a terminal )
 
   * Install gtk2-aqd (steps coming later)
+    # {{{sudo apt-get install build-essential}}}
+    # {{{apt-get source gtk+2.0}}}
+    # Download http://gnome2-globalmenu.googlecode.com/svn/branches/0.2.1/gtk2-aqd/gtkmenubar.patch
 
   * Configure the tarball ({{{./configure}}})
 
