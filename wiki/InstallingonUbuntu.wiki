@@ -11,7 +11,7 @@ a step by step guide which assumes that you've never compiled anything on your s
     # {{{sudo apt-get install build-essential}}}
     # {{{apt-get source gtk+2.0}}}
     # Download the patch
-{{{wget http://gnome2-globalmenu.googlecode.com/svn/branches/0.2.1/gtk2-aqd/gtkmenubar.patch}}}
+      {{{wget http://gnome2-globalmenu.googlecode.com/svn/branches/0.2.1/gtk2-aqd/gtkmenubar.patch}}}
     # Apply the patch (steps coming later)
     # ./configure --prefix=/usr
     # make
