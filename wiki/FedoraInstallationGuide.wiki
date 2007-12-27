@@ -6,8 +6,9 @@
 The patch's name is gtk2-aqd. The origin position is on aur linux's website and also can be find at ubuntu's forum. Patching gtk2 is necessary for global menu. However, the patch is more like a hack, so it is still faraway from entering the gtk2 official release.
 
 == Setuping a menubar server ==
-After patching gtk2, the gtk2 applications will put their menubar in a new toplevel window. on the lefttop of corner of the desktop. This is not exciting. So we need a menubar server to pick up these daunting menubars. So gnome2-globalmenu-applet is written.
-It obsoletes the old gtk-macmenu-applet written by aqd.
+After patching gtk2, the gtk2 applications will put their menubar in a new toplevel window, and move it to the lefttop of corner of the desktop. This is not exciting. We still need a menubar server to pick up these daunting menubars. `gnome2-globalmenu-applet` is written for this purpose.
+
+Note: It obsoletes the old gtk-macmenu-applet written by aqd.
 
 = Installation Guide =
 Here I list two ways to setup global menu bar for your gnome.
@@ -18,11 +19,16 @@ Here I list two ways to setup global menu bar for your gnome.
 It obsolete gtk2 and provide gtk2, so the dependency tree will happy.
 There is no way to have gtk2 and gtk2-aqd parallel installed. It also stops receiving further updates of gtk2 from fedora repositories.
 
-Note: this patch contained in this rpm doen't work well with GtkTreeView. Mnemonic keys doesn't work inside a GtkTreeView. But no other known issues.
+A Patched Nodaka theme is availble through svn at 
+[http://gnome2-globalmenu.googlecode.com/svn/trunk/gtk2-aqd/Nodoka]
+
+I also recommend you grab it and put it in `~/.theme` to make the look and feel of the menubar better integrated in the panel.
+
+Note: this patch contained in this rpm doen't work well with GtkTreeVie: Mnemonic keys doesn't work inside a GtkTreeView. But no other known issues.
 
   * [http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet-0.2-1.fc8.i386.rpm]
 
-After Installing the applet's rpm do followings:
+After Installing the applet's rpm, do the followings:
   * Right click on your top panel
   * Choose add to panel
   * Type Global Menu.. until it shows up in the list
@@ -124,6 +130,18 @@ If you want a rpm, then because I know the executable will be installed at `/usr
 make dist
 cp *.tar.gz {Yor rpmdev tree root}/SOURCES
 rpmbuild -ba gnome2-globalmenu-applet.spec
+}}}
+
+=== gnome2-globalmenu-test ===
+If you don't find a favorite application to test gnome2-globalmenu; or all of your favorite applications are alien gtk2 programs like firefox or OOo, you can use 
+`gnome2-globalmenu-test`.
+{{{
+configure
+make
+}}}
+Then in the top level of svn checkout,
+{{{
+./runtest
 }}}
 
 == Uninstall ==
