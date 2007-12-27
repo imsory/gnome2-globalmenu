@@ -10,7 +10,8 @@ a step by step guide which assumes that you've never compiled anything on your s
   * Install gtk2-aqd (steps coming later)
     # {{{sudo apt-get install build-essential}}}
     # {{{apt-get source gtk+2.0}}}
-    # Download http://gnome2-globalmenu.googlecode.com/svn/branches/0.2.1/gtk2-aqd/gtkmenubar.patch
+    # Download the patch
+{{{wget http://gnome2-globalmenu.googlecode.com/svn/branches/0.2.1/gtk2-aqd/gtkmenubar.patch}}}
     # Apply the patch (steps coming later)
     # ./configure --prefix=/usr
     # make
@@ -27,9 +28,12 @@ a step by step guide which assumes that you've never compiled anything on your s
 
   * Install the program ({{{sudo make}}}, followed by {{{sudo aptitude install checkinstall}}} and then {{{sudo checkinstall}}})
 
-  * Create a file to tell Gnome about the existence of the applet
-     {{{ sudo gedit GNOME_GlobalMenuApplet.server }}} in a terminal
 
-  * Copy Paste the following code in the Text Editor that opens (replace {{{APP_LOCATION}}} by {{{/usr/local/libexec}}})
+  * We now have to add a bonobo server file where {{{APP_LOCATION}}} is {{{/usr/local/libexec}}})
 
-http://gnome2-globalmenu.googlecode.com/svn/branches/0.2.1/gnome2-globalmenu-applet/GNOME_GlobalMenuApplet.server.sample
+  # Download it: {{{wget http://gnome2-globalmenu.googlecode.com/files/GNOME_GlobalMenuApplet.server}}}
+
+  # Let's copy it in the right directory:  sudo cp GNOME_GlobalMenuApplet.server /usr/lib/bonobo/servers/GNOME_GlobalMenuApplet.server
+
+
+  # Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
