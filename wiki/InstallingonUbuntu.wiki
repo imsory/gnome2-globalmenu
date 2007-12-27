@@ -5,13 +5,12 @@ THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
 a step by step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
 
-  * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 ( sudo apt-get install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev  in a terminal )
+  * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 ( sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev  in a terminal )
 
 
 
-  *  Configure the tarball (./configure)
+  * Configure the tarball (./configure)
 
-  * Install the program (sudo make, followed by sudo make install)
+  * Install the program (sudo make, followed by sudo checkinstall)
 
-
-  * Relaunch Gnome 
+  * 
