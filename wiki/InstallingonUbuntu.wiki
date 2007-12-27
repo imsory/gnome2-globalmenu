@@ -7,10 +7,36 @@ a step by step guide which assumes that you've never compiled anything on your s
 
   * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 ( sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev  in a terminal )
 
-
+  * Install gtk2-aqd (steps coming later)
 
   * Configure the tarball (./configure)
 
   * Install the program (sudo make, followed by sudo checkinstall)
 
-  * 
+  * Create a file to tell Gnome about the existence of the applet
+      sudo gedit GNOME_GlobalMenuApplet.server in a terminal
+
+  * Copy Paste the following code in the Text Editor that opens (replace APP_LOCATION by the correct part-coming later)
+
+<oaf_info>
+  <oaf_server iid="OAFIID:GNOME_GlobalMenuApplet_Factory" type="exe"
+    location="APP_LOCATION/gnome2-globalmenu-applet">
+    <oaf_attribute name="repo_ids" type="stringv">
+      <item value="IDL:Bonobo/GenericFactory:1.0"/>
+      <item value="IDL:Bonobo/Unknown:1.0"/>
+    </oaf_attribute>
+    <oaf_attribute name="name" type="string" value="GlobalMenu applet Factory"/>
+    <oaf_attribute name="description" type="string" value="Global Menu applet factory"/>
+  </oaf_server>
+  <oaf_server iid="OAFIID:GNOME_GlobalMenuApplet" type="factory"
+    location="OAFIID:GNOME_GlobalMenuApplet_Factory">
+    <oaf_attribute name="repo_ids" type="stringv">
+      <item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
+      <item value="IDL:Bonobo/Control:1.0"/>
+      <item value="IDL:Bonobo/Unknown:1.0"/>
+    </oaf_attribute>
+    <oaf_attribute name="name" type="string" value="Global Menubar"/>
+    <oaf_attribute name="description" type="string" value="Global Menubar applet for gtk2-aqd"/>
+    <oaf_attribute name="panel:icon" type="string" value="gnome-fs-home"/>
+  </oaf_server>
+</oaf_info>
