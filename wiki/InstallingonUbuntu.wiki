@@ -15,6 +15,9 @@ a step by step guide which assumes that you've never compiled anything on your s
     # ./configure --prefix=/usr
     # make
     # sudo make install
+
+  * Download the tarball, extract it and open a terminal. using {{{cd}}} go to the newly extracted directory 
+
   * Configure the tarball ({{{./configure}}})
 
   * Install the program ({{{sudo make}}}, followed by {{{sudo aptitude install checkinstall}}} and then {{{sudo checkinstall}}})
