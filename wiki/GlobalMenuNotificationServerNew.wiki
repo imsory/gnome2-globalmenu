@@ -1,5 +1,3 @@
-#summary One-sentence summary of this page.
+=GlobalMenuNotificationServerNew=
 
-= Introduction =
-
-param1 = "GTK MENU BAR SERVER"'s xwin id
+||Param1 || "GTK MENU BAR SERVER"'s xwin id|| 
