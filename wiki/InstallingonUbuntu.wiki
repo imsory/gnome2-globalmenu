@@ -44,5 +44,5 @@ a step by step guide which assumes that you've never compiled anything on your s
   * We now have to add a bonobo server file where {{{APP_LOCATION}}} is {{{/usr/local/libexec}}}
 
   # Download it: {{{wget http://gnome2-globalmenu.googlecode.com/files/GNOME_GlobalMenuApplet.server}}}
-  # Let's copy it in the right directory:  sudo cp GNOME_GlobalMenuApplet.server /usr/lib/bonobo/servers/GNOME_GlobalMenuApplet.server
+  # Let's copy it in the right directory:  {{{sudo cp GNOME_GlobalMenuApplet.server /usr/lib/bonobo/servers/GNOME_GlobalMenuApplet.server}}}
   # Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
