@@ -1,0 +1,4 @@
+= GlobalMenuNotificationSizeAllocation =
+
+|| Param1 || width ||
+|| Param2 || height ||
