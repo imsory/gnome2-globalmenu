@@ -1,2 +1,0 @@
-= GtkMenuServerWindow =
-A window whose name is "GLOBAL MENU BAR SERVER"
