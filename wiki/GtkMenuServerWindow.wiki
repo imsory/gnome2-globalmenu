@@ -1,0 +1,2 @@
+= GtkMenuBarServerWindow =
+A window whose name is "GTK MENU BAAR SERVER"
