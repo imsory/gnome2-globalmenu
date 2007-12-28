@@ -1,3 +1,5 @@
 =GlobalMenuNotificationServerNew=
 
-||Param1 || "GTK MENU BAR SERVER"'s xwin id|| 
+When a server is created, it will find all windows on current screen with the name MenuClientName, and send them this notification
+
+||Param1 || Server's messaging window's xwin id (whose name is MenuServerName )|| 
