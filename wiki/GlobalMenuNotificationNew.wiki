@@ -1,5 +1,7 @@
 = GlobalMenuNotificationNew =
 
 GlobalMenuNotificationNew is the GlobalMenuNotification when a new client tries to connect to the server.
-  || param1 || Xwindow ID of master toplevel window of the menubar ||  
-  || param2 || Xwindow ID of `float_window` ||
+
+|| param1 || client's xwin id ||
+|| param2 || Xwindow ID of `float_window` ||
+|| param3 || Xwindow ID of master toplevel window of the menubar ||  
