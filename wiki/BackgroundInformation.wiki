@@ -49,4 +49,5 @@ The client also creates following `GdkWindow`s,
   * `container_window` ; container_window, the menuitems's parent window of in GDK hierachy.
   * `float_window` ; toplevel window, being hooked by the server;
   * `widget->window` ; position occupier in parent widget; (created by menushell)
+
 If the Client is `globalized`, `container_window`'s parent in GDK hierachy will be `float_window`; if not, the parent will be `widget->window`;
