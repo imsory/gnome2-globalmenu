@@ -1,3 +1,4 @@
 = GlobalMenuNotificationServerDestroy =
-Notify the client just before the server is destoyed
-|| param1 || GtkMenuServer 's xwin id
+Notify the client just before the server is destoyed.
+
+|| param1 || The menu server's messaging window's Xwin id ||
