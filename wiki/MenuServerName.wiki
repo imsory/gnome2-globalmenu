@@ -1,0 +1,4 @@
+= MenuServerName =
+A string,
+
+`GTK MENU BAR SERVER`
