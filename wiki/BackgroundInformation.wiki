@@ -1,0 +1,52 @@
+#The  global menu solution's architecture .
+
+*ONLY a Specification DRAFT, none coding respect it yet *
+
+= Architechure =
+
+A Central MenuBar Server who receive notifications and take action
+  * when current active window has changed, display the correct menubar for the active window to the user;
+  * when an existed (global) menubar is destroyed, destroy related private resources;
+  * when new (global) menubar is created, allocate related private resources and hook the menubar into its own window.
+  * when its geometry properties (eg, size) is changed, notify the client to reallocate menubar's size.
+
+A MenuBar Client is an application who
+  * has `GtkMenuBar`s;
+  * want one of it's menubar to be globalized;
+  * prepare the globalized menubar in a proper way that the MenuBar Server can hook to;
+  * notify the MenuBar Server when the globalized menubar is created or destroyed.
+
+= Requirements =
+
+So we have at least two processes and several `GdkWindow`s. The way to communicate between GdkWindows is through XClientMessages. We need to create a subset of XClientMessage, with message_type:
+{{{
+   gdk_x11_get_xatom_by_name("_GTKMENUBAR_EMBED")
+}}}
+The first long integer in the Message is the type of our subset:
+  * GlobalMenuNotificationNew client to server
+  * GlobalMenuNotificationServerNew server to client
+  * GlobalMenuNotificationServerDestroy server to client
+  * GlobalMenuNotificationSizeAllocation server to client
+  * GlobalMenuNotificationSizeRequest server to client
+  * GlobalMenuNotificationSizeRequisition client to server
+  * GlobalMenuNotificationDestroy client to server
+
+This is, actually, a subset of xembed protocol for `GtkPlug` and `GtkSocket`. However, in current implement of GTK, the protocol is still entangled with `GtkPlug` and `GtkSocket`. I personally propose a better implement should move the xembed protocal to `GdkWindow`.
+
+= Details = 
+The Server's name is `gnome2-menubar-applet`. It should create a toplevel GDK_INPUT window, with name `GTK MENU BAR SERVER` that waits for clients messages.
+
+  * GlobalMenuNotificationNew 
+  * GlobalMenuNotificationSizeRequisition client to server
+  * GlobalMenuNotificationDestroy client to server
+
+The Client has the respond to create a toplevel GDK_INPUT_OUTPUT window with name "GTK MENU BAR".
+  * GlobalMenuNotificationServerNew server to client
+  * GlobalMenuNotificationServerDestroy server to client
+  * GlobalMenuNotificationSizeAllocation server to client
+  * GlobalMenuNotificationSizeRequest server to client
+The client also creates following `GdkWindow`s,
+  * `container_window` ; container_window, the menuitems's parent window of in GDK hierachy.
+  * `float_window` ; toplevel window, being hooked by the server;
+  * `widget->window` ; position occupier in parent widget; (created by menushell)
+If the Client is `globalized`, `container_window`'s parent in GDK hierachy will be `float_window`; if not, the parent will be `widget->window`;
