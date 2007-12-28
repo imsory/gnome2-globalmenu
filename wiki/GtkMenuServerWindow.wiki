@@ -1,2 +1,2 @@
-= GtkMenuBarServerWindow =
-A window whose name is "GTK MENU BAAR SERVER"
+= GtkMenuServerWindow =
+A window whose name is "GLOBAL MENU BAR SERVER"
