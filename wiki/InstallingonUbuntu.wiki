@@ -12,10 +12,17 @@ a step by step guide which assumes that you've never compiled anything on your s
     # {{{apt-get source gtk+2.0}}}
     # Download the patch
       {{{wget http://gnome2-globalmenu.googlecode.com/svn/branches/0.2.1/gtk2-aqd/gtkmenubar.patch}}}
-    # Apply the patch (steps coming later)
-    # ./configure --prefix=/usr
-    # make
-    # sudo make install
+    # Apply the patches
+      {{{patch -p0 < ../gtkmenubar.patch}}}
+      {{{patch -Np1 -i ../gdkscreen-check.patch}}}
+      {{{patch -Np1 -i ../gtkclipboard-check.patch}}}
+
+    # 	{{{./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-xinput=yes --with-included-loaders=yes --disable-dependency-tracking}}}
+    # {{{make}}}
+    # {{{sudo make install}}}
+
+
+      
 
 
 ==Installing the applet itself==
@@ -31,7 +38,7 @@ a step by step guide which assumes that you've never compiled anything on your s
   * Configure the tarball 
       {{{./configure}}}
   * Compile the program 
-      {{{sudo make}}}
+      {{{make}}}
   * Install checkinstall
       {{{sudo aptitude install checkinstall}}}
   * Create a deb from the compiled program
