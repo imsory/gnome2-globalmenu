@@ -16,6 +16,8 @@ A MenuBar Client is an application who
   * prepare the globalized menubar in a proper way that the MenuBar Server can hook to;
   * notify the MenuBar Server when the globalized menubar is created or destroyed.
 
+A MenuBar Master is the top level window who request to create a menubar.
+
 = Requirements =
 
 So we have at least two processes and several `GdkWindow`s. The way to communicate between GdkWindows is through XClientMessages. We need to create a subset of XClientMessage, with message_type:
