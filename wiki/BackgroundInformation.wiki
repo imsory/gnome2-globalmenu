@@ -54,3 +54,9 @@ The client also creates following `GdkWindow`s,
   * `widget->window` ; position occupier in parent widget; (created by menushell)
 
 If the Client is `globalized`, `container_window`'s parent in GDK hierachy will be `float_window`; if not, the parent will be `widget->window`;
+
+
+= Emergency =
+== if the server dies accidentally ==
+== if a client dies accidentally ==
+== if two server was started ==
