@@ -24,7 +24,7 @@ So we have at least two processes and several `GdkWindow`s. The way to communica
 {{{
    gdk_x11_get_xatom_by_name("_GTKMENUBAR_EMBED")
 }}}
-The first long integer in the Message is an GlobalMenuNotification, it takes value in
+The first long integer in the Message determines the type of the GlobalMenuNotification, which can be one of
 
   * GlobalMenuNotificationNew client to server
   * GlobalMenuNotificationServerNew server to client
