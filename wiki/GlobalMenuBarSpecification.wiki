@@ -71,8 +71,8 @@ The client deals with following messages,
   * GlobalMenuNotificationSizeAllocation server to client
   * GlobalMenuNotificationSizeRequest server to client
 
-Immediately after the creation of a client, it should seek a toplevel window with name MenuServerName.
-If found, it will send GlobalMenuNotificationNew to the server, set the `globalized` flag, and remember the server; If not found, it unset `globalized`.
+Immediately after the creation of a client, the client shall seek a toplevel window with the name MenuServerName.
+If found, it will send GlobalMenuNotificationNew to the server, set the `globalized` flag, and remember the server; If not found, it unsets `globalized`.
 
 Immediately before destroyed, it send GlobalMenuNotificationDestroy to the server if `globalized` is set.
 
