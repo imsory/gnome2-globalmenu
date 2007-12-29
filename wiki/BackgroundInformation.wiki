@@ -36,6 +36,12 @@ The first long integer in the Message is an GlobalMenuNotification, it takes val
 
 This is, actually, a subset of xembed protocol for `GtkPlug` and `GtkSocket`. However, in current implement of GTK, the protocol is still entangled with `GtkPlug` and `GtkSocket`. I personally propose a better implement should move the xembed protocal to `GdkWindow`.
 
+To dispatch the messages, we need to register message filter in both server and client window via
+{{{
+gdk_window_add_filter
+}}}
+The filter should return `GDK_FILTER_REMOVE` for our messages and `GDK_FILTER_CONTINUE` for others.
+
 = Details = 
 The Server's name is `gnome2-menubar-applet`. It should create a toplevel GDK_INPUT window, with name MenuServerName that waits for clients messages.
 
