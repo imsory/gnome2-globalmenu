@@ -6,7 +6,7 @@ GlobalMenuNotification is the subset of XClientMessage we used for global menu e
 {{{
   * .window = XWindow ID of recipient
   * .type = ClientMessage
-  * .message_type = gdk_x11_get_xatom_by_name("_GTK_MENU_BAR_EMBED")
+  * .message_type = gdk_x11_get_xatom_by_name("_GTKMENUBAR_EMBED")
   * .format = 32
   * .data.l[0] = gtk_get_current_event_time()
   * .data.l[1] = Message Sub-Type (GlobalMenuNotificationXXX)
