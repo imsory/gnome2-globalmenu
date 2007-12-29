@@ -43,17 +43,21 @@ gdk_window_add_filter
 The filter should return `GDK_FILTER_REMOVE` for our messages and `GDK_FILTER_CONTINUE` for others.
 
 = Details = 
-The Server's name is `gnome2-menubar-applet`. It should create a toplevel GDK_INPUT window, with name MenuServerName that waits for clients messages.
+== Server ==
+It should create a toplevel GDK_INPUT window, with name MenuServerName that waits for clients messages.
 
   * GlobalMenuNotificationNew 
   * GlobalMenuNotificationSizeRequisition client to server
   * GlobalMenuNotificationDestroy client to server
 
-The Client has the respond to create a toplevel GDK_INPUT_OUTPUT window with name MenuClientName.
-  * GlobalMenuNotificationServerNew server to client
-  * GlobalMenuNotificationServerDestroy server to client
-  * GlobalMenuNotificationSizeAllocation server to client
-  * GlobalMenuNotificationSizeRequest server to client
+Immediately after creation, it should broadcast GlobalMenuNotificationServerNew to every
+toplevel window with name MenuClientName .
+
+Immediately before destroyed, it should broadcast GlobalMenuNotificationServerDestroy to every known clients.
+
+== Client ==
+The Client has the responsibility to create a toplevel GDK_INPUT window with the name MenuClientName.
+
 The client also creates following `GdkWindow`s,
   * `container_window` ; container_window, the menuitems's parent window of in GDK hierachy.
   * `float_window` ; toplevel window, being hooked by the server;
@@ -61,6 +65,22 @@ The client also creates following `GdkWindow`s,
 
 If the Client is `globalized`, `container_window`'s parent in GDK hierachy will be `float_window`; if not, the parent will be `widget->window`;
 
+The client deals with following messages,
+  * GlobalMenuNotificationServerNew server to client
+  * GlobalMenuNotificationServerDestroy server to client
+  * GlobalMenuNotificationSizeAllocation server to client
+  * GlobalMenuNotificationSizeRequest server to client
+
+Immediately after the creation of a client, it should seek a toplevel window with name MenuServerName.
+If found, it will send GlobalMenuNotificationNew to the server, set the `globalized` flag, and remember the server; If not found, it unset `globalized`.
+
+Immediately before destroyed, it send GlobalMenuNotificationDestroy to the server if `globalized` is set.
+
+At the server's request GlobalMenuNotificationSizeRequest, client should calculate it's minimal size and send it to the server via GlobalMenuNotificationSizeRequisition .
+
+When a client receive GlobalMenuNotificationServerNew, if it is already globalized, ignore it, and panic(or assume last server dies and try to recover); if it is not globalized, send GlobalMenuNotificationNew to the server who issued the GlobalMenuNotificationServerNew message.
+When a client receives GlobalMenuNotificationServerDestroy, if it is already globalized, 
+and the message is issued by its server, try to un-globalize. else, panic.
 
 = Emergency =
 == if the server dies accidentally ==
