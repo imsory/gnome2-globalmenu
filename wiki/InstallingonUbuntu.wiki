@@ -9,19 +9,32 @@ a step by step guide which assumes that you've never compiled anything on your s
 
   * Prepare your system to add the gtk2-aqd patches
     # {{{sudo apt-get install build-essential}}}
-    # {{{apt-get source gtk+2.0}}}
+   ~~ # {{{apt-get source gtk+2.0}}}
     # Install svn {{{sudo apt-get install svn}}}    
     # Download the patches
     # {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/branches/1.0/trunk/gtk2-aqd/}}}
-    # Using cd, head to the gtk2-aqd dir that's been downloaded
+    # Using cd, head to the gtk2-aqd dir that's been downloaded~~
 
-  * Apply the patches
-    # {{{patch -p0 < ../gtkmenubar.patch}}}
-    # {{{patch -Np1 -i ../gdkscreen-check.patch}}}
-    # {{{patch -Np1 -i ../gtkclipboard-check.patch}}}
-    # 	{{{./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-xinput=yes --with-included-loaders=yes --disable-dependency-tracking}}}
-    # {{{make}}}
-    # {{{sudo make install}}}
+New method
+{{{mkdir packages}}}
+{{{cd packages}}}
+{{{mkdir gtk-aqd-3}}}
+{{{cd gtk-aqd-3}}}
+{{{apt-get source libgtk2.0-0}}}
+{{{sudo apt-get build-dep libgtk2.0-0}}}
+{{{sudo apt-get install fakeroot}}}
+
+Get the attached gtkmenubar.patch 
+{{{ wget http://gnome2-globalmenu.googlecode.com/files/gtkmenubar.patch.tar.bz2}}}  
+Put it inside the debian/patches folder of the gtk source you just downloaded. 
+Open the series file found on the same folder and add a new line containing
+{{{gtkmenubar.patch}}}
+
+Save and exit.
+Now on the terminal
+{{{cd gtk+2.0-2.12.0}}}
+{{{dpkg-buildpackage -r fakeroot}}}
+
 
 ==Installing the applet itself==
 
