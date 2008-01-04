@@ -9,11 +9,11 @@ a step by step guide which assumes that you've never compiled anything on your s
 
   * Prepare your system to add the gtk2-aqd patches
     # {{{sudo apt-get install build-essential}}}
-   ~~ # {{{apt-get source gtk+2.0}}}
-    # Install svn {{{sudo apt-get install svn}}}    
-    # Download the patches
-    # {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/branches/1.0/trunk/gtk2-aqd/}}}
-    # Using cd, head to the gtk2-aqd dir that's been downloaded~~
+   ~~ # {{{apt-get source gtk+2.0}}} ~~ 
+    ~~  # Install svn {{{sudo apt-get install svn}}}     ~~ 
+    ~~  # Download the patches ~~ 
+   ~~   # {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/branches/1.0/trunk/gtk2-aqd/}}} ~~ 
+   ~~   # Using cd, head to the gtk2-aqd dir that's been downloaded~~
 
 New method
 {{{mkdir packages}}}
