@@ -9,35 +9,26 @@ a step by step guide which assumes that you've never compiled anything on your s
 
   * Prepare your system to add the gtk2-aqd patches
     # {{{sudo apt-get install build-essential}}}
+    # {{{mkdir packages}}}
+    # {{{cd packages}}}
+    # {{{mkdir gtk-aqd-3}}}
+    # {{{cd gtk-aqd-3}}}
+    # {{{apt-get source libgtk2.0-0}}}
+    # {{{sudo apt-get build-dep libgtk2.0-0}}}
+    # {{{sudo apt-get install fakeroot}}}
 
-New method
+  * Get the attached gtkmenubar.patch 
+    # {{{ wget http://gnome2-globalmenu.googlecode.com/files/gtkmenubar.patch.tar.bz2}}}  
 
-{{{mkdir packages}}}
+  * Put it inside the debian/patches folder of the gtk source you just downloaded. 
 
-{{{cd packages}}}
-
-{{{mkdir gtk-aqd-3}}}
-
-{{{cd gtk-aqd-3}}}
-
-{{{apt-get source libgtk2.0-0}}}
-
-{{{sudo apt-get build-dep libgtk2.0-0}}}
-
-{{{sudo apt-get install fakeroot}}}
-
-Get the attached gtkmenubar.patch 
-{{{ wget http://gnome2-globalmenu.googlecode.com/files/gtkmenubar.patch.tar.bz2}}}  
-
-Put it inside the debian/patches folder of the gtk source you just downloaded. 
-
-Open the series file found on the same folder and add a new line containing
+  * Open the series file found on the same folder and add a new line containing
 {{{gtkmenubar.patch}}}
 
-Save and exit.
-Now on the terminal
-{{{cd gtk+2.0-2.12.0}}}
-{{{dpkg-buildpackage -r fakeroot}}}
+  * Save and exit.
+  * Now on the terminal, we'll patch gtk
+    # {{{cd gtk+2.0-2.12.0}}}
+    # {{{dpkg-buildpackage -r fakeroot}}}
 
 
 ==Installing the applet itself==
