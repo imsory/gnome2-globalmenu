@@ -14,9 +14,9 @@ a step by step guide which assumes that you've never compiled anything on your s
   * Install them
     {{{ sudo apt-get install ****}}} 
   * Get the MacMenu applet with the following instruction
-      {{{ wget ********* }}}
+      {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet_0.2.1-1_i386.deb }}}
   * Install it
-    # {{{ sudo apt-get install ****}}} 
+    # {{{ sudo apt-get install gnome2-globalmenu-applet}}} 
  * We now have to add a bonobo server file where {{{APP_LOCATION}}} is {{{/usr/local/libexec}}}
 
   # Download it: {{{wget http://gnome2-globalmenu.googlecode.com/files/GNOME_GlobalMenuApplet.server}}}
