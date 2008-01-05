@@ -7,12 +7,19 @@ a step by step guide which assumes that you've never compiled anything on your s
 
 ==Installing with debs==
 ===on a 32 bit system===
+  * Open a terminal
+  * Create a folder
+    {{{ sudo mkdir global-menu-install}}} 
+  * Go to this folder
+    {{{ cd global-menu-install}}}
   * Get the patched gtk debs with the following instruction
-    {{{ wget ********* }}}
+    {{{ wget http://gnome2-globalmenu.googlecode.com/files/patched-gtk-ubuntu-gutsy-i386-part1.tar.gz}}}
+    {{{ wget http://gnome2-globalmenu.googlecode.com/files/patched-gtk-ubuntu-gutsy-i386-part2.tar.gz}}}
   * Unarchive them
-    {{{ }}}
+    {{{tar xvf patched-gtk-ubuntu-gutsy-i386-part1.tar.gz }}}
+    {{{tar xvf patched-gtk-ubuntu-gutsy-i386-part2.tar.gz }}}
   * Install them
-    {{{ sudo apt-get install ****}}} 
+    {{{sudo dpkg -i *.deb}}} 
   * Get the MacMenu applet with the following instruction
       {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet_0.2.1-1_i386.deb }}}
   * Install it
