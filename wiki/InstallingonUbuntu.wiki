@@ -14,9 +14,11 @@ a step by step guide which assumes that you've never compiled anything on your s
     {{{ cd global-menu-install}}}
   * Get the patched gtk debs with the following instruction
     {{{ wget http://gnome2-globalmenu.googlecode.com/files/patched-gtk-ubuntu-gutsy-i386-part1.tar.gz}}}
-    {{{ wget http://gnome2-globalmenu.googlecode.com/files/patched-gtk-ubuntu-gutsy-i386-part2.tar.gz}}}
+   
+ {{{ wget http://gnome2-globalmenu.googlecode.com/files/patched-gtk-ubuntu-gutsy-i386-part2.tar.gz}}}
   * Unarchive them
     {{{tar xvf patched-gtk-ubuntu-gutsy-i386-part1.tar.gz }}}
+    
     {{{tar xvf patched-gtk-ubuntu-gutsy-i386-part2.tar.gz }}}
   * Install them
     {{{sudo dpkg -i *.deb}}} 
