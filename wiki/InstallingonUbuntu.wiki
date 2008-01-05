@@ -6,11 +6,11 @@ THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 a step by step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
 
 ==Installing with debs==
-=on a 32 bit system=
+===on a 32 bit system===
   * Get the patched gtk debs with the following instruction
     {{{ wget ********* }}}
   * Unarchive them
-    {{{ 
+    {{{ }}}
   * Install them
     {{{ sudo apt-get install ****}}} 
   * Get the MacMenu applet with the following instruction
@@ -23,7 +23,7 @@ a step by step guide which assumes that you've never compiled anything on your s
   # Let's copy it in the right directory:  {{{sudo cp GNOME_GlobalMenuApplet.server /usr/lib/bonobo/servers/GNOME_GlobalMenuApplet.server}}}
   # Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
 
-=on a 64 bit system=
+===on a 64 bit system===
 
 ==Installing from SVN==
 
