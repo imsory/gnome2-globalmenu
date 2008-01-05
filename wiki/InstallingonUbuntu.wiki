@@ -5,7 +5,30 @@ THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
 a step by step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
 
-==Installing gtk2-aqd==
+==Installing with debs==
+=on a 32 bit system=
+  * Get the patched gtk debs with the following instruction
+    {{{ wget ********* }}}
+  * Unarchive them
+    {{{ 
+  * Install them
+    {{{ sudo apt-get install ****}}} 
+  * Get the MacMenu applet with the following instruction
+      {{{ wget ********* }}}
+  * Install it
+    # {{{ sudo apt-get install ****}}} 
+ * We now have to add a bonobo server file where {{{APP_LOCATION}}} is {{{/usr/local/libexec}}}
+
+  # Download it: {{{wget http://gnome2-globalmenu.googlecode.com/files/GNOME_GlobalMenuApplet.server}}}
+  # Let's copy it in the right directory:  {{{sudo cp GNOME_GlobalMenuApplet.server /usr/lib/bonobo/servers/GNOME_GlobalMenuApplet.server}}}
+  # Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
+
+=on a 64 bit system=
+
+==Installing from SVN==
+
+
+===Installing gtk2-aqd===
 
   * Prepare your system to add the gtk2-aqd patches
     # {{{sudo apt-get install build-essential}}}
@@ -30,7 +53,7 @@ a step by step guide which assumes that you've never compiled anything on your s
     # {{{dpkg-buildpackage -r fakeroot}}}
 
 
-==Installing the applet itself==
+===Installing the applet itself===
 
   * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 
       {{{sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev}}}
