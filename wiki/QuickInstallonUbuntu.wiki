@@ -2,7 +2,7 @@ THIS IS ALPHA SOFTWARE. USE AT YOUR OWN RISK. IT KILLS KITTENS AND COMPUTERS TOO
 
 ==Installing on a 32 bit Gutsy Gibbon system===
   * Open a terminal
-  * Create a folder and cd into that folder
+  * Create a folder ({{{mkdir nameofthefolder}}}) and move ({{{cd nameofthefolder}}}) into that folder
   * Get the installations packages and files with the following instruction
     {{{ wget http://dl.free.fr/mNz2tukHZ/lbgtk2.0-0-aqd-v3.172.tar.bz2}}}
   * Unarchive them
