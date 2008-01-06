@@ -11,7 +11,7 @@ THIS IS ALPHA SOFTWARE. USE AT YOUR OWN RISK. IT KILLS KITTENS AND COMPUTERS TOO
     {{{sudo dpkg -i *.deb}}} 
   * We now have to copy some files in the right directory of your system
     {{{sudo cp GNOME_GlobalMenuApplet.server /usr/lib/bonobo/servers/GNOME_GlobalMenuApplet.server}}}
-    
-    {{{sudo cp -R original/gnome2-globalmenu-applet  /usr/lib/gnome-applets/}}}
+
+    {{{sudo cp -R original/gnome2-globalmenu-applet /usr/lib/gnome-applets/}}}
 
   * Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
