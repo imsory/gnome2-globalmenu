@@ -1,6 +1,6 @@
 THIS IS ALPHA SOFTWARE. USE AT YOUR OWN RISK. IT KILLS KITTENS AND COMPUTERS TOO.
 
-==Installing on a 32 bit Gutsy Gibbon system===
+==Installing on a 32 bit GNOME Gutsy Gibbon system===
   * Open a terminal
   * Create a folder ({{{mkdir nameofthefolder}}}) and move ({{{cd nameofthefolder}}}) into that folder
   * Get the installations packages and files with the following instruction
