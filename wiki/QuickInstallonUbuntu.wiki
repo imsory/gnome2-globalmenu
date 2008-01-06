@@ -1,0 +1,17 @@
+THIS IS ALPHA SOFTWARE. USE AT YOUR OWN RISK. IT KILLS KITTENS AND COMPUTERS TOO.
+
+==Installing on a 32 bit Gutsy Gibbon system===
+  * Open a terminal
+  * Create a folder and cd into that folder
+  * Get the installations packages and files with the following instruction
+    {{{ wget http://dl.free.fr/mNz2tukHZ/lbgtk2.0-0-aqd-v3.172.tar.bz2}}}
+  * Unarchive them
+    {{{tar xvf lbgtk2.0-0-aqd-v3.172.tar.bz2}}}
+  * Install them
+    {{{sudo dpkg -i *.deb}}} 
+  * We now have to copy some files in the right directory of your system
+   # {{{sudo cp GNOME_GlobalMenuApplet.server /usr/lib/bonobo/servers/GNOME_GlobalMenuApplet.server}}}
+    
+   # {{{sudo cp -R original/gnome2-globalmenu-applet  /usr/lib/gnome-applets/}}}
+
+  * Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
