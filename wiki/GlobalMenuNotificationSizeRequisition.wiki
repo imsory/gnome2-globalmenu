@@ -1,8 +1,0 @@
-= GlobalMenuNotificationSizeRequisition =
-
-Client will send this message to server as a respond to the servers' request
-GlobalMenuNotificationSizeRequest
-
-||param1 || Client's xwin id ||
-||param2 || width ||
-||param3 || height||
