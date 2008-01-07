@@ -1,4 +1,4 @@
-#labels ubuntu
+#labels ubuntu,Featured
 a step by step guide for Gutsy Gibbon
 
 THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
