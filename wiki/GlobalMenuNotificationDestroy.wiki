@@ -1,6 +1,0 @@
-= GlobalMenuNotificationDestroy =
-When a client dies, it will notify the server.
-
-|| param1 || client's xwin id ||
-|| param2 || client's float window's xwin id||
-|| parma3 || master's xwin id||
