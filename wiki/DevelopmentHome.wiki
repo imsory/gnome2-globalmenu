@@ -2,9 +2,18 @@
 # This page is the home page for development documents, ideas, drafts and other garbages.
 
 = Roadmap =
+  * 0.1: `Origin`
+    * Original gtk2-aqd and gnome-macmenu-applet
+  * 0.2: `Rename`
+    * Rename to Global Menu in order to avoid confusion.
+    * Menu bars are scrollable if they are too long to fit into the screen
+  * 0.3: `Clean-up`
+    * Introduce the inter-process communication protocol for GlobalMenuBar
+    * Initial the support for Skinning.
   * 0.4: `Re-designation`
     * Completely redesign in OO to fit every piece into current GDK/GTK architecture.
     * Introduce GtkGlobalMenuBar and the concept: `global menu for legacy gtk software`
+    * Fully solve the Skinning Problem
   * 0.5: `Integration`
     * merge MenuServerApplet into gnome-panel to enhance desktop integration.
     * All of the GNOME Applications will be patched to build upon GtkGlobalMenuBar instead of GtkMenuBar .
