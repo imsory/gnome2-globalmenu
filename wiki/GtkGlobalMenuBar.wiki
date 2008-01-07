@@ -1,4 +1,6 @@
 #labels Phase-Design,Phase-Implementation
+#Global Menu Bar Widget
+
 = Life Time =
 {{{
 gtk_global_menu_bar_new
