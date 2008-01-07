@@ -10,19 +10,22 @@
     * All of the GNOME Applications will be patched to build upon GtkGlobalMenuBar instead of GtkMenuBar .
     * Patch gnome-window-properties to provide an option to disable or enable global menu bar.
   * 0.6: `Platforms`
-    * try to remove the gdk-x11 dependency, or seperate GdkSocket into gdksocket-x11 and gdksocket-w32
+    * Remove the x11 dependency, or seperate GdkSocket into gdksocket-x11 and gdksocket-w32
 
 = Development Documentation Draft for 0.4 =
 
 == Classes ==
-|| Class Name || Parent       || Dependencies ||
-|| GdkSocket  || GObject      || GdkWindow, GdkEvent, gdk-x11, Xlib ||
-|| GtkMenuServer || GtkWidget || GdkSocket ||
-|| GtkMenuBar || GtkMenuShell || GtkMenuItem, GtkGlobalMenuBar ||
-|| GtkGlobalMenuBar || GtkMenuBar || GtkMenuItem, GdkSocket||
+
+|| Class Name || Desc ||Parent       || Dependencies ||
+|| GdkSocket  || interwindow communication for gtk|| GObject      || GdkWindow, GdkEvent, gdk-x11, Xlib ||
+|| GtkMenuServer || menu server widget|| GtkWidget || GdkSocket ||
+|| GtkMenuBar || traditional menubar || GtkMenuShell || GtkMenuItem, GtkGlobalMenuBar ||
+|| GtkGlobalMenuBar || global menubar || GtkMenuBar || GtkMenuItem, GdkSocket||
+
 == Types ==
   * GtkGlobalMenuMessageType
   * GtkGlobalMenuMessage
+
 == Arch ==
 MenuServerApplet will be build upon GtkMenuServer .
 
