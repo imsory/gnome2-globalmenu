@@ -1,6 +1,6 @@
 #labels Phase-Design,Phase-Implementation
 #Menu Server widget
-Life Time
+= Life Time =
 {{{
 gtk_menu_server_init
 gtk_menu_server_size_request
@@ -14,13 +14,13 @@ gtk_menu_server_unrealize
  ->gtk_menu_server_shutdown
 gtk_menu_server_finalize
 }}}
-Types
-Private Variables
-Methods
+= Types =
+= Private Variables =
+= Methods =
 {{{
 }}}
-Virtual Functions
-Signals
+= Virtual Functions =
+= Signals =
 {{{
 client-new
 client-destroy
