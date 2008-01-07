@@ -1,6 +1,0 @@
-= GlobalMenuNotificationSizeRequest =
-
-Server send this to the client when wanting to know how large the client wish its menubar be. Client must response to server with a GlobalMenuNotificationSizeRequisition . 
-Or else server will hang.
-
-|| param1 || server's xwin ID ||
