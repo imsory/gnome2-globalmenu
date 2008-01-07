@@ -1,32 +1,43 @@
 #summary One-sentence summary of this page.
 
 = Types =
+{{{
 struct _GdkSocketMessage{
    gulong type;
    gulong param1;
    gulong param2;
    gulong param3;
 };
+}}}
+{{{
 enum _GdkSocketStatus{
     GSS_DISCONNECTED,
     GSS_CONNECTED
 };
+}}}
 = Private Variables =
-GdkWindow * window;
-gchar * name;
-GdkSocketStatus status;
-GdkNativeWindow target;
-
+{{{
+struct _GdkSocketPrivate{
+   GdkWindow * window;
+   gchar * name;
+   GdkSocketStatus status;
+   GdkNativeWindow target;
+};
+}}}
 = Methods =
-  * GdkSocket * gdk_socket_init(GdkSocket * self)
-  * GdkSocket * gdk_socket_new(gchar *name)
-  * gboolean gdk_socket_connect_to(GdkSocket * self, GdkNativeWindow * target);
-  * gboolean gdk_socket_send_to(GdkSocket * self, GdkNativeWindow target, GdkSocketMessage *message)
-  * GdkNativeWindow gdk_socket_find_target_by_name(GdkSocket * self, gchar * target_name)
-  * void gdk_socket_broadcast(GdkSocket * self, gchar * target_name, GdkSocketMessage * message)
-  * void gdk_socket_disconnect(GdkSocket * self)
-  * void gdk_socket_finalize(GdkSocket *self)
+{{{
+  GdkSocket * gdk_socket_init (GdkSocket * self);
+  GdkSocket * gdk_socket_new (gchar *name);
+  gboolean gdk_socket_connect_to (GdkSocket * self, GdkNativeWindow * target);
+  gboolean gdk_socket_send_to (GdkSocket * self, GdkNativeWindow target, GdkSocketMessage *message);
+  GdkNativeWindow gdk_socket_find_target_by_name (GdkSocket * self, gchar * target_name);
+  void gdk_socket_broadcast (GdkSocket * self, gchar * target_name, GdkSocketMessage * message);
+  void gdk_socket_disconnect (GdkSocket * self);
+  void gdk_socket_finalize (GdkSocket *self);
+}}}
 = Virtual Functions =
 
 = Signals =
-message-arrival (GdkSocket * self, GdkNativeWindow source, GdkMessage * message)
+{{{
+  void message-arrival (GdkSocket * self, GdkNativeWindow source, GdkMessage * message)
+}}}
