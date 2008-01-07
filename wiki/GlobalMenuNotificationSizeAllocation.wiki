@@ -1,9 +1,0 @@
-= GlobalMenuNotificationSizeAllocation =
-
-When server wants to change the size of the menu bar, it send this to the client.
-Client should take action. If the allocated size is too small for the client,
-it can optionally display scroll buttons.
-
-|| Param1 || server's xin id ||
-|| Param2 || width ||
-|| Param3 || height ||
