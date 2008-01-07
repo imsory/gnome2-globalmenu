@@ -1,2 +1,29 @@
-#labels Phase-Design,Phase-Implementation
+#labels Phase-Design,Phase-Implementation,Featured
 # This page is the home page for development documents, ideas, drafts and other garbages.
+
+= Roadmap =
+  * 0.4: `Re-designation`
+    * Completely redesign in OO to fit every piece into current GDK/GTK architecture.
+    * Introduce GtkGlobalMenuBar and the concept: `global menu for legacy gtk software`
+  * 0.5: `Integration`
+    * merge MenuServerApplet into gnome-panel to enhance desktop integration.
+    * All of the GNOME Applications will be patched to build upon GtkGlobalMenuBar instead of GtkMenuBar .
+    * Patch gnome-window-properties to provide an option to disable or enable global menu bar.
+  * 0.6: `Platforms`
+    * try to remove the gdk-x11 dependency, or seperate GdkSocket into gdksocket-x11 and gdksocket-w32
+
+= Development Documentation Draft for 0.4 =
+
+== Classes ==
+|| Class Name || Parent       || Dependencies ||
+|| GdkSocket  || GObject      || GdkWindow, GdkEvent, gdk-x11, Xlib ||
+|| GtkMenuServer || GtkWidget || GdkSocket ||
+|| GtkMenuBar || GtkMenuShell || GtkMenuItem, GtkGlobalMenuBar ||
+|| GtkGlobalMenuBar || GtkMenuBar || GtkMenuItem, GdkSocket||
+== Types ==
+  * GtkGlobalMenuMessageType
+  * GtkGlobalMenuMessage
+== Arch ==
+MenuServerApplet will be build upon GtkMenuServer .
+
+Provide an environment variable `LEGACY_GLOBAL_MENU` to allow gtk_menu_bar_new returns a GtkGlobalMenuBar.
