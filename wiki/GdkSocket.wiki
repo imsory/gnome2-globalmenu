@@ -1,5 +1,5 @@
-#summary One-sentence summary of this page.
 #labels Phase-Design,Phase-Implementation
+#Socket communication layer in GDK
 
 = Types =
 {{{
