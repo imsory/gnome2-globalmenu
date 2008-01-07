@@ -1,0 +1,39 @@
+#labels Phase-Design,Phase-Implementation
+= Life Time =
+{{{
+gtk_global_menu_bar_new
+gtk_global_menu_bar_init
+gtk_global_menu_bar_real_insert
+gtk_global_menu_bar_hierachy_changed
+  -> gtk_global_menu_bar_add_to_window
+  -> gtk_global_menu_bar_remove_from_window
+gtk_global_menu_bar_size_request
+gtk_global_menu_bar_size_allocate
+gtk_global_menu_bar_realize
+gtk_global_menu_bar_map
+  -> gtk_global_menu_bar_connect_to_server
+  -> gtk_global_menu_bar_send_new_client_notify
+  -> gtk_global_menu_bar_detach
+gtk_global_menu_bar_menu_server_message_cb
+  -> on ServerDestroy: gtk_global_menu_bar_attach
+  -> on SetVisibility: gtk_global_menu_bar_set_visibility
+  -> on SetBackground: gtk_global_menu_bar_set_background
+  -> on GetRequisition: gtk_global_menu_bar_size_request
+      -> gtk_global_menu_bar_send_get_requisition_response_notify
+  -> on SetAllocation: gtk_global_menu_bar_allocate
+gtk_global_menu_bar_delete_event
+  -> gtk_menu_bar_attach
+gtk_global_menu_bar_unrealize
+  -> gtk_menu_bar_send_client_destroy_notify
+gtk_global_menu_bar_finalize
+}}}
+= Types =
+
+
+= Private Variables =
+
+= Methods =
+
+= Virtual Functions =
+
+= Signals =
