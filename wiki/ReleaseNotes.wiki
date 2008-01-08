@@ -1,0 +1,33 @@
+#labels Featured
+#Release Notes
+
+Gnome2-globalmenu 0.3 is ready. Completely new patch/code for gtkmenubar. Reconstructed menu server.
+
+New features:
+
+    * + Stupid Menu Bar Scrolling
+    * - No Window icon
+    * + Skinning(partially working)
+    * + New Protocol: Connectionless, Asynchronous(Should update the Specification)
+    * + True Server/Client Architecture
+    * + Stablility
+    * + Menu server auto detection
+    * + Auto Guessing whether the menubar is a global one instead of hard coded window names. 
+
+http://gnome2-globalmenu.googlecode.com/svn/branches/0.3/
+
+Gnome2-globalmenu 0.2.1 is out.
+
+New features:
+
+    * + Press Alt and F10 in application window will invoke menus
+    * + New look and feel for scrolling long menubars
+    * + Added Application Icon, and application title appears as a tooltip.
+    * + Automatic gtk2-aqd build tool for fedora with guide README
+    * + Sample bonobo .server file for the Applet
+    * + Standalone mode applet for easy debugging
+    * - Removed application title's label
+    * - Doesn't respect KDE's floating menubars.
+    * + Packaging tarball of the applet works 
+
+http://gnome2-globalmenu.googlecode.com/svn/branches/0.2.1/ 
