@@ -1,6 +1,8 @@
 #labels Phase-Design,Phase-Implementation,Featured
 # This page is the home page for development documents, ideas, drafts and other garbages.
 
+We are at 0.3, moving toward 0.4.
+
 = Roadmap =
   * 0.1: `Origin`
     * Original gtk2-aqd and gnome-macmenu-applet
