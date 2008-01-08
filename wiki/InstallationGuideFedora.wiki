@@ -48,32 +48,31 @@ And one file
 Suppose you have setup the rpm devel tree by `rpmdev-setuptree`. Do following steps to obtain a patched gtk2-aqd.spec and patched gtk2 at `gtk2-aqd/libs`.
 {{{
 env RPMDEVROOT={Your rpmdev tree root} make setup
-env RPMDEVROOT={Your rpmdev tree root} make patch
 }}}
+Then the rpms will be build, the package should be located at `RPMS/i386`.
 
 It is possible to test whether gtk2-aqd works immediately after the above steps. 
 
 {{{
-env LD_LIBRARY_PATH={your gtk2-aqd directory}/libs gnomine
+./prefix gnomine
 }}}
-If gnomine appears and the menubar is located at the top left corner of desktop, Congratulations!
+It will give you some garbage (a lot of gtk-message ) at the console. Thought the menubar is still in `gnomine`'s window, our patch is working now. Whenever you finished installing the MenuServerApplet, and add the applet into your panel, the the menubars will be detach from app's window.
 
-If not, check if you have `gnomine` installed and replaced `gnomine` with some other gtk applications.
-
-Then build the rpm package (if you want.)
-
+You can also make modifications on `gtkmenubar.c` and `gtkmenuembed-x11.h`, and then
 {{{
-rpmbulid -ba gtk2-aqd.spec
+env RPMDEVROOT={Your rpmdev tree root} make patch
 }}}
-
-Note: The package should be located at `RPMS/i386`.
+though no new RPMS are made,
+{{{
+./prefix YOURAPP
+}}}
+stills invokes YOURAPP with patched gtk
 
 === gnome2-globalmenu-applet ===
 
-The most trivial method to get a working executable is
 {{{
 cd gnome2-globalmenu-applet
-configure
+./autogen.sh
 make
 }}}
 The executable locates at `gnome2-globalmenu-applet/src/gnome2-globalmenu-applet`
@@ -82,24 +81,15 @@ Try to invoke it by
 src/gnome2-globalmenu-applet
 }}}
 
-If it opens a nerdy window and report some tracing informations, congratulations again! You didn't grab a rubbish version from svn!
+If it opens a nerdy window and throws some tracing message via your console, congratulations again!
 
 Now we have `gtk2-aqd` and `gnome2-globalmenu-applet`, and your terminal is occupied by `gnome2-globalmenu-applet`.
 
-Press `Ctrl-Z` to bring back your terminal
-Make the applet run again by 
+If you go back to `gtk2-aqd`'s directory and invoke some applications, eg
 {{{
-bg
-}}}
-
-Start your favorate gtk program again
-{{{
-env LD_LIBRARY_PATH={your gtk2-aqd directory}/libs gnomine
-}}}
-Now the menubar of gnomine will appears in the applet's window.
-What? you only see a big big mine?
-
-Try resizing the applet window and then refocus gnomine's window.
+./prefix rhythmbox
+}}} 
+You will see a different.
 
 `gnome2-globalmenu-applet`, as the name suggests, can also be placed into a panel.
 However, setting it up as a panel applet is a little bit convoluted.
