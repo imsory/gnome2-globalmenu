@@ -1,15 +1,46 @@
 #labels Featured,Phase-Deploy
 #Installation Guide On Gentoo
-* THIS IS A DRAFT. *
 
 = Introduction =
 
-Add your content here.
+To install this software correctly you do 2 steps:
+  * Patch gtk+
+  * Install gnome2-globalmenu-applet
 
+To use it in your desktop environment you should also add installed applet to you gnome-panel.
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Really, you do not need how it works at the bottom level. Package manager would do it for you. If not, please fill ebuild bug here: [http://bugs.gentoo.org/show_bug.cgi?id=205203] or here in comments. I'll try to fix it ASAP and post corrected version.
+
+There are (would be for now) ebuilds for two versions:
+  * release (aka "stable");
+  * svn (aka "development").
+
+So, there are two ebuild packages:
+  * gnome-extra/gnome2-globalmenu-applet-0.3.ebuild - _release version of applet_
+  * gnome-extra/gnome2-globalmenu-applet-9999.ebuild - _SVN trunk version of applet_
+
+Steps are equal but you should choose appropriate version of ebuild. So, complete installation steps are:
+
+  # Create directory for portage overlay (if you haven't your own one already). I use /usr/local/portage.
+  # Add this directory to PORTDIR_OVERLAY in /etc/make.conf (read more about gentoo overlays (if you want) here [http://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=3&chap=5] and here [http://www.gentoo.org/proj/en/devrel/handbook/handbook.xml?part=2&chap=1#doc_chap6_sect2]).
+  # Fetch [http://code.google.com/p/gnome2-globalmenu/downloads/list] ebuilds tarball package (or from [http://bugs.gentoo.org/show_bug.cgi?id=205203] attachments).
+  # Unpack fetched tarball into created directory (if you want, you may fetch svn version of gtk2-aqd patch from [http://gnome2-globalmenu.googlecode.com/svn/trunk/gtk2-aqd] and put gtkmenubar.patch from fetched directory to x11-libs/gtk+/files/gtk+-2.12.1-gtkmenubar.patch in unpacked directory).
+  # add `>=x11-libs/gtk+-2.0 globalmenu` line to your /etc/portage/package.use (`euse -E globalmenu` adds this to global USE flags, but it is not recommended).
+  # `emerge -v1p x11-libs/gtk+` (check if version of gtk+ is correct, globalmenu useflag is on and number of your overlay is shown right to package name). Output should be like this:
+{{{
+These are the packages that would be merged, in order:
+
+Calculating dependencies... done!
+[ebuild   R   ] x11-libs/gtk+-2.12.1-r2  USE="X cups globalmenu jpeg tiff vim-syntax xinerama -debug -doc" 0 kB [1]
+
+Total: 1 package (1 reinstall), Size of downloads: 0 kB
+Portage tree and overlays:
+ [0] /usr/portage
+ [1] /usr/local/portage
+}}}
+  # If check on step 4. is ok, do `emerge -v1 x11-libs/gtk+`. If not, recheck previous steps.
+  # `emerge -v gnome-extra/gnome2-globalmenu-applet` (I'll make more visible warning about gtk+ merged w/o globalmenu flag later to the ebuild).
+
+If all steps completed successfully you are ready to add applet to GNOME panel. Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
