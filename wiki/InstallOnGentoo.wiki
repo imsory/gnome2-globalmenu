@@ -25,9 +25,9 @@ Steps are equal but you should choose appropriate version of ebuild. So, complet
 
   # Create directory for portage overlay (if you haven't your own one already). I use /usr/local/portage.
   # Add this directory to PORTDIR_OVERLAY in /etc/make.conf (read more about gentoo overlays (if you want) here [http://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=3&chap=5] and here [http://www.gentoo.org/proj/en/devrel/handbook/handbook.xml?part=2&chap=1#doc_chap6_sect2]).
-  # Fetch [http://code.google.com/p/gnome2-globalmenu/downloads/list] ebuilds tarball package (or from [http://bugs.gentoo.org/show_bug.cgi?id=205203] attachments).
+  # Fetch ebuilds tarball package from [http://code.google.com/p/gnome2-globalmenu/downloads/list] or [http://bugs.gentoo.org/show_bug.cgi?id=205203] attachments.
   # Unpack fetched tarball into created directory (if you want, you may fetch svn version of gtk2-aqd patch from [http://gnome2-globalmenu.googlecode.com/svn/trunk/gtk2-aqd] and put gtkmenubar.patch from fetched directory to x11-libs/gtk+/files/gtk+-2.12.1-gtkmenubar.patch in unpacked directory).
-  # add `>=x11-libs/gtk+-2.0 globalmenu` line to your /etc/portage/package.use (`euse -E globalmenu` adds this to global USE flags, but it is not recommended).
+  # Add `>=x11-libs/gtk+-2.0 globalmenu` line to your /etc/portage/package.use (`euse -E globalmenu` adds this to global USE flags, but it is not recommended).
   # `emerge -v1p x11-libs/gtk+` (check if version of gtk+ is correct, globalmenu useflag is on and number of your overlay is shown right to package name). Output should be like this:
 {{{
 These are the packages that would be merged, in order:
