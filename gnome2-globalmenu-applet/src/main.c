@@ -189,7 +189,7 @@ static void application_free(Application * App);
 static gboolean main_window_destroy_cb(GtkWindow * MainWindow, Application * App){
 	g_print("Main window destroyed.\n");
 	application_free(App);
-	if (App->Mode == APP_STANDALONE)
+    if(App->Mode == APP_STANDALONE)
 		gtk_main_quit();
 	return TRUE;
 }
@@ -272,48 +272,22 @@ static void label_area_action_cb(GtkWidget * widget, GdkEventButton* button, App
 	}
 }
 static void backward_action_cb(GtkWidget * widget, GdkEventButton * button, Application * App){
-	GtkAllocation *allocation;
-	GlobalMenuNotify notify;
 	g_print("backward action.\n");
 	if(App->ActiveClient){
 		App->ActiveClient->x -= 10;
-		
-		memset(&notify, 0 ,sizeof(notify));
-		allocation = &(GTK_WIDGET(App->Holder))->allocation;
-		notify.type = GM_NOTIFY_SIZE_ALLOCATE;
-		notify.SizeAllocate.width = allocation->width - App->ActiveClient->x;
-		notify.SizeAllocate.height = allocation->height;
-		menu_server_send_to(App->Server, App->ActiveClient->menu_client, &notify);
-
 		gdk_window_move(App->ActiveClient->float_window, 
 				App->ActiveClient->x,
 				App->ActiveClient->y);
-
 	}
 	ui_repaint_all(App);
 }
 static void forward_action_cb(GtkWidget * widget, GdkEventButton * button, Application * App){
-	GtkAllocation *allocation;
-	GlobalMenuNotify notify;
-
 	g_print("forward action.\n");
 	if(App->ActiveClient){
 		App->ActiveClient->x += 10;
-
-		allocation = &(GTK_WIDGET(App->Holder))->allocation;
-		if ( allocation->width - App->ActiveClient->x > 0)
-		{
-			memset(&notify, 0 ,sizeof(notify));
-			notify.type = GM_NOTIFY_SIZE_ALLOCATE;
-			notify.SizeAllocate.width = allocation->width - App->ActiveClient->x;
-			notify.SizeAllocate.height = allocation->height;
-			menu_server_send_to(App->Server, App->ActiveClient->menu_client, &notify);
-		}
-
 		gdk_window_move(App->ActiveClient->float_window, 
 				App->ActiveClient->x,
 				App->ActiveClient->y);
-
 	}
 	ui_repaint_all(App);
 }
