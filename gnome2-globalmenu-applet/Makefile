@@ -15,9 +15,9 @@
 
 
 
-pkgdatadir = $(datadir)/gnome2-globalmenu-test
-pkglibdir = $(libdir)/gnome2-globalmenu-test
-pkgincludedir = $(includedir)/gnome2-globalmenu-test
+pkgdatadir = $(datadir)/gnome2-globalmenu-applet
+pkglibdir = $(libdir)/gnome2-globalmenu-applet
+pkgincludedir = $(includedir)/gnome2-globalmenu-applet
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -62,9 +62,9 @@ am__vpath_adj = case $$p in \
     *) f=$$p;; \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
-am__installdirs = "$(DESTDIR)$(gnome2_globalmenu_testdocdir)"
-gnome2_globalmenu_testdocDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(gnome2_globalmenu_testdoc_DATA)
+am__installdirs = "$(DESTDIR)$(gnome2_globalmenu_appletdocdir)"
+gnome2_globalmenu_appletdocDATA_INSTALL = $(INSTALL_DATA)
+DATA = $(gnome2_globalmenu_appletdoc_DATA)
 RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
   distclean-recursive maintainer-clean-recursive
 ETAGS = etags
@@ -81,13 +81,13 @@ DIST_ARCHIVES = $(distdir).tar.gz
 GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run aclocal-1.10
+ACLOCAL = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run aclocal-1.10
 ALL_LINGUAS = 
-AMTAR = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run tar
+AMTAR = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run tar
 AR = ar
-AUTOCONF = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run automake-1.10
+AUTOCONF = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run automake-1.10
 AWK = gawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -112,11 +112,11 @@ EGREP = /bin/grep -E
 EXEEXT = 
 F77 = gfortran
 FFLAGS = -g -O2
-GETTEXT_PACKAGE = gnome2-globalmenu-test
+GETTEXT_PACKAGE = gnome2-globalmenu-applet
 GMOFILES = 
 GMSGFMT = /usr/bin/msgfmt
-GNOME2_GLOBALMENU_TEST_CFLAGS = -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libglade-2.0 -I/usr/include/libxml2 -I/usr/include/libwnck-1.0 -I/usr/include/startup-notification-1.0  
-GNOME2_GLOBALMENU_TEST_LIBS = -lglade-2.0 -lxml2 -lwnck-1 -lgtk-x11-2.0 -lstartup-notification-1 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0  
+GNOME2_GLOBALMENU_APPLET_CFLAGS = -DORBIT2=1 -pthread -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libwnck-1.0 -I/usr/include/startup-notification-1.0 -I/usr/include/panel-2.0 -I/usr/include/libgnomeui-2.0 -I/usr/include/libbonoboui-2.0 -I/usr/include/libgnome-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/libbonobo-2.0 -I/usr/include/orbit-2.0 -I/usr/include/bonobo-activation-2.0 -I/usr/include/libart-2.0 -I/usr/include/gconf/2  
+GNOME2_GLOBALMENU_APPLET_LIBS = -pthread -lwnck-1 -lstartup-notification-1 -lpanel-applet-2 -lgnomeui-2 -lSM -lICE -lbonoboui-2 -lgnomevfs-2 -lgconf-2 -lgnomecanvas-2 -lgnome-2 -lpopt -lart_lgpl_2 -lgtk-x11-2.0 -latk-1.0 -lbonobo-2 -lbonobo-activation -lORBit-2 -lgthread-2.0 -lrt -lgdk-x11-2.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0  
 GREP = /bin/grep
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
@@ -155,18 +155,18 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LN_S = ln -s
 LTLIBOBJS = 
 MAINT = 
-MAKEINFO = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
 MSGFMT_OPTS = -c
 OBJEXT = o
-PACKAGE = gnome2-globalmenu-test
+PACKAGE = gnome2-globalmenu-applet
 PACKAGE_BUGREPORT = 
-PACKAGE_NAME = gnome2-globalmenu-test
-PACKAGE_STRING = gnome2-globalmenu-test 0.1
-PACKAGE_TARNAME = gnome2-globalmenu-test
-PACKAGE_VERSION = 0.1
+PACKAGE_NAME = gnome2-globalmenu-applet
+PACKAGE_STRING = gnome2-globalmenu-applet 0.2.1
+PACKAGE_TARNAME = gnome2-globalmenu-applet
+PACKAGE_VERSION = 0.2.1
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 POFILES = 
@@ -178,13 +178,15 @@ SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/sh
 STRIP = strip
+TEST_CLIENT_CFLAGS = -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libglade-2.0 -I/usr/include/libxml2  
+TEST_CLIENT_LIBS = -lglade-2.0 -lgtk-x11-2.0 -lxml2 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0  
 USE_NLS = yes
-VERSION = 0.1
+VERSION = 0.2.1
 XGETTEXT = /usr/bin/xgettext
-abs_builddir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test
-abs_srcdir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test
-abs_top_builddir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test
-abs_top_srcdir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test
+abs_builddir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet
+abs_srcdir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet
+abs_top_builddir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet
+abs_top_srcdir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 ac_ct_F77 = gfortran
@@ -213,7 +215,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = $(SHELL) /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/install-sh
+install_sh = $(SHELL) /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -233,16 +235,23 @@ target_alias =
 top_builddir = .
 top_srcdir = .
 SUBDIRS = src po
-gnome2_globalmenu_testdocdir = ${prefix}/doc/gnome2-globalmenu-test
-gnome2_globalmenu_testdoc_DATA = \
+gnome2_globalmenu_appletdocdir = ${datadir}/doc/gnome2-globalmenu-applet
+gnome2_globalmenu_appletdoc_DATA = \
 	README\
 	COPYING\
 	AUTHORS\
 	ChangeLog\
 	INSTALL\
-	NEWS
+	NEWS\
+	GNOME_GlobalMenuApplet.server.sample
 
-EXTRA_DIST = $(gnome2_globalmenu_testdoc_DATA)
+intltool_in_files = intltool-extract.in\
+	intltool-merge.in\
+	intltool-update.in	
+
+intltool_files = intltool-extract intltool-merge intltool-update
+EXTRA_DIST = $(gnome2_globalmenu_appletdoc_DATA) $(intltool_in_files)
+DISTCLEANFILES = $(intltool_files)
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -306,22 +315,22 @@ clean-libtool:
 
 distclean-libtool:
 	-rm -f libtool
-install-gnome2_globalmenu_testdocDATA: $(gnome2_globalmenu_testdoc_DATA)
+install-gnome2_globalmenu_appletdocDATA: $(gnome2_globalmenu_appletdoc_DATA)
 	@$(NORMAL_INSTALL)
-	test -z "$(gnome2_globalmenu_testdocdir)" || $(MKDIR_P) "$(DESTDIR)$(gnome2_globalmenu_testdocdir)"
-	@list='$(gnome2_globalmenu_testdoc_DATA)'; for p in $$list; do \
+	test -z "$(gnome2_globalmenu_appletdocdir)" || $(MKDIR_P) "$(DESTDIR)$(gnome2_globalmenu_appletdocdir)"
+	@list='$(gnome2_globalmenu_appletdoc_DATA)'; for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  f=$(am__strip_dir) \
-	  echo " $(gnome2_globalmenu_testdocDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(gnome2_globalmenu_testdocdir)/$$f'"; \
-	  $(gnome2_globalmenu_testdocDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(gnome2_globalmenu_testdocdir)/$$f"; \
+	  echo " $(gnome2_globalmenu_appletdocDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(gnome2_globalmenu_appletdocdir)/$$f'"; \
+	  $(gnome2_globalmenu_appletdocDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(gnome2_globalmenu_appletdocdir)/$$f"; \
 	done
 
-uninstall-gnome2_globalmenu_testdocDATA:
+uninstall-gnome2_globalmenu_appletdocDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(gnome2_globalmenu_testdoc_DATA)'; for p in $$list; do \
+	@list='$(gnome2_globalmenu_appletdoc_DATA)'; for p in $$list; do \
 	  f=$(am__strip_dir) \
-	  echo " rm -f '$(DESTDIR)$(gnome2_globalmenu_testdocdir)/$$f'"; \
-	  rm -f "$(DESTDIR)$(gnome2_globalmenu_testdocdir)/$$f"; \
+	  echo " rm -f '$(DESTDIR)$(gnome2_globalmenu_appletdocdir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(gnome2_globalmenu_appletdocdir)/$$f"; \
 	done
 
 # This directory's subdirectories are mostly independent; you can cd
@@ -605,7 +614,7 @@ check: check-recursive
 all-am: Makefile $(DATA) config.h
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(gnome2_globalmenu_testdocdir)"; do \
+	for dir in "$(DESTDIR)$(gnome2_globalmenu_appletdocdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-recursive
@@ -628,6 +637,7 @@ clean-generic:
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
+	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -652,7 +662,7 @@ info: info-recursive
 
 info-am:
 
-install-data-am: install-gnome2_globalmenu_testdocDATA
+install-data-am: install-gnome2_globalmenu_appletdocDATA
 
 install-dvi: install-dvi-recursive
 
@@ -688,7 +698,7 @@ ps: ps-recursive
 
 ps-am:
 
-uninstall-am: uninstall-gnome2_globalmenu_testdocDATA
+uninstall-am: uninstall-gnome2_globalmenu_appletdocDATA
 
 .MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) install-am \
 	install-strip
@@ -702,16 +712,16 @@ uninstall-am: uninstall-gnome2_globalmenu_testdocDATA
 	dvi-am html html-am info info-am install install-am \
 	install-data install-data-am install-dvi install-dvi-am \
 	install-exec install-exec-am \
-	install-gnome2_globalmenu_testdocDATA install-html \
+	install-gnome2_globalmenu_appletdocDATA install-html \
 	install-html-am install-info install-info-am install-man \
 	install-pdf install-pdf-am install-ps install-ps-am \
 	install-strip installcheck installcheck-am installdirs \
 	installdirs-am maintainer-clean maintainer-clean-generic \
 	mostlyclean mostlyclean-generic mostlyclean-libtool pdf pdf-am \
 	ps ps-am tags tags-recursive uninstall uninstall-am \
-	uninstall-gnome2_globalmenu_testdocDATA
+	uninstall-gnome2_globalmenu_appletdocDATA
 
-
+#
 # Copy all the spec files. Of cource, only one is actually used.
 dist-hook:
 	for specfile in *.spec; do \
