@@ -13,35 +13,23 @@ AM_CFLAGS =\
 	 -Wall\
 	 -g
 
-libexec_PROGRAMS = gnome2-globalmenu-applet 
+bin_PROGRAMS = gnome2-globalmenu-applet 
 
 gnome2_globalmenu_applet_SOURCES = \
+	clients.c                 \
+	clients.h                 \
 	main.c                 \
+	misc.c                 \
+	misc.h                 \
 	typedefs.h                 \
 	ui.c                 \
-	ui.h                 \
-	menuclients.c                 \
-	menuclients.h                 \
-	menuserver.c                 \
-	menuserver.h                 \
-	gtkmenuembed-x11.h                 \
-	application.h 
+	ui.h 
 
 gnome2_globalmenu_applet_LDFLAGS = 
 
 gnome2_globalmenu_applet_LDADD = $(GNOME2_GLOBALMENU_APPLET_LIBS)
 
 EXTRA_DIST = $(glade_DATA)
-
-
-
-
-
-
-
-
-
-
 
 
 

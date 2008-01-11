@@ -17,8 +17,8 @@
 # We have the following line for use by intltoolize:
 # INTLTOOL_MAKEFILE
 
-GETTEXT_PACKAGE = gnome2-globalmenu-test
-PACKAGE = gnome2-globalmenu-test
+GETTEXT_PACKAGE = gnome2-globalmenu-applet
+PACKAGE = gnome2-globalmenu-applet
 VERSION = 0.1
 
 SHELL = /bin/sh
@@ -36,7 +36,7 @@ libdir = ${exec_prefix}/lib
 DATADIRNAME = share
 itlocaledir = $(prefix)/$(DATADIRNAME)/locale
 subdir = po
-install_sh = $(SHELL) /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/install-sh
+install_sh = $(SHELL) /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/install-sh
 # Automake >= 1.8 provides /bin/mkdir -p.
 # Until it can be supposed, use the safe fallback:
 mkdir_p = $(install_sh) -d
@@ -66,6 +66,7 @@ DISTFILES = ChangeLog Makefile.in.in POTFILES.in $(POFILES)
 EXTRA_DISTFILES = POTFILES.skip Makevars LINGUAS
 
 POTFILES = \
+	../src/main.c
 # This comment gets stripped out
 
 CATALOGS=$(shell LINGUAS="$(USE_LINGUAS)"; for lang in $$LINGUAS; do printf "$$lang.gmo "; done)

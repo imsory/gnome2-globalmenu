@@ -15,10 +15,9 @@
 
 
 
-
-pkgdatadir = $(datadir)/gnome2-globalmenu-test
-pkglibdir = $(libdir)/gnome2-globalmenu-test
-pkgincludedir = $(includedir)/gnome2-globalmenu-test
+pkgdatadir = $(datadir)/gnome2-globalmenu-applet
+pkglibdir = $(libdir)/gnome2-globalmenu-applet
+pkgincludedir = $(includedir)/gnome2-globalmenu-applet
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -33,7 +32,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = i686-pc-linux-gnu
 host_triplet = i686-pc-linux-gnu
-bin_PROGRAMS = gnome2-globalmenu-test$(EXEEXT)
+bin_PROGRAMS = gnome2-globalmenu-applet$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -43,16 +42,18 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(gladedir)"
+am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_gnome2_globalmenu_test_OBJECTS = callbacks.$(OBJEXT) main.$(OBJEXT)
-gnome2_globalmenu_test_OBJECTS = $(am_gnome2_globalmenu_test_OBJECTS)
+am_gnome2_globalmenu_applet_OBJECTS = clients.$(OBJEXT) main.$(OBJEXT) \
+	misc.$(OBJEXT) ui.$(OBJEXT)
+gnome2_globalmenu_applet_OBJECTS =  \
+	$(am_gnome2_globalmenu_applet_OBJECTS)
 am__DEPENDENCIES_1 =
-gnome2_globalmenu_test_DEPENDENCIES = $(am__DEPENDENCIES_1)
-gnome2_globalmenu_test_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
+gnome2_globalmenu_applet_DEPENDENCIES = $(am__DEPENDENCIES_1)
+gnome2_globalmenu_applet_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(gnome2_globalmenu_test_LDFLAGS) $(LDFLAGS) -o $@
+	$(gnome2_globalmenu_applet_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -65,26 +66,18 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
-SOURCES = $(gnome2_globalmenu_test_SOURCES)
-DIST_SOURCES = $(gnome2_globalmenu_test_SOURCES)
-am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
-am__vpath_adj = case $$p in \
-    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
-    *) f=$$p;; \
-  esac;
-am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
-gladeDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(glade_DATA)
+SOURCES = $(gnome2_globalmenu_applet_SOURCES)
+DIST_SOURCES = $(gnome2_globalmenu_applet_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run aclocal-1.10
+ACLOCAL = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run aclocal-1.10
 ALL_LINGUAS = 
-AMTAR = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run tar
+AMTAR = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run tar
 AR = ar
-AUTOCONF = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run automake-1.10
+AUTOCONF = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run automake-1.10
 AWK = gawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -109,11 +102,11 @@ EGREP = /bin/grep -E
 EXEEXT = 
 F77 = gfortran
 FFLAGS = -g -O2
-GETTEXT_PACKAGE = gnome2-globalmenu-test
+GETTEXT_PACKAGE = gnome2-globalmenu-applet
 GMOFILES = 
 GMSGFMT = /usr/bin/msgfmt
-GNOME2_GLOBALMENU_TEST_CFLAGS = -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libglade-2.0 -I/usr/include/libxml2 -I/usr/include/libwnck-1.0 -I/usr/include/startup-notification-1.0  
-GNOME2_GLOBALMENU_TEST_LIBS = -lglade-2.0 -lxml2 -lwnck-1 -lgtk-x11-2.0 -lstartup-notification-1 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0  
+GNOME2_GLOBALMENU_APPLET_CFLAGS = -DORBIT2=1 -pthread -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libwnck-1.0 -I/usr/include/startup-notification-1.0 -I/usr/include/panel-2.0 -I/usr/include/libgnomeui-2.0 -I/usr/include/libbonoboui-2.0 -I/usr/include/libgnome-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/libbonobo-2.0 -I/usr/include/orbit-2.0 -I/usr/include/bonobo-activation-2.0 -I/usr/include/libart-2.0 -I/usr/include/gconf/2  
+GNOME2_GLOBALMENU_APPLET_LIBS = -pthread -lwnck-1 -lstartup-notification-1 -lpanel-applet-2 -lgnomeui-2 -lSM -lICE -lbonoboui-2 -lgnomevfs-2 -lgconf-2 -lgnomecanvas-2 -lgnome-2 -lpopt -lart_lgpl_2 -lgtk-x11-2.0 -latk-1.0 -lbonobo-2 -lbonobo-activation -lORBit-2 -lgthread-2.0 -lrt -lgdk-x11-2.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0  
 GREP = /bin/grep
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
@@ -152,17 +145,17 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LN_S = ln -s
 LTLIBOBJS = 
 MAINT = 
-MAKEINFO = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
 MSGFMT_OPTS = -c
 OBJEXT = o
-PACKAGE = gnome2-globalmenu-test
+PACKAGE = gnome2-globalmenu-applet
 PACKAGE_BUGREPORT = 
-PACKAGE_NAME = gnome2-globalmenu-test
-PACKAGE_STRING = gnome2-globalmenu-test 0.1
-PACKAGE_TARNAME = gnome2-globalmenu-test
+PACKAGE_NAME = gnome2-globalmenu-applet
+PACKAGE_STRING = gnome2-globalmenu-applet 0.1
+PACKAGE_TARNAME = gnome2-globalmenu-applet
 PACKAGE_VERSION = 0.1
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
@@ -175,13 +168,15 @@ SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/sh
 STRIP = strip
+TEST_CLIENT_CFLAGS = -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libglade-2.0 -I/usr/include/libxml2  
+TEST_CLIENT_LIBS = -lglade-2.0 -lgtk-x11-2.0 -lxml2 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0  
 USE_NLS = yes
 VERSION = 0.1
 XGETTEXT = /usr/bin/xgettext
-abs_builddir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/src
-abs_srcdir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/src
-abs_top_builddir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test
-abs_top_srcdir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test
+abs_builddir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/src
+abs_srcdir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/src
+abs_top_builddir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet
+abs_top_srcdir = /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 ac_ct_F77 = gfortran
@@ -210,7 +205,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = $(SHELL) /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-test/install-sh
+install_sh = $(SHELL) /home/rainwoodman/Projects/gnome2-globalmenu/gnome2-globalmenu-applet/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -229,27 +224,29 @@ sysconfdir = ${prefix}/etc
 target_alias = 
 top_builddir = ..
 top_srcdir = ..
-gladedir = $(datadir)/gnome2-globalmenu-test/glade
-glade_DATA = gnome2-globalmenu-test.glade
+gladedir = $(datadir)/gnome2-globalmenu-applet/glade
 INCLUDES = \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DPACKAGE_SRC_DIR=\""$(srcdir)"\" \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
-	$(GNOME2_GLOBALMENU_TEST_CFLAGS)
+	$(GNOME2_GLOBALMENU_APPLET_CFLAGS)
 
 AM_CFLAGS = \
 	 -Wall\
 	 -g
 
-gnome2_globalmenu_test_SOURCES = \
-	callbacks.c \
-	callbacks.h \
-	main.c 
+gnome2_globalmenu_applet_SOURCES = \
+	clients.c                 \
+	clients.h                 \
+	main.c                 \
+	misc.c                 \
+	misc.h                 \
+	typedefs.h                 \
+	ui.c                 \
+	ui.h 
 
-gnome2_globalmenu_test_LDFLAGS = \
-	-export-dynamic 
-
-gnome2_globalmenu_test_LDADD = $(GNOME2_GLOBALMENU_TEST_LIBS)
+gnome2_globalmenu_applet_LDFLAGS = 
+gnome2_globalmenu_applet_LDADD = $(GNOME2_GLOBALMENU_APPLET_LIBS)
 EXTRA_DIST = $(glade_DATA)
 all: all-am
 
@@ -312,9 +309,9 @@ clean-binPROGRAMS:
 	  echo " rm -f $$p $$f"; \
 	  rm -f $$p $$f ; \
 	done
-gnome2-globalmenu-test$(EXEEXT): $(gnome2_globalmenu_test_OBJECTS) $(gnome2_globalmenu_test_DEPENDENCIES) 
-	@rm -f gnome2-globalmenu-test$(EXEEXT)
-	$(gnome2_globalmenu_test_LINK) $(gnome2_globalmenu_test_OBJECTS) $(gnome2_globalmenu_test_LDADD) $(LIBS)
+gnome2-globalmenu-applet$(EXEEXT): $(gnome2_globalmenu_applet_OBJECTS) $(gnome2_globalmenu_applet_DEPENDENCIES) 
+	@rm -f gnome2-globalmenu-applet$(EXEEXT)
+	$(gnome2_globalmenu_applet_LINK) $(gnome2_globalmenu_applet_OBJECTS) $(gnome2_globalmenu_applet_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -322,8 +319,10 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/callbacks.Po
+include ./$(DEPDIR)/clients.Po
 include ./$(DEPDIR)/main.Po
+include ./$(DEPDIR)/misc.Po
+include ./$(DEPDIR)/ui.Po
 
 .c.o:
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -351,23 +350,6 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
-install-gladeDATA: $(glade_DATA)
-	@$(NORMAL_INSTALL)
-	test -z "$(gladedir)" || $(MKDIR_P) "$(DESTDIR)$(gladedir)"
-	@list='$(glade_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f=$(am__strip_dir) \
-	  echo " $(gladeDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(gladedir)/$$f'"; \
-	  $(gladeDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(gladedir)/$$f"; \
-	done
-
-uninstall-gladeDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(glade_DATA)'; for p in $$list; do \
-	  f=$(am__strip_dir) \
-	  echo " rm -f '$(DESTDIR)$(gladedir)/$$f'"; \
-	  rm -f "$(DESTDIR)$(gladedir)/$$f"; \
-	done
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -445,9 +427,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(PROGRAMS) $(DATA)
+all-am: Makefile $(PROGRAMS)
 installdirs:
-	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(gladedir)"; do \
+	for dir in "$(DESTDIR)$(bindir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -494,7 +476,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-gladeDATA
+install-data-am:
 
 install-dvi: install-dvi-am
 
@@ -530,7 +512,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-binPROGRAMS uninstall-gladeDATA
+uninstall-am: uninstall-binPROGRAMS
 
 .MAKE: install-am install-strip
 
@@ -539,14 +521,14 @@ uninstall-am: uninstall-binPROGRAMS uninstall-gladeDATA
 	distclean-generic distclean-libtool distclean-tags distdir dvi \
 	dvi-am html html-am info info-am install install-am \
 	install-binPROGRAMS install-data install-data-am install-dvi \
-	install-dvi-am install-exec install-exec-am install-gladeDATA \
-	install-html install-html-am install-info install-info-am \
-	install-man install-pdf install-pdf-am install-ps \
-	install-ps-am install-strip installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-compile mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
-	uninstall-am uninstall-binPROGRAMS uninstall-gladeDATA
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+	pdf pdf-am ps ps-am tags uninstall uninstall-am \
+	uninstall-binPROGRAMS
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
