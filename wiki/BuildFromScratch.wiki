@@ -1,0 +1,9 @@
+#How to Build from scratch (and develpment)
+
+= Introduction =
+
+= Step 1: Obtain the Source =
+
+= Step 2: Compile the Source =
+
+= Step 3: Try and Debug =
