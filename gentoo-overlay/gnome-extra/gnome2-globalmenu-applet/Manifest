@@ -1,0 +1,14 @@
+EBUILD gnome2-globalmenu-applet-0.3.9999.ebuild 947 RMD160 4c672cdb9009bb5e559816a263d821f67aca615f SHA1 e04232747d1974d054c9967f05aa7a7a9bcbc775 SHA256 31ba69824be2244037e81718cc7e65a0576d6a71379d5f4c7b3b454b1ceaaf0e
+MD5 7066e852ebf0194b8ea8e1c7dbb30ceb gnome2-globalmenu-applet-0.3.9999.ebuild 947
+RMD160 4c672cdb9009bb5e559816a263d821f67aca615f gnome2-globalmenu-applet-0.3.9999.ebuild 947
+SHA256 31ba69824be2244037e81718cc7e65a0576d6a71379d5f4c7b3b454b1ceaaf0e gnome2-globalmenu-applet-0.3.9999.ebuild 947
+EBUILD gnome2-globalmenu-applet-9999.ebuild 1225 RMD160 c8a232b96849ac92fe86dadb1221e12e31952a8c SHA1 ee4d3d26cb4fe874bab657505977cee4aedc8587 SHA256 d8e37d6c30c11f0a831c601bc882285436e1def3e01ac6edea9e09fa82d01e36
+MD5 0efad6e076b6037905b8ced8cfde92fa gnome2-globalmenu-applet-9999.ebuild 1225
+RMD160 c8a232b96849ac92fe86dadb1221e12e31952a8c gnome2-globalmenu-applet-9999.ebuild 1225
+SHA256 d8e37d6c30c11f0a831c601bc882285436e1def3e01ac6edea9e09fa82d01e36 gnome2-globalmenu-applet-9999.ebuild 1225
+MD5 d41d8cd98f00b204e9800998ecf8427e files/digest-gnome2-globalmenu-applet-0.3.9999 0
+RMD160 9c1185a5c5e9fc54612808977ee8f548b2258d31 files/digest-gnome2-globalmenu-applet-0.3.9999 0
+SHA256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 files/digest-gnome2-globalmenu-applet-0.3.9999 0
+MD5 d41d8cd98f00b204e9800998ecf8427e files/digest-gnome2-globalmenu-applet-9999 0
+RMD160 9c1185a5c5e9fc54612808977ee8f548b2258d31 files/digest-gnome2-globalmenu-applet-9999 0
+SHA256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 files/digest-gnome2-globalmenu-applet-9999 0
