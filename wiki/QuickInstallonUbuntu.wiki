@@ -1,4 +1,4 @@
-#labels Featured,Phase-Deploy
+#labels Phase-Deploy
 THIS IS ALPHA SOFTWARE. USE AT YOUR OWN RISK. IT KILLS KITTENS AND COMPUTERS TOO.
 
 ==Installing on a 32 bit GNOME Gutsy Gibbon system===
