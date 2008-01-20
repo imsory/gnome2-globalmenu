@@ -2,21 +2,8 @@
 #Socket communication layer in GDK
 
 = Types =
-{{{
-struct _GdkSocketMessage{
-   gulong type;
-   gulong param1;
-   gulong param2;
-   gulong param3;
-};
-}}}
-{{{
-enum _GdkSocketStatus{
-    GSS_DISCONNECTED,
-    GSS_CONNECTED
-};
-}}}
-= Private Variables =
+
+= Variables =
 {{{
 struct _GdkSocketPrivate{
    GdkWindow * window;
@@ -31,26 +18,19 @@ struct _GdkSocketPrivate{
 /* Constructor */
   GdkSocket * gdk_socket_init (GdkSocket * self);
   GdkSocket * gdk_socket_new (gchar *name);
-  GdkSocket * gdk_socket_new_on_display (GdkDisplay * display, gchar *name);
-/* Connect to target socket by its GdkNativeWindow ID */
-  gboolean gdk_socket_connect_to (GdkSocket * self, GdkNativeWindow target);
 /* Send message to target socket by its GdkNativeWindow ID */
-  gboolean gdk_socket_send_to (GdkSocket * self, GdkNativeWindow target, GdkSocketMessage *message);
+  gboolean gdk_socket_send (GdkSocket * self, GdkNativeWindow target, gpointer data, guint bytes);
 /* Find a target's GdkNativeWindow ID via its name, only the first one is returned */
   GdkNativeWindow gdk_socket_find_target_by_name (GdkSocket * self, gchar * target_name);
 /* Broadcast a message to all the target socket that has a name target_name */
-  void gdk_socket_broadcast (GdkSocket * self, gchar * target_name, GdkSocketMessage * message);
-/* return the status */
-  GdkSocketStatus gdk_socket_get_status (GdkSocket * self);
-/* disconnect from the target socket */
-  void gdk_socket_disconnect (GdkSocket * self);
+  void gdk_socket_broadcast (GdkSocket * self, gchar * target_name, gpointer data, guint bytes);
 /* Deconstruction */
   void gdk_socket_finalize (GdkSocket *self);
+  void gdk_socket_dispose (GdkSocket *self);
 }}}
 = Virtual Functions =
 
 = Signals =
 {{{
-  void message-arrival (GdkSocket * self, GdkNativeWindow source, GdkMessage * message)
-  void status-changed (GdkSocket * self, GdkSocketStatus old_status)
+  void data-arrival (GdkSocket * self, GdkNativeWindow source, gpointer data, guint bytes)
 }}}
