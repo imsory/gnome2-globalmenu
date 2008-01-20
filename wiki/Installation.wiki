@@ -4,3 +4,4 @@ Here you can find how to install the global menu on various linux platforms
   * Gentoo: InstallOnGentoo
   * Ubuntu: InstallingonUbuntu and a newer version QuickInstallonUbuntu
   * Fedora: InstallationGuideFedora
+  * Other: BuildFromScratch
