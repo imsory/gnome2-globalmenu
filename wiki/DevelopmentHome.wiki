@@ -27,17 +27,26 @@ We are at 0.3, moving toward 0.4.
 
 == Classes ==
 
-|| Class Name || Desc ||Parent       || Dependencies ||
-|| GdkSocket  || interwindow communication for gtk|| GObject      || GdkWindow, GdkEvent, gdk-x11, Xlib ||
-|| GtkMenuServer || menu server widget|| GtkWidget || GdkSocket ||
-|| GtkMenuBar || traditional menubar || GtkMenuShell || GtkMenuItem, GtkGlobalMenuBar ||
-|| GtkGlobalMenuBar || global menubar || GtkMenuBar || GtkMenuItem, GdkSocket||
+|| Class Name || Desc ||Parent       || Dependencies || Location ||
+|| GdkSocket  || interwindow communication for gtk|| GObject      || GdkWindow, GdkEvent, gdk-x11, Xlib || libgnomenu ||
+|| GnomeMenuServer || menu server class|| GObject || GdkSocket || libgnomenu||
+|| GnomeMenuClient || menu client class|| GObject || GdkSocket || libgnomenu||
+|| GtkMenuBar || old gtk menubar, try to load libgnomenu and return a GtkLegacyMenuBar|| GtkMenuShell || GtkMenuItem, GtkGlobalMenuBar || gtk||
+|| GtkGlobalMenuBar || global menubar || GtkMenuBar || GtkMenuItem, GdkSocket, GnomeMenuClient|| libgnomenu ||
+|| GtkLegacyMenuBar || global menubar || GtkMenuBar || GtkMenuBar, GtkLegacyMenuBar|| libgnomenu ||
+|| GnomeMenuQuirks || menubar quirks || GObject || ||libgnomenu||
 
-== Types ==
-  * GtkGlobalMenuMessageType
-  * GtkGlobalMenuMessage
 
 == Arch ==
-MenuServerApplet will be build upon GtkMenuServer .
 
-Provide an environment variable `LEGACY_GLOBAL_MENU` to allow gtk_menu_bar_new returns a GtkGlobalMenuBar.
+MenuServerApplet will be build upon GtkMenuServer. The applet can also optionally implement compatible MenuServer for KDE and Etotile. 
+
+Patch GTK, when gtk_menu_bar_class_init is called, try to load libgnomenu,
+when gtk_menu_bar_new is called, try to forward this to call to GtkLegacyMenuBar.
+
+GtkLegacyMenuBar has two mode: global mode and local mode. Upon creation, it loads a GnomeMenuQuirks object and find out what quirks apply to current menubar. If the quirk is 'GLOBAL' then forward the creation to GtkGlobalMenuBar(global mode), if not, forward the creation back to GtkMenuBar(local mode). 
+
+GnomeMenuQuirks will load quirks from a rc file or a xml file.
+
+Maybe a diagram will be helpful.
+
