@@ -49,4 +49,4 @@ GtkLegacyMenuBar has two mode: global mode and local mode. Upon creation, it loa
 GnomeMenuQuirks will load quirks from a rc file or a xml file.
 
 Maybe a diagram will be helpful.
-
+Located at https://gnome2-globalmenu.googlecode.com/svn/branches/0.4-devel/doc/ClassDiagram.dia
