@@ -12,6 +12,8 @@ We are at 0.3, moving toward 0.4.
   * 0.3: `Clean-up`
     * Introduce the inter-process communication protocol for GlobalMenuBar
     * Initial the support for Skinning.
+    * GConf preference support for the applet.
+    * Better UI.
   * 0.4: `Re-designation`
     * Completely redesign in OO to fit every piece into current GDK/GTK architecture.
     * Introduce GtkGlobalMenuBar and the concept: `global menu for legacy gtk software`
