@@ -25,6 +25,10 @@ We are at 0.3, moving toward 0.4.
   * 0.6: `Platforms`
     * Remove the x11 dependency, or seperate GdkSocket into gdksocket-x11 and gdksocket-w32
 
+= Features =
+||DevelopmentDefaultMenu  ||Target: 0.5||
+||DevelopmentCompatibilityEtoile|| ||
+
 = Development Documentation Draft for 0.4 =
 
 == Classes ==
