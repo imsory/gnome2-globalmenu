@@ -1,9 +1,52 @@
-#How to Build from scratch (and develpment)
+#labels Phase-Deploy
+#How to Build from scratch DRAFT
 
 = Introduction =
 
 = Step 1: Obtain the Source =
+Suppose you want to obtain the snapshot for version 0.3 svn 323,
+
+{{{
+export SUBDIR=0.3_323
+svn checkout http://gnome2-globalmenu.googlecode.com/tags/0.3_323 gnome2-globalmenu-${SUBDIR}
+}}}
+
+Then you are done.
 
 = Step 2: Compile the Source =
+{{{
+cd gnome2-globalmenu-${SUBDIR}
+}}}
+== 2.1 Compile the gtk2-aqd patch ==
+{{{
+cd gtk2-aqd
+}}}
+Obtain the source code for gtk, and extract it in `gtk+-aqd`. The detail steps depend on your preference and your platform. On my box, I can simple do
+{{{
+cp ~/sources/SOURCES/gtk+-2.12.3.tar.bz2 .
+mkdir gtk+-aqd
+tar --strip-components=1 -xjvf gtk+-2.12.3.tar.bz2 -C gtk+-aqd
+}}}
+if your tar is very old, you may need to use `strip-path` instead of `strip-componets`.
+Then apply the patch
+{{{
+patch -p0 < patch.diff
+cp gtkmenuembed-x11.h gtk+-aqd/gtk
+}}}
+OK, now you can configure `gtk` and compile.
+{{{
+./configure --prefix=/usr/local --with-gdk-target=x11
+make
+
+}}}
+
+== 2.2 Compile the applet ==
+{{{
+cd gnome2-globalmenu-applet
+./autogen.sh --prefix=/usr/local # or whatever you prefer.
+make
+su -c 'make install'
+}}}
+then you are done
 
 = Step 3: Try and Debug =
