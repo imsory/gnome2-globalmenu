@@ -40,6 +40,7 @@ cp gtkmenuembed-x11.h gtk+-aqd/gtk
 If no error is reported, then you can configure `gtk` and compile. If error happens,
 see Troubleshooting section of this article.
 {{{
+cd gtk+-aqd
 ./configure --prefix=/usr/local --with-gdk-target=x11
 make
 }}}
@@ -68,6 +69,9 @@ Gtk-Message: gtk_menu_bar_paint invoked
 Gtk-Message: gtk_menu_bar_paint invoked
 }}}
 If you can not see these messages, see Troubleshooting section
+{{{
+cd ..
+}}}
 == 2.2 Compile the applet ==
 {{{
 cd gnome2-globalmenu-applet
@@ -75,7 +79,10 @@ cd gnome2-globalmenu-applet
 make
 su -c 'make install'
 }}}
-Then you are done. Add it to the panel and have fun. The name of the applet is Global Menubar
+Then you are done. Add it to the panel and have fun. The name of the applet is Global Menubar .
+{{{
+cd ..
+}}}
 
 = Step 3: Packaging =
 Dear user/hacker, 
@@ -83,7 +90,41 @@ If you manage to pass all these steps, and there is no package for your distribu
 ||package name || content || note||
 ||`gtk2-aqd-${SUBDIR}-${YOURGTKVERSION}`|| gtk || provides gtk2 - ${YOURGTKVERSION}, obsoletes gtk2 - ${YOURGTKVERSION} ||
 ||`gnome-globalmenu-${SUBDIR}` || the applet || ||
+= Step 4: Remove =
+== 4.1 Remove the applet ==
+{{{
+cd gnome2-globalmenu-applet
+su -c 'make uninstall'
+cd ..
+}}}
+== Remove gtk2-aqd ==
+I'll suggest you do this under a tty instead of under a terminal window.
+=== One possible approach ===
+Safer but dirty.
+{{{
+cd gtk2-aqd
+tar --strip-components=1 -xjvf gtk+-2.12.3.tar.bz2 -C gtk+-aqd
+cd gtk+-aqd
+./configure --prefix=/usr/local --with-gdk-target=x11
+make
+su -c 'make install'
+}}}
+=== Another possible approach ===
+Cleaner but dangrous. I'll (personally) prefer this approach. 
+First of all fetch the package file of gtk from your distribution's repository. Put it in `gtk2-aqd` directory. DO NOT IGNORE THIS STEP.
+{{{
+cd gtk2-aqd
+cd gtk+-aqd
+su -c 'make uninstall'
+cd ..
+}}}
+At this moment you don't have any gtk installation in your computer. Almost every newly launching GUI application will fail. The running ones will be ok though, thanks to the designation of linux kernel.
 
+Anyway, use your commandline package manager to install the gtk package, eg,
+{{{
+su -c 'rpm -i gtk*.rpm'
+}}}
+Done.
 = Troubleshooting =
 ==I cannot apply the patch==
 Which version of gtk are you patching against? It is known to work on 2.12.1 and 2.12.3
