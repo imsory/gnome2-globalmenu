@@ -10,14 +10,14 @@
 %define cairo_version %{cairo_base_version}-1
 %define libpng_version 2:1.2.2-16
 
-%define base_version 2.12.3
+%define base_version 2.12.5
 %define bin_version 2.10.0
-%define svn_version 0.3.svn270
+%define svn_version 0.3.svn323
 
 Summary: The GIMP ToolKit (GTK+), a library for creating GUIs for X
 Name: gtk2-aqd
 Version: %{svn_version}.%{base_version}
-Release: 3%{?dist}
+Release: 1%{?dist}
 License: LGPLv2+
 Group: System Environment/Libraries
 Source: http://download.gnome.org/sources/gtk+/2.12/gtk+-%{base_version}.tar.bz2
@@ -36,9 +36,6 @@ Patch2: workaround.patch
 
 # http://bugzilla.gnome.org/show_bug.cgi?id=488119
 Patch3: system-log-crash.patch
-
-# fixed in upstream svn
-Patch4: tab-label.patch
 
 # gtk-aqd patch
 Patch999: gtk2-aqd.patch 
@@ -111,6 +108,7 @@ Requires: automake
 Requires: gtk-doc
 Provides: gtk2-devel = %{base_version}-%{release}
 Obsoletes: gtk2-devel = %{base_version}-%{release}
+
 %description devel
 The gtk+-devel package contains the header files and developer
 docs for the GTK+ widget toolkit.  
@@ -122,7 +120,6 @@ docs for the GTK+ widget toolkit.
 %patch1 -p1 -b .set-invisible-char-to-bullet
 %patch2 -p1 -b .workaround
 %patch3 -p1 -b .system-log-crash
-%patch4 -p1 -b .tab-label
 
 %patch999 -p1 -b .aqd
 for i in config.guess config.sub ; do
@@ -307,6 +304,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gtk-2.0
 
 %changelog
+* Tue Jan  9 2008 Matthias Clasen  <mclasen@redhat.com> - 2.12.5-1
+- Update to 2.12.5
+
+* Tue Jan  8 2008 Matthias Clasen  <mclasen@redhat.com> - 2.12.4-1
+- Update to 2.12.4
+- Drop obsolete patches
+
 * Wed Dec 19 2007 Colin Walters <walters@redhat.com> - 2.12.3-3
 - BR libXcomposite-devel so we get the sexy.
 
