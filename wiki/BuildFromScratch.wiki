@@ -1,5 +1,5 @@
 #labels Phase-Deploy
-#How to Build from scratch DRAFT
+#How to Build from scratch
 
 = Introduction =
 This article will help you to build gnome2-globalmenu from a svn snapshot.
@@ -12,8 +12,7 @@ Suppose you want to obtain the snapshot for version 0.3 svn 323,
 export SUBDIR=0.3_323
 svn checkout http://gnome2-globalmenu.googlecode.com/tags/${SUBDIR} gnome2-globalmenu-${SUBDIR}
 }}}
-
-Then you are done.
+Then you are done. 
 
 = Step 2: Compile the Source =
 {{{
@@ -76,9 +75,14 @@ cd gnome2-globalmenu-applet
 make
 su -c 'make install'
 }}}
-then you are done
+Then you are done. Add it to the panel and have fun. The name of the applet is Global Menubar
 
-= Step 3: Try and Debug =
+= Step 3: Packaging =
+Dear user/hacker, 
+If you manage to pass all these steps, and there is no package for your distribution/platform, I will strongly encourage you to build two packages for others who also use this platform. The suggested package name is:
+||package name || content || note||
+||`gtk2-aqd-${SUBDIR}-${YOURGTKVERSION}`|| gtk || provides gtk2 - ${YOURGTKVERSION}, obsoletes gtk2 - ${YOURGTKVERSION} ||
+||`gnome-globalmenu-${SUBDIR}` || the applet || ||
 
 = Troubleshooting =
 ==I cannot apply the patch==
@@ -93,4 +97,6 @@ and figure out the correct `prefix`. Also, if you are using a distribution with 
 ==I can not see the applet in the add applet dialog of gnome panel==
 How is your bonobo-activation configure? If it is in a very weird location, this will happen. Try to find out a directory with many `.server` files, edit `/usr/local/share/doc/gnome2-globalmenu-applet/GNOME_GlobalMenuApplet.server.sample`, and put it there with an extension `.server`.
 ==In General==
-Please report the detail trouble that traps you to our project's mail list on googlegroups: gnome-globalmenu. We will try to help.
+Please report to our project's mail list the detail of the trouble which traps you . We will try to help. the address of the mail list is googlegroups.com: gnome-globalmenu . reverse the order and replace : with @. 
+
+SVN traffic also goes into the groups and we don't want to hide your voice into junk mail.
