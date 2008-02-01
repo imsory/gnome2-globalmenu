@@ -2,13 +2,15 @@
 #How to Build from scratch DRAFT
 
 = Introduction =
+This article will help you to build gnome2-globalmenu from a svn snapshot.
+Currently, this guide only works for tags/0.3_323 and later versions.
 
 = Step 1: Obtain the Source =
 Suppose you want to obtain the snapshot for version 0.3 svn 323,
 
 {{{
 export SUBDIR=0.3_323
-svn checkout http://gnome2-globalmenu.googlecode.com/tags/0.3_323 gnome2-globalmenu-${SUBDIR}
+svn checkout http://gnome2-globalmenu.googlecode.com/tags/${SUBDIR} gnome2-globalmenu-${SUBDIR}
 }}}
 
 Then you are done.
@@ -18,28 +20,55 @@ Then you are done.
 cd gnome2-globalmenu-${SUBDIR}
 }}}
 == 2.1 Compile the gtk2-aqd patch ==
+*Notice: FOLLOWING THESE STEPS WILL REPLACE THE OLD GTK PACKAGE SHIPPED WITH YOUR DISTRIBUTION. IT IS POSSIBLE TO LOSE YOUR GUI.*
+First, change your working directory,
 {{{
 cd gtk2-aqd
 }}}
-Obtain the source code for gtk, and extract it in `gtk+-aqd`. The detail steps depend on your preference and your platform. On my box, I can simple do
+Next, obtain the source code for gtk, and extract it into `gtk+-aqd`. The detail steps depend on your preference and your platform. On my box (where I have all the source tarballs in ~/sources/SOURCES), I can simple do
 {{{
-cp ~/sources/SOURCES/gtk+-2.12.3.tar.bz2 .
 mkdir gtk+-aqd
+cp ~/sources/SOURCES/gtk+-2.12.3.tar.bz2 .
 tar --strip-components=1 -xjvf gtk+-2.12.3.tar.bz2 -C gtk+-aqd
 }}}
-if your tar is very old, you may need to use `strip-path` instead of `strip-componets`.
-Then apply the patch
+HINT: If your tar is very old, you may need to use `strip-path` instead of `strip-componets`.
+Maybe you'll need to install some source code packages to obtain the tarball, or try to download one from [ftp://ftp.gtk.org/pub/gtk/v2.10/].
+OK, let's suppose you have successfully set up the source code of gtk. The next essential setup is to apply the patch.
 {{{
 patch -p0 < patch.diff
 cp gtkmenuembed-x11.h gtk+-aqd/gtk
 }}}
-OK, now you can configure `gtk` and compile.
+If no error is reported, then you can configure `gtk` and compile. If error happens,
+see Troubleshooting section of this article.
 {{{
 ./configure --prefix=/usr/local --with-gdk-target=x11
 make
-
 }}}
-
+If you encounter problems, refer to Troubleshooting section.
+If no error occurs, the next step is
+{{{
+su -c 'make install'
+}}}
+If no error occurs, your gtk is already patched. Try to start a simple gtk program in a console and you will see a lot of debugging messages. e.g
+{{{
+Gtk-Message: Pass to futher handlers, not a MenuBar message
+Gtk-Message: XClientMessage received
+Gtk-Message: Pass to futher handlers, not a MenuBar message
+Gtk-Message: XClientMessage received
+Gtk-Message: Pass to futher handlers, not a MenuBar message
+Gtk-Message: XClientMessage received
+Gtk-Message: Pass to futher handlers, not a MenuBar message
+Gtk-Message: XClientMessage received
+Gtk-Message: Pass to futher handlers, not a MenuBar message
+Gtk-Message: XClientMessage received
+Gtk-Message: Pass to futher handlers, not a MenuBar message
+Gtk-Message: gtk_menu_bar_paint invoked
+Gtk-Message: gtk_menu_bar_paint invoked
+Gtk-Message: gtk_menu_bar_paint invoked
+Gtk-Message: gtk_menu_bar_paint invoked
+Gtk-Message: gtk_menu_bar_paint invoked
+}}}
+If you can not see these messages, see Troubleshooting section
 == 2.2 Compile the applet ==
 {{{
 cd gnome2-globalmenu-applet
@@ -50,3 +79,18 @@ su -c 'make install'
 then you are done
 
 = Step 3: Try and Debug =
+
+= Troubleshooting =
+==I cannot apply the patch==
+Which version of gtk are you patching against? It is known to work on 2.12.1 and 2.12.3
+If the source code of gtk you obtained has already been patched, the patch may also fail to apply. 
+==I cannot see the debugging messages==
+Are you sure the directory in the `configure` location is the correct directory for your system's path? try
+{{{
+locate libgtk-x11-2.0.so
+}}}
+and figure out the correct `prefix`. Also, if you are using a distribution with strong packaging system(rpm or deb), refer to the gtk package's spec(description) file also will help you to figure it out.
+==I can not see the applet in the add applet dialog of gnome panel==
+How is your bonobo-activation configure? If it is in a very weird location, this will happen. Try to find out a directory with many `.server` files, edit `/usr/local/share/doc/gnome2-globalmenu-applet/GNOME_GlobalMenuApplet.server.sample`, and put it there with an extension `.server`.
+==In General==
+Please report the detail trouble that traps you to our project's mail list on googlegroups: gnome-globalmenu. We will try to help.
