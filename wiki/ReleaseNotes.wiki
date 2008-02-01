@@ -1,5 +1,12 @@
 #labels Featured
 #Release Notes
+gnome2-globalmenu 0.3 svn323 is ready. 
+New features:
+    * + Users can custom the appearance. 
+    * + New deploying script reduces difficulty for building from scratch. (Hopefully will also reduce packaging difficulty.)
+
+Downloading from svn is prefered.
+svn checkout http://gnome2-globalmenu.googlecode.com/tags/0.3_323 gnome2-globalmenu
 
 Gnome2-globalmenu 0.3 is ready. Completely new patch/code for gtkmenubar. Reconstructed menu server.
 
