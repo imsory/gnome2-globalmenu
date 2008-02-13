@@ -31,10 +31,10 @@ sudo dpkg -i *.deb
     {{{
 cd ..
 
-wget http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet_0.33-1_i386.deb 
+wget http://http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet_0.3.397-1_i386.deb 
 }}}
   * Install it
-    {{{sudo dpkg -i gnome2-globalmenu-applet_0.33-1_i386.deb}}}
+    {{{sudo dpkg -i gnome2-globalmenu-applet_0.3.397-1_i386.deb}}}
     
   * Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
 
