@@ -27,22 +27,15 @@ sudo dpkg -i *.deb
 }}}
  
 
-  * Get the MacMenu applet files with the following instruction
+  * Get the MacMenu applet files 
     {{{
 cd ..
 
-wget http://gnome2-globalmenu.googlecode.com/files/globalmenu-applet-v3.172.tar.bz2 
+wget http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet_0.33-1_i386.deb 
 }}}
-  * Unarchive it
-    {{{tar xvf globalmenu-applet-v3.172.tar.bz2}}}
+  * Install it
+    {{{sudo dpkg -i gnome2-globalmenu-applet_0.33-1_i386.deb}}}
     
-    {{{cd globalmenu-applet-v3.172}}}
-  * We now have to add the files to the system.
-  * Let's copy it in the right directory:  
-    {{{sudo cp GNOME_GlobalMenuApplet.server /usr/lib/bonobo/servers/GNOME_GlobalMenuApplet.server}}}
-    
-    {{{sudo cp -R original/gnome2-globalmenu-applet  /usr/lib/gnome-applets/}}}
-
   * Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
 
 ===on a 64 bit system===
