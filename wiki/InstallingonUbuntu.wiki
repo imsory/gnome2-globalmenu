@@ -21,18 +21,13 @@ a step by step guide which assumes that you've never compiled anything on your s
     
 
   * Install them
-    {{{
-cd gtk
-sudo dpkg -i *.deb
-}}}
+    # {{{cd gtk }}}
+    # {{{sudo dpkg -i *.deb}}}
  
 
   * Get the MacMenu applet files 
-    {{{
-cd ..
-
-wget http://http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet_0.3.397-1_i386.deb 
-}}}
+    # {{{cd ..}}}
+    # {{{wget http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet_0.3.397-1_i386.deb }}}
   * Install it
     {{{sudo dpkg -i gnome2-globalmenu-applet_0.3.397-1_i386.deb}}}
     
@@ -40,7 +35,7 @@ wget http://http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-appl
 
 ===on a 64 bit system===
 
-==Installing from SVN==
+==Installing from source==
 
 
 ===Installing gtk2-aqd===
@@ -49,49 +44,38 @@ wget http://http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-appl
     # {{{sudo apt-get install build-essential}}}
     # {{{mkdir packages}}}
     # {{{cd packages}}}
-    # {{{mkdir gtk-aqd-3}}}
-    # {{{cd gtk-aqd-3}}}
+    # {{{mkdir gtk-aqd}}}
+    # {{{cd gtk-aqd}}}
     # {{{apt-get source libgtk2.0-0}}}
     # {{{sudo apt-get build-dep libgtk2.0-0}}}
     # {{{sudo apt-get install fakeroot}}}
 
-  * Get the attached gtkmenubar.patch with the following instruction
+  * Get and unarchive the attached gtkmenubar.patch with the following instruction
     # {{{ wget http://gnome2-globalmenu.googlecode.com/files/gtkmenubar.patch.tar.bz2}}} 
-  * Alternatively, you can get it directly the latest version from svn by using the two following commands:
-    # Install {{{svn sudo apt-get install svn   }}}
-    # Download the patches  {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/gtk2-aqd/ }}}
-    # Using cd, head to the directory gtk2-aqd that's been downloaded {{{ cd gtk2-aqd}}}
-
-  * It should be inside the folder gtk-aqd-3. 
-  * Open the series file found on the same folder 
-      {{{ sudo gedit <name of the series file>}}}
-  * Add a new line containing {{{gtkmenubar.patch}}}
-  * Save and exit Gedit.
-  * Now on the terminal, we'll patch gtk
+    # {{{ tar jxvf gtkmenubar.patch.tar.bz2}}}
+  
+  * Patch the gtk source
     # {{{cd gtk+2.0-2.12.0}}}
-    # {{{dpkg-buildpackage -r fakeroot}}}
-
+    # {{{patch -p1 < ../gtkmenubar.patch}}}
+    # {{{mv gtkmenuembed-x11.h gtk/ }}}
+  
+  * Now compile the gtk, this would take half an hour.
+   {{{dpkg-buildpackage -b -rfakeroot}}} 
+  
+  * Install the patched gtk libraries
+   # {{{ cd .. }}}
+   # {{{ sudo dpkg -i *.deb}}}
 
 ===Installing the applet itself===
 
   * Install libgtk2.0-dev, intltool,libwnck-dev, libpanelapplet-2.0, gdk-2.0 
-      {{{sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev}}}
-  * Download the tarball
-      {{{wget http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet-0.2.1.tar.gz }}}
-  * extract it 
-      {{{tar zxvf gnome2-globalmenu-applet-0.2.1.tar.gz}}}
-  * go to the newly extracted directory 
-      {{{cd gnome2-globalmenu-applet-0.2.1}}} 
-  * Configure the tarball 
-      {{{./configure}}}
-  * Compile the program 
-      {{{make}}}
-  * Install checkinstall
-      {{{sudo aptitude install checkinstall}}}
-  * Create a deb from the compiled program
-      {{{sudo checkinstall}}}
-  * We now have to add a bonobo server file where {{{APP_LOCATION}}} is {{{/usr/local/libexec}}}
-
-  # Download it: {{{wget http://gnome2-globalmenu.googlecode.com/files/GNOME_GlobalMenuApplet.server}}}
-  # Let's copy it in the right directory:  {{{sudo cp GNOME_GlobalMenuApplet.server /usr/lib/bonobo/servers/GNOME_GlobalMenuApplet.server}}}
-  # Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
+    {{{sudo aptitude install libgtk2.0-dev intltool libwnck-dev libpanelapplet2-dev gdk-imlib11-dev}}}
+  * Download the source
+    {{{svn co http://gnome2-globalmenu.googlecode.com/svn/trunk/ }}}
+  * Compile and install
+    # {{{ cd trunk/gnome2-globalmenu-applet}}}
+    # {{{ ./autogen.sh }}}
+    # {{{ make }}}
+    # {{{ sudo make install }}}
+  
+  * Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
