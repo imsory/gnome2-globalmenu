@@ -14,7 +14,7 @@ We are at 0.3, moving toward 0.4.
     * Initial the support for Skinning.
     * GConf preference support for the applet.
     * Better UI.
-  * 0.4: `Re-designation` - Feb.31. 2008 Can we meet this date?
+  * 0.4: `Re-designation` - March 1st, 2008 Can we meet this date?
     * Completely redesign in OO to fit every piece into current GDK/GTK architecture.
     * Introduce GtkGlobalMenuBar and the concept: `global menu for legacy gtk software`
     * Fully solve the Skinning Problem
