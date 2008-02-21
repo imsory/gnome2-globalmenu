@@ -14,11 +14,14 @@ We are at 0.3, moving toward 0.4.
     * Initial the support for Skinning.
     * GConf preference support for the applet.
     * Better UI.
-  * 0.4: `Re-designation`
+  * 0.4: `Re-designation` - Feb.31. 2008 Can we meet this date?
     * Completely redesign in OO to fit every piece into current GDK/GTK architecture.
     * Introduce GtkGlobalMenuBar and the concept: `global menu for legacy gtk software`
     * Fully solve the Skinning Problem
-  * 0.5: `Integration`
+  * 0.45: `Re-designation` - Optional
+    * Abstract the widget embedding part from GnomenuServerHelper and GnomenuClientHelper
+    * Submit those together with GdkSocket, GtkGlobalMenuBar (if possible) to GTK mainstream and see what happens.
+  * 0.5: `Integration` 
     * merge MenuServerApplet into gnome-panel to enhance desktop integration.
     * All of the GNOME Applications will be patched to build upon GtkGlobalMenuBar instead of GtkMenuBar .
     * Patch gnome-window-properties to provide an option to disable or enable global menu bar.
