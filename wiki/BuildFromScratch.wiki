@@ -1,28 +1,50 @@
 #labels Phase-Deploy
 #How to Build from scratch
-
+= STUB, dont use it until 0.4 is moved to trunk. or replace trunk with branches/0.4-devel =
 = Introduction =
-This article will help you to build gnome2-globalmenu from a svn snapshot.
-Currently, this guide only works for tags/0.3_323 and later versions.
+This article will help you to build gnome-globalmenu from a svn snapshot.
+Currently, this guide only works for trunk (svn 500+).
 
 = Step 1: Obtain the Source =
-Suppose you want to obtain the snapshot for version 0.3 svn 323,
+Suppose you want to obtain trunk. for tags, branches, idea is the same.
 
 {{{
-export SUBDIR=0.3_323
-svn checkout http://gnome2-globalmenu.googlecode.com/tags/${SUBDIR} gnome2-globalmenu-${SUBDIR}
+svn checkout http://gnome2-globalmenu.googlecode.com/trunk gnome-globalmenu
 }}}
 Then you are done. 
 
 = Step 2: Compile the Source =
 {{{
-cd gnome2-globalmenu-${SUBDIR}
+cd gnome-globalmenu
 }}}
-== 2.1 Compile the gtk2-aqd patch ==
+== 2.1 Compile Everything: Libgnomenu, Menu Servers ==
+{{{
+cd 
+./autogen.sh --prefix=/usr/local --enable-tracing=no
+make
+}}}
+Other things you can disable are
+{{{
+--enable-standalone=no
+--enable-xfce-plugin=no
+--enable-gnome-applet=no
+}}}
+Then you are done. Add the applet to the panel and have fun. For GNOME, The name of the applet is Global Menubar.
+
+Installation:
+{{{
+su -c 'make install'
+}}}
+
+{{{
+cd ..
+}}}
+
+== 2.2 Compile the gtk2-aqd patch ==
 *Notice: FOLLOWING THESE STEPS WILL REPLACE THE OLD GTK PACKAGE SHIPPED WITH YOUR DISTRIBUTION. IT IS POSSIBLE TO LOSE YOUR GUI.*
 First, change your working directory,
 {{{
-cd gtk2-aqd
+cd gtk+-aqd
 }}}
 Next, obtain the source code for gtk, and extract it into `gtk+-aqd`. The detail steps depend on your preference and your platform. On my box (where I have all the source tarballs in ~/sources/SOURCES), I can simple do
 {{{
@@ -30,12 +52,19 @@ mkdir gtk+-aqd
 cp ~/sources/SOURCES/gtk+-2.12.3.tar.bz2 .
 tar --strip-components=1 -xjvf gtk+-2.12.3.tar.bz2 -C gtk+-aqd
 }}}
+or you can
+{{{
+make prepare
+}}}
+to obtain the gtk version we are patching.
+
 HINT: If your tar is very old, you may need to use `strip-path` instead of `strip-componets`.
+
 Maybe you'll need to install some source code packages to obtain the tarball, or try to download one from [ftp://ftp.gtk.org/pub/gtk/v2.10/].
+
 OK, let's suppose you have successfully set up the source code of gtk. The next essential setup is to apply the patch.
 {{{
-patch -p0 < patch.diff
-cp gtkmenuembed-x11.h gtk+-aqd/gtk
+make patch
 }}}
 If no error is reported, then you can configure `gtk` and compile. If error happens,
 see Troubleshooting section of this article.
@@ -45,76 +74,61 @@ cd gtk+-aqd
 make
 }}}
 If you encounter problems, refer to Troubleshooting section.
-If no error occurs, the next step is
+If you want to install, use the following commands,
 {{{
 su -c 'make install'
 }}}
-If no error occurs, your gtk is already patched. Try to start a simple gtk program in a console and you will see a lot of debugging messages. e.g
+If you just want to do development, don't install it. You can use `gnome-globalmenu/gtk+aqd/test {application}` to override the gtk.
+
+If no error occurs, your gtk is already patched. Try to start a simple gtk program in a console and you will see a debugging messages, indicating libgnomenu not found. 
 {{{
-Gtk-Message: Pass to futher handlers, not a MenuBar message
-Gtk-Message: XClientMessage received
-Gtk-Message: Pass to futher handlers, not a MenuBar message
-Gtk-Message: XClientMessage received
-Gtk-Message: Pass to futher handlers, not a MenuBar message
-Gtk-Message: XClientMessage received
-Gtk-Message: Pass to futher handlers, not a MenuBar message
-Gtk-Message: XClientMessage received
-Gtk-Message: Pass to futher handlers, not a MenuBar message
-Gtk-Message: XClientMessage received
-Gtk-Message: Pass to futher handlers, not a MenuBar message
-Gtk-Message: gtk_menu_bar_paint invoked
-Gtk-Message: gtk_menu_bar_paint invoked
-Gtk-Message: gtk_menu_bar_paint invoked
-Gtk-Message: gtk_menu_bar_paint invoked
-Gtk-Message: gtk_menu_bar_paint invoked
+....
+Using GtkMenuBar.
+....
 }}}
 If you can not see these messages, see Troubleshooting section
 {{{
 cd ..
 }}}
-== 2.2 Compile the applet ==
+= Step 2.3: Testing =
+In `gnome-globalmenu/servers`, there is a standalone server `globalmenu-server` which don't need to be any plugin or applet. Launch it.
 {{{
-cd gnome2-globalmenu-applet
-./autogen.sh --prefix=/usr/local # or whatever you prefer.
-make
-su -c 'make install'
+cd gnome-globalmenu/servers
+libtool gdb ./globalmenu-server
+>> run
 }}}
-Then you are done. Add it to the panel and have fun. The name of the applet is Global Menubar .
+In `gnome-globalmenu/gtk+aqd`, there is a script wrapper, to overide default GTK libraries,
 {{{
-cd ..
+cd gnome-globalmenu/gtk+aqd
+./test gedit
 }}}
+The correct behavior is the menu bar of gedit shows up in the server window,
+and if you quit the server window, menu bar goes back to gedit.
 
 = Step 3: Packaging =
 Dear user/hacker, 
 If you manage to pass all these steps, and there is no package for your distribution/platform, I will strongly encourage you to build two packages for others who also use this platform. The suggested package name is:
 ||package name || content || note||
-||`gtk2-aqd-${SUBDIR}-${YOURGTKVERSION}`|| gtk || provides gtk2 - ${YOURGTKVERSION}, obsoletes gtk2 - ${YOURGTKVERSION} ||
-||`gnome-globalmenu-${SUBDIR}` || the applet || ||
+||`gtk2-aqd-0.4.{SVN VERSION}-${YOURGTKVERSION}`|| gtk || provides gtk2 - ${YOURGTKVERSION}, obsoletes gtk2 - ${YOURGTKVERSION} ||
+||`libgnomenu-0.4.{SVN VERSION}` || libgnomenu || ||
+||`xfce-globalmenu-plugin-0.4.{SVN VERSION}` || xfce plugin || ||
+||`gnome-globalmenu-applet-0.4.{SVN VERSION}` || gnome-applet || ||
+||`globalmenu-server-0.4.{SVN VERSION}` || standalone server || ||
+
 = Step 4: Remove =
 == 4.1 Remove the applet ==
-{{{
-cd gnome2-globalmenu-applet
-su -c 'make uninstall'
-cd ..
-}}}
+`make uninstall` is fine.
+
 == Remove gtk2-aqd ==
 I'll suggest you do this under a tty instead of under a terminal window.
 === One possible approach ===
-Safer but dirty.
-{{{
-cd gtk2-aqd
-tar --strip-components=1 -xjvf gtk+-2.12.3.tar.bz2 -C gtk+-aqd
-cd gtk+-aqd
-./configure --prefix=/usr/local --with-gdk-target=x11
-make
-su -c 'make install'
-}}}
+Safer but dirty. Install the original GTK.
 === Another possible approach ===
 Cleaner but dangrous. I'll (personally) prefer this approach. 
-First of all fetch the package file of gtk from your distribution's repository. Put it in `gtk2-aqd` directory. DO NOT IGNORE THIS STEP.
+First of all fetch the package file of gtk from your distribution's repository. Put it in `gtk+-aqd` directory. DO NOT IGNORE THIS STEP.
 {{{
-cd gtk2-aqd
 cd gtk+-aqd
+cd gtk+-aqd # two levels of gtk+-aqd
 su -c 'make uninstall'
 cd ..
 }}}
