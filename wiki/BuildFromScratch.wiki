@@ -18,7 +18,7 @@ Then you are done.
 {{{
 cd gnome-globalmenu
 }}}
-== 2.1 Compile Everything: Libgnomenu, Menu Servers ==
+== 2.1 Compile Everything Else: Libgnomenu, Menu Servers ==
 {{{
 cd 
 ./autogen.sh --prefix=/usr/local --enable-tracing=no
@@ -40,7 +40,11 @@ su -c 'make install'
 {{{
 cd ..
 }}}
-
+You also need to setup GTK_MODULES to load libgnomenu in your .bash_profile,(or some better place)
+{{{
+GTK_MODULES=libgnomenu
+export GTK_MODULES;
+}}}
 == 2.2 Compile the gtk2-aqd patch ==
 *Notice: FOLLOWING THESE STEPS WILL REPLACE THE OLD GTK PACKAGE SHIPPED WITH YOUR DISTRIBUTION. IT IS POSSIBLE TO LOSE YOUR GUI.*
 First, change your working directory,
