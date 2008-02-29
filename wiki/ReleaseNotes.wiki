@@ -1,5 +1,10 @@
 #labels Featured
 #Release Notes
+
+gnome-globlamenu 0.4 svn570: Friday, February 29 2008
+Some one write something here.
+
+
 gnome2-globalmenu 0.3 svn323 is ready. 
 New features:
     * + Users can now customize the appearance. 
