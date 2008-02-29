@@ -1,6 +1,7 @@
 #labels Phase-Deploy
 #How to Build from scratch
-= STUB, dont use it until 0.4 is moved to trunk. or replace trunk with branches/0.4-devel =
+
+
 = Introduction =
 This article will help you to build gnome-globalmenu from a svn snapshot.
 Currently, this guide only works for trunk (svn 500+).
@@ -9,7 +10,7 @@ Currently, this guide only works for trunk (svn 500+).
 Suppose you want to obtain trunk. for tags, branches, idea is the same.
 
 {{{
-svn checkout http://gnome2-globalmenu.googlecode.com/branches/0.4-devel gnome-globalmenu
+svn checkout http://gnome2-globalmenu.googlecode.com/trunk gnome-globalmenu
 }}}
 Then you are done. 
 
