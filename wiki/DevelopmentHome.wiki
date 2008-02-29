@@ -1,7 +1,7 @@
 #labels Phase-Design,Phase-Implementation,Featured
 # This page is the home page for development documents, ideas, drafts and other garbages.
 
-We are at 0.3, moving toward 0.4.
+We are at 0.4.
 
 = Roadmap =
   * 0.1: `Origin`
@@ -14,13 +14,14 @@ We are at 0.3, moving toward 0.4.
     * Initial the support for Skinning.
     * GConf preference support for the applet.
     * Better UI.
-  * 0.4: `Re-designation` - March 1st, 2008 Can we meet this date?
+  * 0.4: `Re-designation` - March 1st, 2008 Can we meet this date? YES WE CAN.
     * Completely redesign in OO to fit every piece into current GDK/GTK architecture.
-    * Introduce GtkGlobalMenuBar and the concept: `global menu for legacy gtk software`
+    * Introduce GnomenuMenuBar and the concept: `global menu for legacy gtk software`
     * Fully solve the Skinning Problem
-  * 0.45: `Re-designation` - Optional
+    * MenuServer object (not a widget yet) for general purpose menu server.
+  * 0.45: Optional
     * Abstract the widget embedding part from GnomenuServerHelper and GnomenuClientHelper
-    * Submit those together with GdkSocket, GtkGlobalMenuBar (if possible) to GTK mainstream and see what happens.
+    * Submit those together with GnomenuSocket, GnomenuMenuBar (if possible) to GTK mainstream and see what happens.
   * 0.5: `Integration` 
     * merge MenuServerApplet into gnome-panel to enhance desktop integration.
     * All of the GNOME Applications will be patched to build upon GtkGlobalMenuBar instead of GtkMenuBar .
@@ -37,25 +38,28 @@ We are at 0.3, moving toward 0.4.
 == Classes ==
 
 || Class Name || Desc ||Parent       || Dependencies || Location ||
-|| GdkSocket  || interwindow communication for gtk|| GObject      || GdkWindow, GdkEvent, gdk-x11, Xlib || libgnomenu ||
-|| GnomeMenuServer || menu server class|| GObject || GdkSocket || libgnomenu||
-|| GnomeMenuClient || menu client class|| GObject || GdkSocket || libgnomenu||
-|| GtkMenuBar || old gtk menubar, try to load libgnomenu and return a GtkLegacyMenuBar|| GtkMenuShell || GtkMenuItem, GtkGlobalMenuBar || gtk||
-|| GtkGlobalMenuBar || global menubar || GtkMenuBar || GtkMenuItem, GdkSocket, GnomeMenuClient|| libgnomenu ||
-|| GtkLegacyMenuBar || global menubar || GtkMenuBar || GtkMenuBar, GtkLegacyMenuBar|| libgnomenu ||
-|| GnomeMenuQuirks || menubar quirks || GObject || ||libgnomenu||
-
+|| GnomenuSocket  || interwindow communication for gtk|| GObject      || GdkWindow, GdkEvent, gdk-x11, Xlib || libgnomenu ||
+|| GnomenuServerHelper || menu server class|| GObject || GnomenuSocket || libgnomenu||
+|| GnomenuClientHelper || menu client class|| GObject || GnomenuSocket || libgnomenu||
+|| GtkMenuBar || old gtk menubar, hacked to return GnomenuMenuBar on demand|| GtkMenuShell || GtkMenuItem, GnomenuMenuBar || gtk||
+|| GnomenuMenuBar || global menubar || GtkMenuBar || GtkMenuItem, GnomeMenuClientHelper|| libgnomenu ||
 
 == Arch ==
 
-MenuServerApplet will be build upon GtkMenuServer. The applet can also optionally implement compatible MenuServer for KDE and Etotile. 
+Menu Server s are built upon MenuServer object. MenuServer object can also optionally implement compatiblility for KDE and Etotile; but currently I don't want to do it.
 
-Patch GTK, when gtk_menu_bar_class_init is called, try to load libgnomenu,
-when gtk_menu_bar_new is called, try to forward this to call to GtkLegacyMenuBar.
+Patch GTK, when gtk_menu_bar_get_type is called, it detects whether or not gnomenu_menu_bar_type (sub class of GtkMenuBar) is already setup, if so, return gnomenu_menu_bar_type if the quirks allows it to do so.
 
-GtkLegacyMenuBar has two mode: global mode and local mode. Upon creation, it loads a GnomeMenuQuirks object and find out what quirks apply to current menubar. If the quirk is 'GLOBAL' then forward the creation to GtkGlobalMenuBar(global mode), if not, forward the creation back to GtkMenuBar(local mode). 
+GnomenuMenuBar has two mode, decided by priv->detached. If it successfully connect to a menu server, it will become detached. Whenever the connection dies, it become FALSE and menu bar goes back to the parent window.
 
-GnomeMenuQuirks will load quirks from a rc file or a xml file.
+GnomeMenuQuirks will load quirks from a rc file(~/libgnomenu.conf /etc/libgnomenu.conf
 
-Maybe a diagram will be helpful.
-Located at http://gnome2-globalmenu.googlecode.com/svn/branches/0.4-devel/doc/reference/libgnomenu/ClassDiagram.dia
+Format:
+{{{
+
+program_name(regexp)      :       quirk(only ignore is supported yet)
+}}}
+
+Development documentation can be build. I'll upload it and add a link here.
+
+
