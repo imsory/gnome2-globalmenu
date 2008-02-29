@@ -60,6 +60,5 @@ Format:
 program_name(regexp)      :       quirk(only ignore is supported yet)
 }}}
 
-Development documentation can be build. I'll upload it and add a link here.
-
-
+Development documentation can be build. 
+http://gnome2-globalmenu.googlecode.com/files/libgnomenu-book-556.tar.gz
