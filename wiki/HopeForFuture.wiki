@@ -1,3 +1,4 @@
+#labels Deprecated
 Actually there is no clear way for the menu server to distinguish menubars that we want to float and ones we don't. Every thrown menubar should be managed by the server. It is upto the application to determine which menubar is global and which is not. Anyway we don't want to have such dirty reversed dependence in GTK.
 
 So I think the best solution is to make the patch stronger, push it into GTK with a new class GtkGlobalMenuBar, and then hope gnome programs will use GtkGlobalMenuBar for global menu bar s.
