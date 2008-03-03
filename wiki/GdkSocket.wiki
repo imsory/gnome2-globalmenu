@@ -1,4 +1,4 @@
-#labels Phase-Design,Phase-Implementation
+#labels Phase-Design,Phase-Implementation,Deprecated
 #Socket communication layer in GDK
 
 Our socket is connectionless, and is blind to the source of the message.
