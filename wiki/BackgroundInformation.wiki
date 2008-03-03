@@ -1,6 +1,9 @@
+#labels Deprecated
 #The  global menu solution's architecture .
 
-*ONLY a Specification DRAFT, none coding respect it yet *
+*ONLY a Specification DRAFT, none coding respect it yet * 
+
+*Based on 0.3 version*
 
 = Architechure =
 
