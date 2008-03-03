@@ -18,22 +18,21 @@ We are at 0.4.
     * Completely redesign in OO to fit every piece into current GDK/GTK architecture.
     * Introduce GnomenuMenuBar and the concept: `global menu for legacy gtk software`
     * Fully solve the Skinning Problem
-    * MenuServer object (not a widget yet) for general purpose menu server.
-  * 0.45: Optional
-    * Abstract the widget embedding part from GnomenuServerHelper and GnomenuClientHelper
-    * Submit those together with GnomenuSocket, GnomenuMenuBar (if possible) to GTK mainstream and see what happens.
-  * 0.5: `Integration` 
-    * merge MenuServerApplet into gnome-panel to enhance desktop integration.
-    * All of the GNOME Applications will be patched to build upon GtkGlobalMenuBar instead of GtkMenuBar .
-    * Patch gnome-window-properties to provide an option to disable or enable global menu bar.
-  * 0.6: `Platforms`
-    * Remove the x11 dependency, or seperate GdkSocket into gdksocket-x11 and gdksocket-w32
+    * MenuServer widget for general purpose menu server.
+  * 0.45: `Get some KDE`
+    * GnomenuServerInterface
+    * GnomenuServerHelper, implements GnomenuServerInterface 
+    * KdeMenuServerHelper, implements GnomenuServerInterface; 
+      Due to limitation, it shall lacks function.
+    * Widget GnomenuMenuServer
+  * 0.5: `dbus`
+    * Rewrite GnomenuSocket upon dbus.
 
 = Features =
-||DevelopmentDefaultMenu  ||Target: 0.5||
+||DevelopmentDefaultMenu  ||Target: 0.5|| Happens to be Done in 0.4||
 ||DevelopmentCompatibilityEtoile|| ||
-
-= Development Documentation Draft for 0.4 =
+||DevelopmentCompatibilityKDE||  ||
+= Development Documentation - 0.4 =
 
 == Classes ==
 
@@ -52,13 +51,14 @@ Patch GTK, when gtk_menu_bar_get_type is called, it detects whether or not gnome
 
 GnomenuMenuBar has two mode, decided by priv->detached. If it successfully connect to a menu server, it will become detached. Whenever the connection dies, it become FALSE and menu bar goes back to the parent window.
 
-GnomeMenuQuirks will load quirks from a rc file(~/libgnomenu.conf /etc/libgnomenu.conf
+GnomeMenuQuirks will load quirks from a rc file(~/.libgnomenu.conf and /etc/libgnomenu.conf
 
 Format:
 {{{
-
-program_name(regexp)      :       quirk(only ignore is supported yet)
+program_name(regexp)      :       ignore, force-show-all, hide-on-quit, roaming
+program_name/detail       :       ...................................
 }}}
+If there is multi matches, the result is accumulative.
 
 Development documentation can be build. 
 http://gnome2-globalmenu.googlecode.com/files/libgnomenu-book-556.tar.gz
