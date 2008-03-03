@@ -2,8 +2,12 @@
 # Show a Default menu
 
 Related to Issue18
-*stub*
 
+Default Menu is currently (in 0.4 serial of Gnomenu) provided by digging out the hidden menu bar of Nautilus' desktop window.
+
+-------------------------
+= Background =
+== SkiesOfAzel's Default Menu at the macmenu regime ==
 
  Originally Posted by SkiesOfAzel  View Post
 Here is the hacked macmenu with the default menu. It's nothing much and most of the menu entries don't work (i haven't implemented their funtions yet). I also have to say , that i haven't tested it much, so there are most probably going to be bugs, so be WARNED . The main reason i post this is that i am going to be very busy for the next month (exams) so i won't have time to work on this till October. So if anyone is interested to play with the code, here it is .
@@ -29,3 +33,4 @@ Future plans:
 -Change the menu icons to better looking (non stock) versions.
 
 I haven't decided yet what to do with the view menu, suggestions for entries are welcome and encouraged.
+----------------------
