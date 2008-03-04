@@ -26,7 +26,8 @@ We are at 0.4.
       Due to limitation, it shall lacks function.
     * Widget GnomenuMenuServer
   * 0.5: `dbus`
-    * Rewrite GnomenuSocket upon dbus.
+    * Give up Kde compatibility, since we will finally find it wont work smooth, forever.
+    * ideas goes into DbusBasedGlobalMenu, and Issue 67.
 
 = Features =
 ||DevelopmentDefaultMenu  ||Target: 0.5|| Happens to be Done in 0.4||
