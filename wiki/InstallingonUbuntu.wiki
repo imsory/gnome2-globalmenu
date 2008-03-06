@@ -12,26 +12,27 @@ a step by step guide which assumes that you've never compiled anything on your s
     {{{ mkdir global-menu-install}}} 
   * Go to this folder
     {{{ cd global-menu-install}}}
-  * Get the patched gtk debs with the following instruction
-    {{{ wget http://gnome2-globalmenu.googlecode.com/files/gtk2.0-ubuntu-gutsy.tar.gz}}}
+  * Get the patched gtk debs and panel applet with the following instruction
+    {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-ubuntu-gusty-svn679.tar.gz}}}
    
     
   * Unarchive them
-    {{{tar zxvf gtk2.0-ubuntu-gutsy.tar.gz }}}
+    {{{tar zxvf gnome-globalmenu-ubuntu-gusty-svn679.tar.gz }}}
     
 
   * Install them
-    # {{{cd gtk }}}
+    # {{{cd gnome-globalmenu }}}
     # {{{sudo dpkg -i *.deb}}}
- 
 
-  * Get the MacMenu applet files 
-    # {{{cd ..}}}
-    # {{{wget http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet_0.3.397-1_i386.deb }}}
-  * Install it
-    {{{sudo dpkg -i gnome2-globalmenu-applet_0.3.397-1_i386.deb}}}
-    
-  * Right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
+    if you meet some errors here, try
+{{{
+    sudo dpkg -i --force-overwrite *.deb 
+}}}
+   * Edit ~/.gnomerc
+     # add a line to it
+     {{{export GTK_MODULES=libgnomenu }}}
+
+  * Restart your computer and right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
 
 ===on a 64 bit system===
 
