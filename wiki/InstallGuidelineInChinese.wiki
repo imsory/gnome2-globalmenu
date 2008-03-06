@@ -14,10 +14,9 @@
     {{{ cd global-menu-install}}}
 
   * 下载打过补丁的Gtk deb包和面板小程序
-   {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4_ubuntu-gusty-svn679.tar.gz}}}
-   
+   {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4.1_ubuntu-gusty-svn679.tar.gz}}}  
   * 解压。
-    {{{tar zxvf gnome-globalmenu-0.4_ubuntu-gusty-svn679.tar.gz }}}
+    {{{tar zxvf gnome-globalmenu-0.4.1_ubuntu-gusty-svn679.tar.gz }}}
    
   * 安装。
     # {{{cd gnome-globalmenu }}}
@@ -31,7 +30,7 @@
    添加下列代码：
     {{{export GTK_MODULES=libgnomenu }}}
   
-  * 重新启动你的电脑，右键单机面板，找到Global Menubar，并且添加它。
+  * 重新启动你的电脑，右键单击面板，找到Global Menubar，并且添加它。
 
 === 64位系统 ===
 目前暂时没有64位系统的deb包，有人向我们反映64位系统下存在编译错误。我们没有64位的系统去研究错误的具体原因。这里有一个源码[http://code.google.com/p/gnome2-globalmenu/wiki/BuildFromScratch 编译指南]，如果你在64位系统上成功编译了，请在[http://code.google.com/p/gnome2-globalmenu/issues/list Issue]里面和我们联系。
