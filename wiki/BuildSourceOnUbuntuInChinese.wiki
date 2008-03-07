@@ -87,3 +87,8 @@ sudo dpkg -r gnome2-globalmenu-applet
 
  * 重新安装默认的Gtk库.
  检查你的update-manager, 选中重新安装Gtk相关的库.
+
+
+= Suggestions ==
+ * Yu:
+  * I suggest you mention downloading the patch from the svn instead of from the downloading page. There is really no need to keep a duplicated copy of the patch.
