@@ -14,9 +14,9 @@
     {{{ cd global-menu-install}}}
 
   * 下载打过补丁的Gtk deb包和面板小程序
-   {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4.1_ubuntu-gusty-svn679.tar.gz}}}  
+   {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4.2_ubuntu-gusty-svn679.tar.gz}}}  
   * 解压。
-    {{{tar zxvf gnome-globalmenu-0.4.1_ubuntu-gusty-svn679.tar.gz }}}
+    {{{tar zxvf gnome-globalmenu-0.4.2_ubuntu-gusty-svn679.tar.gz }}}
    
   * 安装。
     # {{{cd gnome-globalmenu }}}
