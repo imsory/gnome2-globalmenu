@@ -10,7 +10,7 @@ Currently, this guide only works for trunk (svn 500+).
 Suppose you want to obtain trunk. for tags, branches, idea is the same.
 
 {{{
-svn checkout http://gnome2-globalmenu.googlecode.com/trunk gnome-globalmenu
+svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/ gnome-globalmenu
 }}}
 Then you are done. 
 
