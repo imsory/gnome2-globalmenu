@@ -40,7 +40,7 @@ su -c 'make install'
 {{{
 cd ..
 }}}
-You also need to setup GTK_MODULES to load libgnomenu in your .bash_profile,(or some better place)
+You also need to setup GTK_MODULES to load libgnomenu in your .bash_profile,(or ~/.gnomerc if you are using Ubuntu)
 {{{
 GTK_MODULES=libgnomenu
 export GTK_MODULES;
