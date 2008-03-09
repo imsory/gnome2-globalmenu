@@ -11,17 +11,17 @@ Install Global Menu library and servers. They are located at
     * `gnome-globalmenu-applet`
     * `xfce-globalmenu-plugin`
     * `gtk-globalmenu-server`
-Then you have a Global Menu Environment setted up.
+Then you have a Global Menu Environment set up.
 
-However no current GTK application is build up on Global Menu. To add global menu to your legacy GTK application, `gtk2` is to be patched.
-[http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=gtk2-aqd+rpm&colspec=Filename+Summary+Uploaded+Size+DownloadCount gtk2-aqd(rpm)]
+However no current GTK application is build up on the Global Menu widget (GnomenuMenuBar). To add global menu to your legacy GTK application, `gtk2` is to be patched. Obtain it at 
+[http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=gtk2-aqd+rpm&colspec=Filename+Summary+Uploaded+Size+DownloadCount gtk2-aqd(rpm)] .
   * The patched `gtk2` is named as `gtk2-aqd`, after the person who introduced Global Menu to GTK.
   * There is compatibility issue for different `gtk2-aqd` versions and `libgnomenu` versions during the life time of 0.4 series.
-  * Because of a fault of development, No one can really track when the compatibility breaks easily.
-  * Take care: the easiest way is always to use the *latest* SVN snapshot for *BOTH*
+  * Because of a fault of development, *NOBODY* can really tell when the compatibility breaks.
+  * Tips: the easiest way is always to use the *latest* SVN snapshot for *BOTH*
 
 After installation of RPMS, two post-inst work needs to be done:
-  * edit your `~/.bach_profile`, add or modify to include `libgnomenu` in your `GTK_MODULES` envinroment variable.
+  * edit your `~/.bach_profile`, add or modify to include `libgnomenu` in your `GTK_MODULES` envinroment variable. This tells libgnomenu to work in a GTK compatible mode.
 {{{
    GTK_MODULES=`libgnomenu`;
    export GTK_MODULES ;
@@ -34,8 +34,11 @@ After installation of RPMS, two post-inst work needs to be done:
   * then log in and log out.
 
 If you don't want Global Menu anymore, you have several choices:
-  * Deny any of the menu server to startup; applications will seamlessly go back to local menu bar mode.
+  * Deny any of the menu server to start up; applications will seamlessly go back to local menu bar mode.
   * Remove `libgnomenu`. The server you installed will be removed as a dependency.
-  * Remove `gtk2-aqd` and install `gtk2`. If you use graphical package manager, don't quit before you install `gtk2`.
+  * Remove `gtk2-aqd` and install `gtk2`. If you use graphical package manager, don't quit before you install `gtk2`. If you did quit. `Ctrl-Alt-F1` and login as `root`,
+{{{
+   yum install gtk2
+}}}
 
 You can also do all of them.
