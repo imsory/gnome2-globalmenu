@@ -1,0 +1,44 @@
+#A list of compatible applications
+
+= Introduction =
+
+Here is a list of applications' compatibility  with gnome-globalmenu. 
+
+
+= Perfect =
+ * gnome-terminal
+ * gedit
+ * gvim
+ * ekiga
+ * evolution
+ * pidgin
+ * Azureus
+ * FileZilla
+ * xchat
+ * devhelp
+ * Glade
+ * chmsee
+ * gcalc
+ * DIA
+ * F-spot
+ * Gimp
+ * gthumb
+ * Rhythmbox
+ * TuxGuitar
+ * VLC
+ * gnome-sound-recorder
+ * evince
+ * eclipse
+ * nautilus
+
+= Small problems =
+ * Totem
+
+= Big problems =
+ TBD
+
+= Crash =
+ TBD
+
+= Not support =
+ * Firefox
