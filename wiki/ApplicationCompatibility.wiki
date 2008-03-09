@@ -2,34 +2,40 @@
 
 = Introduction =
 
-Here is a list of applications' compatibility  with gnome-globalmenu. 
+Here is a list of applications' compatibility with gnome-globalmenu. These applications works with `libgnomenu` via gtk-aqd patch.
 
 
 = Perfect =
- * gnome-terminal
- * gedit
- * gvim
- * ekiga
- * evolution
- * pidgin
- * Azureus
- * FileZilla
- * xchat
- * devhelp
- * Glade
- * chmsee
- * gcalc
- * DIA
- * F-spot
- * Gimp
- * gthumb
- * Rhythmbox
- * TuxGuitar
- * VLC
- * gnome-sound-recorder
- * evince
- * eclipse
- * nautilus
+ * Accessories 
+   * gnome-terminal
+   * gcalc
+   * gedit 
+   * nautilus
+ * Office/Productive
+   * DIA
+   * F-spot
+   * Gimp
+   * gthumb
+   * Rhythmbox
+   * chmsee
+   * evince
+ * Internet
+   * Galeon
+   * Evolution
+   * Pidgin
+   * ekiga
+   * FileZilla
+   * xchat
+   * Azureus
+ * Development
+   * devhelp
+   * Glade
+   * gvim
+   * eclipse
+ * Multimedia/Entertainment
+   * TuxGuitar
+   * VLC
+   * gnome-sound-recorder
 
 = Small problems =
  * Totem
@@ -42,3 +48,4 @@ Here is a list of applications' compatibility  with gnome-globalmenu.
 
 = Not support =
  * Firefox
+ * Openoffice
