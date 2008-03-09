@@ -2,7 +2,7 @@
 #How to install Global Menu Bar on Fedora 8?
 
 = Installation Guide =
-You can install by RPMs. Or else you can build from source.
+You can install by RPMs. Or else you can build from source. See BuildFromScratch
 == Install Global Menu and Patched GTK By RPMs ==
 Install Global Menu library and servers. They are located at
 [http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=fedora-packages&colspec=Filename+Summary+Uploaded+Size+DownloadCount fedora-packages]
