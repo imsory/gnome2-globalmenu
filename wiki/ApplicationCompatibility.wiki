@@ -2,23 +2,60 @@
 
 = Introduction =
 
+The way we deal with compatibility issues is via quirks. Quirks are located at two position:
+  * /etc/libgnomenu.conf (depends on how you invoke `autogen.sh` or `configure`)
+  * ~/.libgnomenu.conf
+
+Quirks tells `libgnomenu` and `gtk-aqd` to deal with applications that (1) can't seamlessly transport to Global Menu; (2) can transport to Global Menu but need special care. 
+
+For (1) some menu in the application shall not be a Global Menu at all. For (2) wxMaxima is an example; its menu bar can not switch between global and local on the fly. 
+
+== Quirk File Format ==
+
+{{{
+line ::= comment | quirk_entry
+comment ::= '#' any_other_words
+quirk_entry ::= default_quirk_entry | detail_quirk_entry
+default_quirk_entry ::= app_name_reg_exp ':' quirks
+detail_quirk_entry ::= app_name_reg_exp '/' detail_reg_exp ':' quirks
+quirks :: = quirk [ ',' quirks ]
+quirk ::= 'force-show-all' | 'hide-on-quit' | 'ignore' | 'roaming'
+}}}
+
+Example:
+{{{
+# appname(regular exp)      :       quirk(ignore, class)
+gnome-panel         :   ignore
+fast-user-switch-applet     :   ignore
+nautilus/Desktop    :   force-show-all, hide-on-quit
+wx*                 :   roaming
+#f-spot             :   roaming
+*terminal           : ignore
+#pidgin             : ignore
+}}}
+
+== How does Quirks work ==
+ * when `libgnomenu` is loaded as a gtk module, it tries to match a default quirk for current application. If `ignore` quirk is NOT found, it will set a exported boolean variable(`gnomenu_compatible`) to TRUE, which is then used by `gtk2-aqd` to determine whether or not use Global Menu for menu bars.
+ * `GnomenuMenuBar` has a property `quirk`. When the menu bar is attached to a toplevel window, it register property notifies on the toplevels `role` and `title` property. When those property are changed, it matches `role`( or `title` if `role` is NULL) against detail quirks for this application. If matched, `quirk` will be set as the detail quirk. Then every component in `GnomenuMenuBar` with take special cares to the application according to the quirk.
+
+= Compatibility List =
 Here is a list of applications' compatibility with gnome-globalmenu. These applications works with `libgnomenu` via gtk-aqd patch.
 
-
-= Perfect =
+== Perfect ==
  * Accessories 
    * gnome-terminal
    * gcalc
-   * gedit 
-   * nautilus
+   * gedit
+   * File-Roller
+   * ghex2
  * Office/Productive
    * DIA
-   * F-spot
    * Gimp
    * gthumb
-   * Rhythmbox
    * chmsee
    * evince
+   * inkscape
+   * gnome-specimen
  * Internet
    * Galeon
    * Evolution
@@ -32,20 +69,33 @@ Here is a list of applications' compatibility with gnome-globalmenu. These appli
    * Glade
    * gvim
    * eclipse
+   * nemiver
  * Multimedia/Entertainment
    * TuxGuitar
    * VLC
    * gnome-sound-recorder
-
-= Small problems =
- * Totem
-
-= Big problems =
+   * Rhythmbox
+   * GNU Solfege
+== Small problems ==
+ * Desktop Menu Bar: Nautilus don't display desktop menu bar by default. One needs to edit `~/.libgnomenu.conf` to work around. (default quirk shipped in /etc/libgnomenu.conf; but don't work for every Locale)
+   * nautilus 
+   * thunar (perhaps)
+ * Improper quit: The following applications don't dispose the menu bar; they hold a reference to the widgets and don't release it. It is their bug and we can't do anything. The menu server needs several seconds to realize the application has quited.
+   * F-spot
+   * mousepad
+ * Don't know what problem it is.
+   * Totem
+ * Blank at original menu bar position: One needs a quirk entry(roaming) to avoid the blank of the menu bar. The quirk, as the name indicates, makes the menu bar always out from the application window.
+   * wxWindow application ( quirk shipped by default, assuming they all begin with `wx*`)
+   * RapidSVN
+== Big problems ==
  TBD
 
-= Crash =
+== Crash ==
  TBD
 
-= Not support =
- * Firefox
- * Openoffice
+== Not support ==
+ * Pseudo GTK applications, which don't use GTK widgets:
+   * Firefox
+   * Openoffice
+ * Any application runs under another user account. e.g. all the system management applications. This is also a security consideration.
