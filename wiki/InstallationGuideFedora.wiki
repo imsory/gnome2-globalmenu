@@ -1,143 +1,41 @@
 #labels Phase-Deploy
 #How to install Global Menu Bar on Fedora 8?
 
-= Ideas =
-
-== Patching gtk2 ==
-The patch's name is gtk2-aqd. The origin position is on aur linux's website and also can be find at ubuntu's forum. Patching gtk2 is necessary for global menu. However, the patch is more like a hack, so it is still faraway from entering the gtk2 official release.
-
-== Setuping a menubar server ==
-After patching gtk2, the gtk2 applications will put their menubar in a new toplevel window, and move it to the lefttop of corner of the desktop. This is not exciting. We still need a menubar server to pick up these daunting menubars. `gnome2-globalmenu-applet` is written for this purpose.
-
-Note: It obsoletes the old gtk-macmenu-applet written by aqd.
-
 = Installation Guide =
-Here I list two ways to setup global menu bar for your gnome.
-== By RPM ==
+You can install by RPMs. Or else you can build from source.
+== Install Global Menu and Patched GTK By RPMs ==
+Install Global Menu library and servers. They are located at
+[http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=fedora-packages&colspec=Filename+Summary+Uploaded+Size+DownloadCount fedora-packages]
+  * Install `libgnomenu`
+  * Install servers. You can choose one or several among
+    * `gnome-globalmenu-applet`
+    * `xfce-globalmenu-plugin`
+    * `gtk-globalmenu-server`
+Then you have a Global Menu Environment setted up.
 
-  * [http://gnome2-globalmenu.googlecode.com/files/gtk2-aqd-0.3.193.2.12.3-3.fc8.i386.rpm]
+However no current GTK application is build up on Global Menu. To add global menu to your legacy GTK application, `gtk2` is to be patched.
+[http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=gtk2-aqd+rpm&colspec=Filename+Summary+Uploaded+Size+DownloadCount gtk2-aqd(rpm)]
+  * The patched `gtk2` is named as `gtk2-aqd`, after the person who introduced Global Menu to GTK.
+  * There is compatibility issue for different `gtk2-aqd` versions and `libgnomenu` versions during the life time of 0.4 series.
+  * Because of a fault of development, No one can really track when the compatibility breaks easily.
+  * Take care: the easiest way is always to use the *latest* SVN snapshot for *BOTH*
 
-It obsolete gtk2 and provide gtk2, so the dependency tree will happy.
-There is no way to have gtk2 and gtk2-aqd parallel installed. It also stops receiving further updates of gtk2 from fedora repositories.
-
-  * [http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet-0.3-1.fc8.i386.rpm]
-  * [http://gnome2-globalmenu.googlecode.com/files/gnome2-globalmenu-applet-debuginfo-0.3-1.fc8.i386.rpm]
-
-After Installing the applet's rpm, do the followings:
-  * Right click on your top panel
-  * Choose add to panel
-  * Type Global Menu.. until it shows up in the list
-  * Click on Global Menu Applet
-  * Press Add
-
-Then the new launched gtk programs' menubar will display in the top panel, with the mnemonic keys working. No rebooting, No logging in and out.
-
-== By SVN ==
+After installation of RPMS, two post-inst work needs to be done:
+  * edit your `~/.bach_profile`, add or modify to include `libgnomenu` in your `GTK_MODULES` envinroment variable.
 {{{
-svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/ gnome2-globalmenu-read-only
+   GTK_MODULES=`libgnomenu`;
+   export GTK_MODULES ;
 }}}
+  * Choose one of the servers, and set it up.
+    * for `gnome-globalmenu-applet`, you can simplely add the applet 'GNOME Global Menu Applet' to your toppanel.
+    * for `xfce-globalmenu-plugin`, since it don't work yet, you can't use it.
+    * for `gtk-globalmenu-server`, add it to your session autostarts.
+  * You may also want to edit `~/.libgnomenu.conf` to include quirks. There were some examples.
+  * then log in and log out.
 
-There should be 3 directories under gnome2-globalmenu-read-only:
-  * gtk2-aqd
-  * gnome2-globalmenu-applet
-  * gnome2-globalmenu-test
-And one file
-  * runtest.sh
+If you don't want Global Menu anymore, you have several choices:
+  * Deny any of the menu server to startup; applications will seamlessly go back to local menu bar mode.
+  * Remove `libgnomenu`. The server you installed will be removed as a dependency.
+  * Remove `gtk2-aqd` and install `gtk2`. If you use graphical package manager, don't quit before you install `gtk2`.
 
-=== gtk2-aqd ===
-Suppose you have setup the rpm devel tree by `rpmdev-setuptree`. Do following steps to obtain a patched gtk2-aqd.spec and patched gtk2 at `gtk2-aqd/libs`.
-{{{
-env RPMDEVROOT={Your rpmdev tree root} make setup
-}}}
-Then the rpms will be build, the package should be located at `RPMS/i386`.
-
-It is possible to test whether gtk2-aqd works immediately after the above steps. 
-
-{{{
-./prefix gnomine
-}}}
-It will give you some garbage (a lot of gtk-message ) at the console. Thought the menubar is still in `gnomine`'s window, our patch is working now. Whenever you finished installing the MenuServerApplet, and add the applet into your panel, the the menubars will be detach from app's window.
-
-You can also make modifications on `gtkmenubar.c` and `gtkmenuembed-x11.h`, and then
-{{{
-env RPMDEVROOT={Your rpmdev tree root} make patch
-}}}
-though no new RPMS are made,
-{{{
-./prefix YOURAPP
-}}}
-stills invokes YOURAPP with patched gtk
-
-=== gnome2-globalmenu-applet ===
-
-{{{
-cd gnome2-globalmenu-applet
-./autogen.sh
-make
-}}}
-The executable locates at `gnome2-globalmenu-applet/src/gnome2-globalmenu-applet`
-Try to invoke it by
-{{{
-src/gnome2-globalmenu-applet
-}}}
-
-If it opens a nerdy window and throws some tracing message via your console, congratulations again!
-
-Now we have `gtk2-aqd` and `gnome2-globalmenu-applet`, and your terminal is occupied by `gnome2-globalmenu-applet`.
-
-If you go back to `gtk2-aqd`'s directory and invoke some applications, eg
-{{{
-./prefix rhythmbox
-}}} 
-You will see a different.
-
-`gnome2-globalmenu-applet`, as the name suggests, can also be placed into a panel.
-However, setting it up as a panel applet is a little bit convoluted.
-
-Panel Applets are bonobo objects. `bonobo` is, kind of COM or ActiveX equivalence in Linux. Then you need to tell `bonobo-activation-server` that you have received a new bonobo object. 
-
-First, you need a bonobo `.server` file. Fortunately aqd has already provided one for `gtk-macmenu-applet`, and I have already patched it for gnome2-macmenu-applet. You can find it in the root directory of `gnome2-globalmenu-applet`.
-
-However, since I am not you and don't know where the `gnome2-globalmenu-applet` executable locates, you still need to open it and replace the string APP_LOCATION with the true location.
-{{{
-cat GNOME_GlobalMenuApplet.server.sample | sed "s;APP_LOCATION;"{Your gnome2-globalmenu-applet's dirname ONLY dirname!}";" > GNOME_GlobalMenuApplet.server
-}}}
-
-Secondly, you need to let `bonobo-activation-server` see the file. It is very weird that bonobo doesn't allow per user server file repository. So you have to 
-{{{
-su
-cp GNOME_GlobalMenuApplet.server /usr/lib/bonobo/servers/
-}}}
-
-If you want a rpm, then because I know the executable will be installed at `/usr/libexec`, I have coded these step in `gnome2-globalmenu-applet.spec`:
-
-{{{
-make dist
-cp *.tar.gz {Yor rpmdev tree root}/SOURCES
-rpmbuild -ba gnome2-globalmenu-applet.spec
-}}}
-
-=== gnome2-globalmenu-test ===
-If you don't find a favorite application to test gnome2-globalmenu; or all of your favorite applications are alien gtk2 programs like firefox or OOo, you can use 
-`gnome2-globalmenu-test`.
-{{{
-configure
-make
-}}}
-Then in the top level of svn checkout,
-{{{
-./runtest
-}}}
-
-== Uninstall ==
-If you've installed the rpm, but later find the global menubar boring / crashing your box / being criticized as plagiarizing OSX's interface and want to remove it.
-
-  * Add/Remove Software,
-  * Search `gtk2`
-  * Uncheck `gtk2-aqd`
-  * Check `gtk2`
-  * Press Apply
-
-Wait for `yum` to solve the dependencies. It should report no dependency problems.
-
-All done!
+You can also do all of them.
