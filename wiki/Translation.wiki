@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Since Version 0.4, localization becomes one of our considerations. We are glad to announce that the localization framework has been set up. This page contains Howto for making translations; and a summary of current available translations.
+Since Version 0.4, localization becomes one of our considerations. We are glad to announce that the localization framework has been set up. This page contains a Howto for making translations; and a summary of current available translations.
 
 = Howto: Make a new translation =
 == Without SVN write access ==
@@ -26,6 +26,6 @@ http://code.google.com/p/gnome2-globalmenu/source/browse/trunk/po/zh_CN.po
  * svn commit
 
 = Translation Summary =
-
-zh_CN: rainwoodman
-fr_FR: pierre.slamich
+||*Language*||*Translator*||
+|| zh_CN || rainwoodman    ||
+|| fr_FR || pierre.slamich ||
