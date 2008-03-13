@@ -38,6 +38,8 @@ a step by step guide which assumes that you've never compiled anything on your s
   * Restart your computer and right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
 
 ===on a 64 bit system===
+There is not yet packages for 64 bit system. We don't know how to build it from our poor 32bit boxes.
+Also, the building will panic with an error. See below for details.
 
 ==Installing from source==
 *Warning* 
