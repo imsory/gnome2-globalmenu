@@ -1,5 +1,8 @@
 #labels Featured
 #Release Notes
+gnome-globalmenu 0.4 svn790: Friday, March 14 2008
+Treatment of overflowed menu items.
+Customize title font.
 
 gnome-globlamenu 0.4 svn570: Friday, February 29 2008
 Some one write something here.
