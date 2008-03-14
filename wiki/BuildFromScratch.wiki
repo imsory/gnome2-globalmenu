@@ -20,8 +20,7 @@ cd gnome-globalmenu
 }}}
 == 2.1 Compile Everything Else: Libgnomenu, Menu Servers ==
 {{{
-cd 
-./autogen.sh --prefix=/usr/local --enable-tracing=no
+./autogen.sh --prefix=/usr/local --enable-gtk-doc
 make
 }}}
 Other things you can disable are
@@ -30,21 +29,23 @@ Other things you can disable are
 --enable-xfce-plugin=no
 --enable-gnome-applet=no
 }}}
-Then you are done. Add the applet to the panel and have fun. For GNOME, The name of the applet is Global Menubar.
+Then you are done. Add the applet to the panel and have fun. For GNOME, The name of the applet is Global Menu Bar.
+
+`autogen.sh` will produce a maintainer mode build, which means you can start the programs in the building directory, but if you install them, they will fail. It is due to unable to seek the glade files. If you want to install, you will have to reconfigure the project without maintainer mode.
 
 Installation:
 {{{
+./configure --prefix=/usr/local --enable-tracing=no 
+make 
 su -c 'make install'
 }}}
 
-{{{
-cd ..
-}}}
-You also need to setup GTK_MODULES to load libgnomenu in your .bash_profile,(or ~/.gnomerc if you are using Ubuntu)
+After this, You also need to setup GTK_MODULES to load libgnomenu in your .bash_profile,(or ~/.gnomerc if you are using Ubuntu)
 {{{
 GTK_MODULES=libgnomenu
 export GTK_MODULES;
 }}}
+
 == 2.2 Compile the gtk2-aqd patch ==
 *Notice: FOLLOWING THESE STEPS WILL REPLACE THE OLD GTK PACKAGE SHIPPED WITH YOUR DISTRIBUTION. IT IS POSSIBLE TO LOSE YOUR GUI.*
 First, change your working directory,
@@ -61,18 +62,17 @@ or you can
 {{{
 make prepare
 }}}
-to obtain the gtk version we are patching.
+to obtain the special version of gtk which we are patching against.
 
 HINT: If your tar is very old, you may need to use `strip-path` instead of `strip-componets`.
-
-Maybe you'll need to install some source code packages to obtain the tarball, or try to download one from [ftp://ftp.gtk.org/pub/gtk/v2.10/].
+HINT: You can install source code packages or goto gtk site [ftp://ftp.gtk.org/pub/gtk/v2.10/]. Whatever you need is to rename the top tree of gtk source code (the parent directory of gtk and gdk) to gtk+-aqd/gtk+-aqd 
 
 OK, let's suppose you have successfully set up the source code of gtk. The next essential setup is to apply the patch.
 {{{
 make patch
 }}}
 If no error is reported, then you can configure `gtk` and compile. If error happens,
-see Troubleshooting section of this article.
+see Troubleshooting section of this article. Some has reported the default GTK of Gusty need a variation of patch; It can be find at (somewhere). Or you can manually apply the patch. It is really clear if you open the patch file and have a look.
 {{{
 cd gtk+-aqd
 ./configure --prefix=/usr/local --with-gdk-target=x11
@@ -83,12 +83,12 @@ If you want to install, use the following commands,
 {{{
 su -c 'make install'
 }}}
-If you just want to do development, don't install it. You can use `gnome-globalmenu/gtk+aqd/test {application}` to override the gtk.
+If you just want to do development, don't install it. You can use `gnome-globalmenu/gtk+aqd/test {application}` to override the gtk. That script seems to be deprecated. I haven't use it for a long time, though.
 
 If no error occurs, your gtk is already patched. Try to start a simple gtk program in a console and you will see a debugging messages, indicating libgnomenu not found. 
 {{{
 ....
-Using GtkMenuBar.
+Gnome Global Menu not found. ...
 ....
 }}}
 If you can not see these messages, see Troubleshooting section
@@ -96,23 +96,22 @@ If you can not see these messages, see Troubleshooting section
 cd ..
 }}}
 = Step 2.3: Testing =
-In `gnome-globalmenu/servers`, there is a standalone server `globalmenu-server` which don't need to be any plugin or applet. Launch it.
+In `gnome-globalmenu/servers`, there is a standalone server `gtk-globalmenu-server` which don't need to be any plugin or applet. Launch it.
 {{{
 cd gnome-globalmenu/servers
-libtool gdb ./globalmenu-server
->> run
+libtool gdb ./gtk-globalmenu-server
+>> run -f
 }}}
-In `gnome-globalmenu/gtk+aqd`, there is a script wrapper, to overide default GTK libraries,
 {{{
-cd gnome-globalmenu/gtk+aqd
-./test gedit
+cd gnome-globalmenu/libgnomenu
+env GTK_MODULES=libgnomenu LD_LIBRARY_PATH=../gtk+-aqd/gtk+-aqd/gtk/.libs libtool gdb gedit
+>> run
 }}}
 The correct behavior is the menu bar of gedit shows up in the server window,
 and if you quit the server window, menu bar goes back to gedit.
 
 = Step 3: Packaging =
-Dear user/hacker, 
-If you manage to pass all these steps, and there is no package for your distribution/platform, I will strongly encourage you to build two packages for others who also use this platform. The suggested package name is:
+If you manage to pass all these steps, and there is no package for your distribution/platform, I will strongly encourage you to build packages for others who also use this platform. The suggested package name is:
 ||package name || content || note||
 ||`gtk2-aqd-0.4.{SVN VERSION}-${YOURGTKVERSION}`|| gtk || provides gtk2 - ${YOURGTKVERSION}, obsoletes gtk2 - ${YOURGTKVERSION} ||
 ||`libgnomenu-0.4.{SVN VERSION}` || libgnomenu || ||
