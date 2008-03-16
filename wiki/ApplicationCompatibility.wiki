@@ -56,8 +56,10 @@ Here is a list of applications' compatibility with gnome-globalmenu. These appli
    * evince
    * inkscape
    * gnome-specimen
+   * ardour2 (foreround color is gray)
  * Internet
    * Galeon
+   * Epiphany (Web Browser)
    * Evolution
    * Pidgin
    * ekiga
@@ -72,7 +74,6 @@ Here is a list of applications' compatibility with gnome-globalmenu. These appli
    * nemiver
  * Multimedia/Entertainment
    * TuxGuitar
-   * VLC
    * gnome-sound-recorder
    * Rhythmbox
    * GNU Solfege
@@ -88,6 +89,8 @@ Here is a list of applications' compatibility with gnome-globalmenu. These appli
  * Blank at original menu bar position: One needs a quirk entry(roaming) to avoid the blank of the menu bar. The quirk, as the name indicates, makes the menu bar always out from the application window.
    * wxWindow application ( quirk shipped by default, assuming they all begin with `wx*`)
    * RapidSVN
+   * audacity
+   * VLC (a wxapp that doesn't work with the quirk)
 == Big problems ==
  TBD
 
