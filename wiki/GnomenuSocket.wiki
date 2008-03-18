@@ -1,0 +1,41 @@
+Detailed design after some coding:
+
+gnomenu_socket_new
+gnomenu_socket_is_alive
+gnomenu_socket_send
+gnomenu_socket_broadcast_by_name
+gnomenu_socket_shutdown
+gnomenu_socket_destroy
+gnomenu_socket_accept
+gnomenu_socket_connect
+
+GnomenuSocket::data-arrival
+GnomenuSocket::connect-req
+GnomenuSocket::connected
+GnomenuSocket::shutdown
+
+ACK = (ACK, source)
+DATA = (DATA, source data_bytes)
+CONNECT_ACK = (ACK, source, 0)
+SHUTDOWN = (SHUTDOWN, source )
+BROADCAST = (BROADCAST, source )
+
+BROADCAST buffer is held in the receiver, _GNOMENU_BROADCAST_BUFFER
+DATA buffer is held in the sender, _GNOMENU_SEND_BUFFER
+
+Sender: 
+ + owns DATA buffer after it receives ACK and before it sends DATA
+ + at the connection, before any _send is called.
+ + holds a FIFO queue of data buffers for to be send data,
+ + when a ACK or CONNECT_ACK arrives:
+   if self->acks == 1; panic.
+   if queue is not empty, release a data from the queue(self->acks --)
+   else self->acks = 1.
+ + when a _send is called:
+   push data to the queue.
+   if self->acks == 1 release a data from the queue.
+
+Receiver:
+ + sends CONNECT_ACK when the connection is established.
+ + owns DATA buffer after it receives DATA and before it sends ACK.
+ + when receives DATA, emit data-arrival signal, send a ACK.
