@@ -46,5 +46,4 @@ Also, the building will panic with an error. See below for details.
 someone has reported that building on 64 bit system is not available now. We don't have a 64 bit system to investigate the reason. So if you build successfully on 64 bit system, *PLEASE* contact us at the [http://code.google.com/p/gnome2-globalmenu/issues/list Issues list]
 
 The old guide doesn't work anymore. Refer to the 
-[ http://ayozone.org/2008/03/12/global-menu-the-new-gnome-macmenu/  guide ] written by Ayoli.
-
+[http://ayozone.org/2008/03/12/global-menu-the-new-gnome-macmenu/  guide] written by Ayoli.
