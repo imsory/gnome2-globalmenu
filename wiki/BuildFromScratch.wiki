@@ -20,16 +20,18 @@ cd gnome-globalmenu
 }}}
 == 2.1 Compile Everything Else: Libgnomenu, Menu Servers ==
 {{{
-./autogen.sh --prefix=/usr/local --enable-gtk-doc
+./autogen.sh --prefix=/usr/local
+./configure --enable-gtk-doc
 make
 }}}
 Other things you can disable are
 {{{
---enable-standalone=no
---enable-xfce-plugin=no
---enable-gnome-applet=no
+--enable-standalone=[yes]|no
+--enable-xfce-plugin=[yes]|no
+--enable-gnome-applet=[yes]|no
+--enable-maintainer-mode=[yes]|no
+--enalbe-gtk-doc=[no]|yes
 }}}
-Then you are done. Add the applet to the panel and have fun. For GNOME, The name of the applet is Global Menu Bar.
 
 `autogen.sh` will produce a maintainer mode build, which means you can start the programs in the building directory, but if you install them, they will fail. It is due to unable to seek the glade files. If you want to install, you will have to reconfigure the project without maintainer mode.
 
@@ -39,6 +41,8 @@ Installation:
 make 
 su -c 'make install'
 }}}
+
+Then you are done. Add the applet to the panel and have fun. For GNOME, The name of the applet is Global Menu Bar.
 
 After this, You also need to setup GTK_MODULES to load libgnomenu in your .bash_profile,(or ~/.gnomerc if you are using Ubuntu)
 {{{
@@ -96,6 +100,8 @@ If you can not see these messages, see Troubleshooting section
 cd ..
 }}}
 = Step 2.3: Testing =
+First of all you need to configure with `--enable-maintainer-mode`, or else every program unser `servers` directory will die, if you haven't done a `make install`.
+
 In `gnome-globalmenu/servers`, there is a standalone server `gtk-globalmenu-server` which don't need to be any plugin or applet. Launch it.
 {{{
 cd gnome-globalmenu/servers
@@ -108,7 +114,7 @@ env GTK_MODULES=libgnomenu LD_LIBRARY_PATH=../gtk+-aqd/gtk+-aqd/gtk/.libs libtoo
 >> run
 }}}
 The correct behavior is the menu bar of gedit shows up in the server window,
-and if you quit the server window, menu bar goes back to gedit.
+and when you quit the server, menu bar goes back to gedit.
 
 = Step 3: Packaging =
 If you manage to pass all these steps, and there is no package for your distribution/platform, I will strongly encourage you to build packages for others who also use this platform. The suggested package name is:
@@ -118,6 +124,8 @@ If you manage to pass all these steps, and there is no package for your distribu
 ||`xfce-globalmenu-plugin-0.4.{SVN VERSION}` || xfce plugin || ||
 ||`gnome-globalmenu-applet-0.4.{SVN VERSION}` || gnome-applet || ||
 ||`globalmenu-server-0.4.{SVN VERSION}` || standalone server || ||
+
+Always make sure you have {SVN VERSION} in package naming, to avoid future confusions.
 
 = Step 4: Remove =
 == 4.1 Remove the applet ==
@@ -136,7 +144,7 @@ cd gtk+-aqd # two levels of gtk+-aqd
 su -c 'make uninstall'
 cd ..
 }}}
-At this moment you don't have any gtk installation in your computer. Almost every newly launching GUI application will fail. The running ones will be ok though, thanks to the designation of linux kernel.
+At this moment you don't have any gtk installation in your computer. Almost every newly launching GUI application will fail. The running ones will be ok. Thanks to the kernel.
 
 Anyway, use your commandline package manager to install the gtk package, eg,
 {{{
@@ -146,7 +154,8 @@ Done.
 = Troubleshooting =
 ==I cannot apply the patch==
 Which version of gtk are you patching against? It is known to work on 2.12.1 and 2.12.3
-If the source code of gtk you obtained has already been patched, the patch may also fail to apply. 
+If the source code of gtk you obtained has already been patched, the patch may also fail to apply. Also Gusty is known to use a weird gtk version. Generally you can open the .rej file and manually apply the patch, which only contains less than 50 lines of changes.
+
 ==I cannot see the debugging messages==
 Are you sure the directory in the `configure` location is the correct directory for your system's path? try
 {{{
@@ -155,7 +164,12 @@ locate libgtk-x11-2.0.so
 and figure out the correct `prefix`. Also, if you are using a distribution with strong packaging system(rpm or deb), refer to the gtk package's spec(description) file also will help you to figure it out.
 ==I can not see the applet in the add applet dialog of gnome panel==
 How is your bonobo-activation configure? If it is in a very weird location, this will happen. Try to find out a directory with many `.server` files, edit `/usr/local/share/doc/gnome2-globalmenu-applet/GNOME_GlobalMenuApplet.server.sample`, and put it there with an extension `.server`.
+==I tried to launch a server in `servers` directory. It crashes==
+configure with --enable-maintainer-mode.
+==launching the server in `servers` directory is fine, but after a make install it crashes==
+configure with --disable-maintainer-mode before you make install.
+
 ==In General==
 Please report to our project's mail list the detail of the trouble which traps you . We will try to help. the address of the mail list is googlegroups.com: gnome-globalmenu . reverse the order and replace : with @. 
 
-SVN traffic also goes into the groups and we don't want to hide your voice into junk mail.
+SVN traffic also goes into the groups.
