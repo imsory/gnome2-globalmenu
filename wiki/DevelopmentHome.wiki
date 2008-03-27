@@ -1,7 +1,7 @@
 #labels Phase-Design,Phase-Implementation,Featured
 # This page is the home page for development documents, ideas, drafts and other garbages.
 
-We are at 0.4.
+We are at 0.4 -> 0.5.
 
 = Roadmap =
   * 0.1: `Origin`
@@ -27,13 +27,14 @@ We are at 0.4.
     * Widget GnomenuMenuServer
   * 0.5: `trinity`
     * libgnomenu -> libglobalmenu obj PREFIX = GMenu
-       * GMenuServerMenuItem
-       * GMenuServerMenuBar
-       * GMenuMenuItemProxy
-       * GMenuMenubarProxy
+       * GMenuServerService  : Designed for dbus
+       * GMenuServerMenuItem : Designed for dbus
+       * GMenuServerMenuBar  : Designed for dbus
+       * GMenuMenuItemProxy  : Designed for dbus
+       * GMenuMenubarProxy   : Designed for dbus
        * GMenuMenuItem
        * GMenuMenuBar
-       * GMenuSocket
+       * GMenuSocket         : Deprecated in 0.6, replaced by dbus
     * Global Menu Server (in MFC language, it is the Documenet)
        * Server side Menu Item -> Accessed by GMenuMenuItemProxy
        * Server side Menu Bar  -> GMenuMenuBarProxy
