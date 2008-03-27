@@ -44,7 +44,8 @@ su -c 'make install'
 
 Then you are done. Add the applet to the panel and have fun. For GNOME, The name of the applet is Global Menu Bar.
 
-After this, You also need to setup GTK_MODULES to load libgnomenu in your .bash_profile,(or ~/.gnomerc if you are using Ubuntu)
+After this, You also need to setup GTK_MODULES to load libgnomenu in your .bash_profile,(or ~/.gnomerc if you are using Ubuntu). However,
+You don't need to do this after svn 833. In fact if you still add libgnomenu to your .gnomerc, you will meet weird errors.
 {{{
 GTK_MODULES=libgnomenu
 export GTK_MODULES;
