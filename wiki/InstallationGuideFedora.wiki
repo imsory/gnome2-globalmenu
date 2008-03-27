@@ -22,6 +22,7 @@ However no current GTK application is build up on the Global Menu widget (Gnomen
 
 After installation of RPMS, two post-inst work needs to be done:
   * edit your `~/.bach_profile`, add or modify to include `libgnomenu` in your `GTK_MODULES` envinroment variable. This tells libgnomenu to work in a GTK compatible mode.
+    * Skip it if you are installing a build after svn 833.
 {{{
    GTK_MODULES=`libgnomenu`;
    export GTK_MODULES ;
