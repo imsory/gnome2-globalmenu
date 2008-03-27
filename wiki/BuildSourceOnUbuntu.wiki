@@ -67,6 +67,7 @@ Using GtkMenuBar.
 }}}
 
  Right click your panel find and add Gobal Menubar. Run a typical gtk program, see if it works.
+    * *Skip* this step for a build of svn 833+
 {{{
 GTK_MODULES=libgnomenu gedit
 }}}
