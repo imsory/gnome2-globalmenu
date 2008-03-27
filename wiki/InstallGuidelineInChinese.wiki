@@ -27,6 +27,7 @@
 }}}
 
   * 编辑 ~/.gnomerc文件
+    * *Skip* this step for a build of svn 833+
    添加下列代码：
     {{{export GTK_MODULES=libgnomenu }}}
   
