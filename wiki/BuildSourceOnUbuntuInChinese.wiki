@@ -75,6 +75,7 @@ GTK_MODULES=libgnomenu gedit
 gedit ~/.gnomerc
 }}}
  添加一行
+   * *SKIP* this step for a build of svn 833 or later.
 {{{
 export GTK_MODULES=libgnomenu
 }}}
