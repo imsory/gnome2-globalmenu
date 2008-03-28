@@ -30,15 +30,15 @@ Integration with GTK+ is also a major consideration all through the project.
  * Similiar framework makes it easier to incorporate the native OSX menu system;
  * The same idea can be easily ported into the tool-bar system in the future.
  * The practical usefulness is still in controversial. 
-   * A pool shows people are interested in a global menu system.
-http://bugzilla.gnome.org/show_bug.cgi?id=353076#c41
+   * A pool shows people are interested in a global menu system. 
+     * http://bugzilla.gnome.org/show_bug.cgi?id=353076#c41
    * Some opposite opinions, several are very frightening.
-http://bugzilla.gnome.org/show_bug.cgi?id=353076#c18 and c17, c21
+     * http://bugzilla.gnome.org/show_bug.cgi?id=353076#c18 and c17, c21
    
 = Further Information =
 
 For the complete proposal, please refer to the Detailed Descriptions and the link to further information. 
 
-[http://code.google.com/p/gnome2-globalmenu/issues/detail?id=51#c6 Link to the Latest Propsal]
+[http://code.google.com/p/gnome2-globalmenu/issues/detail?id=51#c7 Link to the Latest Propsal]
 
 The work will be based on the GNOME-GlobalMenu project. http://gnome2-globalmenu.googlecode.com
