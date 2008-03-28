@@ -1,5 +1,8 @@
 # A new GTK+ menu system providing a set of new GObject objects and GTK widgets, in parallel with the old system(GtkMenuBar, GtkMenuItem).
 
+There is a fancy version of this document at 
+http://code.google.com/p/gnome2-globalmenu/wiki/SoC2008Application
+
 = Synosis =
 
 The new menu system is a Global Menu System. Literally speaking, a Global Menu System is a menu system where main menu bar of every document window in a particular session/screen is centrally controlled by GLOBAL daemons. 
