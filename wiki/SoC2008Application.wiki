@@ -6,7 +6,7 @@ The new menu system is a Global Menu System. Literally speaking, a Global Menu S
 
 In this system, every document window can be associated with one main menu bar, which provides an access to the application operations, either targeting at the document or the application itself.
 
-In the future, the application operations shall be provided in an application menu bar, and always combined with current document's main menu bar.
+In the future, the application-targeting operations shall be provided in an application menu bar, and always combined with current document's main menu bar.
 
 As a contrast, in the old GTK+ menu system, the menu bar is associated with an application window. The best example is from GIMP. The toolbox window has a menu bar, which is a collection of appication operations, and is (almost) duplicated in every document window.
 
