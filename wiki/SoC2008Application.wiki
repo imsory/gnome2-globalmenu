@@ -36,4 +36,6 @@ Further Information
 =============
 For the complete proposal, please refer to the Detailed Descriptions and the link to further information. 
 
+[http://code.google.com/p/gnome2-globalmenu/issues/detail?id=51#c6 Link to the Latest Propsal]
+
 The work will be based on the GNOME-GlobalMenu project. http://gnome2-globalmenu.googlecode.com
