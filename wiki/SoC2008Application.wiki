@@ -1,0 +1,39 @@
+# A new GTK+ menu system providing a set of new GObject objects and GTK widgets, in parallel with the old system(GtkMenuBar, GtkMenuItem).
+
+= Synosis =
+
+The new menu system is a Global Menu System. Literally speaking, a Global Menu System is a menu system where main menu bar of every document window in a particular session/screen is centrally controlled by GLOBAL daemons. 
+
+In this system, every document window can be associated with one main menu bar, which provides an access to the application operations, either targeting at the document or the application itself.
+
+In the future, the application operations shall be provided in an application menu bar, and always combined with current document's main menu bar.
+
+As a contrast, in the old GTK+ menu system, the menu bar is associated with an application window. The best example is from GIMP. The toolbox window has a menu bar, which is a collection of appication operations, and is (almost) duplicated in every document window.
+
+A screenshot is the best demonstration for a Global Menu.
+http://code.google.com/p/gnome2-globalmenu/issues/attachment?aid=1320681037990597002&name=Screenshot.png
+
+There will be three major products for this SoC Project.
+  * A DBUS based Global Menu System For GNOME
+  * An X11 based Global Menu System. Still be useful if we hesitate from the DBUS dependency in GTK+. 
+  * A handy small X11 based Object/Method/Signal IPC Framework.
+
+Integration with GTK+ is also a major consideration all through the project.
+
+= Benefits to GNOME =
+
+ * It is a first attempt on decoupling core GTK+ components via IPC. The IPC idea might help us to build a smaller GTK+ that does more.
+ * Helping the desktop environment to evolute from an application centric one toward a document centric one;
+ * Similiar framework makes it easier to incorporate the native OSX menu system;
+ * The same idea can be easily ported into the tool-bar system in the future.
+ * The practical usefulness is still in controversial. 
+   * A pool shows people are interested in a global menu system.
+http://bugzilla.gnome.org/show_bug.cgi?id=353076#c41
+   * Some opposite opinions, several are very frightening.
+http://bugzilla.gnome.org/show_bug.cgi?id=353076#c18 and c17, c21
+   
+Further Information
+=============
+For the complete proposal, please refer to the Detailed Descriptions and the link to further information. 
+
+The work will be based on the GNOME-GlobalMenu project. http://gnome2-globalmenu.googlecode.com
