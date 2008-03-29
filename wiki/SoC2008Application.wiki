@@ -3,7 +3,7 @@
 There is a fancy version of this document at 
 http://code.google.com/p/gnome2-globalmenu/wiki/SoC2008Application
 
-= Synosis =
+= Synopsis =
 
 The new menu system is a Global Menu System. Literally speaking, a Global Menu System is a menu system where main menu bar of every document window in a particular session/screen is centrally controlled by GLOBAL daemons. 
 
@@ -27,7 +27,7 @@ Integration with GTK+ is also a major consideration all through the project.
 
  * It is a first attempt on decoupling core GTK+ components via IPC. The IPC idea might help us to build a smaller GTK+ that does more.
  * Helping the desktop environment to evolute from an application centric one toward a document centric one;
- * Similiar framework makes it easier to incorporate the native OSX menu system;
+ * Similar framework makes it easier to incorporate the native OSX menu system;
  * The same idea can be easily ported into the tool-bar system in the future.
  * The practical usefulness is still in controversial. 
    * A pool shows people are interested in a global menu system. 
