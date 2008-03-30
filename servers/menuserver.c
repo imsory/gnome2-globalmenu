@@ -2,8 +2,6 @@
 #include "menuserver.h"
 
 #include "log.h"
-#include "intl.h"
-
 #define MENU_SERVER_GET_PRIVATE(obj) \
 	(G_TYPE_INSTANCE_GET_PRIVATE(obj, TYPE_MENU_SERVER, MenuServerPrivate))
 #define GET_OBJECT(_s, s, p) \
@@ -13,9 +11,7 @@
 enum {
 	PROP_0,
 	PROP_BGPIXMAP,
-	PROP_BGCOLOR,
-	PROP_ACTIVE_CLIENT,
-	PROP_ORIENTATION
+	PROP_BGCOLOR
 };
 
 typedef struct {
@@ -33,21 +29,7 @@ struct _MenuClient {
 		GdkNativeWindow parent;  /* for GTK I use parent, for KDE I use transient*/
 	};
 	GdkWindow * window; /*the window for the menu bar*/
-	gboolean grabbed;
 };
-
-#define FOR_EACH_CLIENT(cs, c, job) \
-	{ \
-		GList * node; \
-		GList * list = g_hash_table_get_values(cs); \
-		for(node = g_list_first(list); \
-			node; \
-			node = g_list_next(node)){ \
-			MenuClient * c = node->data; \
-			job; \
-		} \
-		g_list_free(list); \
-	}
 
 static MenuClient * _add_client		( MenuServer * _self);
 /* GObject interface */
@@ -86,11 +68,6 @@ static void
 	_s_client_unrealize				( MenuServer * _self, 
 									  GnomenuClientInfo * ci, 
 									  GnomenuServerHelper * helper);
-static void
-	_s_client_parent_focus			( MenuServer * _self,
-									  GnomenuClientInfo * ci,	
-									  GnomenuServerHelper * helper);
-
 static void 
 	_s_screen_active_window_changed	( MenuServer * _self, 
 									  WnckWindow * previous, 
@@ -99,6 +76,8 @@ static void
 	_s_gtk_helper_size_request		( MenuServer * _self, 
 									  GnomenuClientInfo * ci, 
 									  GnomenuServerHelper * helper);
+			
+static void _c_active_client_changed( MenuServer * _self);
 
 static void 
 	_update_active_menu_bar 		( MenuServer * _self);
@@ -133,9 +112,8 @@ menu_server_class_init(MenuServerClass * klass){
 	widget_class->size_allocate = _size_allocate;
 	widget_class->size_request = _size_request;
 
-//	klass->active_client_changed = _c_active_client_changed;
+	klass->active_client_changed = _c_active_client_changed;
 
-/*
 	class_signals[ACTIVE_CLIENT_CHANGED] =
 		g_signal_new("active-client-changed",
 			G_TYPE_FROM_CLASS(klass),
@@ -146,7 +124,7 @@ menu_server_class_init(MenuServerClass * klass){
 			g_cclosure_marshal_VOID__VOID,
 			G_TYPE_NONE,
 			0);
-*/
+
 /*
 	g_object_class_install_property (gobject_class,
 		PROP_WINDOW,
@@ -171,29 +149,10 @@ menu_server_class_init(MenuServerClass * klass){
 						"",
 						GDK_TYPE_COLOR,
 						G_PARAM_READWRITE));
-
-	g_object_class_install_property (gobject_class,
-		PROP_ACTIVE_CLIENT,
-		g_param_spec_pointer ("active-client",
-						"active-client",
-						"",
-						G_PARAM_READWRITE));
-
-	g_object_class_install_property (gobject_class,
-		PROP_ORIENTATION,
-		g_param_spec_uint ("orientation",
-						"orientation",
-						"",
-						0, 4, 0,
-						G_PARAM_READWRITE));
 }
 static void
-menu_server_init(MenuServer * server){
-	GTK_WIDGET_UNSET_FLAGS(server, GTK_NO_WINDOW);
-	server->gtk_helper = gnomenu_server_helper_new();
-	server->kde_helper = NULL;
-	server->clients = g_hash_table_new_full(NULL, NULL, NULL, (GDestroyNotify)(_free_client));
-	server->screen = wnck_screen_get_default();
+menu_server_init(MenuServer * _self){
+	GTK_WIDGET_UNSET_FLAGS(_self, GTK_NO_WINDOW);
 }
 static GObject * 
 _constructor	( GType type, guint n_construct_properties,
@@ -203,34 +162,33 @@ _constructor	( GType type, guint n_construct_properties,
 			n_construct_properties,
 			construct_params);
 	GET_OBJECT(_self, server, priv);
+	server->gtk_helper = gnomenu_server_helper_new();
+	server->kde_helper = NULL;
+	server->clients = g_hash_table_new_full(NULL, NULL, NULL, _free_client);
+	server->screen = wnck_screen_get_default();
 	
-	g_signal_connect_swapped(G_OBJECT(server->gtk_helper),
-			"client-new", G_CALLBACK(_s_client_new), server);
-	g_signal_connect_swapped(G_OBJECT(server->gtk_helper),
-			"client-destroy", G_CALLBACK(_s_client_destroy), server);
-	g_signal_connect_swapped(G_OBJECT(server->gtk_helper),
-			"client-realize", G_CALLBACK(_s_client_realize), server);
-	g_signal_connect_swapped(G_OBJECT(server->gtk_helper),
-			"client-reparent", G_CALLBACK(_s_client_reparent), server);
-	g_signal_connect_swapped(G_OBJECT(server->gtk_helper),
-			"client-unrealize", G_CALLBACK(_s_client_unrealize), server);
-	g_signal_connect_swapped(G_OBJECT(server->gtk_helper),
-			"client-parent-focus", G_CALLBACK(_s_client_parent_focus), server);
+	g_signal_connect_swapped(server->gtk_helper,
+			"client-new", _s_client_new, server);
+	g_signal_connect_swapped(server->gtk_helper,
+			"client-destroy", _s_client_destroy, server);
+	g_signal_connect_swapped(server->gtk_helper,
+			"client-realize", _s_client_realize, server);
+	g_signal_connect_swapped(server->gtk_helper,
+			"client-reparent", _s_client_reparent, server);
+	g_signal_connect_swapped(server->gtk_helper,
+			"client-unrealize", _s_client_unrealize, server);
 
-	g_signal_connect_swapped(G_OBJECT(server->screen),
-			"active-window-changed", G_CALLBACK(_s_screen_active_window_changed), server);
-	g_signal_connect_swapped(G_OBJECT(server->gtk_helper),
-			"size-request", G_CALLBACK(_s_gtk_helper_size_request), server);
+	g_signal_connect_swapped(server->screen,
+			"active-window-changed", _s_screen_active_window_changed, server);
+	g_signal_connect_swapped(server->gtk_helper,
+			"size-request", _s_gtk_helper_size_request, server);
 	return _self;
-}
-gboolean * menu_server_start(MenuServer * server){
-	gnomenu_server_helper_start(server->gtk_helper);
 }
 static void 
 _set_property( GObject * _self, guint property_id, const GValue * value, GParamSpec * pspec){
 	LOG("set property");
 	GET_OBJECT(_self, self, priv);
-	gboolean bg_dirty = FALSE;
+	gboolean dirty = FALSE;
 	switch (property_id){
 /*
 		case PROP_WINDOW:
@@ -245,7 +203,7 @@ _set_property( GObject * _self, guint property_id, const GValue * value, GParamS
 			GdkColor * newcolor = g_value_get_boxed(value);
 			if(self->bgcolor && !gdk_color_equal(newcolor, self->bgcolor)){
 				LOG("BGCOLOR dirty");
-				bg_dirty = TRUE;
+				dirty = TRUE;
 			}
 			if(self->bgcolor) 
 				g_boxed_free(GDK_TYPE_COLOR, self->bgcolor);
@@ -255,54 +213,16 @@ _set_property( GObject * _self, guint property_id, const GValue * value, GParamS
 		case PROP_BGPIXMAP:
 			if(self->bgpixmap != NULL && g_value_get_object(value)!= NULL){
 				LOG("BGPIXMAP dirty");
-				bg_dirty = TRUE;
+				dirty = TRUE;
 			}
 			if(GDK_IS_PIXMAP(self->bgpixmap)) g_object_unref(self->bgpixmap);
 			self->bgpixmap = g_value_get_object(value);
 			if(GDK_IS_PIXMAP(self->bgpixmap)) g_object_ref(self->bgpixmap);
 		break;
-		case PROP_ACTIVE_CLIENT: {
-			MenuClient * c = g_value_get_pointer(value);
-			if(self->active_client)
-				switch(self->active_client->type){
-					case MENU_CLIENT_GTK:
-						gnomenu_server_helper_set_visibility(self->gtk_helper, self->active_client->handle, FALSE);
-					break;
-				case MENU_CLIENT_KDE:
-					/*try to hide it*/
-				break;
-			}
-			if(c)
-				switch(c->type){
-					case MENU_CLIENT_GTK:
-						if(c->window)
-							//gdk_window_reparent(c->window, widget->window, 0, 0);
-							gnomenu_server_helper_set_visibility(self->gtk_helper, c->handle, TRUE);
-				break;
-				case MENU_CLIENT_KDE:
-				/*
-				if(c->window)
-						gdk_window_reparent(c->window, widget->window, 0, 0);
-				*/
-				break;
-				} 
-			self->active_client = c;
-		}
-			/*gtk_widget_queue_resize(self);*/
-		break;		
-		case PROP_ORIENTATION:
-			self->orientation = g_value_get_enum(value);
-			FOR_EACH_CLIENT(self->clients, c,
-				gnomenu_server_helper_set_orientation(
-					self->gtk_helper,
-					c->handle,
-					self->orientation);
-				);
-		break;
 		default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID(self, property_id, pspec);
 	}
-	if(bg_dirty) {
+	if(dirty) {
 		GList * node;
 		GnomenuClientInfo * ci;
 		for(node = g_list_first(self->gtk_helper->clients);
@@ -327,12 +247,6 @@ _get_property( GObject * _self, guint property_id, GValue * value, GParamSpec * 
 		break;
 		case PROP_BGPIXMAP:
 			g_value_set_object(value, self->bgpixmap);
-		break;
-		case PROP_ACTIVE_CLIENT:
-			g_value_set_pointer(value, self->active_client);
-		break;		
-		case PROP_ORIENTATION:
-			g_value_set_enum(value, self->orientation);
 		break;
 		default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID(self, property_id, pspec);
@@ -375,12 +289,7 @@ static void _s_client_new(MenuServer * _self, GnomenuClientInfo * ci, GnomenuSer
 	c->handle = ci;
 	c->window = NULL;
 	c->parent = NULL;
-	c->grabbed = FALSE;
 	g_hash_table_insert(_self->clients, ci, c);
-	gnomenu_server_helper_set_orientation(
-					_self->gtk_helper,
-					c->handle,
-					_self->orientation);
 	gnomenu_server_helper_queue_resize(_self->gtk_helper, c->handle);
 }
 static void _s_client_realize(MenuServer * _self, GnomenuClientInfo * ci, GnomenuServerHelper * helper){
@@ -389,17 +298,9 @@ static void _s_client_realize(MenuServer * _self, GnomenuClientInfo * ci, Gnomen
 	LOG();
 	g_assert(c);
 	c->window = gdk_window_foreign_new(ci->ui_window);
-	LOG("c->window: %p", c->window);
-	if(!c->window) {
-		g_warning("can't obtain the client window");
-		return;
-	}
-
-	c->grabbed = TRUE;	
-
-	if(GTK_WIDGET_REALIZED(_self))
-		gdk_window_reparent(c->window, widget->window, 0, 0);
-	
+	LOG("c->window: %p", ci->ui_window);
+	g_assert(c->window);
+	gdk_window_reparent(c->window, widget->window, 0, 0);
 	gnomenu_server_helper_set_background(_self->gtk_helper, c->handle, _self->bgcolor, _self->bgpixmap);
 }
 static void _s_client_reparent(MenuServer * _self, GnomenuClientInfo * ci, GnomenuServerHelper * helper){
@@ -413,7 +314,6 @@ static void _s_client_unrealize(MenuServer * _self, GnomenuClientInfo * ci, Gnom
 	MenuClient * c = g_hash_table_lookup(_self->clients, ci);
 	LOG();
 	g_assert(c);
-	c->grabbed = FALSE;
 	gdk_window_destroy(c->window);
 	c->window = NULL;
 }
@@ -421,17 +321,10 @@ static void _s_client_destroy(MenuServer * _self, GnomenuClientInfo * ci, Gnomen
 	MenuClient * c = g_hash_table_lookup(_self->clients, ci);
 	LOG();
 	g_assert(c);
-	if( _self->active_client == c ){
-		g_object_set(_self, "active-client", NULL, NULL);
+	if( _self->active == c ){
+		_self->active = NULL;
 	}
 	g_hash_table_remove(_self->clients, ci);
-}
-static void
-	_s_client_parent_focus			( MenuServer * _self,
-									  GnomenuClientInfo * ci,	
-									  GnomenuServerHelper * helper){
-
-	LOG("parent_focus");
 }
 static MenuClient * _find_client_by_parent(MenuServer * _self, GdkNativeWindow parent){
 	GList * node = NULL;
@@ -462,7 +355,33 @@ static void _update_active_menu_bar (MenuServer * _self){
 	} else {
 		LOG("active is nil");
 	}
-	g_object_set(G_OBJECT(_self), "active-client", c, NULL);
+		if(_self->active){
+			switch(_self->active->type){
+				case MENU_CLIENT_GTK:
+					gnomenu_server_helper_set_visibility(_self->gtk_helper, _self->active->handle, FALSE);
+				break;
+				case MENU_CLIENT_KDE:
+					/*try to hide it*/
+				break;
+			}
+		}
+		if(c){
+			switch(c->type){
+				case MENU_CLIENT_GTK:
+					if(c->window)
+						gdk_window_reparent(c->window, widget->window, 0, 0);
+					gnomenu_server_helper_set_visibility(_self->gtk_helper, c->handle, TRUE);
+				break;
+				case MENU_CLIENT_KDE:
+					if(c->window)
+						gdk_window_reparent(c->window, widget->window, 0, 0);
+				break;
+			}
+		}
+		_self->active = c;
+		g_signal_emit(_self, class_signals[ACTIVE_CLIENT_CHANGED],
+			0);
+		gtk_widget_queue_resize(_self);
 }
 static void 
 	_s_screen_active_window_changed	(MenuServer * _self, WnckWindow * previous, WnckScreen * screen){
@@ -475,8 +394,10 @@ static void
 }
 static void _s_gtk_helper_size_request(MenuServer * _self, GnomenuClientInfo * ci, GnomenuServerHelper * helper){
 	GtkWidget * widget = GTK_WIDGET(_self);
-	ci->allocation.width = widget->allocation.width;
-	ci->allocation.height = widget->allocation.height;
+	ci->allocation.width = MAX(ci->requisition.width,
+							widget->allocation.width);
+	ci->allocation.height = MAX(ci->requisition.height,
+							widget->allocation.height);
 }
 static void _size_request(GtkWidget * widget, GtkRequisition * requisition){
 	GList * node;
@@ -506,9 +427,19 @@ static void _size_request(GtkWidget * widget, GtkRequisition * requisition){
 static void _size_allocate(GtkWidget * widget, GtkAllocation * allocation){
 	GtkAllocation a = * allocation;
 	GET_OBJECT(widget, self, priv);
+	MenuClient * c = self->active;
 	a.x = 0;
 	a.y = 0;
 	LOG("w = %d, h = %d", allocation->width, allocation->height);
+	if(c)
+	switch(c->type){
+		case MENU_CLIENT_GTK:
+				gnomenu_server_helper_allocate_size(self->gtk_helper, c->handle, allocation);
+		break;
+		case MENU_CLIENT_KDE:
+		LOG("KDE unhandled");
+		break;
+	}
 	widget->allocation = * allocation;
 	if(GTK_WIDGET_REALIZED(widget)){
 		gdk_window_move_resize(widget->window,
@@ -517,18 +448,10 @@ static void _size_allocate(GtkWidget * widget, GtkAllocation * allocation){
 			allocation->width,
 			allocation->height);
 	}
-	FOR_EACH_CLIENT(self->clients, c, 
-		switch(c->type){
-			case MENU_CLIENT_GTK:
-				gnomenu_server_helper_allocate_size(self->gtk_helper, c->handle, allocation);
-			break;
-			case MENU_CLIENT_KDE:
-				LOG("KDE unhandled");
-			break;
-		}
-	);
 }
+static void _c_active_client_changed( MenuServer * _self){
 
+}
 static gboolean _is_client(MenuServer * server, MenuClient * client){
 	GList * node = NULL;
 	GList * list = g_hash_table_get_values(server->clients);
@@ -549,35 +472,29 @@ WnckWindow * menu_server_get_client_parent(MenuServer  * server, MenuClient * cl
 		return NULL;
 }
 static void _realize			( GtkWidget * widget){
-	GdkWindowAttr attributes;
-	gint attributes_mask;
+  GdkWindowAttr attributes;
+  gint attributes_mask;
 
-	GET_OBJECT(widget, menuserver, priv);
+  GTK_WIDGET_SET_FLAGS (widget, GTK_REALIZED);
 
-	GTK_WIDGET_SET_FLAGS (widget, GTK_REALIZED);
+  attributes.x = widget->allocation.x;
+  attributes.y = widget->allocation.y;
+  attributes.width = widget->allocation.width;
+  attributes.height = widget->allocation.height;
+  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.visual = gtk_widget_get_visual (widget);
+  attributes.colormap = gtk_widget_get_colormap (widget);
+  attributes.event_mask = gtk_widget_get_events (widget);
+  attributes.event_mask |= (GDK_EXPOSURE_MASK );
 
-	attributes.x = widget->allocation.x;
-	attributes.y = widget->allocation.y;
-	attributes.width = widget->allocation.width;
-	attributes.height = widget->allocation.height;
-	attributes.window_type = GDK_WINDOW_CHILD;
-	attributes.wclass = GDK_INPUT_OUTPUT;
-	attributes.visual = gtk_widget_get_visual (widget);
-	attributes.colormap = gtk_widget_get_colormap (widget);
-	attributes.event_mask = gtk_widget_get_events (widget);
-	attributes.event_mask |= (GDK_EXPOSURE_MASK );
+  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
+  widget->window = gdk_window_new (gtk_widget_get_parent_window (widget), &attributes, attributes_mask);
+  gdk_window_set_user_data (widget->window, widget);
 
-	attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
-	widget->window = gdk_window_new (gtk_widget_get_parent_window (widget), &attributes, attributes_mask);
-	gdk_window_set_user_data (widget->window, widget);
+  widget->style = gtk_style_attach (widget->style, widget->window);
+  gtk_style_set_background (widget->style, widget->window, GTK_STATE_NORMAL);
 
-	widget->style = gtk_style_attach (widget->style, widget->window);
-	gtk_style_set_background (widget->style, widget->window, GTK_STATE_NORMAL);
-	FOR_EACH_CLIENT(menuserver->clients, c,
-		if(c->grabbed) {
-			gdk_window_reparent(c->window, widget->window, 0, 0);
-		}
-	);
 }
 /*
  vim:ts=4:sw=4

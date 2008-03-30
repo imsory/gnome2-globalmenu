@@ -27,7 +27,6 @@
 
 #include <config.h>
 #include <gtk/gtk.h>
-#include "messages.h"
 #include "menubar.h"
 #include "quirks.h"
 
@@ -54,11 +53,6 @@ enum {
   PROP_CHILD_PACK_DIRECTION,
   PROP_QUIRK,
 };
-typedef struct {
-	gboolean overflowed;
-	GtkMenuItem * menu_item;
-	GtkMenuItem * proxy;
-} MenuItemInfo;
 
 typedef struct 
 {
@@ -70,14 +64,8 @@ typedef struct
 	gboolean detached;
 
 	gboolean widget_visible;
-	gboolean widget_pack_direction;
-	gboolean widget_child_pack_direction;
 
-	GHashTable * menu_items;
-	GtkWidget * arrow_button;
-	GtkWidget * arrow;
-	gboolean show_arrow;
-	GtkMenu	* popup_menu;
+	GList * popup_items;
 
 	GnomenuClientHelper * helper;
 	GdkWindow * container;
@@ -107,7 +95,7 @@ static void _set_property      		( GObject *object, guint prop_id,
 									  const GValue *value, GParamSpec * pspec );
 static void _get_property			( GObject *object, guint prop_id, 
 									  GValue *value, GParamSpec * pspec );
-static void _s_notify		( GObject * object, GParamSpec * pspec, gpointer data);
+static void _s_notify_visible		( GObject * object, GParamSpec * pspec, gpointer data);
 
 /* GtkWidget interface */
 static void _size_request			( GtkWidget			* widget,
@@ -127,18 +115,11 @@ static gboolean _s_motion_notify_event( GtkWidget * widget,
 static gboolean _s_button_press_event ( GtkWidget * widget,
 									  GdkEventButton * event,
 									  gpointer userdata);
-static gboolean _s_configure_event	( GtkWidget * widget,
-									  GdkEventConfigure * event,
-									  gpointer * data);
 /* GtkMenuShell Interface */
 static void _insert 				( GtkMenuShell * menu_shell, 
 									  GtkWidget * widget, gint pos);
 /* GtkContainer Inteface */
 static void _remove 				( GtkContainer * container, GtkWidget * widget);
-static void _forall					( GtkContainer    *container,
-									  gboolean     include_internals,
-									  GtkCallback      callback,
-									  gpointer     callback_data);
 /* Signal handler for the helper */
 static void _s_size_request			( GtkWidget * widget,
 									  GtkRequisition * requisition, 
@@ -158,17 +139,10 @@ static void _s_position_set 		( GtkWidget  * menubar,
 static void _s_visibility_set 		( GtkWidget  * menubar, 
 									  gboolean vis,
 									  GnomenuClientHelper * helper); 
-static void _s_orientation_set 		( GtkWidget  * menubar, 
-									  GnomenuOrientation orientation,
-									  GnomenuClientHelper * helper); 
 static void _s_background_set	 	( GtkWidget  * menubar, 
 									  GdkColor * bgcolor,
 									  GdkPixmap * pixmap,
 									  GnomenuClientHelper * helper); 
-static void _s_arrow_button_clicked		( GtkWidget * menubar,
-									  GtkWidget * arrow_button);
-static void _s_popup_menu_deactivated	( GtkWidget * menubar,
-									  GtkWidget * popup_menu);
 /* workaround the delete event*/
 static gboolean _s_delete_event			( GtkWidget * widget,
 									  GdkEvent * event,
@@ -176,8 +150,7 @@ static gboolean _s_delete_event			( GtkWidget * widget,
 static void _s_hierarchy_changed		( GtkWidget 		* widget,
 									  GtkWidget 		* old_toplevel,
 									  gpointer data);
-static void _s_notify_has_toplevel_focus ( GnomenuMenuBar * self, GParamSpec * pspec, GtkWindow * window);
-										
+
 /* utility functions*/
 static void _calc_size_request		( GtkWidget * widget, GtkRequisition * requisition);
 static void _do_size_allocate		( GtkWidget * widget, GtkAllocation * allocation);
@@ -186,8 +159,6 @@ static void
 static void _sync_remote_state		( GnomenuMenuBar * menubar);
 static void _sync_local_state		( GnomenuMenuBar * menubar);
 static void _reset_style			( GtkWidget * widget);
-static void _build_popup_menu 		( GnomenuMenuBar * self);
-
 
 //#define gnomenu_menu_bar_get_type _gnomenu_menu_bar_get_type
 //G_DEFINE_TYPE (GnomenuMenuBar, gnomenu_menu_bar, GTK_TYPE_MENU_BAR)
@@ -255,7 +226,6 @@ gnomenu_menu_bar_class_init (GnomenuMenuBarClass *class)
 //	menu_shell_class->move_current = gtk_menu_bar_move_current; 
 
 	container_class->remove = _remove;
-	container_class->forall = _forall;
 
 	g_type_class_add_private (gobject_class, sizeof (GnomenuMenuBarPrivate));  
 
@@ -268,37 +238,12 @@ gnomenu_menu_bar_class_init (GnomenuMenuBarClass *class)
 						G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
 }
 
-static void _menu_item_info_free(MenuItemInfo * info){
-	if(info->proxy) g_object_unref(info->proxy);
-	g_free(info);
-}
 void
 gnomenu_menu_bar_init (GnomenuMenuBar *object)
 {
 	LOG_FUNC_NAME;
 	GET_OBJECT(object, menu_bar, priv);
-	GtkWidget * arrow;
 	priv->helper = gnomenu_client_helper_new();
-	priv->menu_items = g_hash_table_new_full(NULL, NULL, NULL, _menu_item_info_free);
-	priv->popup_menu = GTK_MENU(gtk_menu_new());
-	priv->arrow_button = GTK_WIDGET(gtk_toggle_button_new());
-	priv->arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_NONE);
-	priv->show_arrow = FALSE;
-	priv->disposed = FALSE;
-	priv->detached = FALSE;
-
-
-	priv->allocation.width = 200;
-	priv->allocation.height = 20;
-	priv->allocation.x = 0;
-	priv->allocation.y = 0;
-	priv->requisition.width = 0;
-	priv->requisition.height = 0;
-	priv->x = 0;
-	priv->y = 0;
-
-	priv->widget_pack_direction = GTK_PACK_DIRECTION_LTR;
-	priv->widget_child_pack_direction = GTK_PACK_DIRECTION_LTR;
 }
 
 /**
@@ -340,17 +285,34 @@ static GObject* _constructor(GType type,
 		guint n_construct_properties,
 		GObjectConstructParam *construct_params){
 
+	GtkStyle * style;
 	GObject * object = (G_OBJECT_CLASS(gnomenu_menu_bar_menu_shell_class)->constructor)(
 		type, n_construct_properties, construct_params);
 
 	GET_OBJECT(object, menu_bar, priv);
 
-	gtk_container_set_border_width(GTK_CONTAINER(object), 0);
+	gtk_container_set_border_width(object, 0);
+/*
+	style = gtk_style_copy (GTK_WIDGET(object)->style);
+	style->xthickness = 0;
+	style->ythickness = 0;
+	gtk_widget_set_style (GTK_WIDGET(object), style);
+*/
+	g_object_unref (style);
 
-	gtk_widget_show(priv->arrow);
-	gtk_container_add(GTK_CONTAINER(priv->arrow_button), priv->arrow);
-	gtk_button_set_relief(GTK_BUTTON(priv->arrow_button), GTK_RELIEF_NONE);
-	gtk_widget_set_parent(priv->arrow_button, GTK_WIDGET(menu_bar));
+	priv->disposed = FALSE;
+	priv->detached = FALSE;
+
+	priv->popup_items = NULL;
+
+	priv->allocation.width = 200;
+	priv->allocation.height = 20;
+	priv->allocation.x = 0;
+	priv->allocation.y = 0;
+	priv->requisition.width = 0;
+	priv->requisition.height = 0;
+	priv->x = 0;
+	priv->y = 0;
 
 	g_signal_connect_swapped(G_OBJECT(priv->helper), "size-allocate",
 				G_CALLBACK(_s_size_allocate), menu_bar);
@@ -363,18 +325,11 @@ static GObject* _constructor(GType type,
 				G_CALLBACK(_s_background_set), menu_bar);
 	g_signal_connect_swapped(G_OBJECT(priv->helper), "visibility-set",
 				G_CALLBACK(_s_visibility_set), menu_bar);
-	g_signal_connect_swapped(G_OBJECT(priv->helper), "orientation-set",
-				G_CALLBACK(_s_orientation_set), menu_bar);
 
 	g_signal_connect_swapped(G_OBJECT(priv->helper), "connected",
 				G_CALLBACK(_s_connected), menu_bar);
 	g_signal_connect_swapped(G_OBJECT(priv->helper), "shutdown",
 				G_CALLBACK(_s_shutdown), menu_bar);
-
-	g_signal_connect_swapped(G_OBJECT(priv->arrow_button), "clicked",
-				G_CALLBACK(_s_arrow_button_clicked), menu_bar);
-	g_signal_connect_swapped(G_OBJECT(priv->popup_menu), "deactivate",
-				G_CALLBACK(_s_popup_menu_deactivated), menu_bar);
 	
 	g_signal_connect(G_OBJECT(menu_bar), "delete-event",
 				G_CALLBACK(_s_delete_event), priv->helper);
@@ -382,15 +337,12 @@ static GObject* _constructor(GType type,
 				G_CALLBACK(_s_hierarchy_changed), priv->helper);
 	g_signal_connect(G_OBJECT(menu_bar), "button-press-event",
 				G_CALLBACK(_s_button_press_event), priv->helper);
-	g_signal_connect(G_OBJECT(menu_bar), "configure-event",
-				G_CALLBACK(_s_configure_event), priv->helper);
 	g_signal_connect(G_OBJECT(menu_bar), "motion-notify-event",
 				G_CALLBACK(_s_motion_notify_event), priv->helper);
-	g_signal_connect(G_OBJECT(menu_bar), "notify",
-				G_CALLBACK(_s_notify), NULL);
 
-	gnomenu_client_helper_start(priv->helper);
-	LOG("constructor");
+	g_signal_connect(G_OBJECT(menu_bar), "notify::visible",
+				G_CALLBACK(_s_notify_visible), NULL);
+
 	return object;
 }
 
@@ -400,55 +352,16 @@ _dispose (GObject * _object){
 	GET_OBJECT(_object, menu_bar, priv);
 	if(!priv->disposed){
 		priv->disposed = TRUE;	
-		g_signal_handlers_disconnect_by_func(G_OBJECT(priv->helper),
-				G_CALLBACK(_s_size_allocate), menu_bar);
-	g_signal_handlers_disconnect_by_func(G_OBJECT(priv->helper), 
-				G_CALLBACK(_s_size_request), menu_bar);
-
-	g_signal_handlers_disconnect_by_func(G_OBJECT(priv->helper), 
-				G_CALLBACK(_s_position_set), menu_bar);
-	g_signal_handlers_disconnect_by_func(G_OBJECT(priv->helper), 
-				G_CALLBACK(_s_background_set), menu_bar);
-	g_signal_handlers_disconnect_by_func(G_OBJECT(priv->helper), 
-				G_CALLBACK(_s_visibility_set), menu_bar);
-	g_signal_handlers_disconnect_by_func(G_OBJECT(priv->helper), 
-				G_CALLBACK(_s_orientation_set), menu_bar);
-
-	g_signal_handlers_disconnect_by_func(G_OBJECT(priv->helper), 
-				G_CALLBACK(_s_connected), menu_bar);
-	g_signal_handlers_disconnect_by_func(G_OBJECT(priv->helper), 
-				G_CALLBACK(_s_shutdown), menu_bar);
-
-	g_signal_handlers_disconnect_by_func(G_OBJECT(priv->arrow_button), 
-				G_CALLBACK(_s_arrow_button_clicked), menu_bar);
-	g_signal_handlers_disconnect_by_func(G_OBJECT(priv->popup_menu), 
-				G_CALLBACK(_s_popup_menu_deactivated), menu_bar);
-	
-	g_signal_handlers_disconnect_by_func(G_OBJECT(menu_bar), 
-				G_CALLBACK(_s_delete_event), priv->helper);
-	g_signal_handlers_disconnect_by_func(G_OBJECT(menu_bar), 
-				G_CALLBACK(_s_hierarchy_changed), priv->helper);
-	g_signal_handlers_disconnect_by_func(G_OBJECT(menu_bar), 
-				G_CALLBACK(_s_button_press_event), priv->helper);
-	g_signal_handlers_disconnect_by_func(G_OBJECT(menu_bar), 
-				G_CALLBACK(_s_configure_event), priv->helper);
-	g_signal_handlers_disconnect_by_func(G_OBJECT(menu_bar), 
-				G_CALLBACK(_s_motion_notify_event), priv->helper);
-	g_signal_handlers_disconnect_by_func(G_OBJECT(menu_bar), 
-				G_CALLBACK(_s_notify), NULL);
+		g_object_unref(priv->helper);
 	}
-	g_hash_table_remove_all(priv->menu_items);
 	G_OBJECT_CLASS(gnomenu_menu_bar_menu_shell_class)->dispose(_object);
 }
 static void
 _finalize(GObject * _object){
 	LOG_FUNC_NAME;
 	GET_OBJECT(_object, menu_bar, priv);	
-	gtk_widget_unparent(priv->arrow_button);
-	g_hash_table_destroy(priv->menu_items);
-	gtk_widget_destroy(GTK_WIDGET(priv->popup_menu));
+	g_list_free(priv->popup_items);
 	G_OBJECT_CLASS(gnomenu_menu_bar_menu_shell_class)->finalize(_object);
-	g_object_unref(priv->helper);
 }
 static void
 _set_property (GObject      *object,
@@ -459,10 +372,10 @@ _set_property (GObject      *object,
 	GET_OBJECT(object, self, priv); 
 	switch (prop_id) {
 		case PROP_PACK_DIRECTION:
-			gtk_menu_bar_set_pack_direction (GTK_MENU_BAR(self), g_value_get_enum (value));
+			gtk_menu_bar_set_pack_direction (self, g_value_get_enum (value));
 		break;
 		case PROP_CHILD_PACK_DIRECTION:
-			gtk_menu_bar_set_child_pack_direction (GTK_MENU_BAR(self), g_value_get_enum (value));
+			gtk_menu_bar_set_child_pack_direction (self, g_value_get_enum (value));
 		break;
 		case PROP_QUIRK:
 			{
@@ -470,7 +383,7 @@ _set_property (GObject      *object,
 			if(priv->quirk != q){
 				priv->quirk = q;
 				if(GNOMENU_HAS_QUIRK(priv->quirk, FORCE_SHOW_ALL) &&!GTK_WIDGET_REALIZED(self)){
-					gtk_widget_realize(GTK_WIDGET(self));
+					gtk_widget_realize(self);
 				}
 			}
 			}
@@ -491,10 +404,10 @@ _get_property (GObject    *object,
   
 	switch (prop_id) {
 		case PROP_PACK_DIRECTION:
-		  g_value_set_enum (value, gtk_menu_bar_get_pack_direction (GTK_MENU_BAR(self)));
+		  g_value_set_enum (value, gtk_menu_bar_get_pack_direction (self));
 		  break;
 		case PROP_CHILD_PACK_DIRECTION:
-		  g_value_set_enum (value, gtk_menu_bar_get_child_pack_direction (GTK_MENU_BAR(self)));
+		  g_value_set_enum (value, gtk_menu_bar_get_child_pack_direction (self));
 		  break;
 		case PROP_QUIRK:
 			g_value_set_flags (value, priv->quirk);
@@ -514,7 +427,6 @@ _size_request (GtkWidget      *widget,
 
 	g_return_if_fail (GTK_IS_MENU_BAR (widget));
 	g_return_if_fail (requisition != NULL);
-	GtkPackDirection pack_direction;
 	LOG_FUNC_NAME;
 
 	GET_OBJECT(widget, menu_bar, priv);
@@ -537,17 +449,6 @@ _size_request (GtkWidget      *widget,
 			requisition->height = 0;
 			_calc_size_request(widget, &priv->requisition);
 		}
-	}
-	pack_direction = gtk_menu_bar_get_pack_direction(GTK_MENU_BAR(widget));	
-	switch(pack_direction){
-		case GTK_PACK_DIRECTION_LTR:
-		case GTK_PACK_DIRECTION_RTL:
-			requisition->width = 0;
-		break;
-		case GTK_PACK_DIRECTION_BTT:
-		case GTK_PACK_DIRECTION_TTB:
-			requisition->height = 0;
-		break;
 	}
 	widget->requisition = *requisition;
 }
@@ -596,16 +497,14 @@ _size_allocate (GtkWidget     *widget,
 			priv->allocation = *allocation;	
 			_do_size_allocate(widget, allocation);
 		}else { /* ROAMING */
-			/*rely on the configure_event */
-			/*
-			priv->allocation = *allocation;	
+			priv->allocation.width = priv->requisition.width;
+			priv->allocation.height = priv->requisition.height;
 			if(GTK_WIDGET_REALIZED(widget)){
 				gdk_window_resize(priv->floater,
 					priv->allocation.width,
 					priv->allocation.height);
 			}
 			_do_size_allocate(widget, &priv->allocation);
-			*/
 		}
 	}
 }
@@ -648,10 +547,7 @@ static void _s_connected ( GtkWidget  * widget, GnomenuSocketNativeID target, Gn
 static void _s_shutdown ( GtkWidget * widget, GnomenuClientHelper * helper){
 	LOG_FUNC_NAME;
 	GET_OBJECT(widget, menu_bar, priv);
-	GList * l;
-	if(priv->disposed) {
-		return;
-	}
+
 	priv->detached = FALSE;	
 
 	_reset_style(widget);	
@@ -659,12 +555,6 @@ static void _s_shutdown ( GtkWidget * widget, GnomenuClientHelper * helper){
 	if(GTK_WIDGET_REALIZED(widget)){
 		if(!GNOMENU_HAS_QUIRK(priv->quirk, HIDE_ON_QUIT)){
 			gtk_widget_unrealize(widget);
-
-			priv->pack_direction = priv->widget_pack_direction;
-			priv->child_pack_direction = priv->widget_child_pack_direction;
-			gtk_widget_queue_resize(widget);
-			for (l = GTK_MENU_SHELL (menu_bar)->children; l; l = l->next)
-				gtk_widget_queue_resize (GTK_WIDGET (l->data));
 
 			if(priv->widget_visible){ /* fake to be unvisible, so
 										that _show will do real show work*/
@@ -728,34 +618,6 @@ static void _s_visibility_set 		( GtkWidget  * widget,
 		GTK_WIDGET_UNSET_FLAGS(widget, GTK_VISIBLE);
 	}	
 	LOG("done");
-}
-static void _s_orientation_set 		( GtkWidget  * widget, 
-									  GnomenuOrientation orientation,
-									  GnomenuClientHelper * helper){
-	LOG_FUNC_NAME;
-	GET_OBJECT(widget, menu_bar, priv);
-	GList * l;
-	switch(orientation){
-		case GNOMENU_ORIENT_TOP:
-			priv->pack_direction = GTK_PACK_DIRECTION_LTR;
-			priv->child_pack_direction = GTK_PACK_DIRECTION_LTR;
-		break;
-		case GNOMENU_ORIENT_LEFT:
-			priv->pack_direction = GTK_PACK_DIRECTION_TTB;
-			priv->child_pack_direction = GTK_PACK_DIRECTION_TTB;
-		break;
-		case GNOMENU_ORIENT_RIGHT:
-			priv->pack_direction = GTK_PACK_DIRECTION_TTB;
-			priv->child_pack_direction = GTK_PACK_DIRECTION_TTB;
-		break;
-		case GNOMENU_ORIENT_BOTTOM:
-			priv->pack_direction = GTK_PACK_DIRECTION_LTR;
-			priv->child_pack_direction = GTK_PACK_DIRECTION_LTR;
-		break;
-	}
-	gtk_widget_queue_resize(widget);
-	for (l = GTK_MENU_SHELL (menu_bar)->children; l; l = l->next)
-		gtk_widget_queue_resize (GTK_WIDGET (l->data));
 }
 static void _s_background_set	 		( GtkWidget  * widget, 
 									  GdkColor * color,
@@ -821,21 +683,6 @@ static gboolean _s_button_press_event (GtkWidget * widget,
 	LOG_FUNC_NAME;
 	GET_OBJECT(widget, menu_bar, priv);
 	return FALSE;	
-}
-static gboolean _s_configure_event	( GtkWidget * widget,
-									  GdkEventConfigure * event,
-									  gpointer * data){
-	GET_OBJECT(widget, menu_bar, priv);
-	if(event->window == priv->floater) {
-		LOG("send=%d, %d %d %d %d", event->send_event, event->x, event->y, event->width, event->height);
-		if(!priv->detached && GNOMENU_HAS_QUIRK(priv->quirk, ROAMING)){
-			/* it is user resizing.*/
-			GtkAllocation allocation = {event->x, event->y, event->width, event->height};
-			priv->allocation = allocation;
-			_do_size_allocate(widget, &allocation);
-		}
-	}
-	return FALSE;
 }
 static gboolean _s_motion_notify_event	( GtkWidget * widget, 
 									  GdkEventMotion * event, gpointer userdata){
@@ -919,7 +766,7 @@ _expose (GtkWidget      *widget,
 
 static void _s_notify_title (GnomenuMenuBar * menu_bar, GParamSpec * spec, 
 	GtkWindow * toplevel){
-	const gchar * detail = gtk_window_get_role(toplevel);
+	gchar * detail = gtk_window_get_role(toplevel);
 	if(!detail) detail = gtk_window_get_title(toplevel);
 	LOG("detail = %s", detail);
 	g_object_set(menu_bar, 
@@ -927,14 +774,6 @@ static void _s_notify_title (GnomenuMenuBar * menu_bar, GParamSpec * spec,
 			gnomenu_get_detail_quirk(detail),
 			NULL
 			);
-}
-static void _s_notify_has_toplevel_focus ( GnomenuMenuBar * self, GParamSpec * pspec, GtkWindow * window){
-	if(gtk_window_has_toplevel_focus(window)){
-		GET_OBJECT(self, menu_bar, priv);
-		LOG("receive toplevel focus");
-		if(priv->detached)
-			gnomenu_client_helper_send_parent_focus(priv->helper);
-	}
 }
 static void
 _s_hierarchy_changed (GtkWidget *widget,
@@ -946,21 +785,16 @@ _s_hierarchy_changed (GtkWidget *widget,
 	if(old_toplevel){
 		g_signal_handlers_disconnect_by_func(
 			old_toplevel, _s_notify_title, menu_bar);
-		g_signal_handlers_disconnect_by_func(
-			old_toplevel, _s_notify_has_toplevel_focus, menu_bar);
 	}
 
 	toplevel = gtk_widget_get_toplevel(widget);
 	if(GTK_WIDGET_TOPLEVEL(toplevel)){
 		if(GTK_IS_WINDOW(toplevel)){
 			g_signal_connect_swapped(toplevel, "notify::role", 
-			G_CALLBACK(_s_notify_title), menu_bar);
+			_s_notify_title, menu_bar);
 			g_signal_connect_swapped(toplevel, "notify::title", 
-			G_CALLBACK(_s_notify_title), menu_bar);
-			g_signal_connect_swapped(toplevel, "notify::has-toplevel-focus",
-			G_CALLBACK(_s_notify_has_toplevel_focus), menu_bar);
-
-			_s_notify_title(menu_bar, NULL, GTK_WINDOW(toplevel));
+			_s_notify_title, menu_bar);
+			_s_notify_title(menu_bar, NULL, toplevel);
 		}
 		if(GTK_WIDGET_REALIZED(toplevel)){
 /* NOTE: This signal is rarely captured, because usually a menubar is added to a toplevel
@@ -1032,6 +866,7 @@ _realize (GtkWidget * widget){
 
 	priv->floater = gdk_window_new (
 		gtk_widget_get_root_window(widget), &attributes, attributes_mask);
+
 	attributes.x = 0;
 	attributes.y = 0;
 	attributes.width = MAX(priv->requisition.width, priv->allocation.width);
@@ -1074,12 +909,8 @@ _realize (GtkWidget * widget){
 	gtk_container_forall(GTK_CONTAINER(widget), 
            (GtkCallback)(_set_child_parent_window), 
            (gpointer)(priv->container));
-	{
-	GtkWidget * toplevel = gtk_widget_get_toplevel(widget);
-	gdk_window_set_transient_for(priv->floater, toplevel->window);
-	gdk_window_set_group(priv->floater, toplevel->window);
-	}
-	_reset_style(GTK_WIDGET(menu_bar));	
+
+	_reset_style(menu_bar);	
 	_sync_remote_state(menu_bar);
 	_sync_local_state(menu_bar);
 }
@@ -1108,46 +939,20 @@ _map (GtkWidget * widget){
 	GTK_WIDGET_CLASS(gnomenu_menu_bar_menu_shell_class)->map(widget);
 }
 
-static void _s_notify 				( GObject * object, GParamSpec * pspec, gpointer data){
+static void _s_notify_visible 				( GObject * object, GParamSpec * pspec, gpointer data){
 	GET_OBJECT(object, menu_bar, priv);
-	const gchar * name = g_param_spec_get_name(pspec);
-	struct {
-		gchar * name;
-		gpointer value;
-	} * p, li [] = {
-		{"visible", &priv->widget_visible},
-		{"pack-direction", &priv->widget_pack_direction},
-		{"child-pack-direction", &priv->widget_child_pack_direction},
-		{NULL, NULL}
-	};
-	for(p = li; p->name; p++){
-		if(g_str_equal(p->name, name)){
-			LOG("widget property %s is modified. back it up",
-				name);
-			g_object_get(object, p->name, p->value, NULL);
-			break;
-		}
-	}
-	if(!p->name){
-			LOG("other property %s", name);
-	}
+	g_object_get(object, "visible", &priv->widget_visible, NULL);
 }
 static void
 _insert (GtkMenuShell * menu_shell, GtkWidget * widget, gint pos){
 	LOG_FUNC_NAME;
 	GtkRequisition req;
-	MenuItemInfo * item_info = g_new0(MenuItemInfo, 1);
-
 	GET_OBJECT(menu_shell, menu_bar, priv);
 	GTK_MENU_SHELL_CLASS(gnomenu_menu_bar_menu_shell_class)->insert(menu_shell, widget, pos);
 	LOG("widget name = %s", gtk_widget_get_name(widget));
 	if(GTK_WIDGET_REALIZED(menu_shell)) {
 		_set_child_parent_window(widget, priv->container);
 	}
-	if(GTK_IS_MENU_ITEM(widget)){
-		item_info->menu_item = GTK_MENU_ITEM(widget);
-	}
-	g_hash_table_insert(priv->menu_items, widget, item_info);
 	if(priv->detached){
 /*		We depend on widget signal loop
 		_calc_size_request(menu_bar, &req);
@@ -1161,29 +966,13 @@ static void
 _remove (GtkContainer * container, GtkWidget * widget){
 	LOG_FUNC_NAME;
 	GtkRequisition req;
-
 	GET_OBJECT(container, menu_bar, priv);
 	GTK_CONTAINER_CLASS(gnomenu_menu_bar_menu_shell_class)->remove(container, widget);
-
-	g_hash_table_remove(priv->menu_items, widget);
-
 	if(priv->detached){
 /*		we depend on widget signal loop.
  *		calc_size_request(menu_bar, &req);
 		gnomenu_client_helper_request_size(priv->helper, &req);
 */
-	}
-}
-static void _forall					( GtkContainer    *container,
-									  gboolean     include_internals,
-									  GtkCallback      callback,
-									  gpointer     callback_data){
-	GET_OBJECT(container, menu_bar, priv);
-	GTK_CONTAINER_CLASS(gnomenu_menu_bar_menu_shell_class)->forall(container, 
-					include_internals, callback, callback_data);
-	
-	if(include_internals){
-		callback(priv->arrow_button, callback_data);
 	}
 }
 static void _sync_remote_state				( GnomenuMenuBar * _self){
@@ -1206,7 +995,7 @@ static void _sync_local_state				( GnomenuMenuBar * _self){
 	LOG_FUNC_NAME;
 	GET_OBJECT(_self, menu_bar, priv);
 	if(priv->detached)
-		gtk_widget_queue_resize(GTK_WIDGET(menu_bar));
+		gtk_widget_queue_resize(menu_bar);
 
 	if(GTK_WIDGET_REALIZED(menu_bar)){
 		gdk_window_invalidate_rect(priv->container, NULL, TRUE);
@@ -1322,9 +1111,7 @@ _do_size_allocate (GtkWidget * widget,
 	gint ltr_x, ltr_y;
 	gint ipadding;
 	GtkPackDirection pack_direction, child_pack_direction;
-	GtkAllocation adjusted;
-	GtkRequisition arrow_requisition;
-	GtkAllocation arrow_allocation;
+
 	LOG_FUNC_NAME;
 	LOG("x=%d, y=%d, width=%d, height=%d\n", *allocation);
 
@@ -1334,30 +1121,19 @@ _do_size_allocate (GtkWidget * widget,
 	GET_OBJECT(widget, menu_bar, priv);
 	menu_shell = GTK_MENU_SHELL (widget);
 
-	direction = gtk_widget_get_direction (widget);
-
-	gtk_widget_style_get (widget, "internal-padding", &ipadding, NULL);
-
-	pack_direction = gtk_menu_bar_get_pack_direction(GTK_MENU_BAR(menu_bar));
-	child_pack_direction = gtk_menu_bar_get_child_pack_direction(GTK_MENU_BAR(menu_bar));
-
-	adjusted = * allocation;
-	adjusted.x = 0; /*the x, y offset is taken care by either widget->window or priv->floater*/
-	adjusted.y = 0;
-	gtk_widget_size_request(priv->arrow_button, &arrow_requisition);
-
-	arrow_allocation.width = arrow_requisition.width;
-	arrow_allocation.height = arrow_requisition.height;
-	priv->show_arrow = FALSE;
-
-
 	if(GTK_WIDGET_REALIZED(widget)){
 		gdk_window_move_resize(priv->container,
 			0,
 			0,
-			allocation->width,
-			allocation->height);
+			MAX(priv->requisition.width, allocation->width),
+			MAX(priv->requisition.height, allocation->height));
 	}
+	direction = gtk_widget_get_direction (widget);
+
+	gtk_widget_style_get (widget, "internal-padding", &ipadding, NULL);
+
+	pack_direction = gtk_menu_bar_get_pack_direction(menu_bar);
+	child_pack_direction = gtk_menu_bar_get_child_pack_direction(menu_bar);
   
 	if (menu_shell->children) {
 		child_allocation.x = (GTK_CONTAINER (menu_bar)->border_width +
@@ -1368,45 +1144,21 @@ _do_size_allocate (GtkWidget * widget,
       
 		if (pack_direction == GTK_PACK_DIRECTION_LTR ||
 			pack_direction == GTK_PACK_DIRECTION_RTL) {
+			child_allocation.height = MAX (1, (gint)allocation->height - child_allocation.y * 2);
 
 			offset = child_allocation.x; 	/* Window edge to menubar start */
 			ltr_x = child_allocation.x;
 
-			if(allocation->width < priv->requisition.width){
-				if((direction == GTK_TEXT_DIR_LTR) == (pack_direction == GTK_PACK_DIRECTION_LTR)){
-					priv->show_arrow = TRUE;
-					adjusted.width -= arrow_requisition.width;
-					arrow_allocation.height = adjusted.height;
-					arrow_allocation.x = adjusted.width;
-					arrow_allocation.y = 0;
-				} else {
-					priv->show_arrow = TRUE;
-					adjusted.x = arrow_requisition.width;
-					adjusted.width -= arrow_requisition.width;
-					arrow_allocation.height = adjusted.height;
-					arrow_allocation.x = 0;
-					arrow_allocation.y = 0;
-				}
-			}
-			
-			child_allocation.height = MAX (1, (gint)adjusted.height - child_allocation.y * 2);
-
 			children = menu_shell->children;
-
 			while (children) {
 				gint toggle_size;          
-				MenuItemInfo * menu_info;
 
 				child = children->data;
 				children = children->next;
 
-				menu_info = g_hash_table_lookup(priv->menu_items, child);
-
 				gtk_menu_item_toggle_size_request (GTK_MENU_ITEM (child),
 										&toggle_size);
 				gtk_widget_get_child_requisition (child, &child_requisition);
-				menu_info->overflowed = (ltr_x + child_requisition.width/2
-										> adjusted.width);
 
 				if (child_pack_direction == GTK_PACK_DIRECTION_LTR ||
 					child_pack_direction == GTK_PACK_DIRECTION_RTL)
@@ -1417,129 +1169,74 @@ _do_size_allocate (GtkWidget * widget,
 				/* Support for the right justified help menu */
 				if ((children == NULL) && (GTK_IS_MENU_ITEM(child))
 				&& (GTK_MENU_ITEM(child)->right_justify)) {
-					ltr_x = adjusted.width -
+					ltr_x = allocation->width -
 					child_requisition.width - offset;
 				}
 				if (GTK_WIDGET_VISIBLE (child)) {
+					if ((direction == GTK_TEXT_DIR_LTR) == (pack_direction == GTK_PACK_DIRECTION_LTR))
+						child_allocation.x = ltr_x;
+					else
+						child_allocation.x = allocation->width
+											- child_requisition.width - ltr_x; 
 
-					if(menu_info->overflowed){ /*move it away & clip it.*/
-						child_allocation.width = 0;
-						child_allocation.x = allocation->width;
-
-					} else { /*use remaining width if there isn't enought*/
-						child_allocation.width = MIN(
-							child_requisition.width,
-							(int)adjusted.width - (int)ltr_x);
-						if ((direction == GTK_TEXT_DIR_LTR) 
-							== (pack_direction == GTK_PACK_DIRECTION_LTR))
-							child_allocation.x = ltr_x;
-						else
-							child_allocation.x = adjusted.width
-											- child_allocation.width - ltr_x; 
-						child_allocation.x += adjusted.x;
-					}
+					child_allocation.width = child_requisition.width;
 
 					gtk_menu_item_toggle_size_allocate (GTK_MENU_ITEM (child),
 									toggle_size);
 					gtk_widget_size_allocate (child, &child_allocation);
 
-					ltr_x += child_requisition.width;
-
+					ltr_x += child_allocation.width;
 				}
 			}
 		} else {
+			child_allocation.width = MAX (1, (gint)allocation->width - child_allocation.x * 2);
+
 			offset = child_allocation.y; 	/* Window edge to menubar start */
 			ltr_y = child_allocation.y;
 
-			if(allocation->height < priv->requisition.height){
-				if((direction == GTK_TEXT_DIR_LTR) == (pack_direction == GTK_PACK_DIRECTION_TTB)){
-					priv->show_arrow = TRUE;
-					adjusted.height -= arrow_requisition.height;
-					arrow_allocation.width = adjusted.width;
-					arrow_allocation.y = adjusted.height;
-					arrow_allocation.x = 0;
-				} else {
-					priv->show_arrow = TRUE;
-					adjusted.y = arrow_requisition.height;
-					adjusted.height -= arrow_requisition.height;
-					arrow_allocation.width = adjusted.width;
-					arrow_allocation.y = 0;
-					arrow_allocation.x = 0;
-				}
-			}
-			
-			child_allocation.width = MAX (1, (gint)adjusted.width - child_allocation.x * 2);
-
 			children = menu_shell->children;
-
 			while (children) {
 				gint toggle_size;          
-				MenuItemInfo * menu_info;
 
 				child = children->data;
 				children = children->next;
 
-				menu_info = g_hash_table_lookup(priv->menu_items, child);
-
 				gtk_menu_item_toggle_size_request (GTK_MENU_ITEM (child),
-										&toggle_size);
+						&toggle_size);
 				gtk_widget_get_child_requisition (child, &child_requisition);
-				menu_info->overflowed = (ltr_y + child_requisition.height/2
-										> adjusted.height);
 
-				if (child_pack_direction == GTK_PACK_DIRECTION_TTB ||
-					child_pack_direction == GTK_PACK_DIRECTION_BTT)
-					child_requisition.height += toggle_size;
-				else
+				if (child_pack_direction == GTK_PACK_DIRECTION_LTR ||
+					child_pack_direction == GTK_PACK_DIRECTION_RTL)
 					child_requisition.width += toggle_size;
+				else
+					child_requisition.height += toggle_size;
 
 				/* Support for the right justified help menu */
 				if ((children == NULL) && (GTK_IS_MENU_ITEM(child))
-				&& (GTK_MENU_ITEM(child)->right_justify)) {
-					ltr_y = adjusted.height -
+					&& (GTK_MENU_ITEM(child)->right_justify)) {
+					ltr_y = allocation->height -
 					child_requisition.height - offset;
 				}
 				if (GTK_WIDGET_VISIBLE (child)) {
+					if ((direction == GTK_TEXT_DIR_LTR) ==
+						(pack_direction == GTK_PACK_DIRECTION_TTB)) 
+						child_allocation.y = ltr_y;
+					else
+					child_allocation.y = allocation->height
+										- child_requisition.height - ltr_y; 
 
-					if(menu_info->overflowed){ /*move it aw.x & clip it.*/
-						child_allocation.height = 0;
-						child_allocation.y = allocation->height;
-
-					} else { /*use remaining height if there isn't enough*/
-						child_allocation.height = MIN(
-							child_requisition.height,
-							(int)adjusted.height - (int)ltr_y);
-						if ((direction == GTK_TEXT_DIR_LTR) 
-							== (pack_direction == GTK_PACK_DIRECTION_TTB))
-							child_allocation.y = ltr_y;
-						else {
-							child_allocation.y = adjusted.height
-											- child_allocation.height - ltr_y; 
-						}
-						child_allocation.y += adjusted.y;
-						LOG("a %d %d %d %d", child_allocation);
-						LOG("r %d %d ", child_requisition);
-						LOG("l %d ", ltr_y);
-					}
+					child_allocation.height = child_requisition.height;
 
 					gtk_menu_item_toggle_size_allocate (GTK_MENU_ITEM (child),
-									toggle_size);
+					toggle_size);
 					gtk_widget_size_allocate (child, &child_allocation);
 
-					ltr_y += child_requisition.height;
-
+					ltr_y += child_allocation.height;
 				}
 			}
 		}
 	}
 
-	if(priv->show_arrow) {
-		LOG("arrow_allocation: %d %d %d %d", arrow_allocation);
-		gtk_widget_size_allocate(priv->arrow_button, &arrow_allocation);
-		gtk_widget_show_all(priv->arrow_button);
-	} else {
-		gtk_widget_hide(priv->arrow_button);
-	}
 }
 static void _reset_style			( GtkWidget * widget){
 	GtkRcStyle * rc_style;
@@ -1548,146 +1245,8 @@ static void _reset_style			( GtkWidget * widget){
 	gtk_widget_modify_style (widget, rc_style);
 	gtk_rc_style_unref (rc_style);
 }
-static void _remove_child ( GtkWidget * widget, GtkContainer * container){
-	gtk_container_remove(container, widget);
-}
 
-static GtkMenuItem * _get_item_for_proxy(GnomenuMenuBar * self, GtkMenuItem * proxy){
-	GET_OBJECT(self, menu_bar, priv);
-	GList * list = GTK_MENU_SHELL(self)->children;
-	GList * node;
-	for(node = g_list_first(list); node; node = g_list_next(node)){
-		GtkMenuItem * item = node->data;
-		MenuItemInfo * info = g_hash_table_lookup(priv->menu_items, item);
-		if(info && info->proxy == proxy){
-			return item;
-		}
-	}
-}
-GtkMenuItem * _get_proxy_for_item( GnomenuMenuBar * self, GtkMenuItem * item){
-	GET_OBJECT(self, menu_bar, priv);
 
-	GtkWidget * label;
-	MenuItemInfo * info = g_hash_table_lookup(priv->menu_items, item);
-	const gchar * text = gtk_widget_get_name(GTK_WIDGET(item));
-	GtkWidget * child = gtk_bin_get_child(GTK_BIN(item));
-
-	if(G_OBJECT_TYPE(item) != GTK_TYPE_MENU_ITEM
-	&& G_OBJECT_TYPE(item) != GTK_TYPE_IMAGE_MENU_ITEM){
-/* Can't handle any other subclass of GtkMenuItem */
-		return NULL;
-	}
-	if(GTK_IS_LABEL(child)){
-		text = gtk_label_get_label(GTK_LABEL(child));
-	} else {
-		LOG("unhandled child:%s", G_OBJECT_TYPE_NAME(child));
-	}
-
-	if(!info->proxy) {
-		LOG("menuitem type: %s", G_OBJECT_TYPE_NAME(item));
-		
-	/* The image is then lost.*/
-		if(GTK_IS_IMAGE_MENU_ITEM(item)){
-			GtkImage * image = gtk_image_menu_item_get_image(item);
-			GtkImage * dup = NULL;
-			switch(gtk_image_get_storage_type(image)){
-				case GTK_IMAGE_EMPTY:
-				case GTK_IMAGE_PIXMAP:
-				case GTK_IMAGE_IMAGE:
-				case GTK_IMAGE_PIXBUF:
-				break;
-				case GTK_IMAGE_STOCK: {
-					gchar * stock_id;
-					GtkIconSize size;
-					gtk_image_get_stock (
-						image, &stock_id, &size);
-					dup = gtk_image_new_from_stock(
-						stock_id, size);
-				}
-				break;
-				case GTK_IMAGE_ICON_SET:
-				case GTK_IMAGE_ANIMATION:
-				case GTK_IMAGE_ICON_NAME:
-				break;
-			}
-			info->proxy = GTK_MENU_ITEM(gtk_image_menu_item_new());
-			gtk_image_menu_item_set_image(info->proxy, dup);
-		} else 
-			info->proxy = GTK_MENU_ITEM(gtk_menu_item_new());
-		g_object_ref(info->proxy);
-	} else {
-		gtk_container_remove(GTK_CONTAINER(info->proxy),
-				gtk_bin_get_child(GTK_BIN(info->proxy)));
-	} 
-
-	LOG("text = %s", text);
-	label = gtk_label_new_with_mnemonic(text);
-	gtk_container_add(GTK_CONTAINER(info->proxy), label);
-	
-	return info->proxy;	
-}
-static void _build_popup_menu 	(GnomenuMenuBar * self){
-	GET_OBJECT(self, menu_bar, priv);
-	GList * list;
-	GList * node;
-	gtk_container_foreach(GTK_CONTAINER(priv->popup_menu), (GtkCallback)_remove_child, priv->popup_menu);
-	
-	list = GTK_MENU_SHELL(self)->children;
-	for(node = g_list_first(list); node; node = g_list_next(node)){
-		GtkWidget * child = node->data;
-		MenuItemInfo * info = g_hash_table_lookup(priv->menu_items, child);
-		if(info->overflowed) {
-			GtkMenuItem * proxy = _get_proxy_for_item(self, info->menu_item);
-			if(proxy) {
-				gtk_menu_shell_append(GTK_MENU_SHELL(priv->popup_menu), GTK_WIDGET(proxy));
-				if(GTK_WIDGET_VISIBLE(info->menu_item)) 
-					gtk_widget_show_all(proxy);
-				else
-					gtk_widget_hide_all(proxy);
-			}
-		}
-	}
-}
-static void _steal_submenu(GtkMenuItem * proxy, GnomenuMenuBar * self){
-	GtkMenuItem * item = _get_item_for_proxy(self, proxy);
-	GtkMenu * submenu = GTK_MENU(gtk_menu_item_get_submenu(item));
-	if(submenu){
-		g_object_ref(submenu);
-		gtk_menu_detach(submenu);
-		gtk_menu_item_set_submenu(proxy, GTK_WIDGET(submenu));	
-		g_object_unref(submenu);
-	}
-}
-static void _return_submenu(GtkMenuItem * proxy, GnomenuMenuBar * self){
-	GtkMenuItem * item = _get_item_for_proxy(self, proxy);
-	GtkMenu * submenu = GTK_MENU(gtk_menu_item_get_submenu(proxy));
-	if(submenu){
-		g_object_ref(submenu);
-		gtk_menu_detach(submenu);
-		gtk_menu_item_set_submenu(item, GTK_WIDGET(submenu));	
-		g_object_unref(submenu);
-	}
-}
-static void _s_arrow_button_clicked		( GtkWidget * self,
-									  GtkWidget * arrow_button){
-	GET_OBJECT(self, menu_bar, priv);
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->arrow_button)) &&
-     !GTK_WIDGET_VISIBLE (priv->popup_menu)) {
-		_build_popup_menu(menu_bar);
-		//gtk_widget_show(GTK_WIDGET(priv->popup_menu));
-		gtk_container_foreach(GTK_CONTAINER(priv->popup_menu), (GtkCallback)_steal_submenu, menu_bar);
-		gtk_menu_popup(priv->popup_menu, NULL, NULL, 
-			NULL, NULL, 0, gtk_get_current_event_time());
-		gtk_menu_shell_select_first (GTK_MENU_SHELL (priv->popup_menu), FALSE);
-	
-	}
-}
-static void _s_popup_menu_deactivated	( GtkWidget * menubar,
-									  GtkWidget * popup_menu){
-	GET_OBJECT(menubar, menu_bar, priv);
-	gtk_container_foreach(GTK_CONTAINER(priv->popup_menu), (GtkCallback)_return_submenu, menu_bar);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(priv->arrow_button), FALSE);
-}
 /*
 vim:ts=4:sw=4
 */

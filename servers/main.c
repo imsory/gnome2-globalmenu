@@ -1,28 +1,24 @@
 #include <config.h>
+
 #include <gtk/gtk.h>
 
 #include "libgnomenu/serverhelper.h"
+
 #include "application.h"
+
 #include "log.h"
-#include "intl.h"
 
 static void window_destroy(GtkWidget * widget, gpointer useless){
 	gtk_main_quit();
 }
 GtkWidget * show_about_dialog, * show_conf_dialog;
 GtkWidget * set_bg;
-GtkWidget * switch_orientation;
-static GtkOrientation orientation = GTK_ORIENTATION_HORIZONTAL;
 static void button_clicked(Application * app, GtkWidget * button){
 	if(button == show_about_dialog){
 		application_show_about_dialog(app);
 	}
 	if(button == show_conf_dialog){
 		application_show_conf_dialog(app);
-	}
-	if(button == switch_orientation){
-		g_object_set(app, "orientation", orientation, NULL);
-		orientation = (orientation + 1) % 2;
 	}
 	if(button == set_bg){
 		GtkWidget * file_chooser 
@@ -53,50 +49,26 @@ static void button_clicked(Application * app, GtkWidget * button){
 		gtk_widget_destroy(file_chooser);
 	}
 }
-static gboolean fancy = FALSE;
-static gboolean stick = TRUE;
-static gboolean topmost = TRUE;
-
 int main (int argc, char * argv []){
-GOptionEntry entries [] = {
-	{ "fancy", 'f', 0, G_OPTION_ARG_NONE, &fancy, _("Show fancy control buttons for menu bars"), NULL },
-	{ "no-stick", 's', G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &stick, _("No Stick to the workspace"), NULL},
-	{ "no-topmost", 't', G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &topmost, _("No Always on top"), NULL },
-	{ NULL }
-};
 	GtkWindow * window;
 	GtkBox  * vbox, /*for buttons*/
 			* hbox;
 	GtkContainer * container;
-	GError * error = NULL;
-	GOptionContext * context;
-
 	int i;
 	Application * app;
-
-#ifdef ENABLE_NLS
-	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	textdomain (GETTEXT_PACKAGE);
-#endif
-
 	gtk_init(&argc, &argv);
-	
-	context = g_option_context_new("Application parameters");	
-	g_option_context_add_main_entries ( context, entries, GETTEXT_PACKAGE);
-	g_option_context_add_group ( context, gtk_get_option_group (TRUE));
-	g_option_context_parse(context, &argc, &argv, &error);
 
 	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_default_size(window, 400,20);
+
 	vbox = gtk_vbox_new(FALSE, 0);
 	hbox = gtk_hbox_new(FALSE, 0);
 
-	container = gtk_event_box_new();
+	container = gtk_handle_box_new();
 	gtk_container_set_border_width(container, 0);
 
 	gtk_box_pack_start(hbox, container, TRUE, TRUE, 0);
-	gtk_box_pack_start(hbox, vbox, FALSE, FALSE, 0);
+	gtk_box_pack_start_defaults(hbox, vbox);
 
 	gtk_container_add(window, hbox);
 	g_signal_connect(window, "destroy", 
@@ -110,18 +82,11 @@ GOptionEntry entries [] = {
 	gtk_box_pack_start_defaults(vbox, b); \
 	g_signal_connect_swapped(b, "clicked", button_clicked, app);
 
-	if(fancy){
-		NEW_BUTTON(show_about_dialog);
-		NEW_BUTTON(show_conf_dialog);
-		NEW_BUTTON(switch_orientation);
-		NEW_BUTTON(set_bg);
-	}
-
-	gtk_window_set_keep_above(window, topmost);
-	if(stick) gtk_window_stick(window);
+	NEW_BUTTON(show_about_dialog);
+	NEW_BUTTON(show_conf_dialog);
+	NEW_BUTTON(set_bg);
 
 	gtk_widget_show_all(window);
-	application_start(app);
 	gtk_main();
 
 	return 0;

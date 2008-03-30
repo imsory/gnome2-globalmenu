@@ -52,7 +52,6 @@ G_BEGIN_DECLS
  * @GNOMENU_MSG_ORIENTATION_CHANGE: #GnomenuMessageOrientationChange
  * @GNOMENU_MSG_BGCOLOR_SET:	#GnomenuMessageBgColorSet
  * @GNOMENU_MSG_BGPIXMAP_SET:	#GnomenuMessageBgPixmapSet
- * @GNOMENU_MSG_PARENT_FOCUS:		#GnomenuMessageToplevelFocus
  * @GNOMENU_MSG_MAX:		no meaning
  *
  * type of a libgnomenu message.
@@ -74,7 +73,6 @@ typedef enum { /*< prefix=GNOMENU >*/
 	GNOMENU_MSG_ORIENTATION_CHANGE,
 	GNOMENU_MSG_BGCOLOR_SET,
 	GNOMENU_MSG_BGPIXMAP_SET,
-	GNOMENU_MSG_PARENT_FOCUS,
 	GNOMENU_MSG_MAX,
 } GnomenuMessageType;
 
@@ -87,7 +85,7 @@ typedef enum { /*< prefix=GNOMENU >*/
  */
 typedef struct {
 	GnomenuMessageType type;
-	guint32 data[2];
+	gulong data[2];
 } GnomenuMessageAny;
 
 /**
@@ -193,8 +191,8 @@ typedef struct {
  */
 typedef struct {
 	GnomenuMessageType type;
-	gint16	width;
-	gint16 	height;
+	gint	width;
+	gint 	height;
 } GnomenuMessageSizeRequest;
 
 /**
@@ -207,16 +205,10 @@ typedef struct {
  */
 typedef struct {
 	GnomenuMessageType type;
-	gint16 width;
-	gint16 height;
+	gint width;
+	gint height;
 } GnomenuMessageSizeAllocate;
 
-typedef enum {
-	GNOMENU_ORIENT_TOP,
-	GNOMENU_ORIENT_LEFT,
-	GNOMENU_ORIENT_RIGHT,
-	GNOMENU_ORIENT_BOTTOM,
-} GnomenuOrientation;
 /**
  * GnomenuMessageOrientationChange:
  * 	@type: #GNOMENU_MSG_ORIENTATION_CHANGE
@@ -226,9 +218,8 @@ typedef enum {
  */
 typedef struct {
 	GnomenuMessageType type;
-	GnomenuOrientation orientation;
+	GtkOrientation orientation;
 } GnomenuMessageOrientationChange;
-
 /**
  * GnomenuMessagePositionSet:
  *  @type: #GNOMENU_MSG_POSITION_SET
@@ -240,8 +231,8 @@ typedef struct {
  */
 typedef struct {
 	GnomenuMessageType type;
-	gint16 x;
-	gint16 y;
+	gint x;
+	gint y;
 } GnomenuMessagePositionSet;
 /**
  * GnomenuMessageVisibilitySet:
@@ -284,16 +275,6 @@ typedef struct {
 } GnomenuMessageBgPixmapSet;
 
 /**
- * GnomenuMessageParentFocus:
- * @type: 
- *
- * To set the bg color of the menubar.
- */
-typedef struct {
-	GnomenuMessageType type;
-} GnomenuMessageParentFocus;
-
-/**
  * GnomenuMessage:
  *
  * This structure wraps every kind of gnomenu message into a union.
@@ -317,7 +298,6 @@ struct _GnomenuMessage {
 		GnomenuMessagePositionSet position_set;
 		GnomenuMessageBgColorSet bgcolor_set;
 		GnomenuMessageBgPixmapSet bgpixmap_set;
-		GnomenuMessageParentFocus parent_focus;
 	};
 };
 #define GNOMENU_TYPE_MESSAGE gnomenu_message_get_type()

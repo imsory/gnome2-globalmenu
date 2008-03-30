@@ -2,7 +2,7 @@
 #define GNOMENU_SERVER_H
 
 #include "socket.h"
-#include "messages.h"
+
 G_BEGIN_DECLS
 /**
  * SECTION: serverhelper
@@ -94,7 +94,6 @@ struct _GnomenuServerHelperClass {
 	void (*client_realize) (GnomenuServerHelper * self, GnomenuClientInfo * client_info);
 	void (*client_unrealize) (GnomenuServerHelper * self, GnomenuClientInfo * client_info);
 	void (*client_reparent) (GnomenuServerHelper * self, GnomenuClientInfo * client_info);
-	void (*client_parent_focus) (GnomenuServerHelper * self, GnomenuClientInfo * client_info);
 };
 
 GnomenuServerHelper *gnomenu_server_helper_new(void);
@@ -109,13 +108,12 @@ void gnomenu_server_helper_queue_resize(GnomenuServerHelper * self, GnomenuClien
 void gnomenu_server_helper_allocate_size(GnomenuServerHelper * self, GnomenuClientInfo * ci,
 			GtkAllocation * allocation);
 void gnomenu_server_helper_set_orientation(GnomenuServerHelper * self, GnomenuClientInfo * ci,
-			GnomenuOrientation ori);
+			GtkOrientation ori);
 void gnomenu_server_helper_set_position(GnomenuServerHelper * self, GnomenuClientInfo * ci,
 			GdkPoint * position);
 void gnomenu_server_helper_set_visibility(GnomenuServerHelper * self, GnomenuClientInfo * ci,
 			gboolean vis);
 void gnomenu_server_helper_set_background(GnomenuServerHelper * self, GnomenuClientInfo * ci,
 			GdkColor * color, GdkPixmap * pixmap);
-gboolean gnomenu_server_helper_start(GnomenuServerHelper * self);
 G_END_DECLS
 #endif

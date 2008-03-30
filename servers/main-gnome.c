@@ -5,11 +5,14 @@
 
 #include <panel-applet.h>
 #include "libgnomenu/serverhelper.h"
+
+/*
+ * Standard gettext macros.
+ */
+
 #include "application-gnome.h"
 
 #include "log.h"
-
-#include "intl.h"
 
 #define FACTORY_IID "OAFIID:GNOME_GlobalMenuApplet_Factory"
 #define APPLET_IID "OAFIID:GNOME_GlobalMenuApplet"
@@ -37,24 +40,6 @@ static _change_background ( PanelApplet * applet,
 		break;
 	}
 }
-static void _change_orient(PanelApplet * applet,
-						PanelAppletOrient ori,
-						Application * app){
-	switch(ori){
-		case PANEL_APPLET_ORIENT_UP:
-			g_object_set(app, "orientation", GNOMENU_ORIENT_TOP, NULL);
-		break;
-		case PANEL_APPLET_ORIENT_DOWN:
-			g_object_set(app, "orientation", GNOMENU_ORIENT_BOTTOM, NULL);
-		break;
-		case PANEL_APPLET_ORIENT_LEFT:
-			g_object_set(app, "orientation", GNOMENU_ORIENT_LEFT, NULL);
-		break;
-		case PANEL_APPLET_ORIENT_RIGHT:
-			g_object_set(app, "orientation", GNOMENU_ORIENT_RIGHT, NULL);
-		break;
-	}
-}
 static gboolean globalmenu_applet_factory (PanelApplet *applet,
                                         const gchar *iid,
                                         gpointer data){
@@ -67,10 +52,7 @@ static gboolean globalmenu_applet_factory (PanelApplet *applet,
 	App = application_gnome_new(applet);
 	g_signal_connect(G_OBJECT(applet), "change-background", 
 				_change_background, App);
-	g_signal_connect(G_OBJECT(applet), "change-orient", 
-				_change_orient, App);
 	gtk_widget_show_all(applet);
-	application_start(App);
     return TRUE;
   } else {
 	return FALSE;
@@ -83,7 +65,7 @@ int main (int argc, char *argv [])
 	GOptionContext *context;
 	int           retval;
 #ifdef ENABLE_NLS
-	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 #endif

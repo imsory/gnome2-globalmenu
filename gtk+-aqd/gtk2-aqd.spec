@@ -12,7 +12,7 @@
 
 %define base_version 2.12.5
 %define bin_version 2.10.0
-%define svn_version 0.4.svn851
+%define svn_version 0.4.svn657
 
 Summary: The GIMP ToolKit (GTK+), a library for creating GUIs for X
 Name: gtk2-aqd
@@ -25,7 +25,7 @@ Source1: update-gdk-pixbuf-loaders
 Source2: update-gtk-immodules 
 
 Provides: gtk2 = %{base_version}-%{release}
-Obsoletes: gtk2 <= %{base_version}-%{release}
+Obsoletes: gtk2 = %{base_version}-%{release}
 # Biarch changes
 Patch0: gtk+-2.4.1-lib64.patch
 # Fedora patch
@@ -38,7 +38,6 @@ Patch2: workaround.patch
 Patch3: system-log-crash.patch
 
 # gtk-aqd patch
-Patch998: gtk2-menubar-overflow.patch 
 Patch999: gtk2-aqd.patch 
 
 BuildRequires: atk-devel >= %{atk_version}
@@ -108,7 +107,7 @@ Requires: automake
 # for /usr/share/gtk-doc/html
 Requires: gtk-doc
 Provides: gtk2-devel = %{base_version}-%{release}
-Obsoletes: gtk2-devel <= %{base_version}-%{release}
+Obsoletes: gtk2-devel = %{base_version}-%{release}
 %description devel
 The gtk+-devel package contains the header files and developer
 docs for the GTK+ widget toolkit.  
@@ -121,8 +120,7 @@ docs for the GTK+ widget toolkit.
 %patch2 -p1 -b .workaround
 %patch3 -p1 -b .system-log-crash
 
-#%patch998 -p1 -b .menubar-overflow
-%patch999 -F3 -p1 -b .aqd
+%patch999 -p1 -b .aqd
 for i in config.guess config.sub ; do
   test -f %{_datadir}/libtool/$i && cp %{_datadir}/libtool/$i .
 done

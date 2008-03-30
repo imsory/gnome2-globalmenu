@@ -26,12 +26,12 @@ typedef struct {
 	GnomenuQuirkMask mask;
 } QuirkEntry;
 
-static GFlagsValue * _get_quirk_value_by_nick(const gchar * nick){
+static GFlagsValue * _get_quirk_value_by_nick(gchar * nick){
 	static GTypeClass * type_class = NULL;
 		if(type_class == NULL) type_class = g_type_class_ref(gnomenu_quirk_mask_get_type());
 	return g_flags_get_value_by_nick(type_class, nick);
 }
-static void _add_quirks_from_string(GQueue * quirks, const gchar * string){
+static void _add_quirks_from_string(GQueue * quirks, gchar * string){
 	gchar ** lines;
 	gchar ** words;
 	gchar * word;
@@ -45,14 +45,13 @@ static void _add_quirks_from_string(GQueue * quirks, const gchar * string){
 		words = g_strsplit(lines[i], ":", 0);
 		if(!words) continue;
 		l = g_strv_length(words);
-		if(l == 0) continue;
-		word = g_strstrip(words[0]);
-		if(!word || word[0] == '#'){
+		if(l !=2 ){
+			g_warning("Irregular conf file line(%d):\n%s", l, lines[i]);
 			g_strfreev(words);
 			continue;
 		}
-		if(l !=2 ){
-			g_warning("Irregular conf file line(%d):\n%s", l, lines[i]);
+		word = g_strstrip(words[0]);
+		if(!word || word[0] == '#'){
 			g_strfreev(words);
 			continue;
 		}
@@ -90,7 +89,7 @@ static void _add_quirks_from_string(GQueue * quirks, const gchar * string){
 	}
 	g_strfreev(lines);
 }
-static void _add_quirks_from_file(GQueue * quirks, const gchar * file){
+static void _add_quirks_from_file(GQueue * quirks, gchar * file){
 	gchar * contents;
 	gint length;
 	GError * error = NULL;
@@ -167,7 +166,7 @@ GnomenuQuirkMask gnomenu_get_default_quirk(){
  * Returns: the quirk for the given detail. 'detail' is usually
  * the title or the role of the window.
  */
-GnomenuQuirkMask gnomenu_get_detail_quirk(const gchar * detail){
+GnomenuQuirkMask gnomenu_get_detail_quirk(gchar * detail){
 	struct quirk_match_data data = { g_get_prgname(), detail, GNOMENU_QUIRK_NONE};
 	g_queue_foreach(_get_quirks(), _match_quirk, &data);
 	return data.rt;

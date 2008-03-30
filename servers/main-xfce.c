@@ -5,7 +5,7 @@
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4panel/xfce-panel-plugin.h>
 
-#include "application-xfce.h"
+#include "application.h"
 //workaround a weird bug in xfce4 includes
 #undef _
 #undef Q_
@@ -13,17 +13,36 @@
 /*
  * Standard gettext macros.
  */
-#include "intl.h"
+#ifdef ENABLE_NLS
+#  include <libintl.h>
+#  undef _
+#  define _(String) dgettext (PACKAGE, String)
+#  ifdef gettext_noop
+#    define N_(String) gettext_noop (String)
+#  else
+#    define N_(String) (String)
+#  endif
+#else
+#  define textdomain(String) (String)
+#  define gettext(String) (String)
+#  define dgettext(Domain,Message) (Message)
+#  define dcgettext(Domain,Message,Type) (Message)
+#  define bindtextdomain(Domain,Directory) (Domain)
+#  define _(String) (String)
+#  define N_(String) (String)
+#endif
 
+static gboolean size_changed(GtkWidget* plugin, gint size) {
+	return TRUE;
+}
 
 static void
 xfce_applet_construct(XfcePanelPlugin *plugin)
 {
-	Application * app;
 	g_print("constructing plugin\n");
-	app = application_xfce_new(GTK_WIDGET(plugin));
-	gtk_widget_show_all(GTK_WIDGET(plugin));
-	application_start(app);
+	g_signal_connect(G_OBJECT(plugin), "size-changed", 
+		G_CALLBACK(size_changed), NULL);
+	application_new(GTK_CONTAINER(plugin));
 }
 
 XFCE_PANEL_PLUGIN_REGISTER_EXTERNAL(xfce_applet_construct)

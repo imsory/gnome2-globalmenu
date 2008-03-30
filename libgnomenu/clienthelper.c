@@ -41,7 +41,7 @@ static void _c_server_new 			( GnomenuClientHelper * _self );
 static void _c_server_destroy 		( GnomenuClientHelper * _self );
 static void _c_size_allocate			( GnomenuClientHelper * _self, GtkAllocation * allocation );
 static void _c_size_query 			( GnomenuClientHelper * _self, GtkRequisition * req );
-static void _c_orientation_set 	( GnomenuClientHelper * _self, GnomenuOrientation ori );
+static void _c_orientation_change 	( GnomenuClientHelper * _self, GtkOrientation ori );
 static void _c_position_set 			( GnomenuClientHelper * _self, GdkPoint * pos );
 static void _c_visibility_set			( GnomenuClientHelper * _self, gboolean vis );
 static void _c_background_set				( GnomenuClientHelper * _self, 
@@ -59,7 +59,7 @@ enum { /*< private >*/
 	SERVER_DESTROY,
 	SIZE_ALLOCATE,
 	SIZE_QUERY,
-	ORIENTATION_SET,
+	ORIENTATION_CHANGE,
 	POSITION_SET,
 	VISIBILITY_SET,
 	BACKGROUND_SET,
@@ -86,7 +86,7 @@ gnomenu_client_helper_class_init(GnomenuClientHelperClass *klass){
 	klass->server_destroy = _c_server_destroy;
 	klass->size_allocate = _c_size_allocate;
 	klass->size_query = _c_size_query;
-	klass->orientation_set = _c_orientation_set;
+	klass->orientation_change = _c_orientation_change;
 	klass->position_set = _c_position_set;
 	klass->visibility_set = _c_visibility_set;
 	klass->background_set = _c_background_set;
@@ -179,18 +179,18 @@ gnomenu_client_helper_class_init(GnomenuClientHelperClass *klass){
 			1,
 			G_TYPE_POINTER);
 
-	class_signals[ORIENTATION_SET] =
+	class_signals[ORIENTATION_CHANGE] =
 /**
- * GnomenuClientHelper::orientation-set:
+ * GnomenuClientHelper::orientation-change:
  *	@self: self
- *	@orientation: the new orientation. #GnomenuOrientation
+ *	@orientation: the new orientation. #GtkOrientation
  *
  * Implemented but the bahavior is not defined. 
 */
-		g_signal_new("orientation-set",
+		g_signal_new("orientation-change",
 			G_TYPE_FROM_CLASS(klass),
 			G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS,
-			G_STRUCT_OFFSET (GnomenuClientHelperClass, orientation_set),
+			G_STRUCT_OFFSET (GnomenuClientHelperClass, orientation_change),
 			NULL, NULL,
 			gnomenu_marshall_VOID__UINT,
 			G_TYPE_NONE,
@@ -263,7 +263,7 @@ gnomenu_client_helper_init(GnomenuClientHelper * _self){
  **/ 
 GnomenuClientHelper * 
 gnomenu_client_helper_new(){
-	return g_object_new(GNOMENU_TYPE_CLIENT_HELPER, "name", GNOMENU_CLIENT_NAME, "timeout", 5, NULL);
+	return g_object_new(GNOMENU_TYPE_CLIENT_HELPER, "name", GNOMENU_CLIENT_NAME, "timeout", 4, NULL);
 }
 
 static GObject* _constructor(GType type, guint n_construct_properties,
@@ -275,18 +275,13 @@ static GObject* _constructor(GType type, guint n_construct_properties,
 	GET_OBJECT(_self, self, priv);
 
 	priv->disposed = FALSE;
-
-	return _self;
-}
-void gnomenu_client_helper_start(GnomenuClientHelper * self){
-	GnomenuSocketNativeID server;
-	g_signal_connect(G_OBJECT(self), "data", G_CALLBACK(_s_data_arrival), NULL);
+	g_signal_connect(G_OBJECT(self), "data-arrival", G_CALLBACK(_s_data_arrival), NULL);
 	g_signal_connect(G_OBJECT(self), "connected", G_CALLBACK(_s_connected), NULL);
 	g_signal_connect(G_OBJECT(self), "shutdown", G_CALLBACK(_s_shutdown), NULL);
 /* try to connect to the server */
-	server = gnomenu_socket_lookup(GNOMENU_SERVER_NAME);
-	if(server) 
-		gnomenu_socket_connect(self, server);
+	gnomenu_socket_connect_by_name(self, GNOMENU_SERVER_NAME);
+
+	return _self;
 }
 /**
  * _dispose:
@@ -300,13 +295,10 @@ static void _dispose(GObject * _self){
 	LOG_FUNC_NAME;
 	if(! priv->disposed){
 		priv->disposed = TRUE;
-		g_signal_handlers_disconnect_by_func(G_OBJECT(self),  G_CALLBACK(_s_data_arrival), NULL);
-		g_signal_handlers_disconnect_by_func(G_OBJECT(self),  G_CALLBACK(_s_connected), NULL);
-		g_signal_handlers_disconnect_by_func(G_OBJECT(self),  G_CALLBACK(_s_shutdown), NULL);
 		if(socket->status == GNOMENU_SOCKET_CONNECTED){
 			gnomenu_socket_shutdown(socket);
 		}
-		}
+	}
 	G_OBJECT_CLASS(gnomenu_client_helper_parent_class)->dispose(_self);
 }
 
@@ -371,9 +363,9 @@ static void _s_data_arrival(GnomenuSocket * _self,
 		break;
 		case GNOMENU_MSG_ORIENTATION_CHANGE:
 			{
-				GnomenuOrientation ori = message->orientation_change.orientation;
+				GtkOrientation ori = message->orientation_change.orientation;
 				g_signal_emit(G_OBJECT(self),
-					class_signals[ORIENTATION_SET],
+					class_signals[ORIENTATION_CHANGE],
 					0,
 					ori);
 			}
@@ -477,8 +469,8 @@ _c_size_query(GnomenuClientHelper * _self, GtkRequisition * req){
 }
 
 static void 
-_c_orientation_set
-			(GnomenuClientHelper * _self, GnomenuOrientation ori){
+_c_orientation_change
+			(GnomenuClientHelper * _self, GtkOrientation ori){
 	LOG_FUNC_NAME;
 }
 static void 
@@ -565,18 +557,6 @@ void gnomenu_client_helper_request_size(GnomenuClientHelper * _self, GtkRequisit
 	msg.size_request.width = req->width;
 	msg.size_request.height = req->height;
 	gnomenu_socket_send(GNOMENU_SOCKET(_self), &msg, sizeof(msg.size_request));
-}
-/**
- * gnomenu_client_helper_send_parent_focus
- * @_self: self;
- *
- * Parent window has received the focus.
- */
-void gnomenu_client_helper_send_parent_focus(GnomenuClientHelper * _self){
-	LOG_FUNC_NAME;
-	GnomenuMessage msg;
-	msg.any.type = GNOMENU_MSG_PARENT_FOCUS;
-	gnomenu_socket_send(GNOMENU_SOCKET(_self), &msg, sizeof(msg.parent_focus));
 }
 /*
 vim:ts=4:sw=4

@@ -33,7 +33,6 @@ enum {
 	CLIENT_UNREALIZE,
 	CLIENT_DESTROY,
 	SIZE_REQUEST,
-	CLIENT_PARENT_FOCUS,
 	SIGNAL_MAX
 };
 
@@ -52,7 +51,6 @@ static void _c_client_reparent 			( GnomenuServerHelper * _self, GnomenuClientIn
 static void _c_client_unrealize 		( GnomenuServerHelper * _self, GnomenuClientInfo * ci);
 static void _c_client_destroy 			( GnomenuServerHelper * _self, GnomenuClientInfo * ci);
 static void _c_client_size_request 		( GnomenuServerHelper * _self, GnomenuClientInfo * ci);
-static void _c_client_parent_focus		( GnomenuServerHelper * _self, GnomenuClientInfo * ci);
 
 /* signal handlers */
 static void _s_connect_req				( GnomenuServerHelper * _self, GnomenuSocketNativeID target);
@@ -60,7 +58,6 @@ static void _s_connect_req				( GnomenuServerHelper * _self, GnomenuSocketNative
 static void _s_service_shutdown			( GnomenuServerHelper * _self, GnomenuSocket * service);
 static void _s_service_data_arrival		( GnomenuServerHelper * _self, gpointer data, gint bytes, 
 										  GnomenuSocket * service);
-static void _s_service_connected		( GnomenuServerHelper * self, GnomenuSocketNativeID target, GnomenuSocket * service);
 /* utilities */
 
 static GnomenuClientInfo * 
@@ -86,7 +83,6 @@ gnomenu_server_helper_class_init(GnomenuServerHelperClass *klass){
 	klass->client_unrealize = _c_client_unrealize;
 	klass->client_destroy = _c_client_destroy;
 	klass->client_size_request = _c_client_size_request;
-	klass->client_parent_focus = _c_client_parent_focus;
 
 	class_signals[CLIENT_NEW] = 
 /**
@@ -190,6 +186,9 @@ gnomenu_server_helper_class_init(GnomenuServerHelperClass *klass){
  * GnomenuServerHelper::size-request:
  * @self: the GnomenuServe who emits the signal.
  * @client_info: the client info. #GnomenuClientInfo
+ * @requisition: the size requisition. Don't free it. #GtkRequisition
+ * @allocation:  the allocation the server want to assign the the client,
+ * 		The initial value assigned as the @requisition.
  *
  * #GNOMENU_MSG_SIZE_QUERY, \\
  * #GnomenuClientHelper::size-query, \\
@@ -211,24 +210,6 @@ gnomenu_server_helper_class_init(GnomenuServerHelperClass *klass){
 			1,
 			G_TYPE_POINTER
 			);
-
-	class_signals[CLIENT_PARENT_FOCUS] = 
-/**
- * GnomenuServerHelper::client-parent-focus:
- * @self: the GnomenuServe who emits the signal.
- * @client_info: the client info. #GnomenuClientInfo
- *
- */
-		g_signal_new ("client-parent-focus",
-			G_TYPE_FROM_CLASS(klass),
-			G_SIGNAL_RUN_LAST | G_SIGNAL_NO_RECURSE | G_SIGNAL_NO_HOOKS,
-			G_STRUCT_OFFSET (GnomenuServerHelperClass, client_parent_focus),
-			NULL, NULL,
-			gnomenu_marshall_VOID__POINTER,
-			G_TYPE_NONE,
-			1,
-			G_TYPE_POINTER
-			);
 }
 
 
@@ -243,16 +224,15 @@ GnomenuServerHelper *
 gnomenu_server_helper_new(){
 	LOG_FUNC_NAME;
 	GnomenuServerHelper * _self;
+	GnomenuMessage msg;
 	_self = g_object_new(GNOMENU_TYPE_SERVER_HELPER, "name", GNOMENU_SERVER_NAME, "timeout", 5, NULL);
+	gnomenu_socket_listen(GNOMENU_SOCKET(_self));
+	msg.any.type = GNOMENU_MSG_SERVER_NEW;
+	msg.server_new.socket_id = gnomenu_socket_get_native(GNOMENU_SOCKET(_self));
+	gnomenu_socket_broadcast_by_name(GNOMENU_SOCKET(_self), GNOMENU_CLIENT_NAME, &msg, sizeof(msg));
 	return _self;
 }
-gboolean gnomenu_server_helper_start(GnomenuServerHelper * self){
-	GnomenuMessage msg;
-	gnomenu_socket_listen(GNOMENU_SOCKET(self));
-	msg.any.type = GNOMENU_MSG_SERVER_NEW;
-	msg.server_new.socket_id = gnomenu_socket_get_native(GNOMENU_SOCKET(self));
-	gnomenu_socket_broadcast(GNOMENU_SOCKET(self), &msg, sizeof(msg));
-}
+
 static void
 gnomenu_server_helper_init(GnomenuServerHelper * self){
 	self->clients = NULL;
@@ -268,7 +248,7 @@ static GObject* _constructor(
 	GET_OBJECT(obj, self, priv);
 
 	priv->disposed = FALSE;
-	g_signal_connect(G_OBJECT(self), "request", G_CALLBACK(_s_connect_req), NULL);
+	g_signal_connect(G_OBJECT(self), "connect-request", G_CALLBACK(_s_connect_req), NULL);
 
 	return obj;
 }
@@ -310,24 +290,15 @@ static void _s_connect_req(GnomenuServerHelper * _self,
 	ci = g_new0(GnomenuClientInfo, 1);
 	ci->stage = GNOMENU_CI_STAGE_NEW;
 	ci->size_stage = GNOMENU_CI_STAGE_RESOLVED;
-/*FIXME: signal not setup when data diagram is built. Might lose signals.*/
-	ci->service = gnomenu_socket_new("Service", 5);
-	self->clients = g_list_prepend(self->clients, ci);
-	LOG("clients length = %d", g_list_length(self->clients));
-
+	ci->service = gnomenu_socket_accept(GNOMENU_SOCKET(self), target);
 	g_signal_connect_swapped(G_OBJECT(ci->service), "shutdown", G_CALLBACK(_s_service_shutdown), self);
-	g_signal_connect_swapped(G_OBJECT(ci->service), "data", G_CALLBACK(_s_service_data_arrival), self);
-	g_signal_connect_swapped(G_OBJECT(ci->service), "connected", G_CALLBACK(_s_service_connected), self);
-	gnomenu_socket_accept(GNOMENU_SOCKET(self), ci->service, target);
+	g_signal_connect_swapped(G_OBJECT(ci->service), "data-arrival", G_CALLBACK(_s_service_data_arrival), self);
 
-}
-static void _s_service_connected(GnomenuServerHelper * self, GnomenuSocketNativeID target, GnomenuSocket * service){
-	GnomenuClientInfo * ci = _find_ci_by_service(self, service);
-	g_return_if_fail(ci);
 	g_signal_emit(G_OBJECT(self), 
 			class_signals[CLIENT_NEW],
 			0,
 			ci);
+		
 }
 static void _s_service_shutdown(GnomenuServerHelper * _self, GnomenuSocket * service){
 	LOG_FUNC_NAME;
@@ -412,11 +383,6 @@ static void _s_service_data_arrival(GnomenuServerHelper * _self,
 					class_signals[SIZE_REQUEST],
 					0, ci);
 		break;
-		case GNOMENU_MSG_PARENT_FOCUS:
-			g_signal_emit(G_OBJECT(self),
-					class_signals[CLIENT_PARENT_FOCUS],
-					0, ci);
-		break;
 		default:
 		g_warning("unknown message, ignore and continue");
 	}
@@ -430,7 +396,6 @@ static void _s_service_data_arrival(GnomenuServerHelper * _self,
 static gboolean _client_compare_by_socket(
 	const GnomenuClientInfo * p1,
 	const GnomenuClientInfo * p2){
-	LOG("p1.socket ==%p .vs. p2.socket=%p", p1->service, p2->service);
 	return !( p1 && p2 && p1->service == p2->service);
 }
 /**
@@ -519,7 +484,7 @@ gnomenu_server_helper_queue_resize(GnomenuServerHelper * _self, GnomenuClientInf
  * 	set the orientation of a client
  */
 void gnomenu_server_helper_set_orientation(GnomenuServerHelper * self, GnomenuClientInfo * ci,
-			GnomenuOrientation ori){
+			GtkOrientation ori){
 	GnomenuMessage msg;
 	LOG_FUNC_NAME;
 	g_return_if_fail(gnomenu_server_helper_is_client(self, ci));
@@ -633,6 +598,7 @@ _c_client_new(GnomenuServerHelper * _self, GnomenuClientInfo * ci){
 	LOG_FUNC_NAME;
 	GnomenuMessage msg;
 
+	_self->clients = g_list_prepend(_self->clients, ci);
 }
 static void 
 _c_client_realize(GnomenuServerHelper * _self, GnomenuClientInfo * ci){
@@ -658,11 +624,6 @@ static void
 _c_client_size_request(GnomenuServerHelper * _self, GnomenuClientInfo * ci){
 	LOG_FUNC_NAME;
 	_client_do_allocate_size(_self, ci);
-}
-static void 
-_c_client_parent_focus(GnomenuServerHelper * _self, GnomenuClientInfo * ci){
-	LOG_FUNC_NAME;
-	/*Do nothing */
 }
 static void 
 _client_do_allocate_size(GnomenuServerHelper * _self, GnomenuClientInfo * ci){

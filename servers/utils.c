@@ -1,6 +1,5 @@
 #include <gtk/gtk.h>
 #include "log.h"
-
 void utils_set_widget_background(GtkWidget * widget, GdkColor * color, GdkPixmap * pixmap){
 	GtkRcStyle * rc_style;
 	GtkStyle * style;

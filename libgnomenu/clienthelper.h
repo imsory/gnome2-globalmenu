@@ -2,7 +2,7 @@
 #define GNOMENU_CLIENT_H
 
 #include "socket.h"
-#include "messages.h"
+
 G_BEGIN_DECLS
 
 /**
@@ -53,7 +53,7 @@ struct _GnomenuClientHelperClass {
 	void (*server_destroy)(GnomenuClientHelper * self);
 	void (*size_allocate)(GnomenuClientHelper * self, GtkAllocation * allocation);
 	void (*size_query)(GnomenuClientHelper * self, GtkRequisition * req);
-	void (*orientation_set)(GnomenuClientHelper * self, GnomenuOrientation ori);
+	void (*orientation_change)(GnomenuClientHelper * self, GtkOrientation ori);
 	void (*position_set)(GnomenuClientHelper * self, GdkPoint * pt);
 	void (*visibility_set)(GnomenuClientHelper * self, gboolean vis);
 	void (*background_set)(GnomenuClientHelper * self, GdkColor * color, GdkPixmap * pixmap);
@@ -66,7 +66,6 @@ void gnomenu_client_helper_send_realize(GnomenuClientHelper * _self, GdkWindow *
 void gnomenu_client_helper_send_reparent(GnomenuClientHelper * _self, GdkWindow * parent_window);
 void gnomenu_client_helper_send_unrealize(GnomenuClientHelper * _self); 
 void gnomenu_client_helper_request_size(GnomenuClientHelper * _self, GtkRequisition * req); 
-void gnomenu_client_helper_send_parent_focus(GnomenuClientHelper * _self);
-void gnomenu_client_helper_start(GnomenuClientHelper * _self);
+
 G_END_DECLS
 #endif

@@ -1,6 +1,5 @@
 #ifndef __APPLICATION_H_
 #define __APPLICATION_H_
-#include <glade/glade.h>
 #include "menuserver.h"
 
 G_BEGIN_DECLS
@@ -16,39 +15,28 @@ typedef struct _ApplicationClass ApplicationClass;
 #define APPLICATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), TYPE_APPLICATION, ApplicationClass))
 
 
-typedef struct _ApplicationConfDlg {
-	GtkWidget * dlg;
-	GtkToggleButton * tgbtn_title_visible;
-	GtkToggleButton * tgbtn_icon_visible;
-	GtkFontButton * ftbtn_title_font;
-	GtkSpinButton * spnbtn_title_max_width;
-} ApplicationConfDlg;
 struct _Application
 {
 	GObject parent;
-/* factory */
-	GladeXML * glade_factory;
 /* Essential objects*/
 	GtkContainer * window;
-/* UI widgets */
 	MenuServer * server;
+/* UI widgets */
 	GtkWidget * title;
 	GtkWidget * icon;
-	GtkBox * box; /*either point to vbox or hbox*/
-	GtkBox * vbox; 
-	GtkBox * hbox;
-	
+
 /* property value */
-	GdkPixmap * bgpixmap;
+	GtkPixmap * bgpixmap;
 	GdkColor * bgcolor;
 
 	gboolean title_visible;
 	gboolean icon_visible;
-	PangoFontDescription * title_font;
-	gint title_max_width;
-	GtkOrientation orientation;
 /* conf dialog */
-	ApplicationConfDlg conf_dialog;
+	struct {
+		GtkWidget * dlg;
+		GtkWidget * title_visible;
+		GtkWidget * icon_visible;
+	} conf_dialog;
 };
 
 struct _ApplicationClass {
@@ -61,7 +49,6 @@ struct _ApplicationClass {
 
 GType application_get_type(void);
 
-void application_start(Application * app);
 void application_set_background(Application * app, GdkColor * color, GdkPixmap * pixmap);
 void application_update_ui(Application *app);
 void application_load_conf(Application *app);
