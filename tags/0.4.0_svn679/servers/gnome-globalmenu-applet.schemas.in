@@ -1,0 +1,25 @@
+<gconfschemafile>
+    <schemalist>
+        <schema>
+            <key>/schemas/apps/gnome-globalmenu-applet/prefs/show_icon</key>
+            <owner>gnome-globalmenu-applet</owner>
+            <type>bool</type>
+            <default>FALSE</default>
+            <locale name="C">
+				<short> Whether or not show the active window's icon</short>
+				<long> Whether or not show the active window's icon</long>
+            </locale>
+		</schema>
+        <schema>
+            <key>/schemas/apps/gnome-globalmenu-applet/prefs/show_title</key>
+            <owner>gnome-globalmenu-applet</owner>
+            <type>bool</type>
+            <default>FALSE</default>
+            <locale name="C">
+				<short> Whether or not show the active window's title</short>
+				<long> Whether or not show the active window's title</long>
+            </locale>
+		</schema>
+	</schemalist>
+</gconfschemafile>
+
