@@ -25,10 +25,11 @@ GnomenuProxy:
       * if `G_TRYLOCK(lock)` fails, return immediately with a failure.
       * start a mainloop `priv->loop`;
       * set `_METHOD_CALL` to id + bytes + args;
+      * store `_METHOD_CALL` to quark `method-call`
       * wait until `priv->loop` ends;
       * free the loop.
       * start a main loop `priv->loop`;
-      * send `MSG_METHOD_CALL`
+      * send `MSG_METHOD_CALL` 
       * wait until `priv->loop` ends;
       * get return value from `_METHOD_RETURN`;
       * free the loops.
@@ -41,14 +42,40 @@ GnomenuProxy:
     * `unbind`
       * `invoke(UNREGISTER, my window + versoin, ret, ret_bytes)`
       * if no ret or ret is failure, return failure.
-    * `::signal`
+    * `MSG_SIGNAL`
       * when a `MSG_SIGNAL` is received.
       * get args from `_SIGNAL`.
       * send `MSG_SIGNAL_ACK`
       * emit object signal `::signal`
+    * `MSG_METHOD_RETURN`
+      * stop `priv->loop`;
+    * `PropertyNotify::_METHOD_CALL`
+      * Get the property.
+      * If the property `_METHOD_CALL` == quark `method-call` stop `priv->loop`;
+      
 GnomenuOjbect:
+  * priv->call_queue.
 
   * Sends ClientMessage:
     * `MSG_SIGNAL`
     * `MSG_METHOD_RETURN`
-  * behaviors
+  * Behaviors
+    * `signal`
+    * `MSG_METHOD_CALL`
+      * LOCK(call-queue)
+      * push the message in `priv->call_queue`
+      * UNLOCK(call-queue)
+      * solve-call-queue
+     * `solve-call-queue`
+      * if TRY_LOCK(solve) fail quits
+      * LOCK(call-queue)
+      * pop a message
+      * UNLOCK(call_queue)
+      * invoke `class->method`, obtain the retval.
+      * start a main loop `priv->loop`
+      * set property of source window `_METHOD_RETURN` to retval.
+      * wait until `priv->loop` ends.
+      * LOCK(call-queue)
+      *  try pop a message
+      * UNLOCK(call-queue)
+      * UNLOCK(solve)
