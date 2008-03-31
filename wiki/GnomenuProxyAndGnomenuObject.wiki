@@ -8,6 +8,20 @@ GnomenuObject objects provide methods, and emit signals
 
 GnomenuProxy is the client side adapter of the GnomenuObject.
 
+common code:
+
+* `resolve(queue, queuelock, funclock, call_back, data)`
+      * if TRY_LOCK(funclock) fail quits
+      * LOCK(queuelock)
+      * pop a item from queue
+      * UNLOCK(queuelock)
+      * loop:
+      * invoke call_back(data, item)
+      * LOCK(queuelock)
+      *  try pop a message
+      *  if fails UNLOCK(funclock), UNLOCK(queuelock) and return
+      * UNLOCK(queuelock)
+      * goto loop
 
 GnomenuProxy:
 
@@ -15,6 +29,7 @@ GnomenuProxy:
     * `_METHOD_CALL`
     * `_METHOD_RETURN`
     * `_SIGNAL`
+  * priv->call_queue;
 
   * Sends ClientMessage
     * `MSG_METHOD_CALL`
@@ -22,18 +37,20 @@ GnomenuProxy:
 
   * Behavior
     * `invoke(id, args, bytes, ret, ret_bytes)`
-      * if `G_TRYLOCK(lock)` fails, return immediately with a failure.
-      * start a mainloop `priv->loop`;
-      * set `_METHOD_CALL` to id + bytes + args;
-      * store `_METHOD_CALL` to quark `method-call`
-      * wait until `priv->loop` ends;
-      * free the loop.
-      * start a main loop `priv->loop`;
-      * send `MSG_METHOD_CALL` 
-      * wait until `priv->loop` ends;
-      * get return value from `_METHOD_RETURN`;
-      * free the loops.
-      * `G_UNLOCK(lock)`
+      * G_LOCK(call-queue)
+      * push the call into call_queue
+      * G_UNLOCK(call-queue)
+      * `resolve(call-queue)` with callback :
+        * start a mainloop `priv->loop`;
+        * set `_METHOD_CALL` to id + bytes + args;
+        * store `_METHOD_CALL` to quark `current-data`
+        * wait until `priv->loop` ends;
+        * free the loop.
+        * start a main loop `priv->loop`;
+        * send `MSG_METHOD_CALL` 
+        * wait until `priv->loop` ends;
+        * get return value from `_METHOD_RETURN`;
+        * free the loops.
     * `bind`
       * find the window at `priv->path`
       * set target to the window;
@@ -51,31 +68,50 @@ GnomenuProxy:
       * stop `priv->loop`;
     * `PropertyNotify::_METHOD_CALL`
       * Get the property.
-      * If the property `_METHOD_CALL` == quark `method-call` stop `priv->loop`;
+      * If the property `_METHOD_CALL` == quark `current-data` stop `priv->loop`;
       
 GnomenuOjbect:
   * priv->call_queue.
-
+  * priv->signal_queue.
+    
   * Sends ClientMessage:
     * `MSG_SIGNAL`
     * `MSG_METHOD_RETURN`
   * Behaviors
-    * `signal`
+    * `method::bind`
+      * check version, objtype
+      * add the proxy into binded proxy
+    * `method::unbind`
+      * check version, objtype
+      * remove the proxy from binded proxy
+    * `signal(id, arg, bytes)`
+      * LOCK(signal-queue)
+      * push signal into signal_queue
+      * UNLOCK(signal_queue)
+      * resolve(signal_queue) with callback:
+        * for every binded proxy
+          * start a `priv->loop`
+          * set current proxy to quark `current-proxy`
+          * set signal data to `current-data`
+          * set proxy window's _SIGNAL
+          * if fails, stop `priv->loop`, goto next proxy
+          * wait for `priv->loop` quits 
+          * send MSG_SIGNAL.
     * `MSG_METHOD_CALL`
       * LOCK(call-queue)
       * push the message in `priv->call_queue`
       * UNLOCK(call-queue)
-      * solve-call-queue
-     * `solve-call-queue`
-      * if TRY_LOCK(solve) fail quits
-      * LOCK(call-queue)
-      * pop a message
-      * UNLOCK(call_queue)
-      * invoke `class->method`, obtain the retval.
-      * start a main loop `priv->loop`
-      * set property of source window `_METHOD_RETURN` to retval.
-      * wait until `priv->loop` ends.
-      * LOCK(call-queue)
-      *  try pop a message
-      * UNLOCK(call-queue)
-      * UNLOCK(solve)
+      * resolve(call-queue) with callback:
+         * invoke `method` to obtain retval.
+         * start a `priv->loop`
+         * store calling proxy into `current proxy`
+         * store retval to `current data`
+         * set source window's _METHOD_RETURN.
+         * wait for `priv->loop`
+         * send MSG_METHOD_RETURN
+    * `PropertyNotify::_SIGNAL` at proxy window
+      * if `window` == `current proxy` and `_SIGNAL` == `current data`,
+         stop `priv->loop`.
+    * `PropertyNotify::_METHOD_RETURN`    
+      * if `window` == `current proxy` and `_METHOD_RETURN` == `current data`
+          stop `priv->loop`
