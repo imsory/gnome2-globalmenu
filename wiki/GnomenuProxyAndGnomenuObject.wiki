@@ -93,7 +93,7 @@ GnomenuOjbect:
           * start a `priv->loop`
           * set current proxy to quark `current-proxy`
           * set signal data to `current-data`
-          * set proxy window's _SIGNAL
+          * set proxy window's `_SIGNAL`
           * if fails, stop `priv->loop`, goto next proxy
           * wait for `priv->loop` quits 
           * send MSG_SIGNAL.
@@ -106,7 +106,7 @@ GnomenuOjbect:
          * start a `priv->loop`
          * store calling proxy into `current proxy`
          * store retval to `current data`
-         * set source window's _METHOD_RETURN.
+         * set source window's `_METHOD_RETURN`.
          * wait for `priv->loop`
          * send MSG_METHOD_RETURN
     * `PropertyNotify::_SIGNAL` at proxy window
