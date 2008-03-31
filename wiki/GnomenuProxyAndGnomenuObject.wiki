@@ -1,0 +1,54 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+GnomenuProxy and GnomenuObject.
+
+GnomenuObject objects provide methods, and emit signals
+
+GnomenuProxy is the client side adapter of the GnomenuObject.
+
+
+GnomenuProxy:
+
+  *  priv->window has the following properties:
+    * `_METHOD_CALL`
+    * `_METHOD_RETURN`
+    * `_SIGNAL`
+
+  * Sends ClientMessage
+    * `MSG_METHOD_CALL`
+    * `MSG_SIGNAL_ACK`
+
+  * Behavior
+    * `invoke(id, args, bytes, ret, ret_bytes)`
+      * if `G_TRYLOCK(lock)` fails, return immediately with a failure.
+      * start a mainloop `priv->loop`;
+      * set `_METHOD_CALL` to id + bytes + args;
+      * wait until `priv->loop` ends;
+      * free the loop.
+      * start a main loop `priv->loop`;
+      * send `MSG_METHOD_CALL`
+      * wait until `priv->loop` ends;
+      * get return value from `_METHOD_RETURN`;
+      * free the loops.
+      * `G_UNLOCK(lock)`
+    * `bind`
+      * find the window at `priv->path`
+      * set target to the window;
+      * `invoke(REGISTER, my window + version, ret, ret_bytes)`
+      * if no ret or ret is failure, return failure.
+    * `unbind`
+      * `invoke(UNREGISTER, my window + versoin, ret, ret_bytes)`
+      * if no ret or ret is failure, return failure.
+    * `::signal`
+      * when a `MSG_SIGNAL` is received.
+      * get args from `_SIGNAL`.
+      * send `MSG_SIGNAL_ACK`
+      * emit object signal `::signal`
+GnomenuOjbect:
+
+  * Sends ClientMessage:
+    * `MSG_SIGNAL`
+    * `MSG_METHOD_RETURN`
+  * behaviors
