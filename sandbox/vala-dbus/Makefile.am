@@ -1,5 +1,5 @@
 NULL = 
-
+VALAC = ../../branches/0.6-devel/vala/valac
 AUTOMAKE_OPTIONS = subdir-objects
 
 SUBDIRS = \
@@ -25,7 +25,7 @@ vala_dbus_SOURCES = \
 	$(NULL)
 
 src/vala-dbus.vala.stamp: $(vala_dbus_VALASOURCES)
-	$(VALAC) -C --pkg gtk+-2.0 --basedir $(top_srcdir) $^
+	$(VALAC) -C --pkg gtk+-2.0 --pkg dbus-glib-1 --basedir $(top_srcdir) $^
 	touch $@
 
 vala_dbus_LDADD = \
