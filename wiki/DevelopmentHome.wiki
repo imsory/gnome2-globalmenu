@@ -1,4 +1,4 @@
-#labels Phase-Design,Phase-Implementation,Featured
+﻿#labels Phase-Design,Phase-Implementation,Featured
 # This page is the home page for development documents, ideas, drafts and other garbages.
 
 We are at 0.4 -> 0.5.
@@ -47,8 +47,11 @@ We are at 0.4 -> 0.5.
        * Client side Menu Item -> GMenuMenuItem
        * Client side Menu Bar  -> GMenuMenuBar
        * Neither has binded GdkWindow. (GTK_WIDGET_NO_WINDOW)  
-  * 0.6: `dbus` - Can I get the Google SOC funding? I don't think so.
-    * Give up Kde compatibility, since we will finally find it wont work smooth, forever.
+  * 0.6: `dbus`
+    * Move to [http://vala.gnome.org vala] for core development. Several patches to Vala is required.
+    * Every Application exposes the Menu System as a DBus connection. 
+    * Every application registers the DBus Connection in `org/gnomenu/Service.register(uint64 Window, string uniquebusname)`
+    * Global Menu Manager looks up the proper Menu System via `org/gnomenu/Service.lookup(uint64 Window, out string uniquebusname)`.
     * ideas goes into DbusBasedGlobalMenu, and Issue 67.
 
 = Features =
