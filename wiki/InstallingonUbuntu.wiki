@@ -1,5 +1,5 @@
+#summary a step by step guide for Gutsy/Hardy
 #labels ubuntu,Phase-Deploy,Featured
-a step by step guide for Gutsy Gibbon/Hardy
 
 THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
