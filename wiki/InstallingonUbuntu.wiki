@@ -1,5 +1,5 @@
 #labels ubuntu,Phase-Deploy,Featured
-a step by step guide for Gutsy Gibbon
+a step by step guide for Gutsy Gibbon/Hardy
 
 THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
@@ -13,15 +13,25 @@ a step by step guide which assumes that you've never compiled anything on your s
   * Go to this folder
     {{{ cd global-menu-install}}}
   * Get the patched gtk debs and panel applet with the following instruction
+    * For Gusty:
     {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4.2_ubuntu-gusty-svn679.tar.gz}}}
+    * For Hardy:
+    {{{wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4-svn964.tar.gz}}}
    
     
   * Unarchive them
+    * For Gusty:
     {{{tar zxvf gnome-globalmenu-0.4.2_ubuntu-gusty-svn679.tar.gz }}}
+    * For Hardy:
+    {{{tar zxvf gnome-globalmenu-0.4-svn964.tar.gz}}}
   
   * Install them
-    # {{{cd gnome-globalmenu }}}
-    # {{{sudo dpkg -i *.deb}}}
+    * For Gusty:
+     # {{{cd gnome-globalmenu }}}
+     # {{{sudo dpkg -i *.deb}}}
+    * For Hardy:
+     # {{{cd globalmenu}}}
+     # {{{sudo dpkg -i *.deb}}}
 
   * *NOTE* if you have installed previous version of gnome-globalmenu and meet a dependency error of {{{libgtk-directfb-2.0-0 libgtk-directfb-2.0-dev libgtk2.0-0-dbg}}}, you can just remove them, since they are not installed by default.
    {{{sudo dpkg -r libgtk-directfb-2.0-0 libgtk-directfb-2.0-dev libgtk2.0-0-dbg}}}
@@ -31,8 +41,8 @@ a step by step guide which assumes that you've never compiled anything on your s
     sudo dpkg -i --force-overwrite *.deb 
 }}}
 
-   * Edit ~/.gnomerc
-     * You won't need this step for a build after svn 833
+   * Edit ~/.gnomerc (Gusty Only)
+     * You won't need this step for Hardy
      # add a line to it
      {{{export GTK_MODULES=libgnomenu }}}
 
