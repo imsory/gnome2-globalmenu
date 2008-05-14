@@ -52,7 +52,6 @@ a step by step guide which assumes that you've never compiled anything on your s
 There is not yet packages for 64 bit ubuntu. You can build from source by yourself. I am not sure if you also need to build the i386 binary in order to support global menu for i386 programs on the x86-64 platform.
 
 ==Installing from source==
-*Warning* 
 
-The old guide doesn't work anymore. Refer to the 
+Refer to the 
 [http://ayozone.org/2008/03/12/global-menu-the-new-gnome-macmenu/  guide] written by Ayoli.
