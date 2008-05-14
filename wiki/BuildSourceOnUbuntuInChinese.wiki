@@ -1,3 +1,4 @@
+#labels Featured
 # 在Ubuntu Gusty上编译applet和打过补丁的Gtk库
 
 = 引言 =
@@ -32,18 +33,17 @@ cd trunk/gtk+-aqd/
 apt-get source libgtk2.0-0
 }}}
 
- * 获得用于Ubuntu Gusty的补丁
+ * 给Gtk打补丁
+  * Gusty版：
 {{{
 cd gtk+2.0-2.12.0
 wget http://gnome2-globalmenu.googlecode.com/files/patch.diff.tar.bz2
 tar jxvf patch.diff.tar.bz2 
-}}}
-
- * 给Gtk打补丁
-{{{
 patch -p1 < ./patch.diff
 }}}
- 
+  * Hardy版：
+   {{{ make patch }}}
+
  * 编译Gtk 
 {{{
 dpkg-buildpackage -b -rfakeroot
@@ -75,7 +75,7 @@ GTK_MODULES=libgnomenu gedit
 gedit ~/.gnomerc
 }}}
  添加一行
-   * *SKIP* this step for a build of svn 833 or later.
+   * *跳过* svn 833之后的版本请跳过此步。.
 {{{
 export GTK_MODULES=libgnomenu
 }}}
@@ -88,23 +88,3 @@ sudo dpkg -r gnome2-globalmenu-applet
 
  * 重新安装默认的Gtk库.
  检查你的update-manager, 选中重新安装Gtk相关的库.
-
-
-= Suggestions ==
- * Yu:
-  * I suggest you mention downloading the patch from the svn instead of from the downloading page. There is really no need to keep a duplicated copy of the patch.
-   * 获得Gtk源代码 
-{{{
-cd trunk/gtk+-aqd/
-apt-get source libgtk2.0-0
-mv gtk+-2.0-2.12.0 gtk+-aqd
-}}}
-   * 给Gtk打补丁
-{{{
-make patch
-}}}
-   * 编译Gtk 
-{{{
-mv gtk+-aqd gtk+-2.0-2.12.0
-dpkg-buildpackage -b -rfakeroot
-}}}
