@@ -33,8 +33,8 @@ a step by step guide which assumes that you've never compiled anything on your s
      # {{{cd globalmenu}}}
      # {{{sudo dpkg -i *.deb}}}
 
-  * *NOTE* if you have installed previous version of gnome-globalmenu and meet a dependency error of {{{libgtk-directfb-2.0-0 libgtk-directfb-2.0-dev libgtk2.0-0-dbg}}}, you can just remove them, since they are not installed by default.
-   {{{sudo dpkg -r libgtk-directfb-2.0-0 libgtk-directfb-2.0-dev libgtk2.0-0-dbg}}}
+  * *NOTE* if you have installed previous version of gnome-globalmenu and meet a dependency error of {{{libgtk-directfb-2.0-0 libgtk-directfb-2.0-dev libgtk2.0-0-dbg libgtk2.0-dev}}}, you can just remove them, since they are not installed by default.
+   {{{sudo dpkg -r libgtk-directfb-2.0-0 libgtk-directfb-2.0-dev libgtk2.0-0-dbg libgtk2.0-dev}}}
     
     if you still meet some errors here, try
 {{{
