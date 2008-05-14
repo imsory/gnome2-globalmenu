@@ -1,4 +1,4 @@
-# Build the applet and patched Gtk library on Ubuntu Gusty
+#summary applet and patched Gtk library on Ubuntu Gusty
 
 = Introduction =
 This article will help you to build gnome-globalmenu from a svn snapshot.
@@ -40,13 +40,20 @@ wget http://gnome2-globalmenu.googlecode.com/files/patch.diff.tar.bz2
 tar jxvf patch.diff.tar.bz2 
 }}}
 
- * Patch the Gtk 
+ * Patch the Gtk
+  * For Gusty:
 {{{
+cd gtk+2.0-2.12.0
+wget http://gnome2-globalmenu.googlecode.com/files/patch.diff.tar.bz2
+tar jxvf patch.diff.tar.bz2 
 patch -p1 < ./patch.diff
 }}}
+  * For Hardy:
+  {{{make patch}}}
  
  * Then compile Gtk 
 {{{
+cd gtk+2.0-2.12.0
 dpkg-buildpackage -b -rfakeroot
 }}}
  
@@ -77,6 +84,7 @@ GTK_MODULES=libgnomenu gedit
 gedit ~/.gnomerc
 }}}
  and add a line to it
+ * *SKIP*  skip this step with svn 833 or later.
 {{{
 export GTK_MODULES=libgnomenu
 }}}
