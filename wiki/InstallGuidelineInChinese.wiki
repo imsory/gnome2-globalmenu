@@ -14,20 +14,34 @@
     {{{ cd global-menu-install}}}
 
   * 下载打过补丁的Gtk deb包和面板小程序
-   {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4.2_ubuntu-gusty-svn679.tar.gz}}}  
+   * Gusty版：
+   {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4.2_ubuntu-gusty-svn679.tar.gz}}} 
+   * Hardy版：
+   {{{wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4-svn964.tar.gz}}} 
   * 解压。
+   * Gusty版：
     {{{tar zxvf gnome-globalmenu-0.4.2_ubuntu-gusty-svn679.tar.gz }}}
+   * Hardy版：
+    {{{tar zxvf gnome-globalmenu-0.4-svn964.tar.gz}}}
+   
    
   * 安装。
+   * Gusty版：
     # {{{cd gnome-globalmenu }}}
     # {{{sudo dpkg -i *.deb}}}
-    如果你在此处遇到错误，尝试使用覆盖安装。
+   * Hardy版：
+    # {{{cd globalmenu }}}
+    # {{{sudo dpkg -i *.deb}}}
+   * *注意* 如果你在此处遇到包依赖关系错误错误，并且安装过老版本的globalmenu，请尝试卸载libgtk-directfb-2.0-0 libgtk-directfb-2.0-dev libgtk2.0-0-dbg libgtk2.0-dev，因为它们并不是默认安装。
+    {{{sudo dpkg -r libgtk-directfb-2.0-0 libgtk-directfb-2.0-dev libgtk2.0-0-dbg libgtk2.0-dev}}}
+
+   如果你依然遇到问题，请尝试使用覆盖安装。
 {{{
     sudo dpkg -i --force-overwrite *.deb 
 }}}
 
-  * 编辑 ~/.gnomerc文件
-    * *Skip* this step for a build of svn 833+
+  * 编辑 ~/.gnomerc文件 (仅Gusty版）
+    * *注意* Hardy版请跳过此步。
    添加下列代码：
     {{{export GTK_MODULES=libgnomenu }}}
   
@@ -41,8 +55,13 @@
 sudo dpkg -r gnome2-globalmenu-applet
 }}}
   * 恢复成默认的Gtk库。
+   * Gusty版：
 {{{
 sudo apt-get install libgtk2.0-0=2.12.0-1ubuntu3 gtk2-engines-pixbuf=2.12.0-1ubuntu3 gtk2.0-examples=2.12.0-1ubuntu3 libgtk2.0-dev=2.12.0-1ubuntu3 libgtk2.0-common=2.12.0-1ubuntu3
+}}}
+   * Hardy版：
+{{{
+sudo apt-get install libgtk2.0-0=2.12.9-3ubuntu3 gtk2-engines-pixbuf=2.12.9-3ubuntu3 gtk2.0-examples=2.12.9-3ubuntu3 libgtk2.0-common=2.12.9-3ubuntu3
 }}}
 
 
