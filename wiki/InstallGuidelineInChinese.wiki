@@ -1,3 +1,4 @@
+#summary Ubuntu Gusty/Hardy的安装指南
 #labels Featured
 这只是一份草案文档，它可能会导致一些计算机故障。
 = 引言 =
