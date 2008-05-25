@@ -46,7 +46,7 @@
    添加下列代码：
     {{{export GTK_MODULES=libgnomenu }}}
   
-  * 重新启动你的电脑，右键单击面板，找到Global Menubar，并且添加它。
+  * 重新启动你的电脑，右键单击面板，找到 *公用菜单小程序* ，并且添加它。
 
 === 删除 gnome-globalmenu-applet ===
   * 删除面板上的applet
