@@ -1,3 +1,7 @@
+#labels Deprecated
+*We are using SMS and window properties for IPC in 0.5 branch*
+
+
 Detailed design after some coding:
 
 gnomenu_socket_new
