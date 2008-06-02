@@ -25,30 +25,14 @@ We are at 0.4 -> 0.5.
     * KdeMenuServerHelper, implements GnomenuServerInterface; 
       Due to limitation, it shall lacks function.
     * Widget GnomenuMenuServer
-  * 0.5: `trinity` -> abandoned
-    * libgnomenu -> libglobalmenu obj PREFIX = GMenu
-       * GMenuServerService  : Designed for dbus
-       * GMenuServerMenuItem : Designed for dbus
-       * GMenuServerMenuBar  : Designed for dbus
-       * GMenuMenuItemProxy  : Designed for dbus
-       * GMenuMenubarProxy   : Designed for dbus
-       * GMenuMenuItem
-       * GMenuMenuBar
-       * GMenuSocket         : Deprecated in 0.6, replaced by dbus
-    * Global Menu Server (in MFC language, it is the Documenet)
-       * Server side Menu Item -> Accessed by GMenuMenuItemProxy
-       * Server side Menu Bar  -> GMenuMenuBarProxy
-    * Global Menu Manager (the View)
-       * Manager side Menu Item -> GtkMenuItem (unhacked)
-       * Manager side Menu Bar  -> GtkMenuBar (unhacked)
-       * Link with libwnck-1.0 ? or not.
-       * Hook to global Alt+<Key> events ( check if it is possbile)
-    * Global Menu Client(s) (the Controller)
-       * Client side Menu Item -> GMenuMenuItem
-       * Client side Menu Bar  -> GMenuMenuBar
-       * Neither has binded GdkWindow. (GTK_WIDGET_NO_WINDOW)  
+  * 0.5: `trinity`
+    * The Menu system introspects itself store the introspection data as a property when attached to a toplevel window.
+    * Minimize the IPC formalism. Abandon GnomenuSocket.
+    * The Menu Applet use the introspection data in the active window to build the menubar on the fly.
+    * Menu Applet try to grab the `Alt+` shortcuts. the AccelKeys should be controled by `GtkAction` and we don't need to bother on it.
+    * Using cache to increase responding rate.
   * 0.6: `dbus`
-    * Move to [http://vala.gnome.org vala] for core development. Several patches to Vala is required.
+    * Move to [http://vala.gnome.org vala] for core development. Several patches to Vala is required. Most are in vala upstream (0.3.2) now.
     * Every Application exposes the Menu System as a DBus connection. 
     * Every application registers the DBus Connection in `org/gnomenu/Service.register(uint64 Window, string uniquebusname)`
     * Global Menu Manager looks up the proper Menu System via `org/gnomenu/Service.lookup(uint64 Window, out string uniquebusname)`.
