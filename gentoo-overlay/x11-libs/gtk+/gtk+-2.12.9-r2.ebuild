@@ -1,6 +1,8 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-2.12.5.ebuild,v 1.1 2008/01/10 21:39:39 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-2.12.9-r2.ebuild,v 1.8 2008/06/07 15:59:27 nixnut Exp $
+
+WANT_AUTOMAKE="1.7"
 
 inherit gnome.org flag-o-matic eutils autotools virtualx
 
@@ -9,7 +11,7 @@ HOMEPAGE="http://www.gtk.org/"
 
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd"
 IUSE="cups debug doc jpeg tiff vim-syntax xinerama globalmenu"
 
 RDEPEND="x11-libs/libXrender
@@ -36,20 +38,20 @@ RDEPEND="x11-libs/libXrender
 DEPEND="${RDEPEND}
 	sys-devel/autoconf
 	>=dev-util/pkgconfig-0.9
-	=sys-devel/automake-1.7*
 	x11-proto/xextproto
 	x11-proto/xproto
 	x11-proto/inputproto
 	x11-proto/damageproto
 	xinerama? ( x11-proto/xineramaproto )
+	>=dev-util/gtk-doc-am-1.8
 	doc? (
-			>=dev-util/gtk-doc-1.6
+			>=dev-util/gtk-doc-1.8
 			~app-text/docbook-xml-dtd-4.1.2
 		 )"
 PDEPEND="vim-syntax? ( app-vim/gtk-syntax )"
 
-GTKMENUBAR_PATCH_VERSION=${GTKMENUBAR_PATCH_VERSION:-"branches/0.3"}
-GTKMENUBAR_PATCH_URL="http://gnome2-globalmenu.googlecode.com/svn/${GTKMENUBAR_PATCH_VERSION}/gtk2-aqd/gtkmenubar.patch"
+GTKMENUBAR_PATCH_VERSION=${GTKMENUBAR_PATCH_VERSION:-"branches/0.4_wp_socket"}
+GTKMENUBAR_PATCH_URL="http://gnome2-globalmenu.googlecode.com/svn/${GTKMENUBAR_PATCH_VERSION}/gtk+-aqd/patch.diff"
 
 pkg_setup() {
 	if ! built_with_use x11-libs/cairo X; then
@@ -76,18 +78,31 @@ src_unpack() {
 	# dont clash on multilib systems
 	has_multilib_profile && epatch "${FILESDIR}/${PN}-2.8.0-multilib.patch"
 
+	# Workaround adobe flash infinite loop. Patch from http://bugzilla.gnome.org/show_bug.cgi?id=463773#c11
+	epatch "${FILESDIR}/${PN}-2.12.0-flash-workaround.patch"
+
+	# OpenOffice.org might hang at startup (on non-gnome env) without this workaround, bug #193513
+	epatch "${FILESDIR}/${PN}-2.12.0-openoffice-freeze-workaround.patch"
+
 	# Firefox print review crash fix, bug #195644
 	epatch "${FILESDIR}/${PN}-2.12.1-firefox-print-preview.patch"
 
-	# Fix printing on ppc64.  Bug #197639
-	#epatch "${FILESDIR}/${PN}-2.12.1-cupsutils.patch"
+	### Following patches are are cherry-picked from 2.12 branch and will be part of 2.12.10
+	# Fix print dialog crashes in 64bit dialog, best experienced in Eclipse, bug 214863
+	epatch "${FILESDIR}/${P}-print-backend-64bit.patch"
+	# Fix treeview automatic search popup text field window type so it behaves correctly under composite managers
+	epatch "${FILESDIR}/${P}-treeview-search-window-type.patch"
+	# Improve handling of ~ with gtk+ filechooser backend (gtk+ file_chooser_backend chosen in gconf or no gconfd running), bug 215146
+	epatch "${FILESDIR}/${P}-gtk-filesystem-backend-tilde-fix.patch"
+	# Fix fallback icon size in the filechooser. Hopefully improves the icon size inconsistencies since GIO
+	epatch "${FILESDIR}/${P}-filechooser-fix-icon-size.patch"
 
 	# Global menu (a la Mac OS). http://code.google.com/p/gnome2-globalmenu/
 	if use globalmenu; then
 		einfo "Fetching patch"
-		wget "${GTKMENUBAR_PATCH_URL}" -O "${S}/gtkmenubar.patch" || die "Can't fetch patch"
+		wget "${GTKMENUBAR_PATCH_URL}" -O "${S}/gtkmenubar.diff" || die "Can't fetch patch"
 		einfo "Patch fetched, GTK+ would be patched"
-		epatch "${S}/gtkmenubar.patch"
+		epatch "${S}/gtkmenubar.diff"
 	fi
 
 	# -O3 and company cause random crashes in applications. Bug #133469
@@ -96,11 +111,12 @@ src_unpack() {
 
 	use ppc64 && append-flags -mminimal-toc
 
+	# Fix libtool usage for configure stage, bug #213789
+	epatch "${FILESDIR}/${P}-libtool-2.patch"
+
 	# remember, eautoreconf applies elibtoolize.
 	# if you remove this, you should manually run elibtoolize
-	export WANT_AUTOMAKE=1.7
-	cp aclocal.m4 old_macros.m4
-	AT_M4DIR="." eautoreconf
+	eautoreconf
 
 	epunt_cxx
 }
@@ -111,6 +127,7 @@ src_compile() {
 		$(use_with jpeg libjpeg) \
 		$(use_with tiff libtiff) \
 		$(use_enable xinerama) \
+		$(use_enable cups cups auto) \
 		--with-libpng \
 		--with-gdktarget=x11 \
 		--with-xinput"
