@@ -12,3 +12,4 @@
 -Thumbnails and GNOME: http://bugzilla.gnome.org/show_bug.cgi?id=347694 Needs love.
 
 -Previews : a lot of work to go there: http://www.apple.com/macosx/features/300.html#preview and http://www.apple.com/macosx/features/300.html#quicklook
+Work on this has started at http://www.launchpad.net/gloobus
