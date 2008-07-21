@@ -1,7 +1,7 @@
 ﻿#labels Phase-Design,Phase-Implementation,Featured
 # This page is the home page for development documents, ideas, drafts and other garbages.
 
-We are at 0.4 -> 0.5.
+We are at 0.5.
 
 = Roadmap =
   * 0.1: `Origin`
@@ -27,11 +27,11 @@ We are at 0.4 -> 0.5.
     * Widget GnomenuMenuServer
   * 0.5: `trinity`
     * The Menu system introspects itself store the introspection data as a property when attached to a toplevel window.
-    * Minimize the IPC formalism. Abandon GnomenuSocket. SMS(broadcasted short messages).
-    * The Menu Applet use the introspection data in the active window to build the menubar on the fly. (How to deal with the `transient_for` property?)
-    * Sub-menus are created by Applications.
+    * Minimize the IPC formalism. Abandon GnomenuSocket. SMS (broadcasting short messages).
+    * The Menu Applet use the introspection data on the SMS listener window to build the menubar on the fly. (How to deal with the `transient_for` property?)
     * Menu Applet try to grab the `Alt+` shortcuts. (the AccelKeys should be controled by `GtkAction` and we don't need to bother on it.)
-    * Using cache to increase responding rate.
+    * Slowest part is sending messages.
+    * <F10> to take menubar back to the window. (up to changing)
   * 0.6: `dbus` - Throw it away.
     * Move to [http://vala.gnome.org vala] for core development. Several patches to Vala is required. Most are in vala upstream (0.3.2) now.
     * Every Application exposes the Menu System as a DBus connection. 
@@ -52,19 +52,12 @@ We are at 0.4 -> 0.5.
 == Classes ==
 
 || Class Name || Desc ||Parent       || Dependencies || Location ||
-|| GnomenuSocket  || interwindow communication for gtk|| GObject      || GdkWindow, GdkEvent, gdk-x11, Xlib || libgnomenu ||
-|| GnomenuServerHelper || menu server class|| GObject || GnomenuSocket || libgnomenu||
-|| GnomenuClientHelper || menu client class|| GObject || GnomenuSocket || libgnomenu||
 || GtkMenuBar || old gtk menubar, hacked to return GnomenuMenuBar on demand|| GtkMenuShell || GtkMenuItem, GnomenuMenuBar || gtk||
-|| GnomenuMenuBar || global menubar || GtkMenuBar || GtkMenuItem, GnomeMenuClientHelper|| libgnomenu ||
-
+|| GnomenuMenuBar || global menubar || GtkMenuBar || || libgnomenu ||
+|| GnomenuGlobalMenu || Global menu holder || GtkWidget ||  ||libgnomenu ||
 == Arch ==
 
-Menu Server s are built upon MenuServer object. MenuServer object can also optionally implement compatiblility for KDE and Etotile; but currently I don't want to do it.
-
-Patch GTK, when gtk_menu_bar_get_type is called, it detects whether or not gnomenu_menu_bar_type (sub class of GtkMenuBar) is already setup, if so, return gnomenu_menu_bar_type if the quirks allows it to do so.
-
-GnomenuMenuBar has two mode, decided by priv->detached. If it successfully connect to a menu server, it will become detached. Whenever the connection dies, it become FALSE and menu bar goes back to the parent window.
+GnomenuMenuBar has two mode, decided by 'is-global-menu' property. 
 
 GnomeMenuQuirks will load quirks from a rc file(~/.libgnomenu.conf and /etc/libgnomenu.conf
 
@@ -75,5 +68,8 @@ program_name/detail       :       ...................................
 }}}
 If there is multi matches, the result is accumulative.
 
-Development documentation can be build. 
-http://gnome2-globalmenu.googlecode.com/files/libgnomenu-book-556.tar.gz
+Development documentation can be build. {{{
+./autogen.sh --enable-gtk-doc
+make
+nautilus doc/
+}}}
