@@ -4,6 +4,15 @@
 = 引言 =
 这份指南假定你没有在电脑上编译过其他程序，并且，假定你使用的是Ubuntu Gusty。
 
+==使用apt repository安装==
+
+  * 添加下面的代码到/etc/apt/source.list
+    {{{deb http://aeo.dreamhosters.com binary/}}}
+  * 获取升级信息
+    {{{sudo apt-get update}}}
+  * 安装globalmenu
+    {{{sudo apt-get install gnome2-globalmenu-applet}}}
+
 ==使用deb包安装==
 ===32位系统===
 
