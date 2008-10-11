@@ -25,19 +25,17 @@ We are at 0.5.
     * KdeMenuServerHelper, implements GnomenuServerInterface; 
       Due to limitation, it shall lacks function.
     * Widget GnomenuMenuServer
-  * 0.5: `trinity`
+  * 0.5: `trinity` - slipped; doomed; abandoned
     * The Menu system introspects itself store the introspection data as a property when attached to a toplevel window.
     * Minimize the IPC formalism. Abandon GnomenuSocket. SMS (broadcasting short messages).
     * The Menu Applet use the introspection data on the SMS listener window to build the menubar on the fly. (How to deal with the `transient_for` property?)
     * Menu Applet try to grab the `Alt+` shortcuts. (the AccelKeys should be controled by `GtkAction` and we don't need to bother on it.)
     * Slowest part is sending messages.
     * <F10> to take menubar back to the window. (up to changing)
-  * 0.6: `dbus` - Throw it away.
-    * Move to [http://vala.gnome.org vala] for core development. Several patches to Vala is required. Most are in vala upstream (0.3.2) now.
+  * 0.6: `dbus`
+    * Move to [http://vala.gnome.org vala] for core development.
     * Every Application exposes the Menu System as a DBus connection. 
-    * Every application registers the DBus Connection in `org/gnomenu/Service.register(uint64 Window, string uniquebusname)`
-    * Global Menu Manager looks up the proper Menu System via `org/gnomenu/Service.lookup(uint64 Window, out string uniquebusname)`.
-    * ideas goes into DbusBasedGlobalMenu, and Issue 67.
+    * Every application registers the DBus bus name in `org.gnome.GlobalMenu.Server`
   * 1.0: `Happy New Year` - or `Merry Christmas`?
     * Stable Release!
     * either the 0.5 arch or the 0.4 arch
@@ -47,6 +45,13 @@ We are at 0.5.
 ||DevelopmentDefaultMenu  ||Target: 0.5|| Happens to be Done in 0.4||
 ||DevelopmentCompatibilityEtoile|| ||
 ||DevelopmentCompatibilityKDE||  ||
+
+
+= Document - 0.6 =
+in trunk, check out ClassMap.dia for a brief view of classes.
+
+GnomenuMenuBar.switch() accepts a string form xwindow id, and shows the first menu bar of the given window.
+
 = Development Documentation - 0.4 =
 
 == Classes ==
