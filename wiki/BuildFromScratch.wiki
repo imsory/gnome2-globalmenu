@@ -4,15 +4,14 @@
 
 = Introduction =
 This article will help you to build gnome-globalmenu from a svn snapshot.
-Currently, this guide only works for trunk (svn 500+).
+Currently, this guide only works for trunk (svn 1360+).
 
 = Step 1: Obtain the Source =
-Suppose you want to obtain trunk. for tags, branches, idea is the same.
 
 {{{
 svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/ gnome-globalmenu
 }}}
-Then you are done. 
+
 
 = Step 2: Compile the Source =
 {{{
@@ -20,156 +19,67 @@ cd gnome-globalmenu
 }}}
 == 2.1 Compile Everything Else: Libgnomenu, Menu Servers ==
 {{{
-./autogen.sh --prefix=/usr/local
+./autogen.sh --prefix=/usr
 ./configure --enable-gtk-doc
 make
 }}}
+For most linux flavors I know, --prefix=/usr is more preferable than --prefix=/usr/local.
 Other things you can disable are
 {{{
---enable-standalone=[yes]|no
---enable-xfce-plugin=[yes]|no
+# --enable-xfce-plugin=[yes]|no  ; not implemented yet
 --enable-gnome-applet=[yes]|no
---enable-maintainer-mode=[yes]|no
---enalbe-gtk-doc=[no]|yes
+--enable-maintainer-mode=[yes]|no ;
+# --enalbe-gtk-doc=[no]|yes  ; not implemented yet;
 }}}
-
-`autogen.sh` will produce a maintainer mode build, which means you can start the programs in the building directory, but if you install them, they will fail. It is due to unable to seek the glade files. If you want to install, you will have to reconfigure the project without maintainer mode.
 
 Installation:
 {{{
-./configure --prefix=/usr/local --enable-tracing=no 
+./configure --prefix=/usr
 make 
 su -c 'make install'
 }}}
 
-Then you are done. Add the applet to the panel and have fun. For GNOME, The name of the applet is Global Menu Bar.
+Several libraries are built:
+  * `libgnomenugtk`: the GTK side of global menu, provides bindings into GTK and dynamic patches;
+  * `libgnomenu`: the DBus interfaces, and GTK widgets to view a global menu;
+  * `libgmarkupdoc-base`: a document model for GMarkup texts;
+  * `libgmarkupdoc-dbus`: remotely access the GMarkup document model via DBus;
+  * `libgmarkupdoc-named`: a GTK TreeModel for a GMarkup document model;
 
-After this, You also need to setup GTK_MODULES to load libgnomenu in your .bash_profile,(or ~/.gnomerc if you are using Ubuntu). However,
-You don't need to do this after svn 833. In fact if you still add libgnomenu to your .gnomerc, you will meet weird errors.
+Ensure libgnomenu is loaded as a Gtk module by 
 {{{
-GTK_MODULES=libgnomenu
-export GTK_MODULES;
+export GTK_MODULES=libgnomenugtk
 }}}
+A good place to do this is in `~/.profile`, `~/.bash_profile`, `or ~/.gnomerc`, it depends on the flavor of linux.
 
-== 2.2 Compile the gtk2-aqd patch ==
-*Notice: FOLLOWING THESE STEPS WILL REPLACE THE OLD GTK PACKAGE SHIPPED WITH YOUR DISTRIBUTION. IT IS POSSIBLE TO LOSE YOUR GUI.*
-First, change your working directory,
-{{{
-cd gtk+-aqd
-}}}
-Next, obtain the source code for gtk, and extract it into `gtk+-aqd`. The detail steps depend on your preference and your platform. On my box (where I have all the source tarballs in ~/sources/SOURCES), I can simple do
-{{{
-mkdir gtk+-aqd
-cp ~/sources/SOURCES/gtk+-2.12.3.tar.bz2 .
-tar --strip-components=1 -xjvf gtk+-2.12.3.tar.bz2 -C gtk+-aqd
-}}}
-or you can
-{{{
-make prepare
-}}}
-to obtain the special version of gtk which we are patching against.
-
-HINT: If your tar is very old, you may need to use `strip-path` instead of `strip-componets`.
-HINT: You can install source code packages or goto gtk site [ftp://ftp.gtk.org/pub/gtk/v2.10/]. Whatever you need is to rename the top tree of gtk source code (the parent directory of gtk and gdk) to gtk+-aqd/gtk+-aqd 
-
-OK, let's suppose you have successfully set up the source code of gtk. The next essential setup is to apply the patch.
-{{{
-make patch
-}}}
-If no error is reported, then you can configure `gtk` and compile. If error happens,
-see Troubleshooting section of this article. Some has reported the default GTK of Gusty need a variation of patch; It can be find at (somewhere). Or you can manually apply the patch. It is really clear if you open the patch file and have a look.
-{{{
-cd gtk+-aqd
-./configure --prefix=/usr/local --with-gdk-target=x11
-make
-}}}
-If you encounter problems, refer to Troubleshooting section.
-If you want to install, use the following commands,
-{{{
-su -c 'make install'
-}}}
-If you just want to do development, don't install it. You can use `gnome-globalmenu/gtk+aqd/test {application}` to override the gtk. That script seems to be deprecated. I haven't use it for a long time, though.
-
-If no error occurs, your gtk is already patched. Try to start a simple gtk program in a console and you will see a debugging messages, indicating libgnomenu not found. 
-{{{
-....
-Gnome Global Menu not found. ...
-....
-}}}
-If you can not see these messages, see Troubleshooting section
-{{{
-cd ..
-}}}
-= Step 2.3: Testing =
-First of all you need to configure with `--enable-maintainer-mode`, or else every program unser `servers` directory will die, if you haven't done a `make install`.
-
-In `gnome-globalmenu/servers`, there is a standalone server `gtk-globalmenu-server` which don't need to be any plugin or applet. Launch it.
-{{{
-cd gnome-globalmenu/servers
-libtool gdb ./gtk-globalmenu-server
->> run -f
-}}}
-{{{
-cd gnome-globalmenu/libgnomenu
-env GTK_MODULES=libgnomenu LD_LIBRARY_PATH=../gtk+-aqd/gtk+-aqd/gtk/.libs libtool gdb gedit
->> run
-}}}
-The correct behavior is the menu bar of gedit shows up in the server window,
-and when you quit the server, menu bar goes back to gedit.
+Several binaries are also built:
+  * `GlobalMenu.PanelApplet` is the panel applet for gnome panel.
+  * `org.gnome.GlobalMenu.Server` is the server for window management.
+  * `gnomenu-navigator` is a tool to inspect any menu bar on the system.
 
 = Step 3: Packaging =
-If you manage to pass all these steps, and there is no package for your distribution/platform, I will strongly encourage you to build packages for others who also use this platform. The suggested package name is:
-||package name || content || note||
-||`gtk2-aqd-0.4.{SVN VERSION}-${YOURGTKVERSION}`|| gtk || provides gtk2 - ${YOURGTKVERSION}, obsoletes gtk2 - ${YOURGTKVERSION} ||
-||`libgnomenu-0.4.{SVN VERSION}` || libgnomenu || ||
-||`xfce-globalmenu-plugin-0.4.{SVN VERSION}` || xfce plugin || ||
-||`gnome-globalmenu-applet-0.4.{SVN VERSION}` || gnome-applet || ||
-||`globalmenu-server-0.4.{SVN VERSION}` || standalone server || ||
+The current preferred package name is `gnome-globalmenu`; and for RPM there is an example spec file, `gnome-globalmenu.spec.tmpl`, and a script to build the RPM packages,
+{{{
+./rpm
+the subversion version is 1360:1378M
+enter the desired version
+<you type>1378
+enter the release number
+<you type enter>
+}}}
+and the packages will be built under `~/rpmbuild`.
+Modify the script `./rpm` if needed.
 
-Always make sure you have {SVN VERSION} in package naming, to avoid future confusions.
+Always make sure you have {SVN VERSION} in package naming, to avoid future conflictions.
+
 
 = Step 4: Remove =
-== 4.1 Remove the applet ==
-`make uninstall` is fine.
 
-== Remove gtk2-aqd ==
-I'll suggest you do this under a tty instead of under a terminal window.
-=== One possible approach ===
-Safer but dirty. Install the original GTK.
-=== Another possible approach ===
-Cleaner but dangrous. I'll (personally) prefer this approach. 
-First of all fetch the package file of gtk from your distribution's repository. Put it in `gtk+-aqd` directory. DO NOT IGNORE THIS STEP.
 {{{
-cd gtk+-aqd
-cd gtk+-aqd # two levels of gtk+-aqd
-su -c 'make uninstall'
-cd ..
+make uninstall
 }}}
-At this moment you don't have any gtk installation in your computer. Almost every newly launching GUI application will fail. The running ones will be ok. Thanks to the kernel.
 
-Anyway, use your commandline package manager to install the gtk package, eg,
-{{{
-su -c 'rpm -i gtk*.rpm'
-}}}
-Done.
 = Troubleshooting =
-==I cannot apply the patch==
-Which version of gtk are you patching against? It is known to work on 2.12.1 and 2.12.3
-If the source code of gtk you obtained has already been patched, the patch may also fail to apply. Also Gusty is known to use a weird gtk version. Generally you can open the .rej file and manually apply the patch, which only contains less than 50 lines of changes.
-
-==I cannot see the debugging messages==
-Are you sure the directory in the `configure` location is the correct directory for your system's path? try
-{{{
-locate libgtk-x11-2.0.so
-}}}
-and figure out the correct `prefix`. Also, if you are using a distribution with strong packaging system(rpm or deb), refer to the gtk package's spec(description) file also will help you to figure it out.
-==I can not see the applet in the add applet dialog of gnome panel==
-How is your bonobo-activation configure? If it is in a very weird location, this will happen. Try to find out a directory with many `.server` files, edit `/usr/local/share/doc/gnome2-globalmenu-applet/GNOME_GlobalMenuApplet.server.sample`, and put it there with an extension `.server`.
-==I tried to launch a server in `servers` directory. It crashes==
-configure with --enable-maintainer-mode.
-==launching the server in `servers` directory is fine, but after a make install it crashes==
-configure with --disable-maintainer-mode before you make install.
-
 ==In General==
 Please report to our project's mail list the detail of the trouble which traps you . We will try to help. the address of the mail list is googlegroups.com: gnome-globalmenu . reverse the order and replace : with @. 
 
