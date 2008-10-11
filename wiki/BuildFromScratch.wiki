@@ -6,6 +6,15 @@
 This article will help you to build gnome-globalmenu from a svn snapshot.
 Currently, this guide only works for trunk (svn 1360+).
 
+= Step 0: Prerequisites =
+
+  * VALA = [http://download.gnome.org/sources/vala/0.3/vala-0.3.5.tar.bz2 0.3.5] is a must for building from svn. Building from a released tarball doesn't need it.
+    * lastest trunk build of vala should work, though not tested.
+  * and development headers for the libraries
+    * dbus-glib
+    * GTK
+    * libpanelapplet (for GlobalMenu.PanelApplet)
+
 = Step 1: Obtain the Source =
 
 {{{
@@ -16,13 +25,11 @@ svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/ gnome-globalmenu
 = Step 2: Compile the Source =
 {{{
 cd gnome-globalmenu
-}}}
-== 2.1 Compile Everything Else: Libgnomenu, Menu Servers ==
-{{{
 ./autogen.sh --prefix=/usr
 ./configure --enable-gtk-doc
 make
 }}}
+
 For most linux flavors I know, --prefix=/usr is more preferable than --prefix=/usr/local.
 Other things you can disable are
 {{{
@@ -30,13 +37,6 @@ Other things you can disable are
 --enable-gnome-applet=[yes]|no
 --enable-maintainer-mode=[yes]|no ;
 # --enalbe-gtk-doc=[no]|yes  ; not implemented yet;
-}}}
-
-Installation:
-{{{
-./configure --prefix=/usr
-make 
-su -c 'make install'
 }}}
 
 Several libraries are built:
@@ -52,10 +52,31 @@ export GTK_MODULES=libgnomenugtk
 }}}
 A good place to do this is in `~/.profile`, `~/.bash_profile`, `or ~/.gnomerc`, it depends on the flavor of linux.
 
+If you are debugging, some [http://developer.apple.com/documentation/developertools/glibtool/libtool_3.html#SEC11 libtool tricks] can help 
+{{{
+cd libgnomenugtk;
+env GTK_MODULES=libgnomenugtk libtool gdb [any application]
+}}}
+
+Also an environment variable is helpful
+{{{
+export GNOMENU_FUN=1
+}}}
+the variable tells `libgnomenugtk` to open a Gtk TreeView for all menus in the application you start.
+
 Several binaries are also built:
   * `GlobalMenu.PanelApplet` is the panel applet for gnome panel.
+    * See [http://www.davyd.id.au/articles/debugging-gnome-applets.shtml David's tricks] for debugging a panel applet.
   * `org.gnome.GlobalMenu.Server` is the server for window management.
+    * --kill for killing any existed instance.
   * `gnomenu-navigator` is a tool to inspect any menu bar on the system.
+
+
+To install
+{{{
+su -c 'make install'
+}}}
+
 
 = Step 3: Packaging =
 The current preferred package name is `gnome-globalmenu`; and for RPM there is an example spec file, `gnome-globalmenu.spec.tmpl`, and a script to build the RPM packages,
