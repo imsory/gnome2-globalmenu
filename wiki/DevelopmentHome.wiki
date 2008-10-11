@@ -1,7 +1,7 @@
 ﻿#labels Phase-Design,Phase-Implementation,Featured
 # This page is the home page for development documents, ideas, drafts and other garbages.
 
-We are at 0.5.
+We are at 0.6.
 
 = Roadmap =
   * 0.1: `Origin`
@@ -52,7 +52,7 @@ in trunk, check out ClassMap.dia for a brief view of classes.
 
 GnomenuMenuBar.switch() accepts a string form xwindow id, and shows the first menu bar of the given window.
 
-= Development Documentation - 0.4 =
+= Development Documentation - 0.4 - deprecated=
 
 == Classes ==
 
