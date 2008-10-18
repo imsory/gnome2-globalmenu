@@ -59,17 +59,27 @@ cd libgnomenugtk;
 env GTK_MODULES=libgnomenugtk libtool gdb [any application]
 }}}
 
-Also an environment variable is helpful
+Environment variables that are helpful
 {{{
 export GNOMENU_FUN=1
 }}}
 the variable tells `libgnomenugtk` to open a Gtk TreeView for all menus in the application you start.
+{{{
+export GNOMENU_DISABLED=1
+}}}
+disable global menu.
+{{{
+export GNOMENU_VERBOSE=1
+}}}
+print a lot of debug messages.
+
 
 Several binaries are also built:
   * `GlobalMenu.PanelApplet` is the panel applet for gnome panel.
     * See [http://www.davyd.id.au/articles/debugging-gnome-applets.shtml David's tricks] for debugging a panel applet.
-  * `org.gnome.GlobalMenu.Server` is the server for window management.
-    * --kill for killing any existed instance.
+    * `--verbose` for many debug messages.
+  * `org.gnome.GlobalMenu.Server` is the server for window/menubar management.
+    * `--kill` for killing any existed instance.
   * `gnomenu-navigator` is a tool to inspect any menu bar on the system.
 
 
