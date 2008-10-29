@@ -4,7 +4,7 @@
 
 = Introduction =
 This article will help you to build gnome-globalmenu from a svn snapshot.
-Currently, this guide only works for trunk (svn 1360+).
+Currently, this guide only works for trunk (svn 1450+).
 
 = Step 0: Prerequisites =
 
@@ -41,29 +41,29 @@ Other things you can disable are
 }}}
 
 Several libraries are built:
-  * `libgnomenugtk`: the GTK side of global menu, provides bindings into GTK and dynamic patches;
+  * `libglobalmenu-gnome`: a GTK module that makes GTK aware of the global menu by dynamic patching;
   * `libgnomenu`: the DBus interfaces, and GTK widgets to view a global menu;
   * `libgmarkupdoc-base`: a document model for GMarkup texts;
   * `libgmarkupdoc-dbus`: remotely access the GMarkup document model via DBus;
-  * `libgmarkupdoc-named`: a GTK TreeModel for a GMarkup document model;
+  * `libgmarkupdoc-list`: a GTK TreeModel for a GMarkup document model;
 
 Ensure libgnomenu is loaded as a Gtk module by 
 {{{
-export GTK_MODULES=libgnomenugtk
+export GTK_MODULES=globalmenu-gnome
 }}}
 A good place to do this is in `~/.profile`, `~/.bash_profile`, `or ~/.gnomerc`, it depends on the flavor of linux.
 
 If you are debugging, some [http://developer.apple.com/documentation/developertools/glibtool/libtool_3.html#SEC11 libtool tricks] can help 
 {{{
-cd libgnomenugtk;
-env GTK_MODULES=libgnomenugtk libtool gdb [any application]
+cd gtk-modules/libgnomenu;
+env GTK_MODULES=libglobalmenu-gnome libtool gdb [any application]
 }}}
 
 Environment variables that are helpful
 {{{
 export GNOMENU_FUN=1
 }}}
-the variable tells `libgnomenugtk` to open a Gtk TreeView for all menus in the application you start.
+the variable tells the GTK module to open a Gtk TreeView for all menus in the application you start.
 {{{
 export GNOMENU_DISABLED=1
 }}}
@@ -71,8 +71,15 @@ disable global menu.
 {{{
 export GNOMENU_VERBOSE=1
 }}}
-print a lot of debug messages.
-
+print a lot of debugging messages.
+{{{
+export GNOMENU_LOG_FILE=[filename]
+}}}
+save the debugging message to the given file.
+{{{
+export GTK_MENUBAR_NO_MAC=[prgname list, eg: "gedit gnome-settings-daemon"]
+}}}
+disable the plugin for specific programs.
 
 Several binaries are also built:
   * `GlobalMenu.PanelApplet` is the panel applet for gnome panel.
