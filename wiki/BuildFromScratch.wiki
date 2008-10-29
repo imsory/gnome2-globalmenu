@@ -1,6 +1,5 @@
-#labels Phase-Deploy
-#How to Build from scratch
-
+#labels Phase-Deploy,Featured
+#How to Build from the source.
 
 = Introduction =
 This article will help you to build gnome-globalmenu from a svn snapshot.
