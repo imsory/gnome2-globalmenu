@@ -1,5 +1,4 @@
 #summary Ubuntu Gusty/Hardy的安装指南
-#labels Featured
 这只是一份草案文档，它可能会导致一些计算机故障。
 = 引言 =
 这份指南假定你没有在电脑上编译过其他程序，并且，假定你使用的是Ubuntu Gusty。
