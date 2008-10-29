@@ -7,7 +7,7 @@ Currently, this guide only works for trunk (svn 1450+).
 
 = Step 0: Prerequisites =
 
-  * VALA = [http://download.gnome.org/sources/vala/0.3/vala-0.3.5.tar.bz2 0.3.5] is a must for building from svn. Building from a released tarball doesn't need it.
+  * VALA = [http://download.gnome.org/sources/vala/0.4/vala-0.4.0.tar.bz2 0.4.0] is a must for building from svn. Building from a released tarball doesn't need it.
     * lastest trunk build of vala should work, though not tested.
     * [http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=vala&colspec=Filename+Summary+Uploaded+Size+DownloadCount SRPM]
   * and development headers for the libraries
