@@ -4,6 +4,49 @@
 THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
 a step by step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
+==Installing from the GNOME Global Menu PPA (Intrepid) ==
+
+Ensure libgnomenu is loaded as a Gtk module by
+
+`export GTK_MODULES=globalmenu-gnome`
+
+A good place to do this is in ~/.profile, ~/.bash_profile, or ~/.gnomerc, it depends on the flavor of linux.
+
+What I did was create ~/.gnomerc (if that file doest already exist) and added this to the file, l then uncommented the lines
+I wanted enabled.
+`# Uncomment to load the GTK module`
+
+`#export GTK_MODULES=globalmenu-gnome`
+
+`# Uncomment to tell the GTK module to open a Gtk`
+
+`# TreeView for all menus in the application you start.`
+
+`#export GNOMENU_FUN=1`
+
+`# Uncomment to disable global menu.`
+
+`#export GNOMENU_DISABLED=1`
+
+`# Uncomment to print a lot of debugging messages`
+
+`#export GNOMENU_VERBOSE=1`
+
+`# Uncomment to save the debugging messages to the given file.`
+
+`#export GNOMENU_LOG_FILE=/tmp/gnomenu.log`
+
+`# uncomment to disable the plugin for specific programs.`
+
+`#export GTK_MENUBAR_NO_MAC="fast-user-switch-applet"`
+
+I soon plan to add a script to the deb package to make it easier.
+
+apt sources.list entries
+
+`deb http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main`
+
+`deb-src http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main`
 
 ==Installing with debs==
 ===on a 32 bit system===
