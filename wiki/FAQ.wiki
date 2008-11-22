@@ -1,10 +1,10 @@
 Ask your questions about Global Menu, and we'll try to answer them here or provide links to the relevant wiki pages or webpages.
 
-* How can I support Gnome Global Menu ?
-* Why is the latest version missing functionnalities ?
-* I would like the Global Menu to have feature X, Y and Z. What can I do to tell the developpers ?
-* How can I get the latest version for my distro ?
-* How can I get the more feature-full version for my distro ?
-* 64 bits support anyone ?
-* Why are you obsessed with duplicating alien interfaces? You'll have legal problems/ Apple will eat your first newborn...
-* *Your question here*
+ * How can I support Gnome Global Menu ?
+ * Why is the latest version missing functionnalities ?
+ * I would like the Global Menu to have feature X, Y and Z. What can I do to tell the developpers ?
+ * How can I get the latest version for my distro ?
+ * How can I get the more feature-full version for my distro ?
+ * 64 bits support anyone ?
+ * Why are you obsessed with duplicating alien interfaces? You'll have legal problems/ Apple will eat your first newborn...
+ * *Your question here*
