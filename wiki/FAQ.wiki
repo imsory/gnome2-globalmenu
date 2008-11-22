@@ -1,9 +1,25 @@
 Ask your questions about Global Menu by putting a comment on the bottom of this page, and we'll try to answer them here or provide links to the relevant wiki pages or webpages.
 
  * How can I support Gnome Global Menu ?
+# voting for Global Menu in Ubuntu's Ideastorm
+# using your skills to help developing Gnome Global Menu
+# writing documentation
+# taking relevant tips and info from the UbuntuForums.org thread and summering it.
+# you name it/ any other idea you might propose us
  * Why is the latest version missing functionalities ?
+# In order to get accepted in GNOME and for long term stability, we've decided to rewrite 
+Global Menu in Vala. Starting from scratch allowed us to have an overall better design, and for the code to be more simple for new developers.
+# The drawback is that we have to reimplement all the features of the previous version. If you think you can help, just chime in !
+# And no: for the moment we don't plan to reinclude the hacks that allowed OpenOffice and some others programs to be natively compatible. If you find a clean solution we'll be all very happy to merge it in the project though.
+
  * I would like the Global Menu to have feature X, Y and Z. What can I do to tell the developpers ?
+# You can look in *Issues* to see if the feature you want has been already asked for. If so, just star it (and comment it only if you need to).
+# Otherwise, just report it in *Issues* in a clear and professional way.
+
  * How can I get the latest version for my distro ?
+# You can compile it from source or from the released tarball (see here>> )
+# We have a PPA repository for Ubuntu that will provide you with bleeding edge packages.
+(see here>>)
  * How can I get the more feature-full version for my distro ?
  * 64 bits support anyone ?
  * Why are you obsessed with duplicating alien interfaces? You'll have legal problems/ Apple will eat your first newborn...
