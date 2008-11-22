@@ -1,9 +1,9 @@
-#labels Phase-Deploy,Featured
-Here you can find how to setup a global menu desktop environment on various linux platforms:
+#labels Phase-Deploy,Featured,installation
+Here you can find how to setup a global menu desktop environment on various Linux platforms:
 
   * Gentoo: InstallOnGentoo
   * Ubuntu: InstallingonUbuntu and a newer version QuickInstallonUbuntu
   * Fedora: InstallationGuideFedora
   * Other: BuildFromScratch
 
-  * There is also a Chinese version InstallGuidelineInChinese (for ubuntu)
+  * There is also a Chinese version InstallGuidelineInChinese (for Ubuntu)
