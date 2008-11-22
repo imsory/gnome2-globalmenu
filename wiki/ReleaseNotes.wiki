@@ -1,15 +1,18 @@
 #labels Featured
 #Release Notes
+
+------------ 
+
 gnome-globalmenu 0.4 svn790: Friday, March 14 2008
 Treatment of overflowed menu items.
 Customize title font.
 
- ---- 
+------------ 
 
 gnome-globlamenu 0.4 svn570: Friday, February 29 2008
 Some one write something here.
 
- ---- 
+------------  
 
 gnome2-globalmenu 0.3 svn323 is ready. 
 New features:
@@ -19,7 +22,7 @@ New features:
 Downloading from svn is preferred.
 svn checkout http://gnome2-globalmenu.googlecode.com/tags/0.3_323 gnome2-globalmenu
 
- ---- 
+------------  
 
 Gnome2-globalmenu 0.3 is ready. Completely new patch/code for gtkmenubar. Reconstructed menu server.
 
@@ -36,7 +39,7 @@ New features:
 
 http://gnome2-globalmenu.googlecode.com/svn/branches/0.3/
 
- ---- 
+------------  
 
 Gnome2-globalmenu 0.2.1 is out.
 
