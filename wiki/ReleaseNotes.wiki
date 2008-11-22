@@ -1,6 +1,10 @@
 #labels Featured
 #Release Notes
 
+
+
+gnome-globalmenu development version:
+
 ------------ 
 
 gnome-globalmenu 0.4 svn790: Friday, March 14 2008
