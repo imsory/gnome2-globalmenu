@@ -1,7 +1,7 @@
-Ask your questions about Global Menu, and we'll try to answer them here or provide links to the relevant wiki pages or webpages.
+Ask your questions about Global Menu by putting a comment on the bottom of this page, and we'll try to answer them here or provide links to the relevant wiki pages or webpages.
 
  * How can I support Gnome Global Menu ?
- * Why is the latest version missing functionnalities ?
+ * Why is the latest version missing functionalities ?
  * I would like the Global Menu to have feature X, Y and Z. What can I do to tell the developpers ?
  * How can I get the latest version for my distro ?
  * How can I get the more feature-full version for my distro ?
