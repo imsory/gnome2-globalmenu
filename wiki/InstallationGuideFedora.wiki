@@ -1,4 +1,4 @@
-#labels Phase-Deploy
+#labels Phase-Deploy,installation
 #How to install Global Menu on Fedora ?
 
 = Installation Guide =
