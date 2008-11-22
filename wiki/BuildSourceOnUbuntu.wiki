@@ -1,4 +1,5 @@
 #summary applet and patched Gtk library on Ubuntu Gusty
+#labels installation
 
 = Introduction =
 This article will help you to build gnome-globalmenu from a svn snapshot.
@@ -66,7 +67,7 @@ sudo dpkg -i *.deb
  * Restart your computer.
  
 = Step 5: Testing =
- If no error occurs, your gtk is already patched. Try to start a simple gtk program in a console and you will see a debugging messages, indicating libgnomenu not found. 
+ If no error occurs, your GTK is already patched. Try to start a simple GTK program in a console and you will see a debugging messages, indicating libgnomenu not found. 
 {{{
 ....
 Using GtkMenuBar.
@@ -89,7 +90,7 @@ gedit ~/.gnomerc
 export GTK_MODULES=libgnomenu
 }}}
 
-= Setp 5: Removing =
+= Step 5: Removing =
  * Remove gnome-globalmenu-applet
 {{{
 sudo dpkg -r gnome2-globalmenu-applet
