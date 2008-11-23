@@ -22,5 +22,6 @@ Global Menu in Vala. Starting from scratch allowed us to have an overall better 
 (see here>>)
  * How can I get the more feature-full version for my distro ?
  * 64 bits support anyone ?
+ # The latest revs seems to be compatible. See http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149
  * Why are you obsessed with duplicating alien interfaces? You'll have legal problems/ Apple will eat your first newborn...
  * *Your question here*
