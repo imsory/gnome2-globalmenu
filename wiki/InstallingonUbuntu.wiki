@@ -126,7 +126,7 @@ There are no 64-bit Ubuntu packages yet. You can build from source by yourself.T
 ==Installing from source==
 ===older version of the Global Menu===
 
-====MacMenu O.1 ====
+====MacMenu 0.1 ====
 
 Install this before
 
