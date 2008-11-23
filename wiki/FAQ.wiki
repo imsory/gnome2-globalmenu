@@ -17,9 +17,12 @@ Global Menu in Vala. Starting from scratch allowed us to have an overall better 
  # Otherwise, just report it in *Issues* in a clear and professional way.
 
  * How can I get the latest version for my distro ?
+  * For [InstallingonUbuntu Ubuntu]
+  * For [InstallOnGentoo Gentoo]
+  * For [InstallationGuideFedora Fedora]
+  * Other distributions/flavours
  # You can compile it from source or from the released tarball (see here>> )
- # We have a PPA repository for Ubuntu that will provide you with bleeding edge packages.
-(see here>>)
+
  * How can I get the more feature-full version for my distro ?
  * 64 bits support anyone ?
  # The latest revs seems to be compatible. See http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149
