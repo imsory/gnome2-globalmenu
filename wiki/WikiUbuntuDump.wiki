@@ -4,16 +4,14 @@ Originally By AqD
 
 {{attachment:globalmenusmallScreenshot.png}}
 
-Forum thread about the Gnome Global Menu where you can help improve it, package it, find the latest info... <<BR>>
-http://ubuntuforums.org/showthread.php?t=241868 <<BR>>
+Forum thread about the Gnome Global Menu where you can help improve it, package it, find the latest info... 
+http://ubuntuforums.org/showthread.php?t=241868
 
-Bug report on Gnome's Bugzilla, vote for inclusion! : <<BR>> 
-http://bugzilla.gnome.org/show_bug.cgi?id=353076 <<BR>>
+Bug report on Gnome's Bugzilla, vote for inclusion! :  
+http://bugzilla.gnome.org/show_bug.cgi?id=353076 
 
-New Global menu Project home page (main dev : rainwoodman):<<BR>>
-http://code.google.com/p/gnome2-globalmenu/
 
-''Note : this GTK Global Menu hack won't work with XUL apps (e.g. Firefox), Java swing apps (e.g. OpenOffice) and all KDE apps or non-GTK apps.''<<BR>>
+Note : this GTK Global Menu hack won't work with XUL apps (e.g. Firefox), Java swing apps (e.g. OpenOffice) and all KDE apps or non-GTK apps.
 
 ----
 
@@ -42,71 +40,8 @@ Should you wish to uninstall global-menu, head to the [[#uninstall|uninstall ins
 = Installation instructions =
 
 ----
-<<Anchor(ng)>>
-=== Info to build the lastest Global Menu ===
+=== Info to build the latest Global Menu ===
 
-'''Perhaps the documentation in this link will be useful if you want to build this : ''' <<BR>>
-'''http://code.google.com/p/gnome2-globalmenu/wiki/BuildFromScratch?updated=BuildFromScratch&ts=1204258474 ''' <<BR>>
-
-----
-
-<<Anchor(autotools)>>
-=== Install using autotools ===
-
-We're first going to install the mac menu applet:
-
--Download this file (note: you must be a member of ubuntuforums.org to be able to download it)
-http://ubuntuforums.org/attachment.php?attachmentid=47781&d=1193338299
-
--Open a terminal, go to the directory where you've downloaded the file using cd and execute the following command lines.
-
-Code: {{{
-
-tar jxvf gnome-macmenu-applet-1.0.11.tar.bz2
-cd gnome-macmenu-applet-1.0.11
-sudo cp gnome-macmenu-applet /usr/lib/gnome-applets/
-sudo cp GNOME_MacMenuApplet.server /usr/lib/bonobo/servers/
-}}}
-
-
-We're now gonna patch gtk+ with a gtk+ patch
-
--But we need dependencies installed first. I don't know what is needed exactly, here is the list of dev packages I have:
-
-Code: {{{
-autotools-dev comerr-dev dpkg-dev libart-2.0-dev libatk1.0-dev libaudiofile-dev libavahi-client-dev libavahi-common-dev libavahi-glib-dev libbonobo2-dev libbonoboui2-dev libc6-dev libcairo-directfb2-dev libcairo2-dev libcupsys2-dev libdbus-1-dev libdirectfb-dev libesd0-dev libexpat1-dev libfontconfig1-dev libfreetype6-dev libgail-dev libgconf2-dev libgcrypt11-dev libgdk-pixbuf-dev libglade2-dev libglib1.2-dev libglib2.0-dev libgnome-keyring-dev libgnome2-dev libgnomecanvas2-dev libgnomeui-dev libgnomevfs2-dev libgnutls-dev libgpg-error-dev libgtk1.2-dev libgtk2.0-dev libhal-dev libhal-storage-dev libice-dev libidl-dev libjpeg62-dev libkrb5-dev liblzo2-dev libopencdk8-dev liborbit2-dev libpanel-applet2-dev libpango1.0-dev libpng12-dev libpopt-dev libselinux1-dev libsepol1-dev libsm-dev libstartup-notification0-dev libstdc++6-4.1-dev libsysfs-dev libtasn1-3-dev libtiff4-dev libusplash-dev libwnck-dev libx11-dev libxau-dev libxcomposite-dev libxcursor-dev libxdamage-dev libxdmcp-dev libxext-dev libxfixes-dev libxft-dev libxi-dev libxinerama-dev libxkbfile-dev libxml2-dev libxrandr-dev libxrender-dev libxres-dev libxt-dev linux-libc-dev x11proto-composite-dev x11proto-core-dev x11proto-damage-dev x11proto-fixes-dev x11proto-input-dev x11proto-kb-dev x11proto-randr-dev x11proto-render-dev x11proto-resource-dev x11proto-xext-dev x11proto-xinerama-dev xtrans-dev xutils-dev zlib1g-dev
-}}}
-
-you can install them before patching gtk+ by typing
-Code: {{{
-sudo apt-get install ...packages from the list above...
-}}}
-
-Then we're starting the patching itself.
-
--Download this file (note: you must be a member of ubuntuforums.org to be able to download it)
-http://ubuntuforums.org/attachment.php?attachmentid=47782&d=1193338357 
-
--Open a terminal, go to the directory where you've downloaded the file using cd and execute the following command lines.
-
-Code: {{{
-gzip -d gtk+-2.12.0-r2-gtkmenubar.diff.gz
-sudo apt-get install build-essential
-apt-get source gtk+2.0
-tar zxvf gtk+2.0_2.12.0.orig.tar.gz
-cd gtk+2.0-2.12.0
-patch -p0 < ../gtk+-2.12.0-r2-gtkmenubar.diff
-./configure --prefix=/usr
-make
-sudo make install
-}}}
-
-'''NOTE''' Be Patient, this compiles from source, which will take considerably longer than installing from the Binary Package (Binary ~1 Minute | Source ~30 Minutes)<<BR>><<BR>>
-
-You're now ready to use all the mac menu goodness ! Please report in the forum thread any problems you might have encountered.
-
-----
-<<Anchor(apt-build)>>
 === Install using apt-build ===
 
 Install the mac menu applet deb package (note: you must be a member of ubuntuforums.org to be able to download it: http://ubuntuforums.org/attachment.php?attachmentid=47899&d=1193414016) , then in a terminal, type in this to install apt-build
