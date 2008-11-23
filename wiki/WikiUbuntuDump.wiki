@@ -1,5 +1,4 @@
-Aggregation of the Gnome Global Menu Patch data, 
-Originally By AqD
+Aggregation of the Gnome Global Menu Patch data, originally By AqD
 <wiki:toc max_depth="5" />
 
 {{attachment:globalmenusmallScreenshot.png}}
@@ -10,86 +9,7 @@ http://ubuntuforums.org/showthread.php?t=241868
 Bug report on Gnome's Bugzilla, vote for inclusion! :  
 http://bugzilla.gnome.org/show_bug.cgi?id=353076 
 
-
 Note : this GTK Global Menu hack won't work with XUL apps (e.g. Firefox), Java swing apps (e.g. OpenOffice) and all KDE apps or non-GTK apps.
-
-----
-
-= Installation instructions =
-
-This page offers several different methods to install the patched Gtk:
- 
- * New project
-   * you can use [[#deb|deb packages]]. (debs of the new global menu project)
-   * you can built yourself the [[#ng|new global menu]] from rainwoodman project
-
- * Old project
-   * you can use the standard [[#autotools|autotools]] (configure/make/make install) method. (based on the old AdQ patch)
-   * you can use the [[#apt-build|apt-build]] method (you will build debs). (based on the old AdQ patch)
-
-You can as well build the applet from the source code
- * Instructions to [[#compile|compile]] the Gnome Global Menu Applet.
-
-= Skinning instructions =
-The default install doesn't handle well transparency or colors , and you may want it to look like more a famous OS, or just add a bit more transparency. Head to [[#skinning|skinning]] for detailed instructions.
-
-= Uninstall instructions =
-Should you wish to uninstall global-menu, head to the [[#uninstall|uninstall instructions]]
-
-----
-= Installation instructions =
-
-----
-=== Info to build the latest Global Menu ===
-
-=== Install using apt-build ===
-
-Install the mac menu applet deb package (note: you must be a member of ubuntuforums.org to be able to download it: http://ubuntuforums.org/attachment.php?attachmentid=47899&d=1193414016) , then in a terminal, type in this to install apt-build
-
-Code: {{{
-sudo apt-get install apt-build
-}}}
-Choose to add apt-build repository to your sources.list when asked.
-
-After, I told apt-build to get libgtk2.0-0 source package (apt-build takes care of the build deps for you, ie: -dev packages)
-You need to have the Ubuntu sources repositories enabled (menu System > Administration > Software sources, then pick Ubuntu software tab and check Source Code box).
-
-Code: {{{
-sudo apt-build source libgtk2.0-0
-}}}
-Next step was to copy the downloaded patch [[#two|2]] from where is was (on the desktop in _this_ case, replace "~/Desktop/" with the path where you downloaded the gzipped patch) to the libgtk2.0-0 source package directory
-If you also want to remove the underlines use the patch 098_no_label_underline.patch [[#three|3]]
-
-First, uncompress 099_mac_menubar.patch.gz :
-
-Code: {{{
-gzip -d ~/Desktop/099_mac_menubar.patch.gz
-}}}
-then copy the patches to the patches directory (assuming they are on your Desktop, if it's not the case replace ~/Desktop/ with the path were the patches are located)
-
-Code: {{{
-sudo cp ~/Desktop/099_mac_menubar.patch /var/cache/apt-build/build/gtk+2.0-2.12.0/debian/patches/
-sudo cp ~/Desktop/098_no_label_underline.patch /var/cache/apt-build/build/gtk+2.0-2.12.0/debian/patches/
-}}}
-And, add the name of the patches you have added (i.e."099_mac_menubar.patch", "098_no_label_underline.patch")to the debian/patches/series list
-
-Code: {{{
-sudo gedit /var/cache/apt-build/build/gtk+2.0-2.12.0/debian/patches/series
-}}}
-
-
-Now we use use apt-build to build the packages
-
-Code: {{{
-sudo apt-build install libgtk2.0-0
-}}}
-'''NOTE''' Be Patient, this compiles from source, which will take considerably longer than installing from the Binary Package (Binary ~1 Minute | Source ~30 Minutes)<<BR>><<BR>>
-After that you'll have an update for libgtk in your update manager (it won't install automatically because local apt-build repository isn't signed), let update manager install them and finally, add the applet to the top panel.
-Now you need to log out/in gnome to see the changes.
-
-
-
-
 
 Mac menu applet:
 http://ubuntuforums.org/attachment.php?attachmentid=54026&d=1198381611 (rainwoodman version - new)
@@ -112,6 +32,8 @@ http://ubuntuforums.org/attachment.php?attachmentid=48738&d=1193954936
 __Links related to the second method:__
 
 
+<<Anchor(one)>> __1__ Mac menu applet deb package (gusty gibbon 32bits):
+http://ubuntuforums.org/attachment.php?attachmentid=47899&d=1193414016
 
 <<Anchor(two)>> __2__ 099_mac_menubar.patch.gz:
 http://ubuntuforums.org/attachment.php?attachmentid=48015&d=1193500579
@@ -127,13 +49,9 @@ http://ubuntuforums.org/attachment.php?attachmentid=48019&d=1193501364
 
 ----
 
-<<Anchor(fdi)>>
 == Further development ==
-
-As it is now, the global menubar is only hack. To get it included into GTK+, quite some changes will be necessary. GTK+ developers have stated that they will not include the patch in it's current form.
 
 A rewrite would probably also include patches made for Gtk+ for OSX from Imendio.
 http://developer.imendio.com/projects/gtk-macosx 
-
 
 On the inability of KDE apps to use this menu, doesn't KDE already have support for a global menu bar?  Wouldn't it be feasible to make some sort of link between the KDE menus and this menu bar?
