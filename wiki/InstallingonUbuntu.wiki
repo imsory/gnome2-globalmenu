@@ -127,7 +127,33 @@ There are no 64-bit Ubuntu packages yet. You can build from source by yourself.T
 
 ==Installing from source==
 ===older version of the Global Menu===
+
+====MacMenu O.1 ====
+
+Install this before
+
+{{{
+sudo apt-get install build-essential libwnck-dev libpanelappletmm-2.6-dev
+}}}
+
+Then unpack the applet source and go in its folder
+
+{{{
+tar -xvzf macmenu-applet-0.1.tar.gz
+cd macmenu-applet-0.1/
+}}}
+Then compile and install
+
+{{{
+make
+sudo make install
+}}}
+
+NOTE: Be Patient, this compiles from source, which will take considerably longer than installing from the Binary Package (Binary ~1 Minute | Source ~30 Minutes)
+
+==== Ayoli's guide====
 Refer to the [http://ayozone.org/2008/03/12/global-menu-the-new-gnome-macmenu/  guide] written by Ayoli.
+
 
 ===newer version of the Global Menu===
 Refer to the Building from Source on Ubuntu page
