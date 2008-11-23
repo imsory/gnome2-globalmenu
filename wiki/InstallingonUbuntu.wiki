@@ -8,12 +8,16 @@ a step by step guide which assumes that you've never compiled anything on your s
 
 Ensure libgnomenu is loaded as a Gtk module by
 
-`export GTK_MODULES=globalmenu-gnome`
+{{{ 
+export GTK_MODULES=globalmenu-gnome 
+}}}
 
-A good place to do this is in ~/.profile, ~/.bash_profile, or ~/.gnomerc, it depends on the flavor of linux.
+A good place to do this is in ~/.profile, ~/.bash_profile, or ~/.gnomerc, it depends on your flavor of Linux.
 
-What I did was create ~/.gnomerc (if that file doest already exist) and added this to the file, l then uncommented the lines
-I wanted enabled.
+ # Create ~/.gnomerc (if that file doest already exist) 
+ # Add this to the file
+ # Uncomment the lines you want enabled.
+
 {{{
 # Uncomment to load the GTK module
 
@@ -43,13 +47,16 @@ I wanted enabled.
 
 }}}
 
-I soon plan to add a script to the deb package to make it easier.
 
-apt sources.list entries
+Coming soon: a script in deb package to make it easier.
 
-`deb http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main`
 
-`deb-src http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main`
+ # Add the apt sources.list entries.
+
+{{{deb http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
+
+deb-src http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
+}}}
 
 ==Installing with debs==
 ===on a 32 bit system===
