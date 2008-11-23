@@ -113,4 +113,10 @@ There are no 64-bit Ubuntu packages yet. You can build from source by yourself. 
 Refer to the [http://ayozone.org/2008/03/12/global-menu-the-new-gnome-macmenu/  guide] written by Ayoli.
 
 ===newer version of the Global Menu===
-Refer to the Building from Source on Ubuntu [BuildSourceOnUbuntu guide on this wiki]
+Refer to the Building from Source on Ubuntu page
+
+====in English====
+[BuildSourceOnUbuntu guide in English]
+
+====in Chinese====
+[BuildSourceOnUbuntuInChinese guide in Chinese]
