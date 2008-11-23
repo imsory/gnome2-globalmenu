@@ -109,6 +109,8 @@ Coming soon: a script in deb package to make it easier.
 There are no 64-bit Ubuntu packages yet. You can build from source by yourself. I am not sure if you also need to build the i386 binary in order to support global menu for i386 programs on the x86-64 platform.
 
 ==Installing from source==
+===older version of the Global Menu===
+Refer to the [http://ayozone.org/2008/03/12/global-menu-the-new-gnome-macmenu/  guide] written by Ayoli.
 
-Refer to the 
-[http://ayozone.org/2008/03/12/global-menu-the-new-gnome-macmenu/  guide] written by Ayoli.
+===newer version of the Global Menu===
+Refer to the Building from Source on Ubuntu [BuildSourceOnUbuntu guide on this wiki]
