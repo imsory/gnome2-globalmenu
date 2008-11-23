@@ -14,31 +14,34 @@ A good place to do this is in ~/.profile, ~/.bash_profile, or ~/.gnomerc, it dep
 
 What I did was create ~/.gnomerc (if that file doest already exist) and added this to the file, l then uncommented the lines
 I wanted enabled.
-`# Uncomment to load the GTK module`
+{{{
+# Uncomment to load the GTK module
 
-`#export GTK_MODULES=globalmenu-gnome`
+#export GTK_MODULES=globalmenu-gnome
 
-`# Uncomment to tell the GTK module to open a Gtk`
+# Uncomment to tell the GTK module to open a Gtk
 
-`# TreeView for all menus in the application you start.`
+# TreeView for all menus in the application you start.
 
-`#export GNOMENU_FUN=1`
+#export GNOMENU_FUN=1
 
-`# Uncomment to disable global menu.`
+# Uncomment to disable global menu.
 
-`#export GNOMENU_DISABLED=1`
+#export GNOMENU_DISABLED=1
 
-`# Uncomment to print a lot of debugging messages`
+# Uncomment to print a lot of debugging messages
 
-`#export GNOMENU_VERBOSE=1`
+#export GNOMENU_VERBOSE=1
 
-`# Uncomment to save the debugging messages to the given file.`
+# Uncomment to save the debugging messages to the given file.
 
-`#export GNOMENU_LOG_FILE=/tmp/gnomenu.log`
+#export GNOMENU_LOG_FILE=/tmp/gnomenu.log
 
-`# uncomment to disable the plugin for specific programs.`
+# uncomment to disable the plugin for specific programs.
 
-`#export GTK_MENUBAR_NO_MAC="fast-user-switch-applet"`
+#export GTK_MENUBAR_NO_MAC="fast-user-switch-applet"
+
+}}}
 
 I soon plan to add a script to the deb package to make it easier.
 
