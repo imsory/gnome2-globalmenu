@@ -12,6 +12,8 @@ In General Options > Opacity Settings >
 The problem is to use a theme that checks the same color to the panel and bg_color windows (or pass an appropriate parameter in the "menubar-theme" and use an image for the panel).
 
 = Skinning instructions =
+The default install doesn't handle well transparency or colors , and you may want it to look like more a famous OS, or just add a bit more transparency. Head to [skinning] for detailed instructions.
+
 
 Here’s an (non exhaustive) list of mac menu compatible themes for gtk :
 
