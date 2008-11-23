@@ -65,6 +65,10 @@ Coming soon: a script in deb package to make it easier.
 ==Installing with debs==
 ===on a 32 bit system===
 ====older version of the Global Menu====
+=====very old adq's original code=====
+If you really want the very old adq's original code you can check it out from:
+http://gnome2-globalmenu.googlecode.com/svn/tags/0.1_11/
+=====0.4=====
   * Open a terminal
   * Create a folder
     {{{ mkdir global-menu-install}}} 
@@ -73,6 +77,7 @@ Coming soon: a script in deb package to make it easier.
   * Get the patched gtk debs and panel applet with the following instruction
     * For Gusty:
     {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4.2_ubuntu-gusty-svn679.tar.gz}}}
+    {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4_ubuntu-gusty-svn679.tar.gz}}}
     * For Hardy:
     {{{wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4-svn964.tar.gz}}}
    
