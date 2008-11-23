@@ -1,15 +1,6 @@
 Aggregation of the Gnome Global Menu Patch data, 
 Originally By AqD
 
-----
-== 2008.05.14 : WARNING ==
-'''''Most of the content in this page is obsolete. This page needs to be completely rewritten''''' <<BR>>
-'''''Latest packages for 32 bits (hardy and gutsy) and instructions to install can be found on the global menu project website''''' : <<BR>>
-'''''http://code.google.com/p/gnome2-globalmenu/wiki/InstallingonUbuntu ''''' <<BR>>
-
-'''''end of warning''''' <<BR>>
-----
-Refactoring in progress as part of the upstream documentation effort. Do not modify for the moment.
 
 {{attachment:globalmenusmallScreenshot.png}}
 
