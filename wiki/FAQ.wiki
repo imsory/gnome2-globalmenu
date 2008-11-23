@@ -1,11 +1,12 @@
 Ask your questions about Global Menu by putting a comment on the bottom of this page, and we'll try to answer them here or provide links to the relevant wiki pages or webpages.
 
  * How can I support Gnome Global Menu ?
- # voting for Global Menu in Ubuntu's Ideastorm
- # using your skills to help developing Gnome Global Menu
- # writing documentation
- # taking relevant tips and info from the UbuntuForums.org thread and summering it.
- # you name it/ any other idea you might propose us
+   # [http://brainstorm.ubuntu.com/idea/3136/ voting for Global Menu] in Ubuntu's Ideastorm
+   # using your skills to help developing Gnome Global Menu
+   # writing documentation
+   # taking relevant tips and info from the [http://ubuntuforums.org/showthread.php?t=241868 UbuntuForums.org thread] and summering it.
+   # you name it/ any other idea you might propose us
+ 
  * Why is the latest version missing functionalities ?
  # In order to get accepted in GNOME and for long term stability, we've decided to rewrite 
 Global Menu in Vala. Starting from scratch allowed us to have an overall better design, and for the code to be more simple for new developers.
