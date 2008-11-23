@@ -179,7 +179,7 @@ autotools-dev comerr-dev dpkg-dev libart-2.0-dev libatk1.0-dev libaudiofile-dev 
 }}}
 
 you can install them before patching gtk+ by typing
-Code: {{{
+{{{
 sudo apt-get install ...packages from the list above...
 }}}
 
