@@ -161,8 +161,7 @@ http://ubuntuforums.org/attachment.php?attachmentid=47781&d=1193338299
 
 -Open a terminal, go to the directory where you've downloaded the file using cd and execute the following command lines.
 
-Code: {{{
-
+{{{
 tar jxvf gnome-macmenu-applet-1.0.11.tar.bz2
 cd gnome-macmenu-applet-1.0.11
 sudo cp gnome-macmenu-applet /usr/lib/gnome-applets/
