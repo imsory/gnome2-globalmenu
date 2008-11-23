@@ -4,7 +4,7 @@
 THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
 a step by step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
-<wiki:toc max_depth="1" />
+<wiki:toc max_depth="5" />
 
 
 ==Installing from the GNOME Global Menu PPA (Intrepid) ==
