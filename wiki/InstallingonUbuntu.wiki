@@ -4,6 +4,9 @@
 THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
 a step by step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
+<wiki:toc max_depth="1" />
+
+
 ==Installing from the GNOME Global Menu PPA (Intrepid) ==
 
 Ensure libgnomenu is loaded as a Gtk module by
@@ -53,7 +56,8 @@ Coming soon: a script in deb package to make it easier.
 
  # Add the apt sources.list entries.
 
-{{{deb http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
+{{{
+deb http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
 
 deb-src http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
 }}}
