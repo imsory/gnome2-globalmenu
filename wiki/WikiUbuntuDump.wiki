@@ -1,6 +1,6 @@
 Aggregation of the Gnome Global Menu Patch data, 
 Originally By AqD
-
+<wiki:toc max_depth="5" />
 
 {{attachment:globalmenusmallScreenshot.png}}
 
@@ -20,10 +20,14 @@ http://code.google.com/p/gnome2-globalmenu/
 = Installation instructions =
 
 This page offers several different methods to install the patched Gtk:
- * you can use [[#deb|deb packages]]. (debs of the new global menu project)
- * you can built yourself the [[#ng|new global menu]] from rainwoodman project
- * you can use the standard [[#autotools|autotools]] (configure/make/make install) method. (based on the old AdQ patch)
- * you can use the [[#apt-build|apt-build]] method (you will build debs). (based on the old AdQ patch)
+ 
+ * New project
+   * you can use [[#deb|deb packages]]. (debs of the new global menu project)
+   * you can built yourself the [[#ng|new global menu]] from rainwoodman project
+
+ * Old project
+   * you can use the standard [[#autotools|autotools]] (configure/make/make install) method. (based on the old AdQ patch)
+   * you can use the [[#apt-build|apt-build]] method (you will build debs). (based on the old AdQ patch)
 
 You can as well build the applet from the source code
  * Instructions to [[#compile|compile]] the Gnome Global Menu Applet.
@@ -36,43 +40,13 @@ Should you wish to uninstall global-menu, head to the [[#uninstall|uninstall ins
 
 ----
 = Installation instructions =
-<<Anchor(deb)>>
-=== Packages ===
-==== For i386 ====
-Global Menu devs have uploaded the 0.4 deb package at :<<BR>>
-http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4_ubuntu-gusty-svn679.tar.gz
 
-And updated install guideline for Ubuntu Gusty :<<BR>>
-http://code.google.com/p/gnome2-globalmenu/wiki/InstallingonUbuntu
-
-'''Installation:'''
-
-Fellow the steps describe in the guide linked above.<<BR>>
-
-'''NOTE:''' At no time during this should there be Error messages. If there are try not to restart your system until any errors are resolved. Look for further help posting your Error message here:<<BR>>
-http://ubuntuforums.org/showthread.php?t=241868
-
-==== For AMD64 (64bit computer, intel included) ====
-See http://code.google.com/p/gnome2-globalmenu/wiki/InstallingonUbuntu
 ----
 <<Anchor(ng)>>
 === Info to build the lastest Global Menu ===
 
-Originally Posted by rainwoodman  on ubuntuforums.org 2008-01-29, version number and links corrected : 2008-03-05<<BR>>
-
-The applet has been rewitten, and renamed from macmenu to globalmenu. (since I don't want to go to law issues).<<BR>>
-That's why the file is so difficult to find. If you really want the very old adq's original code you can check it out from : <<BR>>
-http://gnome2-globalmenu.googlecode.com/svn/tags/0.1_11/
-
-The most recent version is 0.4 : <<BR>>
-http://gnome2-globalmenu.googlecode.com/svn/trunk/ <<BR>>
-
 '''Perhaps the documentation in this link will be useful if you want to build this : ''' <<BR>>
 '''http://code.google.com/p/gnome2-globalmenu/wiki/BuildFromScratch?updated=BuildFromScratch&ts=1204258474 ''' <<BR>>
-
-But using the [[#deb|packages]] should be easier.
-
-Look for [[#fdi|further development infos]] <<BR>>
 
 ----
 
@@ -179,106 +153,6 @@ After that you'll have an update for libgtk in your update manager (it won't ins
 Now you need to log out/in gnome to see the changes.
 
 
-----
-<<Anchor(compile)>>
-=== Compile it from the source code ===
-'''''For those who want/need to compile themselves the mac menu applet (ie: 64bits)'''''
-
-Install this before
-
-Code: {{{
-sudo apt-get install build-essential libwnck-dev libpanelappletmm-2.6-dev
-}}}
-Then unpack the applet source and go in its folder
-
-Code: {{{
-tar -xvzf macmenu-applet-0.1.tar.gz
-cd macmenu-applet-0.1/
-}}}
-Then compile and install
-
-Code: {{{
-make
-sudo make install
-}}}
-'''NOTE''' Be Patient, this compiles from source, which will take considerably longer than installing from the Binary Package (Binary ~1 Minute | Source ~30 Minutes)<<BR>>
-
-= Skinning instructions =
-<<Anchor(skinning)>>
-
-
-Here’s an (non exhaustive) list of mac menu compatible themes for gtk :
-
-    * imetal (http://gnome-look.org/content/show.php/imetal?content=63734)
-    * snow leopard (http://gnome-look.org/content/show.php/snow+leopard?content=61924)
-    * mac4lin (http://gnome-look.org/content/show.php?content=68411)
-    * kougyoku black (http://gnome-look.org/content/show.php/Kougyoku-Black?content=65299)
-    * and more kougyoku (make a search on http://gnome-look.org )
-
-You can also hack your theme, like I did. I edited the gtkrc file of the theme I use. (the gtkrc file of your theme is located under ~/.themes/[YOUR_THEME_NAME]/gtk-2.0/gtkrc)
-
-here’s the code I added in my gtkrc file :
-…
-Code: {{{
-#panel stuff
-style "panelbg"
-{
-  xthickness                    = 0
-  ythickness                    = 0
-  bg_pixmap[NORMAL]             = "panel-bg.png"
-  fg[NORMAL]                    = "#ffffff"
-  fg[PRELIGHT]          = "#ffffff"
-  fg[ACTIVE]                    = "#555555"
-  fg[SELECTED]          = "#555555"
-
-}
-style "theme-menubar"
-{
-  xthickness                    = 0
-  ythickness                    = 0
-  #bg[NORMAL] = "#000000"
-  bg_pixmap[NORMAL]             = "panel-bg.png"
-  fg[NORMAL]                    = "#ffffff"
-  fg[PRELIGHT]          = "#ffffff"
-  fg[ACTIVE]                    = "#555555"
-  fg[SELECTED]          = "#555555"
-        engine "pixmap"
-        {
-                image
-                {
-                        function        = BOX
-                        state = NORMAL
-                        file            = "panel-bg.png"
-                        border  = { 0, 0, 0, 0 }
-                        stretch = TRUE
-                }
-    }
-}
-
-class "GtkMenuBar" style "theme-menubar"
-
-# panel styles
-#class "*Panel*" style "panelbg"
-widget "*PanelApplet*" style "panelbg"
-class "*notif*" style "panelbg"
-class "*Notif*" style "panelbg"
-class "*Tray*" style "panelbg"
-class "*tray*" style "panelbg"
-class "*Netstatus*" style "panelbg"
-class "*netstatus*" style "panelbg"
-class "*Deskbar*" style "panelbg"
-class "*deskbar*" style "panelbg"
-}}}
-
-I saved the panel-bg.png image in the same directory as the gtkrc file, and also used this png as panel background image (right click on the panel, choose properties, then background tab where you specify the background image location).
-
-= Transparency =
-The menubar can be set clear, and remain certified to the panel, using Compiz-Fusion (I hope it and others features will be possible also the new Metacity..) and appropriate parameters (in General Options> Opacity Settings-> add (dock) &! (class = Avant-window-navigator) and the value of transparency you want).
-
-The problem is to use a theme that checks the same color to the panel and bg_color windows (or pass an appropriate parameter in the "menubar-theme" and use an image for the panel).
-
-
-----
 
 = Uninstall instructions =
 <<Anchor(uninstall)>>
@@ -310,11 +184,6 @@ Logout ,relogin and the hack should be disabled.
 If you want to completely remove it, fire up synaptic and search for libgtk2.0-0.
 Highlight it and go to menu -> packages -> force version ,
 select the version that ends with the stable release of the ubuntu version you're running (eg: edgy, feisty, gutsy) , press ok and then apply in synaptic.
-
-
-----
-'''''latests patches/sources/packages:'''''
-http://code.google.com/p/gnome2-globalmenu/source
 
 
 Mac menu applet:
@@ -362,10 +231,5 @@ As it is now, the global menubar is only hack. To get it included into GTK+, qui
 A rewrite would probably also include patches made for Gtk+ for OSX from Imendio.
 http://developer.imendio.com/projects/gtk-macosx 
 
-Also, please see<<BR>> 
-http://code.google.com/p/gnome2-globalmenu/wiki/DevelopmentHome <<BR>> 
-for a brief idea about the recent development.
 
 On the inability of KDE apps to use this menu, doesn't KDE already have support for a global menu bar?  Wouldn't it be feasible to make some sort of link between the KDE menus and this menu bar?
-----
-CategoryLookMergeDelete
