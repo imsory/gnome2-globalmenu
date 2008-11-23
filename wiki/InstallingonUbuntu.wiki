@@ -65,10 +65,7 @@ Coming soon: a script in deb package to make it easier.
 ==Installing with debs==
 ===on a 32 bit system===
 ====older version of the Global Menu====
-=====Gutsy Gibbon=====
-TODO: check which revision it is about
-<<Anchor(one)>> __1__ Mac menu applet deb package (gusty gibbon 32bits):
-http://ubuntuforums.org/attachment.php?attachmentid=47899&d=1193414016
+
 =====0.4=====
   * Open a terminal
   * Create a folder
@@ -223,7 +220,7 @@ sudo make install
 
 Install the mac menu applet deb package (note: you must be a member of ubuntuforums.org to be able to download it: http://ubuntuforums.org/attachment.php?attachmentid=47899&d=1193414016) , then in a terminal, type in this to install apt-build
 
-Code: {{{
+{{{
 sudo apt-get install apt-build
 }}}
 Choose to add apt-build repository to your sources.list when asked.
@@ -231,36 +228,39 @@ Choose to add apt-build repository to your sources.list when asked.
 After, I told apt-build to get libgtk2.0-0 source package (apt-build takes care of the build deps for you, ie: -dev packages)
 You need to have the Ubuntu sources repositories enabled (menu System > Administration > Software sources, then pick Ubuntu software tab and check Source Code box).
 
-Code: {{{
+{{{
 sudo apt-build source libgtk2.0-0
 }}}
-Next step was to copy the downloaded patch [[#two|2]] from where is was (on the desktop in _this_ case, replace "~/Desktop/" with the path where you downloaded the gzipped patch) to the libgtk2.0-0 source package directory
-If you also want to remove the underlines use the patch 098_no_label_underline.patch [[#three|3]]
+Next step was to copy the downloaded patch (http://ubuntuforums.org/attachment.php?attachmentid=48015&d=1193500579) from where is was (on the desktop in _this_ case, replace "~/Desktop/" with the path where you downloaded the gzipped patch) to the libgtk2.0-0 source package directory
+If you also want to remove the underlines use the patch 098_no_label_underline.patch (http://ayozone.org/wp-content/uploads/2007/11/098_no_label_underline.patch)
 
 First, uncompress 099_mac_menubar.patch.gz :
 
-Code: {{{
+{{{
 gzip -d ~/Desktop/099_mac_menubar.patch.gz
 }}}
 then copy the patches to the patches directory (assuming they are on your Desktop, if it's not the case replace ~/Desktop/ with the path were the patches are located)
 
-Code: {{{
+{{{
 sudo cp ~/Desktop/099_mac_menubar.patch /var/cache/apt-build/build/gtk+2.0-2.12.0/debian/patches/
 sudo cp ~/Desktop/098_no_label_underline.patch /var/cache/apt-build/build/gtk+2.0-2.12.0/debian/patches/
 }}}
 And, add the name of the patches you have added (i.e."099_mac_menubar.patch", "098_no_label_underline.patch")to the debian/patches/series list
 
-Code: {{{
+{{{
 sudo gedit /var/cache/apt-build/build/gtk+2.0-2.12.0/debian/patches/series
 }}}
 
 
 Now we use use apt-build to build the packages
 
-Code: {{{
+{{{
 sudo apt-build install libgtk2.0-0
 }}}
-'''NOTE''' Be Patient, this compiles from source, which will take considerably longer than installing from the Binary Package (Binary ~1 Minute | Source ~30 Minutes)<<BR>><<BR>>
+
+NOTE: Be Patient, this compiles from source, which will take considerably longer than installing from the Binary Package (Binary ~1 Minute | Source ~30 Minutes)
+
+
 After that you'll have an update for libgtk in your update manager (it won't install automatically because local apt-build repository isn't signed), let update manager install them and finally, add the applet to the top panel.
 Now you need to log out/in gnome to see the changes.
 
