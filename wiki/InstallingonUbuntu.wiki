@@ -64,6 +64,7 @@ Coming soon: a script in deb package to make it easier.
 
 ==Installing with debs==
 ===on a 32 bit system===
+====older version of the Global Menu====
   * Open a terminal
   * Create a folder
     {{{ mkdir global-menu-install}}} 
@@ -104,6 +105,8 @@ Coming soon: a script in deb package to make it easier.
      {{{export GTK_MODULES=libgnomenu }}}
 
   * Restart your computer and right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
+
+====newer version of the Global Menu====
 
 ===on a 64 bit system===
 ====older version of the Global Menu====
