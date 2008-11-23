@@ -106,6 +106,15 @@ Coming soon: a script in deb package to make it easier.
   * Restart your computer and right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
 
 ===on a 64 bit system===
+====older version====
+For Ubuntu Hardy, 8.04, compiled from svn 899
+
+http://www.mediafire.com/?n4sz14fiwcj
+
+kudos goes to ferdil
+
+====newer version====
+
 There are no 64-bit Ubuntu packages yet. You can build from source by yourself.The latest revs seems to be compatible. For more information, see [http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149 Issue 149]
 
 ==Installing from source==
