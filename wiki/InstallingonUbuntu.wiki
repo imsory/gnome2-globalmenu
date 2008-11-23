@@ -106,7 +106,7 @@ Coming soon: a script in deb package to make it easier.
   * Restart your computer and right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
 
 ===on a 64 bit system===
-There are no 64-bit Ubuntu packages yet. You can build from source by yourself. I am not sure if you also need to build the i386 binary in order to support global menu for i386 programs on the x86-64 platform.
+There are no 64-bit Ubuntu packages yet. You can build from source by yourself.The latest revs seems to be compatible. For more information, see [http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149 Issue 149]
 
 ==Installing from source==
 ===older version of the Global Menu===
