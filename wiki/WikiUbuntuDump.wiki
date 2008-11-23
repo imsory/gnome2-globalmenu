@@ -31,15 +31,9 @@ http://ubuntuforums.org/attachment.php?attachmentid=48738&d=1193954936
 
 __Links related to the second method:__
 
-
 <<Anchor(one)>> __1__ Mac menu applet deb package (gusty gibbon 32bits):
 http://ubuntuforums.org/attachment.php?attachmentid=47899&d=1193414016
 
-<<Anchor(two)>> __2__ 099_mac_menubar.patch.gz:
-http://ubuntuforums.org/attachment.php?attachmentid=48015&d=1193500579
-
-<<Anchor(three)>> __3__ 098_no_label_underline.patch:
-http://ayozone.org/wp-content/uploads/2007/11/098_no_label_underline.patch
 
 Other resources :
 
