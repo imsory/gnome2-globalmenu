@@ -189,7 +189,7 @@ http://ubuntuforums.org/attachment.php?attachmentid=47782&d=1193338357
 
 -Open a terminal, go to the directory where you've downloaded the file using cd and execute the following command lines.
 
-Code: {{{
+{{{
 gzip -d gtk+-2.12.0-r2-gtkmenubar.diff.gz
 sudo apt-get install build-essential
 apt-get source gtk+2.0
