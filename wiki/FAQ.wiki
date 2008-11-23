@@ -4,6 +4,7 @@ Ask your questions about Global Menu by putting a comment on the bottom of this 
    # [http://brainstorm.ubuntu.com/idea/3136/ voting for Global Menu] in Ubuntu's Ideastorm
    # using your skills to help developing Gnome Global Menu
    # writing documentation
+   # [Translation Translating] it into your language
    # taking relevant tips and info from the [http://ubuntuforums.org/showthread.php?t=241868 UbuntuForums.org thread] and summering it.
    # you name it/ any other idea you might propose us
  
