@@ -1,5 +1,5 @@
+#summary Compatibility with Etoile applications
 #labels Phase-Design
-# Compatibility with Etoile applications
 
 = Current Status =
 Nothing is specially done for this compatibility issue.
