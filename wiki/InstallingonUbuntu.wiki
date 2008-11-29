@@ -58,6 +58,8 @@ deb http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
 deb-src http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
 }}}
 
+Beta: try clicking this link to add the repository and install gnome2-globalmenu at the same time.
+apt://ppa.launchpad.net/gnome2-globalmenu/ubuntu?package=gnome2-globalmenu?dist=intrepid?section=main
 
 Coming soon: a script in deb package to make it easier.
 
