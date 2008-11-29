@@ -45,7 +45,7 @@ gnome2-globalmenu 0.3
 Downloading from svn is preferred.
 svn checkout http://gnome2-globalmenu.googlecode.com/tags/0.3_323 gnome2-globalmenu
 
-------------  
+------------------------------
 
 gnome2-globalmenu 0.3
 
