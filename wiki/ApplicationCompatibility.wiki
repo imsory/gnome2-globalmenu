@@ -1,4 +1,4 @@
-#A list of compatible applications
+#summary A list of compatible applications
 
 = Introduction =
 
