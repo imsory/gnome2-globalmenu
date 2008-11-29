@@ -1,4 +1,4 @@
-#summary a step by step guide for Gutsy/Hardy
+#summary a step by step guide for Gutsy/Hardy/Intrepid
 #labels ubuntu,Phase-Deploy,installation
 
 THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
