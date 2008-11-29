@@ -4,20 +4,26 @@
 
 gnome-globalmenu development version:
 
-
+-------------------------------
 gnome-globalmenu 0.6 svn1509 window selector
+
 gnome-globalmenu 0.6 svn1446 GTK_MENUBAR_NO_MAC is back.
+
 gnome-globalmenu 0.6 svn1478 relatively stable global menu core.
+
 gnome-globalmenu 0.6 svn1415 Adding accelerator labels.
+
 gnome-globalmenu 0.6 svn1408 aware of transient_for windows.
+
 gnome-globalmenu 0.6 svn1401 major theming issues are solved.
 
 
-------------
+
+------------------------------
 
 gnome-globalmenu 0.5 aborted.
 
------------- 
+------------------------------
 
 gnome-globalmenu 0.4 svn790: Friday, March 14 2008
 Treatment of overflowed menu items.
