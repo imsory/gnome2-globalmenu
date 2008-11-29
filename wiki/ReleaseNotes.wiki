@@ -1,43 +1,36 @@
+#summary Release Notes
 #labels Featured
-#Release Notes
-
-
-gnome-globalmenu development version:
 
 -------------------------------
-gnome-globalmenu 0.6 svn1509 window selector
+gnome-globalmenu 0.6 (current development version)
 
-gnome-globalmenu 0.6 svn1446 GTK_MENUBAR_NO_MAC is back.
-
-gnome-globalmenu 0.6 svn1478 relatively stable global menu core.
-
-gnome-globalmenu 0.6 svn1415 Adding accelerator labels.
-
-gnome-globalmenu 0.6 svn1408 aware of transient_for windows.
-
-gnome-globalmenu 0.6 svn1401 major theming issues are solved.
-
-
+ * svn1509 window selector
+ * svn1446 GTK_MENUBAR_NO_MAC is back.
+ * svn1478 relatively stable global menu core.
+ * svn1415 Adding accelerator labels.
+ * svn1408 aware of transient_for windows.
+ * svn1401 major theming issues are solved.
 
 ------------------------------
 
-gnome-globalmenu 0.5 aborted.
+gnome-globalmenu 0.5 
+
+ * aborted
 
 ------------------------------
 
-gnome-globalmenu 0.4 svn790: Friday, March 14 2008
-Treatment of overflowed menu items.
-Customize title font.
+gnome-globalmenu 0.4 
+ * svn790 (Friday, March 14th 2008)
+  * Treatment of overflowed menu items.
+  * Customize title font.
 
------------- 
-
-gnome-globlamenu 0.4 svn570: Friday, February 29 2008
-Some one write something here.
+ * svn570 (Friday, February 29th 2008)
+  * Some one write something here.
 
 ------------  
 
-gnome2-globalmenu 0.3 svn323 is ready. 
-New features:
+gnome2-globalmenu 0.3 
+ * svn323 
     * + Users can now customize the appearance. 
     * + A new deploying script reduces difficulty for building from scratch. (Hopefully will also reduce packaging difficulty.)
 
@@ -46,9 +39,9 @@ svn checkout http://gnome2-globalmenu.googlecode.com/tags/0.3_323 gnome2-globalm
 
 ------------  
 
-Gnome2-globalmenu 0.3 is ready. Completely new patch/code for gtkmenubar. Reconstructed menu server.
+gnome2-globalmenu 0.3 is ready. 
 
-New features:
+Completely new patch/code for gtkmenubar. Reconstructed menu server.
 
     * + Stupid Menu Bar Scrolling
     * - No Window icon
@@ -64,8 +57,6 @@ http://gnome2-globalmenu.googlecode.com/svn/branches/0.3/
 ------------  
 
 Gnome2-globalmenu 0.2.1 is out.
-
-New features:
 
     * + Press Alt and F10 in application window will invoke menus
     * + New look and feel for scrolling long menubars
