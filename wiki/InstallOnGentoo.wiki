@@ -1,5 +1,5 @@
+#summary Installation Guide On Gentoo
 #labels Phase-Deploy,installation
-#Installation Guide On Gentoo
 
 = Introduction =
 
