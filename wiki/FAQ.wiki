@@ -30,4 +30,5 @@ Ask your questions about Global Menu by putting a comment on the bottom of this 
  * 64 bits support anyone ?
    # The latest revs seems to be compatible. See http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149
  * Why are you obsessed with duplicating alien interfaces? You'll have legal problems/ Apple will eat your first newborn...
+ * How do I uninstall/remove the Gnome GlobalMenu ?
  * *Your question here*
