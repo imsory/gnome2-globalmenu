@@ -1,5 +1,5 @@
+#summary Package Naming rules
 #labels Phase-Deploy
-#Package Naming rules
 
 = Package Naming Rules =
 
@@ -24,4 +24,3 @@ libgnomenu
 xfce-globalmenu-plugin
 gnome-globalmenu-applet
 }}}
-
