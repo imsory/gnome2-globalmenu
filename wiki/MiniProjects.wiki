@@ -1,4 +1,4 @@
-#Mini projects available to all, coders or non coders
+#summary Mini projects available to all, coders or non coders
 
 = Introduction =
 In the spirit of GHOP which enabled this project to get a second life, here are a few mini-project that you can do without having to be a coder or a GTK+ wizard. We hope it might attract even more people around GnomeMenu and the concept of a document centric desktop, and help foster the project.
