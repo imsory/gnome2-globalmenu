@@ -1,4 +1,4 @@
-# Discussion and thoughts On A Document-Centric Gnome
+#summary Discussion and thoughts On A Document-Centric Gnome
 
 = Areas to Work On =
 
