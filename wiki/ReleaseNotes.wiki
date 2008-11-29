@@ -34,7 +34,7 @@ gnome-globalmenu 0.4
  * svn570 (Friday, February 29th 2008)
   * Some one write something here.
 
-------------  
+------------------------------
 
 gnome2-globalmenu 0.3 
 
@@ -62,7 +62,7 @@ Completely new patch/code for gtkmenubar. Reconstructed menu server.
 
 http://gnome2-globalmenu.googlecode.com/svn/branches/0.3/
 
-------------  
+------------------------------
 
 gnome2-globalmenu 0.2.1
 
