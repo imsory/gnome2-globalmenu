@@ -1,1 +1,4 @@
 #summary A tentative roadmap for GlobalMenu to let the world know where we're headed.
+
+See:
+http://code.google.com/p/gnome2-globalmenu/wiki/DevelopmentHome
