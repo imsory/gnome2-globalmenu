@@ -3,10 +3,10 @@
 WARNING : If you use revisions prior to 1532 you will need vala 0.4.0
 
  * Firstly, we need to install some dependencies and developer packages to compile and install Vala 0.4 and gnome-globalmenu 0.6 :
-Non Ubuntu distributions only need to find the corresponding deps and dev packages in their distribution repositories.
+   Non Ubuntu distributions only need to find the corresponding deps and dev packages in their distribution repositories.
 
  {{{sudo apt-get install build-essential flex bison gnome-common libglib2.0-dev gtk-doc-tools autoconf2.13 automake1.9 libgtk2.0-dev libdbus-glib-1-dev libwnck-dev libpanel-applet2-dev }}}
-( or apt://build-essential flex bison gnome-common libglib2.0-dev gtk-doc-tools autoconf2.13 automake1.9 libgtk2.0-dev libdbus-glib-1-dev libwnck-dev libpanel-applet2-dev )
+   ( or apt://build-essential flex bison gnome-common libglib2.0-dev gtk-doc-tools autoconf2.13 automake1.9 libgtk2.0-dev libdbus-glib-1-dev libwnck-dev libpanel-applet2-dev )
  
  * Next step, we download, extract, compile and install vala :
 
