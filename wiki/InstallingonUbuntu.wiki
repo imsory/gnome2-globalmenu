@@ -267,16 +267,20 @@ NOTE: Be Patient, this compiles from source, which will take considerably longer
 After that you'll have an update for libgtk in your update manager (it won't install automatically because local apt-build repository isn't signed), let update manager install them and finally, add the applet to the top panel.
 Now you need to log out/in gnome to see the changes.
 
-==== Ayoli's guide====
+====Ayoli's guide====
 
 Refer to the [http://ayozone.org/2008/03/12/global-menu-the-new-gnome-macmenu/  guide] written by Ayoli.
 
+====Official Guides====
+===in English===
+[BuildSourceOnUbuntu guide in English]
+
+===in Chinese===
+[BuildSourceOnUbuntuInChinese guide in Chinese]
 
 ===newer version of the Global Menu===
 Refer to the Building from Source on Ubuntu page
 
-====in English====
-[BuildSourceOnUbuntu guide in English]
 
-====in Chinese====
-[BuildSourceOnUbuntuInChinese guide in Chinese]
+====in English====
+[NewBuildFromSourceOnUbuntu guide in English]
