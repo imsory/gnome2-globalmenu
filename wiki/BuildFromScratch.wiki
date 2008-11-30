@@ -4,6 +4,7 @@
 = Introduction =
 This article will help you to build gnome-globalmenu from a svn snapshot.
 Currently, this guide only works for trunk (svn 1450+).
+The latest known working revision is svn ??. 
 
 = Step 0: Prerequisites =
 
