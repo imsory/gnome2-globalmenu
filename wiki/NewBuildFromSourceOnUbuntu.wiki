@@ -1,4 +1,3 @@
-
 = Introduction =
 
 WARNING : If you use revisions prior to 1532 you will need vala 0.4.0
@@ -10,40 +9,55 @@ Non Ubuntu distributions only need to find the corresponding deps and dev packag
 
 Next step, we download, extract, compile and install vala :
 
-{{{cd ~/
+{{{ 
+cd ~/
 wget -c http://download.gnome.org/sources/vala/0.5/vala-0.5.1.tar.bz2
 tar xjvf vala-0.5.1.tar.bz2
 cd vala-0.5.1/
 ./configure
 make
 sudo make install	# (for some reason, checkinstall doesn't work here)
-sudo ldconfig}}}
+sudo ldconfig 
+}}}
 
 Now, we can grab globalmenu source code and compile again :
 
 
-{{{cd ~/
+{{{
+cd ~/
 svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/ gnome-globalmenu-0.6
-cd gnome-globalmenu-0.6}}}
+cd gnome-globalmenu-0.6
+}}}
 
 Now, we run configure and compilation :
 
 
-{{{./autogen.sh
+{{{
+./autogen.sh
 ./configure --prefix=/usr
 make
-sudo make install	# (for some reason, checkinstall doesn't work here)}}}
+sudo make install	# (for some reason, checkinstall doesn't work here)
+}}}
 
 edit ou create ~/.gnomerc file (also work with ~/.profile file if you prefer) :
 
 
-{{{gedit ~/.gnomerc}}}
+{{{
+gedit ~/.gnomerc
+}}}
 
 Put the following line in the file, then save :
 
 
-{{{export GTK_MODULES=globalmenu-gnome}}}
+{{{
+export GTK_MODULES=globalmenu-gnome
+}}}
 
-log out gnome, then log in again
-Right click on an empty part of your panel, choose “Add to panel” from the popup menu. Scroll down until you see “Global Menu Panel Applet”, select it and click “add” (or drag and drop it on the panel)
-And voila :) 
+ * log out gnome
+ * then log in again
+ * Right click on an empty part of your panel
+ * choose “Add to panel” from the popup menu
+ * Scroll down until you see “Global Menu Panel Applet”
+ * select it and click “add” (or drag and drop it on the panel)
+
+And voilà ! :) 
