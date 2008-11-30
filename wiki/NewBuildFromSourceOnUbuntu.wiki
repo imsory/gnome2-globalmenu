@@ -2,12 +2,13 @@
 
 WARNING : If you use revisions prior to 1532 you will need vala 0.4.0
 
-Firstly, we need to install some dependencies and developer packages to compile and install Vala 0.4 and gnome-globalmenu 0.6 :
+ * Firstly, we need to install some dependencies and developer packages to compile and install Vala 0.4 and gnome-globalmenu 0.6 :
 Non Ubuntu distributions only need to find the corresponding deps and dev packages in their distribution repositories.
 
 {{{sudo apt-get install build-essential flex bison gnome-common libglib2.0-dev gtk-doc-tools autoconf2.13 automake1.9 libgtk2.0-dev libdbus-glib-1-dev libwnck-dev libpanel-applet2-dev }}}
-
-Next step, we download, extract, compile and install vala :
+( or apt://build-essential flex bison gnome-common libglib2.0-dev gtk-doc-tools autoconf2.13 automake1.9 libgtk2.0-dev libdbus-glib-1-dev libwnck-dev libpanel-applet2-dev )
+ 
+ * Next step, we download, extract, compile and install vala :
 
 {{{ 
 cd ~/
@@ -20,7 +21,7 @@ sudo make install	# (for some reason, checkinstall doesn't work here)
 sudo ldconfig 
 }}}
 
-Now, we can grab globalmenu source code and compile again :
+ * Now, we can grab globalmenu source code and compile again :
 
 
 {{{
@@ -29,7 +30,7 @@ svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/ gnome-globalmenu
 cd gnome-globalmenu-0.6
 }}}
 
-Now, we run configure and compilation :
+ * Now, we run configure and compilation :
 
 
 {{{
@@ -39,14 +40,14 @@ make
 sudo make install	# (for some reason, checkinstall doesn't work here)
 }}}
 
-edit ou create ~/.gnomerc file (also work with ~/.profile file if you prefer) :
+ * edit ou create ~/.gnomerc file (also work with ~/.profile file if you prefer) :
 
 
 {{{
 gedit ~/.gnomerc
 }}}
 
-Put the following line in the file, then save :
+ * Put the following line in the file, then save :
 
 
 {{{
