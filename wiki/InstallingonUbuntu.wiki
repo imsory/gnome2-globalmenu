@@ -272,10 +272,10 @@ Now you need to log out/in gnome to see the changes.
 Refer to the [http://ayozone.org/2008/03/12/global-menu-the-new-gnome-macmenu/  guide] written by Ayoli.
 
 ====Official Guides====
-===in English===
+=====in English=====
 [BuildSourceOnUbuntu guide in English]
 
-===in Chinese===
+=====in Chinese=====
 [BuildSourceOnUbuntuInChinese guide in Chinese]
 
 ===newer version of the Global Menu===
