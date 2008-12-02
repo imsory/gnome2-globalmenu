@@ -105,7 +105,7 @@ Therefore it is recommended that a client should finish building the menu contex
      
 == Server ==
 
-A Server carries the Representation for the current Menu Context for the active window on the active viewport of the active workspace of the window system. It is tedious, and long, and does not support multihead displays.
+A Server carries the Representation for the current Menu Context for the active window on the active viewport of the active workspace of the window system. This definition is tedious, long, and does not support multihead displays.
    
 The Representation carried by a Server is totally implementation dependent. All following examples are valid implementations: 
   * The plain XML itself in a text entry.
