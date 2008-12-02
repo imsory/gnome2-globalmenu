@@ -25,9 +25,10 @@ FIXME: Link to the GTK implementation in the appendix?
   * Menu Context
   * Menu Event
   * Representation
-  * Item
+  * Menu: Menu is a collection of Items. It can be the root element of the XML Representation, or a submenu of an Item if presents as a child of the Item.
+  * Item: Item is the entry in a menu. 
   * Activate
-  * Path
+  * Path: Refer to the section in XML Representation of Menu Context.
 
 == Extensions to X EWMH Protocol ==
 === Atoms ===
@@ -40,8 +41,8 @@ FIXME: Link to the GTK implementation in the appendix?
 
 ==== Element Tags and Attributes ====
 
-  * `menu`: An menu in the menu context. The only allowed type for direct children of a `menu` element is `item`.
-  * `item`: An item in the menu context. The only allowed type for direct children of an `item` element is `menu`. The cardinary is `1`.
+  * `menu`: An menu in the menu context. The only allowed type for direct children of a `menu` element is `item`. The childrens corresponds to items in that menu.
+  * `item`: An item in the menu context. The only allowed type for direct children of an `item` element is `menu`. The cardinary is `1`. The only child element stands for the submenu of the `item`.
     * position: Not an attribute. Defined by the absolute position in the children list of its parent. Begins from `0`.
     * `id`: A string with no `/` and no `:` in it. It also has to be unique among all siblings of that node.
     * `type`: A string to describe the type of this item. It takes value from
