@@ -1,16 +1,18 @@
 #labels Phase-Requirements,IN-PROGRESS
+#sidebar : <wiki:toc max_depth="2" />
 #the specification for global menu 0.7
 
-<wiki:toc max_depth="2" />
+
 
 = Introduction =
+
   * Describe the purpose of the document and the global menu project here.
-  * Although there are implications to specific implementations, 
-    this document should be considered as a requirement document.
-  * Link to the GTK implementation in the appendix?
+
+Although there are implications to specific implementations, this document should be considered as a requirement document.
+
+FIXME: Link to the GTK implementation in the appendix?
 
 = Global Menu Specifications =
-  * TODO: Constants should be provided in a C header file? List them here?
 
 == Definations ==
   * Client
@@ -23,101 +25,133 @@
   * Path
 
 == Extensions to X EWMH Protocol ==
-  === Atoms ===
+=== Atoms ===
+
   * `_NET_GLOBALMENU_MENU_CONTEXT`
   * `_NET_GLOBALMENU_MENU_EVENT`
 
-  === XML Representation of Menu Context ===
-  * Element Tags: `menu`, `item`.
-  * Root Element: `menu`
-     * `revision`
-  * `menu`
-  * `item`
-    * `id`
-    * position of an `item` Element
-    * `type`
-    * `state`
-    * `visible`
-    * `sensitive`
-    * `label`
-  * DTD
-  * Path: Locating an element in the XML representation
-    * `menu` represented by `/`.
-    * `item` represented by `id`, or its position.
-    * `revision` is prefixed at the beginning of the path with a `:` as an separator, if it is set on the root element.
-    * examples: 
-      * `12354:/File/New/Message`
-      * `/1/New/0`
-      * `1249485:/0/0/0/1`
+=== XML Representation of Menu Context ===
+==== FIXME: DTD ====
+
+==== Element Tags and Attributes ====
+
+  * `menu`: An menu in the menu context. The only allowed type for direct children of a `menu` element is `item`.
+  * `item`: An item in the menu context. The only allowed type for direct children of an `item` element is `menu`. The cardinary is `1`.
+    * position: Not an attribute. Defined by the absolute position in the children list of its parent. Begins from `0`.
+    * `id`: A string with no `/` and no `:` in it. It also has to be unique among all siblings of that node.
+    * `type`: A string to describe the type of this item. It takes value from
+      * default, `n`, `normal`: An ordinary plain menu item with a text label.
+      * `separator`, `s`: A separator line.
+      * `image`, `i`: A menu item with an optional image.
+      * `check`, `c`: A menu item with a check mark.
+      * `radio`, `r`: A menu item with a radio mark.
+    * `state`: A string to describe the state of the check or radio item.
+      * `toggled`, `t`, `1` : the item is toggled.
+      * `untoggled`, `f`, `0` : the item is not toggled.
+      * default: the item is in a tristate, neither toggled nor toggled.
+    * `visible`: A string to describe the visibility of the item
+      * default: the item is visible.
+      * `false`, `f`, `0`: the item is invisible to the user.
+      * FIXME: this is problomatice. If an item is not visible why do we bother put it in the menu context!
+    * `sensitive`: A string to describe the sensitivity of the item. A senstive item responds to the users action and can be activated..
+      * default: the item is sensitive.
+      * `false`, `f`, `0`: the item is insensitive.
+    * `label`: A string for the label in the item.
+      * default: the label of the item is the same as its path.
+      * string: the labelof the item is the specified string.
+    * FIXME: how is the image handled?
+    
+==== Root Element ====
+   
+The root element of the XML is `menu`. It also has an extra attribute:
+  * `revision`: the revision of the menu context. Every time a client change its menu context, this value is incremented.
+
+==== Identifying an Element: Path ====
+
+Path is a string to locate an element in the document tree. In a path:
+  * `menu` represented by `/`.
+  * `item` represented by `id`, or its position.
+  * `revision` is prefixed at the beginning of the path with a `:` as an separator, if it is set on the root element.
+
+The following are examples of valid paths:
+  * `12354:/File/New/Message`
+  * `/1/New/0`
+  * `1249485:/0/0/0/1`
 
 == Client ==
-  A Client is a Window with menu context. 
-  It receives `XPropertyNotify` for `_NET_GLOBALMENU_MENU_EVENT`, 
-  and change `_NET_GLOBALMENU_MENU_CONTEXT`. 
-  To support the specification more efficiently, a map should be implementated from Path to real actions.
 
-=== Dispatching `_NET_GLOBALMENU_MENU_EVENT` ===
- * The property on the client is changed if an Menu Event occurs.
- * Check the revision of the path.
- * Behaviors on an invalid revision:
-   * Ignore it, or
-   * Try to recovery.
-   * It is implementation dependent.
- * Whether the property is immediately deleted is undefined.
-=== Changing `_NET_GLOBALMENU_MENU_CONTEXT` ===
- * If the client want to modify the menu context, it should change this property on its window.
- * The Client should make efforts to reduce the number of changes.
-   * Writing to an Window Property a huge amount of text is slow.
-   * The server will possibly take the new property and rebuild an entire menu up on each modification.
- * Finish building the menu context before saving it to `_NET_GLOBALMENU_MENU_CONTEXT`.
+A Client is a Window with menu context. 
+It receives `XPropertyNotify` for `_NET_GLOBALMENU_MENU_EVENT`, 
+and change `_NET_GLOBALMENU_MENU_CONTEXT`. 
+To support the specification more efficiently, 
+a map should be implementated from Path to real actions.
+
+The `_NET_GLOBALMENU_MENU_EVENT` property on the Client is changed if an Menu Event occurs. The expected behavior of a Client is
+  * Check the `revision` of the path agains the revision of the Menu Context.
+  * If the `revision` is invalid, the Client can either ignore it or try to recovery. It is implementation dependent.
+Whether the property is immediately deleted is also undefined.
+
+If the client want to modify the menu context, it should change the `_NET_GLOBALMENU_MENU_CONTEXT` property on its window. 
+The Client should make efforts to reduce the number of changes because: 
+  * Writing to an Window Property a huge amount of text is slow.
+  * The server will possibly take the new property and rebuild an entire menu up on each modification.
+Therefore it is recommended that a client should finish building the menu context before saving it to `_NET_GLOBALMENU_MENU_CONTEXT`.
      
 == Server ==
-  A server carries the Representation for the current Menu Context for the active window on the active Viewport.
-   
-=== Representation ===
-  The representation carried by a server is totally implementation dependent. All following examples are valid implementations: 
-   * The plain XML itself in a text entry.
-   * ncurse
-   * QT Widgets
-   * GTK Widgets
-  
-  The specification also does not require the server to caching the representation for non-active windows.
 
-=== Determining the Active Window ===
-  EHWM and XWindow Core Protocols implements the mechanisms for active window determination. Refer to the documentation for 
+A Server carries the Representation for the current Menu Context for the active window on the active viewport of the active workspace of the window system. It is tedious, and long, and does not support multihead displays.
+   
+The Representation carried by a Server is totally implementation dependent. All following examples are valid implementations: 
+  * The plain XML itself in a text entry.
+  * ncurse
+  * QT Widgets
+  * GTK Widgets
+  
+The specification also does not require the Server to cache the Representation for non-active windows.
+
+EHWM and XWindow Core Protocols implements the mechanisms for active window determination. Refer to the documentation for 
   * `_NET_ACTIVE_WINDOW` and
   * `WM_TRANSIENT_FOR`
-=== Menu Event ===
-  The server captures the event that an the user activates a representation of an item in the representation of the menu context. After that the server should translate find the path for the item and write that path to the `_NET_GLOBALMENU_MENU_EVENT` property of the corresponding client.
+
+The Server captures events in which the user activates a representation of an Item in the representation of the Menu Context. After that the server should translate find the path for the Item and write that path to the `_NET_GLOBALMENU_MENU_EVENT` property of the corresponding Client.
   
-  * Note: The window whose property is changed is not neccasary the active window, since the active window may have changed after the user activates the representation of the item.
+Note: The window whose property is changed is not neccasary the active window, since the active window may have changed after the user activates the representation of the Item.
 
 = Current Limitations =
+
 == Multiply Menu per Client ==
- This is should be a rare case; although it is not as rare as it should be. 
- The specification only supports one menu per client.
- There are several workarounds in the client:
-   * a client can define a main menu for the entire client.
-   * a client can also combine all menus together.
 
-== Gap between the client and the server ==
-  As mentioned in previous sections, there is a gap between the client and the server if the `revision` of the Path in the Menu Event is differnt from the one in the `Menu Context` of the client. Consider the following scenario:
-    * Client modified the menu context.
-    * Server havn't yet capture it.
-    * User activates an item in the representation for the old menu context.
-    * A path for the old context is sent to the client.
+This is should be a rare case; although it is not as rare as it should be. 
+  * FIXME: refer to someshere!
+The specification only supports one menu per Client.
+There are several possible workarounds for an implementation of Client:
+  * a Client can define a main menu for the entire Client.
+  * a Client can also combine all menus together.
 
-  The behavior is implementation dependent. Possible behaviors are
-    * List it here?
+== Gap between Client and Server ==
+
+As mentioned in previous sections, there is a gap between the client and the server if the `revision` of the Path in the Menu Event is differnt from the one in the `Menu Context` of the client. Consider the following scenario:
+  * Client modified the menu context.
+  * Server havn't yet capture it.
+  * User activates an item in the representation for the old menu context.
+  * A path for the old context is sent to the client.
+
+The behavior is implementation dependent. Possible behaviors are
+  * List it here?
+
+== Multihead ==
+
+Multihead is not supported due to the limitations of Server.
 
 = Acknowledgements =
-  * Other project members. 
-    * `Mingxi Wu` for many thoughtful discussions over the message handling issues.
+
+  * Project members;  
+    * especially `Mingxi Wu` for many enlighting discussions over the message handling issues.
   * The mavericks: 
     * `Aqd`, the first Global Menu implementation with GNOME 2
     * `Jason McBrayer`, the first Global Menu implementation with GNOME
  
-= Appendix A : GTK Implementation 
+= Appendix A : GTK Implementation =
   * perhaps linking to other pages will be better.
   == GTK Plug-in Module =
   * globalmenu-gnome
