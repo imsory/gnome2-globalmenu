@@ -1,8 +1,13 @@
 #labels Phase-Requirements,IN-PROGRESS
-#sidebar : <wiki:toc max_depth="2" />
-#the specification for global menu 0.7
+# Global Menu Specification
+ 
+<h1> Global Menu Specification </h1>
+Author: Yu Feng (rainwoodman)
 
-
+----
+= Table of Contents =
+<wiki:toc max_depth="2" />
+----
 
 = Introduction =
 
