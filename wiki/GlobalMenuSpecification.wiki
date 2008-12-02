@@ -12,52 +12,103 @@
 = Global Menu Specifications =
   * TODO: Constants should be provided in a C header file? List them here?
 
-== Roles ==
+== Definations ==
   * Client
   * Server
+  * Menu Context
+  * Menu Event
+  * Representation
+  * Item
+  * Activate
+  * Path
 
 == Extensions to X EWMH Protocol ==
   === Atoms ===
-  * `_NET_GLOBALMENU_MENU_CONTEXT` -- Should not be too frequent?
+  * `_NET_GLOBALMENU_MENU_CONTEXT`
   * `_NET_GLOBALMENU_MENU_EVENT`
 
   === XML Representation of Menu Context ===
-  * What is a Menu Context
-  * Element Tags: menu, item.
-  * id and position
-  * DTD here ?
+  * Element Tags: `menu`, `item`.
+  * Root Element: `menu`
+     * `revision`
+  * `menu`
+  * `item`
+    * `id`
+    * position of an `item` Element
+    * `type`
+    * `state`
+    * `visible`
+    * `sensitive`
+    * `label`
+  * DTD
   * Path: Locating an element in the XML representation
+    * `menu` represented by `/`.
+    * `item` represented by `id`, or its position.
+    * `revision` is prefixed at the beginning of the path with a `:` as an separator, if it is set on the root element.
+    * examples: 
+      * `12354:/File/New/Message`
+      * `/1/New/0`
+      * `1249485:/0/0/0/1`
 
-== Client Side ==
-  * Client: a Window with menu context.
-  * Behavior? Scenarios?
-  * How `_NET_GLOBALMENU_MENU_EVENT` should be dispatched?
-     * Whether the property is immediately deleted is undefined.
-  * When should `_NET_GLOBALMENU_MENU_CONTEXT` be modified?
-     * Appearently it should not be too often. Why? 
-       * Experiences in the GTK implemenation shows the slowness.
-       * Writing to an Window Property a huge amount of text is slow.
-       * The server will possibly take the new property and rebuild an entire menu up on each modification.
-     * Reduce the frequency:
-       * Build the menu context before saving it to `_NET_GLOBALMENU_MENU_CONTEXT`.
-  * What should a Client implement to support the specification?
-     * A map from path to real actions.
+== Client ==
+  A Client is a Window with menu context. 
+  It receives `XPropertyNotify` for `_NET_GLOBALMENU_MENU_EVENT`, 
+  and change `_NET_GLOBALMENU_MENU_CONTEXT`. 
+  To support the specification more efficiently, a map should be implementated from Path to real actions.
+
+=== Dispatching `_NET_GLOBALMENU_MENU_EVENT` ===
+ * The property on the client is changed if an Menu Event occurs.
+ * Check the revision of the path.
+ * Behaviors on an invalid revision:
+   * Ignore it, or
+   * Try to recovery.
+   * It is implementation dependent.
+ * Whether the property is immediately deleted is undefined.
+=== Changing `_NET_GLOBALMENU_MENU_CONTEXT` ===
+ * If the client want to modify the menu context, it should change this property on its window.
+ * The Client should make efforts to reduce the number of changes.
+   * Writing to an Window Property a huge amount of text is slow.
+   * The server will possibly take the new property and rebuild an entire menu up on each modification.
+ * Finish building the menu context before saving it to `_NET_GLOBALMENU_MENU_CONTEXT`.
      
-== Server Side ==
-  * A Sever should present the menu context of the active window to the user.
-    * No implication on the representation!
-       * The plain XML?
-       * ncurse
-       * QT Widgets
-       * or GTK Widgets
-  * Active Window determination? EHWM! 
-    * `_NET_ACTIVE_WINDOW` 
-    * `WM_TRANSIENT_FOR`
-  * When to set `_NET_GLOBALMENU_MENU_EVENT` on the client window?
-    * Whenever an item is pressed.  * 
+== Server ==
+  A server carries the Representation for the current Menu Context for the active window on the active Viewport.
+   
+=== Representation ===
+  The representation carried by a server is totally implementation dependent. All following examples are valid implementations: 
+   * The plain XML itself in a text entry.
+   * ncurse
+   * QT Widgets
+   * GTK Widgets
+  
+  The specification also does not require the server to caching the representation for non-active windows.
+
+=== Determining the Active Window ===
+  EHWM and XWindow Core Protocols implements the mechanisms for active window determination. Refer to the documentation for 
+  * `_NET_ACTIVE_WINDOW` and
+  * `WM_TRANSIENT_FOR`
+=== Menu Event ===
+  The server captures the event that an the user activates a representation of an item in the representation of the menu context. After that the server should translate find the path for the item and write that path to the `_NET_GLOBALMENU_MENU_EVENT` property of the corresponding client.
+  
+  * Note: The window whose property is changed is not neccasary the active window, since the active window may have changed after the user activates the representation of the item.
 
 = Current Limitations =
-  * Only one menu per window? Perhaps?
+== Multiply Menu per Client ==
+ This is should be a rare case; although it is not as rare as it should be. 
+ The specification only supports one menu per client.
+ There are several workarounds in the client:
+   * a client can define a main menu for the entire client.
+   * a client can also combine all menus together.
+
+== Gap between the client and the server ==
+  As mentioned in previous sections, there is a gap between the client and the server if the `revision` of the Path in the Menu Event is differnt from the one in the `Menu Context` of the client. Consider the following scenario:
+    * Client modified the menu context.
+    * Server havn't yet capture it.
+    * User activates an item in the representation for the old menu context.
+    * A path for the old context is sent to the client.
+
+  The behavior is implementation dependent. Possible behaviors are
+    * List it here?
 
 = Acknowledgements =
   * Other project members. 
