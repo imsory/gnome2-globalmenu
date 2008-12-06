@@ -2,6 +2,11 @@
 #labels Featured
 
 -------------------------------
+gnome-globalmenu 0.7 (alpha)
+ * svn1696
+  * + alpha: the core is ready. please test the stability.
+
+-------------------------------
 gnome-globalmenu 0.6 (current development version)
 
  * svn1509 
