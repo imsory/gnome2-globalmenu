@@ -1,0 +1,8 @@
+#summary The page users will see when clicking on the Help button
+
+= Introduction =
+
+Welcome to GlobalMenu's webpage. Than you for downloading and testing this alpha version of a GlobalMenu for Gnome.
+ * If you've noticed any strange behaviour head to BugReporting 
+ * If you're asking yourself a question about GlobalMenu, head to the FAQ
+ * If you...
