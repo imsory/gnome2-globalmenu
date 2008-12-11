@@ -1,0 +1,90 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-globalmenu-0.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-12-08 16:39-0500\n"
+"PO-Revision-Date: 2008-03-14 00:48-0400\n"
+"Last-Translator: Yu <rainwoodman@gmail.com>\n"
+"Language-Team: zh-CN <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../libgnomenu/menuitem.c:819
+msgid "Indicator Size"
+msgstr ""
+
+#: ../libgnomenu/menuitem.c:819
+msgid "Size of check or radio indicator"
+msgstr ""
+
+#: ../applet/main.c:23
+msgid "Show debug messages from GMarkupDoc and Gnomenu"
+msgstr ""
+
+#~ msgid "Show fancy control buttons for menu bars"
+#~ msgstr "显示高级控制按钮"
+
+#~ msgid "No Stick to the workspace"
+#~ msgstr "不悬浮于活动工作区"
+
+#~ msgid "No Always on top"
+#~ msgstr "不置顶"
+
+#~ msgid "translator_credits"
+#~ msgstr "冯雨"
+
+#~ msgid "GNOME panel applet for Global Menu"
+#~ msgstr "GNOME 公用菜单小程序"
+
+#~ msgid "Global Menu Applet"
+#~ msgstr "公用菜单小程序"
+
+#~ msgid "Global Menu applet Factory"
+#~ msgstr "公用菜单小程序工厂"
+
+#~ msgid "Global Menu applet factory"
+#~ msgstr "公用菜单小程序工厂"
+
+#~ msgid "Global Menu applet for GNOME"
+#~ msgstr "GNOME公用菜单小程序"
+
+#~ msgid "Global Menu Plugin"
+#~ msgstr "公用菜单插件"
+
+#~ msgid "_About"
+#~ msgstr "关于(_A)"
+
+#~ msgid "_Preferences"
+#~ msgstr "偏好设定(_P)"
+
+#~ msgid "Show/Hide the icon of the active window"
+#~ msgstr "显示活动窗口的图标"
+
+#~ msgid "Show/Hide the title of the active application"
+#~ msgstr "显示活动应用程序的标题"
+
+#~ msgid "The Maximum length of title of the active application"
+#~ msgstr "活动应用程序标题的最大长度"
+
+#~ msgid "The font used to display the title of the active application"
+#~ msgstr "显示活动应用程序标题字体"
+
+#~ msgid "<b>Appearence</b>"
+#~ msgstr "<b>外观</b>"
+
+#~ msgid "Display the _icon of the current window."
+#~ msgstr "显示活动窗口的图标(_I)"
+
+#~ msgid "Display the _title of the current application."
+#~ msgstr "显示活动应用程序的标题(_T)"
+
+#~ msgid "Maximum _width"
+#~ msgstr "标题长度限制(_W)"
+
+#~ msgid "Preference"
+#~ msgstr "偏好设定"
+
+#~ msgid "_Font"
+#~ msgstr "字体(_F)"
