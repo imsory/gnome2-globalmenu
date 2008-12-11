@@ -1,54 +1,15 @@
 NULL = 
 
-AM_CPPFLAGS = \
-	-g \
-	$(GLOBALMENU_PANELAPPLET_CFLAGS) \
-	-include $(CONFIG_HEADER) \
-	-I$(top_srcdir)/libgmarkupdoc \
-	-I$(top_srcdir)/libgnomenu \
-	-DPREFIX=\"$(prefix)\" \
-	-DSYSCONFDIR=\"$(sysconfdir)\" \
-	-DDATADIR=\"$(datadir)\" \
-	-DLIBDIR=\"$(libdir)\" \
-	-DGMENU_I_KNOW_THIS_IS_UNSTABLE \
-	"-DWNCK_I_KNOW_THIS_IS_UNSTABLE"
-	$(NULL)
+STAMP = vala-stamp
 
-AM_VALAC_FLAGS = \
-	$(GLOBALMENU_PANELAPPLET_VALA_PKGS) \
-	--vapidir=$(top_srcdir)/libgmarkupdoc  \
-	--vapidir=$(top_srcdir)/libgnomenu  \
-	--vapidir=$(top_srcdir)/applet  \
-	--pkg gnomenu  \
-	--pkg gtkcompat  \
-	--pkg gmarkupdoc  \
-	--pkg wnckcompat  \
-	--pkg panelappletcompat \
-	--pkg gnome-desktop-2.0 \
-	--pkg libgnome-menu \
-	--pkg gconf-2.0 \
-	--pkg gdk-2.0 \
-	--pkg gconfcompat \
-	$(NULL)
-	
-BUILT_SOURCES = \
-	.vala.stamp \
-	$(GlobalMenu_PanelApplet_VALASOURCES:.vala=.c) \
-	$(GlobalMenu_PanelApplet_VALASOURCES:.vala=.h) \
-	$(NULL)
+BUILT_SOURCES = $(STAMP)
 
-GlobalMenu_PanelApplet_VALASOURCES = \
-	panelextra-menubar.vala \
-	panelextra-switcher.vala \
-	gtkextra-gconfdialog.vala \
-	GPL.vala \
-	GnomeMenuHelper.vala \
+VALASOURCES = \
 	applet.vala \
+	main.vala \
 	$(NULL)
 
-libexec_PROGRAMS = \
-	GlobalMenu.PanelApplet \
-	$(NULL)
+libexec_PROGRAMS = GlobalMenu.PanelApplet
 
 serverdir = $(BONOBO_SERVER_DIR)
 server_in_files = GlobalMenu_PanelApplet.server.in
@@ -58,24 +19,41 @@ $(server_DATA): $(server_in_files) Makefile
 	sed -e "s|@LOCATION@|$(libexecdir)|" $< > $@
 
 GlobalMenu_PanelApplet_SOURCES = \
-	$(GlobalMenu_PanelApplet_VALASOURCES:.vala=.c) \
-	$(GlobalMenu_PanelApplet_VALASOURCES:.vala=.h) \
-	task-utils-c.c \
+	$(VALASOURCES:.vala=.c) \
+	$(VALASOURCES:.vala=.h) \
 	$(NULL)
 
-.vala.stamp: $(GlobalMenu_PanelApplet_VALASOURCES)
-	$(VALAC) -C  $^
+
+$(STAMP): $(VALASOURCES) patch.sh libpanelapplet-2.0.vapi libpanelapplet-2.0.deps
+	$(VALAC) -C --vapidir=. --vapidir=$(top_srcdir)/libgnomenu --pkg=gtk+-2.0 --pkg=libwnck-1.0 --pkg=libpanelapplet-2.0 --pkg=gnomenu-private $(VALASOURCES)
+	bash patch.sh
 	touch $@
 
 GlobalMenu_PanelApplet_LDADD = \
-		$(GLOBALMENU_PANELAPPLET_LIBS) \
-		$(top_builddir)/libgnomenu/libgnomenu.la \
-		$(top_builddir)/libgmarkupdoc/libgmarkupdoc.la \
+		$(GLIB_LIBS) \
+		$(GTK_LIBS) \
+		$(WNCK_LIBS) \
+		$(PANEL_LIBS) \
+		../libgnomenu/libgnomenu.la \
+		$(NULL)
+GlobalMenu_PanelApplet_CPPFLAGS = \
+		$(GLIB_CFLAGS) \
+		$(GTK_CFLAGS) \
+		$(WNCK_CFLAGS) \
+		$(PANEL_CFLAGS) \
+		-I$(top_srcdir) \
+		-include $(CONFIG_HEADER) \
+		-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
 		$(NULL)
 
 EXTRA_DIST = \
-	$(BUILT_SOURCES) \
-	$(GlobalMenu_PanelApplet_VALASOURCES) \
+	$(STAMP) \
+	patch.sh \
+	libpanelapplet-2.0.vapi \
+	libpanelapplet-2.0.deps \
+	$(VALASOURCES) \
 	$(server_in_files) \
 	$(NULL)
+
 DISTCLEANFILES = $(server_DATA)
+	
