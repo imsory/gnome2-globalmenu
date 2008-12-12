@@ -1,28 +1,31 @@
 NULL =
-SUBDIRS = vapi-compat libgmarkupdoc libgnomenu server navigator gtk-modules applet tests po
+SUBDIRS = tests libgnomenu applet gtk-modules po
 
 AM_CPPFLAGS = \
-		-include $(CONFIG_HEADER) \
 		$(NULL)
 
 EXTRA_DIST = \
 	intltool-extract.in \
-	intltool-update.in \
 	intltool-merge.in \
+	intltool-update.in \
+	patch.sh \
 	$(NULL)
 
 DISTCLEANFILES = \
 	intltool-extract \
-	intltool-update \
 	intltool-merge \
-	po/.intltool-merge-cache \
+	intltool-update \
 	$(NULL)
 
-schemadir   = @GCONF_SCHEMA_FILE_DIR@
-schema_DATA = applet/gnome-globalmenu-applet.schemas
+BUILT_SOURCES =
 
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) gconftool-2 --makefile-install-rule $(srcdir)/$(schema_DATA)
-	
-any:
-	echo $(VALAC) $(GNOMENU_SERVICE_VALA_PKGS)
+CLEANFILES = 
+include $(top_srcdir)/Makefile.configmake
+
+rpm: 
+	touch `find . -name '*.vala'`
+	make dist
+	vim *.spec
+	cp *.tar.gz ~/rpmbuild/SOURCES
+	rpmbuild -bb *.spec
+
