@@ -1,10 +1,35 @@
-#summary Ubuntu Gusty/Hardy的安装指南
+#summary Ubuntu Gusty/Hardy/Intrepid的安装指南
 #labels installation
 这只是一份草案文档，它可能会导致一些计算机故障。
 = 引言 =
-这份指南假定你没有在电脑上编译过其他程序，并且，假定你使用的是Ubuntu Gusty。
+这份指南假定你没有在电脑上编译过其他程序，并且，假定你使用的是Ubuntu Intrepid。
 
-==使用apt repository安装==
+*注意：如果你安装了旧版本的globalmenu，请首先将它们删除！*
+
+== Intrepid使用PPA安装 ==
+  * 添加下面的代码到/etc/apt/source.list
+    {{{
+deb http://ppa.launchpad.net/globalmenu-team/ubuntu intrepid main
+deb-src http://ppa.launchpad.net/globalmenu-team/ubuntu intrepid main
+}}}
+  * 获取升级信息
+    {{{sudo apt-get update}}}
+  * 安装globalmenu
+    {{{sudo apt-get install gnome2-globalmenu}}}
+  * 建立 ~/.gnomerc
+    {{{gedit ~/.gnomerc}}}
+  * 在~/.gnomerc里添加环境变量
+    {{{export GTK_MODULES=globalmenu-gnome}}}
+  * 重新启动你的电脑，右键单击面板，找到 *Global Menu Panel Applet* ，并且添加它。
+
+== Intrepid删除 ==
+   * 从面板上移出Global Menu Applet.
+   * 删除globalmenu
+    {{{sudo apt-get remove gnome2-globalmenu}}}
+   * 删除~/.gnomerc
+   * 重启电脑
+   
+==Hardy/Gusty 使用apt repository安装==
 
   * 添加下面的代码到/etc/apt/source.list
     {{{deb http://aeo.dreamhosters.com binary/}}}
@@ -13,7 +38,7 @@
   * 安装globalmenu
     {{{sudo apt-get install gnome2-globalmenu-applet}}}
 
-==使用deb包安装==
+==Hardy/Gusty 使用deb包安装==
 ===32位系统===
 
   * 打开一个终端。
