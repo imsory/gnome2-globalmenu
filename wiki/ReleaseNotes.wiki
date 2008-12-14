@@ -3,6 +3,8 @@
 
 -------------------------------
 gnome-globalmenu 0.7 (alpha)
+ * svn1725
+  * 0.7-devel branch starts
  * svn1696
   * + alpha: the core is ready. please test the stability.
 
