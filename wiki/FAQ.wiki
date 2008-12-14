@@ -1,4 +1,5 @@
 #summary Frequently Asked Questions
+#labels Featured,Phase-Support
 
 Ask your questions about Global Menu by putting a comment on the bottom of this page, and we'll try to answer them here or provide links to the relevant wiki pages or webpages.
 
