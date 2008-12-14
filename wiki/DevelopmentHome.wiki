@@ -1,7 +1,7 @@
 ﻿#summary This page is the home page for development documents, ideas, drafts and other garbages.
 #labels Phase-Design,Phase-Implementation,Featured
 
-We are at 0.6.
+We are at 0.7.
 
 = Roadmap =
   * 0.1: `Origin`
@@ -36,9 +36,23 @@ We are at 0.6.
     * Move to [http://vala.gnome.org vala] for core development.
     * Every Application exposes the Menu System as a DBus connection. 
     * Every application registers the DBus bus name in `org.gnome.GlobalMenu.Server`
-  * 1.0: `Happy New Year` - or `Merry Christmas`?
+  * 0.7: `less-is-more`
+    * implement the GlobalMenuSpecification
+    * simplifed core
+      * smaller code base
+      * no dbus any more
+    * hand written c code for time sensitive part in gtk-module
+    * fewer IPC, faster response
+    * feature rich applet
+      * bunch of Gtk widgets for widget representation of global menu
+      * f10 to activate the menubar.
+      * window management
+      * rgba support (->murrine)
+  * 0.8: `plasma`
+    * experimental plasma plugin
+    * experimental xfce plugin
+  * 1.0: `futurama`
     * Stable Release!
-    * either the 0.5 arch or the 0.4 arch
     * work on 64bit and PPC.
 
 = Features =
@@ -47,7 +61,7 @@ We are at 0.6.
 ||DevelopmentCompatibilityKDE||  ||
 
 
-= Document - 0.6 =
+= Document - 0.6 - deperacted =
 in trunk, check out ClassMap.dia for a brief view of classes.
 
 GnomenuMenuBar.switch() accepts a string form xwindow id, and shows the first menu bar of the given window.
