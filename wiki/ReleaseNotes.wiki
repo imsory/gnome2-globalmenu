@@ -3,6 +3,8 @@
 
 -------------------------------
 gnome-globalmenu 0.7 (alpha)
+ * svn1796 gconf configuration for the applet
+ * svn1795 register the gtk module in gnome-settings-daemon's gconf key
  * svn1725
   * 0.7-devel branch starts
  * svn1696
