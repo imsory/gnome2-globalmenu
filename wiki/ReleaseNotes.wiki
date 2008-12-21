@@ -3,8 +3,19 @@
 
 -------------------------------
 gnome-globalmenu 0.7 (alpha)
+ * svn1845 All children in PanelApplet and subclass of GnomenuMenuBar changed to 'local' by default. No need of GTK_MENUBAR_NO_MAC(still supported) for gnome-panel, user swither, unit tests, and most panel related applications.
+ * svn1833 Added window list and window title to switcher.
+ * svn1830 Theming issue
+ * svn1823 Switcher
+ * svn1816 Awareness of gnome_settings_daemon/gtk-modules. 
+   * Unloading is yet unstable. perhaps bugs of GTK/gsd.
+   * No need to use GTK_MODULES=globalmenu-gnome. (still supported)
  * svn1796 gconf configuration for the applet
  * svn1795 register the gtk module in gnome-settings-daemon's gconf key
+ * svn1762 all parameters of libglobalmenu-gnome are combined to GLOBALMENU_GNOME_ARGS
+   * --verbose
+   * --disable
+   * --log-file="filename"
  * svn1725
   * 0.7-devel branch starts
  * svn1696
