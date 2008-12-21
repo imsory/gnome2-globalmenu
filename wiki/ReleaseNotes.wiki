@@ -18,6 +18,10 @@ gnome-globalmenu 0.7 (alpha)
    * --log-file="filename"
  * svn1725
   * 0.7-devel branch starts
+ * svn1723
+  * RGBA support for Gnomenu.Menu
+ * svn1711
+  * grab F10(or what ever in GtkSettings)
  * svn1696
   * + alpha: the core is ready. please test the stability.
 
