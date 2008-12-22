@@ -11,6 +11,7 @@ The latest known working revision is svn ??.
   * VALA = [http://download.gnome.org/sources/vala/0.5/vala-0.5.1.tar.bz2 0.5.1] is a must for building from svn. Building from a released tarball doesn't need it.
     * lastest trunk build of vala should work, though not tested.
     * [http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=vala&colspec=Filename+Summary+Uploaded+Size+DownloadCount SRPM]
+    * 0.5.2 also works fine and will turn to the default compiler later.
   * and development headers for the dependencies
     * gio-1.0
     * gio-unix-1.0
