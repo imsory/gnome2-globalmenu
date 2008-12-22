@@ -8,13 +8,15 @@ The latest known working revision is svn ??.
 
 = Step 0: Prerequisites =
 
-  * VALA = [http://download.gnome.org/sources/vala/0.4/vala-0.4.0.tar.bz2 0.4.0] is a must for building from svn. Building from a released tarball doesn't need it.
+  * VALA = [http://download.gnome.org/sources/vala/0.5/vala-0.5.1.tar.bz2 0.5.1] is a must for building from svn. Building from a released tarball doesn't need it.
     * lastest trunk build of vala should work, though not tested.
     * [http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=vala&colspec=Filename+Summary+Uploaded+Size+DownloadCount SRPM]
-  * and development headers for the libraries
-    * dbus-glib
-    * GTK
-    * libpanelapplet (for GlobalMenu.PanelApplet)
+  * and development headers for the dependencies
+    * gio-1.0
+    * gio-unix-1.0
+    * libwnck-1.0
+    * gtk+-2.0
+    * libpanelapplet-1.0 (for GlobalMenu.PanelApplet)
   * libtool 2.2.6 is known to have problems and not solved yet. libtool 1.5.24 is fine.
 
 = Step 1: Obtain the Source =
@@ -25,95 +27,96 @@ svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/ gnome-globalmenu
 
 
 = Step 2: Compile the Source =
+
+== configure ==
 {{{
 cd gnome-globalmenu
 ./autogen.sh --prefix=/usr
-./configure --enable-gtk-doc
 make
 }}}
 
-For most linux flavors I know, --prefix=/usr is more preferable than --prefix=/usr/local.
-Other things you can disable are
+For most linux flavors I know, `--prefix=/usr` is more preferable than `--prefix=/usr/local`.
+Other things you can change are (useful for packagers)
 {{{
-# --enable-xfce-plugin=[yes]|no  ; not implemented yet
---enable-gnome-applet=[yes]|no
---enable-maintainer-mode=[yes]|no ;
-# --enalbe-gtk-doc=[no]|yes  ; not implemented yet;
+--disable-tests # disable building the tests (they take some time)
+--disable-schemas-install # disable installing the gconf schemas
 }}}
+== components ==
 
-Several libraries are built:
-  * `libglobalmenu-gnome`: a GTK module that makes GTK aware of the global menu by dynamic patching;
-  * `libgnomenu`: the DBus interfaces, and GTK widgets to view a global menu;
-  * `libgmarkupdoc-base`: a document model for GMarkup texts;
-  * `libgmarkupdoc-dbus`: remotely access the GMarkup document model via DBus;
-  * `libgmarkupdoc-list`: a GTK TreeModel for a GMarkup document model;
+The gtk plugin module, `libglobalmenu-gnome`, and the applet, `GlobalMenu.PanelApplet` together forms an implementation of GlobalMenuSpecification.
 
-Ensure libgnomenu is loaded as a Gtk module by 
+=== module ===
+
+`libglobalmenu-gnome` is a GTK plugin module that makes GTK aware of the global menu by dynamic patching. The library is built under `gtk-modules/globalmenu/`.
+
+At this stage you can set the environment to test the global menu:
 {{{
 export GTK_MODULES=globalmenu-gnome
 }}}
-A good place to do this is in `~/.profile`, `~/.bash_profile`, `or ~/.gnomerc`, it depends on the flavor of linux.
+The environment variable is not recommended because it is not integrated into the gnome stack. After installation you can enable the module with a gconf key, as mentioned later.
 
 If you are debugging, some [http://developer.apple.com/documentation/developertools/glibtool/libtool_3.html#SEC11 libtool tricks] can help 
 {{{
-cd gtk-modules/libgnomenu;
-env GTK_MODULES=libglobalmenu-gnome libtool gdb [any application]
+cd gtk-modules/globalmenu;
+libtool gdb [any application]
 }}}
 
-Environment variables that are helpful
+Environment variable `GLOBALMENU_GNOME_AGRS` contains the gnu style arguments of the gtk plugin module library
 {{{
-export GNOMENU_FUN=1
+GLOBALMENU_GNOME_ARGS=
+--verbose
+--disable
+--log-file="filename"
 }}}
-the variable tells the GTK module to open a Gtk TreeView for all menus in the application you start.
-{{{
-export GNOMENU_DISABLED=1
-}}}
-disable global menu.
-{{{
-export GNOMENU_VERBOSE=1
-}}}
-print a lot of debugging messages.
-{{{
-export GNOMENU_LOG_FILE=[filename]
-}}}
-save the debugging message to the given file.
+
+The magic environment variable `GTK_MENUBAR_NO_MAC` can be specified for the module to ignore the applications.
 {{{
 export GTK_MENUBAR_NO_MAC=[prgname list, eg: "gedit gnome-settings-daemon"]
 }}}
-disable the plugin for specific programs.
+If some application doesn't work well with the plugin, please file an
+[http://code.google.com/p/gnome2-globalmenu/issues/list issue].
 
-Several binaries are also built:
-  * `GlobalMenu.PanelApplet` is the panel applet for gnome panel.
-    * See [http://www.davyd.id.au/articles/debugging-gnome-applets.shtml David's tricks] for debugging a panel applet.
-    * `--verbose` for many debug messages.
-  * `org.gnome.GlobalMenu.Server` is the server for window/menubar management.
-    * `--kill` for killing any existed instance.
-  * `gnomenu-navigator` is a tool to inspect any menu bar on the system.
+=== applet ===
 
+The gnome-panel applet is built at `applet/GlobalMenu.PanelApplet`.
+  * See [http://www.davyd.id.au/articles/debugging-gnome-applets.shtml David's tricks] for debugging a panel applet.
+  * `--verbose` for many debug messages.
+
+The applet is built with `libgnomenu`, which contains the GTK widgets representaion of Global Menu.
+
+= Step 3: Install =
 
 To install
 {{{
 su -c 'make install'
 }}}
 
-
-= Step 3: Packaging =
-The current preferred package name is `gnome-globalmenu`; and for RPM there is an example spec file, `gnome-globalmenu.spec.tmpl`, and a script to build the RPM packages,
+Ensure `libglobalmenu-gnome` is loaded as a Gtk module by setting the gconf key
 {{{
-./rpm
-the subversion version is 1360:1378M
-enter the desired version
-<you type>1378
-enter the release number
-<you type enter>
+apps/gnome-settings-daemon/gtk-modules/globalmenu-gnome
 }}}
-and the packages will be built under `~/rpmbuild`.
-Modify the script `./rpm` if needed.
+Notice that loading and unloading the module on the fly is yet experimental. Random crashes do occur. So please immediately restart your gnome session after changing this key.
 
-Always make sure you have {SVN VERSION} in package naming, to avoid future conflictions.
+Also remember to add the applet to your panel.
+
+= Step 4: Packaging =
+
+== rpm ==
+Making the rpm is easy. At the toplevel source tree:
+
+{{{
+make rpm
+}}}
+
+Then a vim will popup. with the spec file, modify the version info, append any change logs, then save the file.
+
+A rpm package will be ready in `~/rpmbuild/RPMS/`, if rpmbuild is set up properly.
+
+== other ==
+Because some of the c source code is built from vala code, prepend a `make` before `make dist` to avoid strange building problems.
 
 
-= Step 4: Remove =
+= Step 5: Remove =
 
 {{{
 make uninstall
@@ -121,6 +124,6 @@ make uninstall
 
 = Troubleshooting =
 ==In General==
-Please report to our project's mail list the detail of the trouble which traps you . We will try to help. the address of the mail list is googlegroups.com: gnome-globalmenu . reverse the order and replace : with @. 
+Please report to our project's mail list the detail of the trouble which traps you . We will try to help. the address of the mail list is `googlegroups.com: gnome-globalmenu` . reverse the order and replace `:` with `@`. 
 
 SVN traffic also goes into the groups.
