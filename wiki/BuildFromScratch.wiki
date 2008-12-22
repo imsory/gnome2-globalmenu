@@ -18,7 +18,6 @@ The latest known working revision is svn ??.
     * libwnck-1.0
     * gtk+-2.0
     * libpanelapplet-1.0 (for GlobalMenu.PanelApplet)
-  * libtool 2.2.6 is known to have problems and not solved yet. libtool 1.5.24 is fine.
 
 = Step 1: Obtain the Source =
 
