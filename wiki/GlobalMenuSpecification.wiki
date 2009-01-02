@@ -15,7 +15,7 @@ Author: Yu Feng (rainwoodman)
 
 Although there are implications to specific implementations, this document should be considered as a requirement document.
 
-FIXME: Link to the GTK implementation in the appendix?
+Implmentations are listed in the appendix.
 
 = Global Menu Specifications =
 
@@ -162,8 +162,9 @@ Multihead is not supported due to the limitations of Server.
     * `Jason McBrayer`, the first Global Menu implementation with GNOME
  
 = Appendix A : GTK Implementation =
-  * perhaps linking to other pages will be better.
   == GTK Plug-in Module =
   * [GlobalMenuGTKModule globalmenu-gnome]
   == GNOME Panel Applet ==
   * [GlobalMenuPanelApplet GNOME panel applet]
+  == libgnomenu ==
+  * [libgnomenu GTK Representation of Global Menu]
