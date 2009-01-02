@@ -51,6 +51,7 @@ FIXME: Link to the GTK implementation in the appendix?
       * `image`, `i`: A menu item with an optional image.
       * `check`, `c`: A menu item with a check mark.
       * `radio`, `r`: A menu item with a radio mark.
+      * `icon`: A menu item with an image only.
     * `state`: A string to describe the state of the check or radio item.
       * `toggled`, `t`, `1` : the item is toggled.
       * `untoggled`, `f`, `0` : the item is not toggled.
@@ -65,7 +66,11 @@ FIXME: Link to the GTK implementation in the appendix?
     * `label`: A string for the label in the item.
       * default: the label of the item is the same as its path.
       * string: the labelof the item is the specified string.
-    * FIXME: how is the image handled?
+    * `icon`: A string to specify the image for either `icon` or `image` menu item.
+      * `pixbuf:%s`, `%s` is the base64 encoded serialized pixdata of the image pixbuf. Refer to GdkPixdata for the format of the serialized image.
+      * `pixmap:%d,%d`, the first `%d` is the native id of the pixmap, the second `%d` is the mask of the image.
+      * `theme:%s`, a string to locate the icon from the named theme icons.
+      * `gtk-%s`, gtk stock icons; (shall be removed later?)
     
 ==== Root Element ====
    
