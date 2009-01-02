@@ -1,9 +1,15 @@
-#labels Phase-Deploy,Featured,installation
-Here you can find how to setup a global menu desktop environment on various Linux platforms:
+#labels Phase-Deploy,Featured
+# installation on various linux platforms
 
-  * Gentoo: InstallOnGentoo
-  * Ubuntu: InstallingonUbuntu and a newer version QuickInstallonUbuntu
-  * Fedora: InstallationGuideFedora
-  * Other: BuildFromScratch
+= How to Install Global Menu to your GNOME Desktop =
 
-  * There is also a Chinese version InstallGuidelineInChinese (for Ubuntu)
+Global Menu works out of box.
+
+  # Install a pre-built binary package
+    * Ubuntu: `deb http://ppa.launchpad.net/globalmenu-team/ubuntu intrepid main`
+    * Fedora: [http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=rpm&colspec=Filename+Summary+Uploaded+Size+DownloadCount Download the latest RPM]
+    * Not lucky? You can always [BuildFromScratch make install]
+  # Add `Global Menu Panel Applet` (or an equivalent name in you language) to the top panel
+  # Right click on applet and choose `Enable Global Menu` (or an equivalent name in your language)
+
+That's all. It's just that easy!
