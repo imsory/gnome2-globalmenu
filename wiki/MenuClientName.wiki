@@ -1,3 +1,0 @@
-= MenuClientName =
-A string, 
-`GTK MENU BAR`
