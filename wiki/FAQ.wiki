@@ -3,33 +3,31 @@
 
 Ask your questions about Global Menu by putting a comment on the bottom of this page, and we'll try to answer them here or provide links to the relevant wiki pages or webpages.
 
- * How can I support Gnome Global Menu ?
-   # [http://brainstorm.ubuntu.com/idea/3136/ voting for Global Menu] in Ubuntu's Ideastorm
-   # using your skills to help developing Gnome Global Menu
-   # writing documentation
-   # [Translation Translating] it into your language
-   # taking relevant tips and info from the [http://ubuntuforums.org/showthread.php?t=241868 UbuntuForums.org thread] and summering it.
-   # you name it/ any other idea you might propose us
- * Is it possible for global menu to support Firefox and Openoffice?
- * Why is the latest version missing functionalities ?
-   * In order to get accepted in GNOME and for long term stability, we've decided to rewrite Global Menu in Vala. Starting from scratch allowed us to have an overall better design, and for the code to be more simple for new developers.
+ # How can I support Gnome Global Menu ?
+   * [http://brainstorm.ubuntu.com/idea/3136/ voting for Global Menu] in Ubuntu's Ideastorm
+   * Using your skills to help developing Gnome Global Menu;
+   * Writing documentation;
+   * [Translation Translating] it into your language;
+   * Taking relevant tips and info from the [http://ubuntuforums.org/showthread.php?t=241868 UbuntuForums.org thread] and summering it;
+   * You name it/ any other idea you might propose us.
+ # Is it possible for global menu to support Firefox and Openoffice?
+   * *YES*, in theory it is possible to patch any application to make them global menu aware; 
+   * And *NO*, Firefox and OpenOffice come with XUL and DSO (repectively) which are huge monsters to work with, therefore in practice it is impossible to implement such a plugin on a patch without any expertise in these monsters. If you find a clean solution we'll be all very happy to merge it in the project though;
+   * For the moment we don't plan to reinclude the hacks that allowed OpenOffice and some others programs to be natively compatible.
+ # Why is the latest version missing functionalities ?
+   * We are not software experts (yet);
+   * In order to get accepted in GNOME and for long term stability, we've decided to rewrite Global Menu in Vala. Starting from scratch allowed us to have an overall better design, and for the code to be more simple for new developers;
    * The drawback is that we have to reimplement all the features of the previous version. If you think you can help, just chime in !
-   * And no: for the moment we don't plan to reinclude the hacks that allowed OpenOffice and some others programs to be natively compatible. If you find a clean solution we'll be all very happy to merge it in the project though.
-
- * I would like the Global Menu to have feature X, Y and Z. What can I do to tell the developers ?
-   * You can look in *Issues* to see if the feature you want has been already asked for. If so, just star it (and comment it only if you need to).
+ # I would like the Global Menu to have feature X, Y and Z. What can I do to tell the developers ?
+   * You can look in *Issues* to see if the feature you want has been already asked for. If so, just star it (and comment it only if you need to);
    * Otherwise, just report it in *Issues* in a clear and professional way.
-
- * How can I get the latest version for my distro ?
-  * For [InstallingonUbuntu Ubuntu]
-  * For [InstallOnGentoo Gentoo]
-  * For [InstallationGuideFedora Fedora]
-  * Other distributions/flavours
-   * You can compile it from source or from the released tarball (see here>> )
-
- * How can I get the more feature-full version for my distro ?
- * 64 bits support anyone ?
-   # The latest revs seems to be compatible. See http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149
- * Why are you obsessed with duplicating alien interfaces? You'll have legal problems/ Apple will eat your first newborn...
- * How do I uninstall/remove the Gnome GlobalMenu ?
- * *Your question here*
+ # How can I get the latest version for my distro ?
+ # How can I get the more feature-full version for my distro ?
+   * [Installation Read the installation guide]
+ # 64 bits support anyone ?
+   * The latest revs seems to be compatible. See http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149
+ # Why are you obsessed with duplicating alien interfaces? You'll have legal problems/ Apple will eat your first newborn...
+   * This is Global Menu Project, not an OSX Duplication Project. If Apple wants to eat us they'd better eat KDE first, since KDE also have a similiar interface. Any legal assistance on this topic will be appericiated.
+ # How do I uninstall/remove the Gnome GlobalMenu ?
+   * Remove the package in the same way as removing other packages.
+ # *Your question here*
