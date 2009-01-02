@@ -50,7 +50,7 @@ FIXME: Link to the GTK implementation in the appendix?
       * `separator`, `s`: A separator line.
       * `image`, `i`: A menu item with an optional image.
       * `check`, `c`: A menu item with a check mark.
-      * `radio`, `r`: A menu item with a radio mark.
+      * `radio`, `r`: A menu item with a radio mark. As Global Menu does not specify the action of the menu item, `radio` items are not grouped.
       * `icon`: A menu item with an image only.
     * `state`: A string to describe the state of the check or radio item.
       * `toggled`, `t`, `1` : the item is toggled.
@@ -106,12 +106,11 @@ Whether the property is immediately deleted is undefined.
 When the Menu Context of a Client changes, the Client should change the `_NET_GLOBALMENU_MENU_CONTEXT` property on its window. 
 The Client should make efforts to reduce the number of changes because: 
   * Writing to an Window Property a huge amount of text is slow.
-  * The server will possibly take the new property and rebuild an entire menu up on each modification.
-It is recommended that a client should finish building the Menu Context before saving it to `_NET_GLOBALMENU_MENU_CONTEXT`.
+  * The server will possibly take the new property and rebuild an entire menu upon each newly arrived Menu Context.
      
 == Server ==
 
-A Server carries the Representation for the current Menu Context for the active window on the active viewport of the active workspace of the current display. This definition is tedious, and does not support multihead displays.
+A Server carries the Representation for the current Menu Context for the active window on the active viewport of the active workspace of the current display. Server on multihead displays is undefined.
    
 The Representation carried by a Server is totally implementation dependent. All following examples are valid implementations: 
   * The plain XML itself in a text entry.
