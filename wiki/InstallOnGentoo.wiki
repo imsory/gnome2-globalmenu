@@ -1,5 +1,5 @@
 #summary Installation Guide On Gentoo
-#labels Phase-Deploy,installation
+#labels Phase-Deploy,Deprecated
 
 = Introduction =
 
