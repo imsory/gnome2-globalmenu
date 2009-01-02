@@ -1,5 +1,5 @@
 #summary 在Ubuntu Gusty上编译applet和打过补丁的Gtk库
-#labels installation
+#labels Phase-Deploy,Deprecated
 
 = 引言 =
 这是一篇帮助你从svn源代码编译gnome-globalmenu-applet的指南。这篇指南只适用于trunk(svn 500+)。
