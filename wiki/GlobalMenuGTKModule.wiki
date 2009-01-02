@@ -1,0 +1,24 @@
+#labels Phase-Design
+#libglobalmenu-gnome, the gtk plugin module of global menu
+
+= Introduction =
+
+libglobalmenu-gnome is a GTK plugin module that dynamically patches GTK to make it Global Menu compatible. It overrides several virtual functions, and register several signal handlers and emission hooks in a GTK-opaque way to achieve the following goals:
+  * Serializing the GTK menu hierarchy to the XML reprensentation of Global Menu and set to the Menu Context.
+  * Notifying the application about the arrival of any Menu Event
+
+In short, it makes the idea of Global Menu possible in this complicated real world.
+
+= Overriding the Virtual Functions =
+
+= Multi-theads =
+
+= Buffer the Changes =
+
+= Propagation of the 'menubar' Data Member =
+
+= Signal Handlers =
+
+= Signal Emission Hooks =
+
+= Serializer =
