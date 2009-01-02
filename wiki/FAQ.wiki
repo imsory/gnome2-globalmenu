@@ -1,7 +1,6 @@
 #summary Frequently Asked Questions
 #labels Featured,Phase-Support
 
-Ask your questions about Global Menu by putting a comment on the bottom of this page, and we'll try to answer them here or provide links to the relevant wiki pages or webpages.
 
  # How can I support Gnome Global Menu ?
    * [http://brainstorm.ubuntu.com/idea/3136/ voting for Global Menu] in Ubuntu's Ideastorm
@@ -30,4 +29,4 @@ Ask your questions about Global Menu by putting a comment on the bottom of this 
    * This is Global Menu Project, not an OSX Duplication Project. If Apple wants to eat us they'd better eat KDE first, since KDE also have a similiar interface. Any legal assistance on this topic will be appericiated.
  # How do I uninstall/remove the Gnome GlobalMenu ?
    * Remove the package in the same way as removing other packages.
- # *Your question here*
+ # Ask your questions about Global Menu in Issue 223 (so that project members are notified)
