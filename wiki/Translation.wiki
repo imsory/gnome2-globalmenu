@@ -6,11 +6,11 @@ Since Version 0.4, localization becomes one of our considerations. We are glad t
 
 = Howto: Make a new translation =
 == Without SVN write access ==
- * Checkout zh_CN.po at
-http://code.google.com/p/gnome2-globalmenu/source/browse/trunk/po/zh_CN.po
- * Save it to you computer, rename to your locale string .po. E.g: en_GB.po
+ * Checkout the pot file at
+`http://code.google.com/p/gnome2-globalmenu/source/browse/trunk/po/gnome-globalmenu.pot`
+ * Save it to you computer, rename to `{your locale string}.po`. E.g: `en_GB.po`
  * Edit it, make sure
-   * if your current encoding is not utf-8, the file will be a mess; however you should use utf8 for your translate file.
+   * you should use utf8 for your translate file.
    * the first "" string's information is properly filled in, especially your name, and email address. (so that when we need to change strings you can be notified)
    * "translater_credit" shall be translated into your name, in your own language and you can optionally provide your email.
    * replace other localized strings with the strings in your languages.
@@ -20,7 +20,8 @@ http://code.google.com/p/gnome2-globalmenu/source/browse/trunk/po/zh_CN.po
 
 == With SVN write access ==
  * go to your working copy of trunk/po
- * copy zh_CN.po to your language.po (if your current encoding is not utf-8, the file will be a mess; however you should use utf8 for your translate file)
+ * copy `gnome-globalmenu.pot` to `{your language}.po`
+ * you should use utf8 for your translate file.
  * translate it according to the guidelines above.
  * edit LINGUAS, add your language to the tail.
  * svn commit
@@ -29,3 +30,4 @@ http://code.google.com/p/gnome2-globalmenu/source/browse/trunk/po/zh_CN.po
 ||*Language*||*Translator*||
 || zh_CN || rainwoodman    ||
 || fr_FR || pierre.slamich ||
+|| it_IT ||  	 lviggiani ||
