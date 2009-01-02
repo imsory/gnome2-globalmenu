@@ -3,12 +3,14 @@
 
 = Introduction =
 
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+`libgnomenu` is the GTK representation of Global Menu. This library contains:
+  * three core Global Menu widgets:
+    * GnomenuMenuBar, for the topmost menu in the Menu Context;
+    * GnomenuMenu, for popup sub menus;
+    * GnomenuMenuItem (and GnomenuMenuLabel as its child), for menu items;
+  * two auxillary widgets:
+    * GnomenuWindow, for easy setting/getting window properties;
+    * GnomenuMenuBarBox, for alignment of MenuBars
+  * two utilities:
+    * GnomenuSerializer, to convert the widgets to XML;
+    * GnomenuParser, to convert XML to widgets;
