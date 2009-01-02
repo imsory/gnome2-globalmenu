@@ -164,6 +164,6 @@ Multihead is not supported due to the limitations of Server.
 = Appendix A : GTK Implementation =
   * perhaps linking to other pages will be better.
   == GTK Plug-in Module =
-  * globalmenu-gnome
+  * globalmenu-gnome, refer to GlobalMenuGTKModule
   == GNOME Panel Applet ==
-  * applet
+  * applet, refer to GlobalMenuPanelApplet
