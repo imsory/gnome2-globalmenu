@@ -1,5 +1,5 @@
+#summary How to install Global Menu on Fedora ?
 #labels Phase-Deploy,Deprecated
-#How to install Global Menu on Fedora ?
 
 = Installation Guide =
 
