@@ -1,5 +1,5 @@
 #summary applet and patched Gtk library on Ubuntu Gusty
-#labels installation
+#labels Phase-Deploy,Deprecated
 
 = Introduction =
 This article will help you to build gnome-globalmenu from a svn snapshot.
