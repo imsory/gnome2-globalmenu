@@ -13,11 +13,10 @@ The latest known working revision is svn ??.
     * [http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=vala&colspec=Filename+Summary+Uploaded+Size+DownloadCount SRPM]
     * 0.5.2 also works fine and will turn to the default compiler later.
   * and development headers for the dependencies
-    * gio-1.0
-    * gio-unix-1.0
-    * libwnck-1.0
-    * gtk+-2.0
-    * libpanelapplet-1.0 (for GlobalMenu.PanelApplet)
+    * `gio-1.0`
+    * `libwnck-1.0`
+    * `gtk+-2.0`
+    * `libpanelapplet-1.0` (for `GlobalMenu.PanelApplet`)
 
 = Step 1: Obtain the Source =
 
@@ -69,6 +68,8 @@ GLOBALMENU_GNOME_ARGS=
 --log-file="filename"
 }}}
 
+In order not to mess up with `gnome-keyring` and similar applications that relies on 'zero' output of messages, by default the module will log the verbose messages to `~/.gnomenu.log`.
+
 The magic environment variable `GTK_MENUBAR_NO_MAC` can be specified for the module to ignore the applications.
 {{{
 export GTK_MENUBAR_NO_MAC=[prgname list, eg: "gedit gnome-settings-daemon"]
@@ -112,7 +113,9 @@ apps/gnome-settings-daemon/gtk-modules/globalmenu-gnome
 }}}
 Notice that loading and unloading the module on the fly is yet experimental. Random crashes do occur. So please immediately restart your gnome session after changing this key.
 
-Also remember to add the applet to your panel.
+Remember to add the applet to your panel. There is also a shortcut to this key in the preference window of the applet.
+
+
 
 = Step 4: Packaging =
 
