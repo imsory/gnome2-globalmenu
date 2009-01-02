@@ -1,5 +1,5 @@
+#summary installation on various linux platforms
 #labels Phase-Deploy,Featured
-# installation on various linux platforms
 
 = How to Install Global Menu to your GNOME Desktop =
 
