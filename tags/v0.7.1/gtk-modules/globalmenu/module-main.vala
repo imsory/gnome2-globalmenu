@@ -91,8 +91,7 @@ public class GlobalMenuModule {
 						_("- Global Menu plugin Module for GTK"));
 				context.set_description(
 		_("""These parameters should be supplied in environment GLOBALMENU_GNOME_ARGS instead of the command line.
-		NOTE: Environment GTK_MENUBAR_NO_MAC contains the applications to be ignored by the plugin.
-		""")
+NOTE: Environment GTK_MENUBAR_NO_MAC contains the applications to be ignored by the plugin.""")
 				);
 				context.set_help_enabled(false);
 				context.set_ignore_unknown_options(true);
