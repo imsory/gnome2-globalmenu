@@ -1,7 +1,7 @@
-%define 	base_version 	0.7.0
-%define 	svn_version 	svn1891
+%define 	base_version 	0.7.1
+#%define 	svn_version 	svn1891
 Name:		gnome-globalmenu
-Version:	%{base_version}.%{svn_version}
+Version:	%{base_version}
 Release:	1%{?dist}
 Summary:	Global Menu for GNOME
 
@@ -73,6 +73,8 @@ gconftool-2 --makefile-uninstall-rule \
 
 
 %changelog
+* Sun Jan 3 2009 Feng Yu <rainwoodman@gmail.com>
+- 0.7.1 release.
 * Sun Dec 21 2008 Feng Yu <rainwoodman@gmail.com>
 - 0.7 release.
 * Wed Dec 17 2008 Feng Yu <rainwoodman@gmail.com>
