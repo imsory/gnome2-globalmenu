@@ -3,11 +3,19 @@
 
 -------------------------------
 gnome-globalmenu 0.7.1
+
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.1}}}
+Downloads:
+
+http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.1
+
  * Bug fixes
  * Enable/Disable Global Menu via GtkSettings and the applet.
-   loading globalmenu-gnome via GTK_MODULES is no longer supported.
+   * loading globalmenu-gnome via GTK_MODULES is no longer supported.
+   * suid applications now also respect global menu. (security!)
  * Disable RGBA by default due to stability issues.
  * it_IT, fr_FR, zh_CN Translations 
+-----------------------------
 gnome-globalmenu 0.7 (alpha)
  * svn1845 All children in PanelApplet and subclass of GnomenuMenuBar changed to 'local' by default. No need of GTK_MENUBAR_NO_MAC(still supported) for gnome-panel, user swither, unit tests, and most panel related applications.
  * svn1833 Added window list and window title to switcher.
