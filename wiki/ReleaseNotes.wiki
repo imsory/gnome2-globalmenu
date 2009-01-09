@@ -2,6 +2,19 @@
 #labels Featured
 
 -------------------------------
+gnome-globalmenu 0.7.2 (draft)
+
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk}}}
+Downloads:
+
+http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.2
+
+ * Bug fixes
+ * Added XFCE Plugin
+ * Code refactoring, improved speed.
+ * More organized switcher menu.
+
+-------------------------------
 gnome-globalmenu 0.7.1
 
 {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.1}}}
