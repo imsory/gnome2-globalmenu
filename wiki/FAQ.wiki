@@ -29,4 +29,13 @@
    * This is Global Menu Project, not an OSX Duplication Project. If Apple wants to eat us they'd better eat KDE first, since KDE also have a similiar interface. Any legal assistance on this topic will be appericiated.
  # How do I uninstall/remove the Gnome GlobalMenu ?
    * Remove the package in the same way as removing other packages.
+ # How to let XFCE work with global menu?
+   * XFCE doesn't have a nice way to edit gtk-modules in GtkSettings. What you can do is to create `~/.config/xfce4/xinitrc` with the following content:
+{{{
+#!/bin/sh
+
+export GTK_MODULES=globalmenu-gnome
+. /etc/xdg/xfce4/xinitrc
+}}}
+   * and login again.
  # Ask your questions about Global Menu in Issue 223 (so that project members are notified)
