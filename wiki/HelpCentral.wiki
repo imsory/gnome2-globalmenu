@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Welcome to GlobalMenu's webpage. Than you for downloading and testing this alpha version of a GlobalMenu for Gnome.
+Welcome to Global Menu's webpage. Than you for downloading and testing this alpha version of a Global Menu for Gnome.
  * If you've noticed any strange behaviour head to BugReporting 
- * If you're asking yourself a question about GlobalMenu, head to the FAQ
+ * If you're asking yourself a question about Global Menu, head to the [FAQ FAQ]
  * If you...
