@@ -6,7 +6,7 @@ Note that unlike GHOP, the only prize you'll get is a special mention and the gr
 
 = Ideas =
 
-  * Task title: Adding internationalisation support to GnomeMenu
+  * Task title: Translate GnomeMenu into your language
   * Benefits:
   * Requirements:
   * Task description:
