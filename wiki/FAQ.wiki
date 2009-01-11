@@ -26,7 +26,7 @@
  # 64 bits support anyone ?
    * The latest revs seems to be compatible. See http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149
  # Why are you obsessed with duplicating alien interfaces? You'll have legal problems/ Apple will eat your first newborn...
-   * This is Global Menu Project, not an OSX Duplication Project. If Apple wants to eat us they'd better eat KDE first, since KDE also have a similiar interface. Any legal assistance on this topic will be appericiated.
+   * This is Global Menu Project, not an OSX Duplication Project. If Apple wants to eat us they'd better eat KDE first, since KDE also have a similar interface. Any legal assistance on this topic will be appreciated.
  # How do I uninstall/remove the Gnome GlobalMenu ?
    * Remove the package in the same way as removing other packages.
  # How to let XFCE work with global menu?
