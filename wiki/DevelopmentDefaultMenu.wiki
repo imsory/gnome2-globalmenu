@@ -1,5 +1,5 @@
 #summary Show a Default menu
-#labels Phase-Design
+#labels Phase-Design,development
 
 Related to Issue18
 
