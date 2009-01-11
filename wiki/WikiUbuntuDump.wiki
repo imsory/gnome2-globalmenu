@@ -1,7 +1,0 @@
-.conkyrc:
-http://ubuntuforums.org/attachment.php?attachmentid=48019&d=1193501364
-
-A rewrite would probably also include patches made for Gtk+ for OSX from Imendio.
-http://developer.imendio.com/projects/gtk-macosx 
-
-On the inability of KDE apps to use this menu, doesn't KDE already have support for a global menu bar?  Wouldn't it be feasible to make some sort of link between the KDE menus and this menu bar?
