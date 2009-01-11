@@ -1,5 +1,5 @@
 #summary the Global Menu Specification
-#labels Phase-Requirements,development
+#labels Phase-Requirements
  
 <h1> Global Menu Specification </h1>
 Author: Yu Feng (rainwoodman)
