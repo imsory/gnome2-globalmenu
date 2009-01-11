@@ -1,49 +1,5 @@
-Aggregation of the Gnome Global Menu Patch data, originally By AqD
-<wiki:toc max_depth="5" />
-
-{{attachment:globalmenusmallScreenshot.png}}
-
-Forum thread about the Gnome Global Menu where you can help improve it, package it, find the latest info... 
-http://ubuntuforums.org/showthread.php?t=241868
-
-Bug report on Gnome's Bugzilla, vote for inclusion! :  
-http://bugzilla.gnome.org/show_bug.cgi?id=353076 
-
-Note : this GTK Global Menu hack won't work with XUL apps (e.g. Firefox), Java swing apps (e.g. OpenOffice) and all KDE apps or non-GTK apps.
-
-Mac menu applet:
-http://ubuntuforums.org/attachment.php?attachmentid=54026&d=1198381611 (rainwoodman version - new)
-http://ubuntuforums.org/attachment.php?attachmentid=47781&d=1193338299 (Aqd version - old)
-
-gtk2 spec file for fedora 8 
-http://ubuntuforums.org/attachment.php?attachmentid=53555&d=1197951405 (rainwoodman version - new)
-
-gtkMenuBar Patch:
-http://ubuntuforums.org/attachment.php?attachmentid=47782&d=1193338357
-
-gtk2MenuPatch:
-
-http://ubuntuforums.org/attachment.php?attachmentid=48733&d=1193950276
-
-Patch against 2.12.1 (removing annoying underlines):
-
-http://ubuntuforums.org/attachment.php?attachmentid=48738&d=1193954936
-
-__Links related to the second method:__
-
-<<Anchor(one)>> __1__ Mac menu applet deb package (gusty gibbon 32bits):
-http://ubuntuforums.org/attachment.php?attachmentid=47899&d=1193414016
-
-
-Other resources :
-
 .conkyrc:
-
 http://ubuntuforums.org/attachment.php?attachmentid=48019&d=1193501364
-
-----
-
-== Further development ==
 
 A rewrite would probably also include patches made for Gtk+ for OSX from Imendio.
 http://developer.imendio.com/projects/gtk-macosx 
