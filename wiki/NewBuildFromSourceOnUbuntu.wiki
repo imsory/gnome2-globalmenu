@@ -1,5 +1,5 @@
 = Introduction =
-
+Based on a [http://ayozone.org/2009/01/08/install-gnome-globalmenu-07-series/ guide by Ayoli]
 1. Get the required packages to build vala and gnome-globalmenu :
 
 {{{
