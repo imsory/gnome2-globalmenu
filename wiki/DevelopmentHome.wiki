@@ -1,5 +1,5 @@
 ﻿#summary This page is the home page for development documents, ideas, drafts and other garbages.
-#labels Phase-Design,Phase-Implementation,Featured,development
+#labels Phase-Design,Phase-Implementation,Featured
 
 We are at 0.7.
 
