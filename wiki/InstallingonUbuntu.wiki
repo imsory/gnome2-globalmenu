@@ -269,7 +269,7 @@ Now you need to log out/in gnome to see the changes.
 
 ====Ayoli's guide====
 
-Refer to the [http://ayozone.org/2008/03/12/global-menu-the-new-gnome-macmenu/  guide] written by Ayoli.
+Refer to the [http://ayozone.org/2009/01/08/install-gnome-globalmenu-07-series/  guide] written by Ayoli.
 
 ====Official Guides====
 =====in English=====
