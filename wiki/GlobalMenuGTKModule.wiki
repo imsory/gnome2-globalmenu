@@ -1,5 +1,5 @@
 #summary libglobalmenu-gnome, the gtk plugin module of global menu
-#labels Phase-Design,development
+#labels Phase-Design
 
 = Introduction =
 
