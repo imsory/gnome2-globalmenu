@@ -1,5 +1,5 @@
 #summary Package Naming rules
-#labels Phase-Deploy,packaging,development
+#labels Phase-Deploy,packaging
 
 = Package Naming Rules =
 
