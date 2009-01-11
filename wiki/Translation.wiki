@@ -31,3 +31,4 @@ Since Version 0.4, localization becomes one of our considerations. We are glad t
 || zh_CN || rainwoodman    ||
 || fr_FR || pierre.slamich ||
 || it_IT ||  	 lviggiani ||
+|| es_ES ||      acidrums4 || 
