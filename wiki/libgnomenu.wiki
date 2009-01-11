@@ -1,5 +1,5 @@
 #summary libgnomenu is the GTK implementation of a representation of Global Menu.
-#labels Phase-Design,development
+#labels Phase-Design
 
 = Introduction =
 
