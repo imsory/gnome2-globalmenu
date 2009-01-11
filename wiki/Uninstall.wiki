@@ -6,7 +6,8 @@ OUTDATED: DO NOT USE OR MODIFY FOR THE MOMENT
 ==== For the apt-built method ====
 
 
-If you have used the apt-build method to install the patched gtk do this to uninstall :
+If you have used the apt-build method to install the patched GTK do this to uninstall :
+
 1. Go to menu system > administration > software sources. Pick the “third party software” tab, and uncheck apt-build repository.
 
 2. Then in a terminal type in:
