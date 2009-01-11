@@ -3,6 +3,8 @@
 = Introduction =
 
 Welcome to Global Menu's webpage. Than you for downloading and testing this alpha version of a Global Menu for Gnome.
- * If you've noticed any strange behaviour head to BugReporting 
+ * If you've noticed any strange behaviour head to BugReporting
+ * If you would like to suggest a feature or an improvement, head to FeatureRequest
+ * If you would like to help, see the [FAQ FAQ]
  * If you're asking yourself a question about Global Menu, head to the [FAQ FAQ]
  * If you...
