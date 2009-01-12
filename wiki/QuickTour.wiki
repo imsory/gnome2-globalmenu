@@ -1,5 +1,14 @@
 #summary Quick graphical tour of Global Menu
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Screenshot.png">
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Applet-preferences.png">	<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Credits.png">
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-Label.png">
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-no-label-menu.png">	<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-no-label.png">
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-switcher.png">
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Label.png">
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Right-click.png">
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Screenshot-About globalmenu-panel-applet.png">
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Screenshot-Applet preferences.png">
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Screenshot-Credits.png">
 We are pleased to announce the release of Gnome GlobalMenu version 0.7. This version brings you a better than ever Global Menu for use with Gnome. It’s packed with new features, more stable than ever and now available in an easy to install way, in your native language!
 Let’s review some of the features of Gnome GlobalMenu 0.7:
 A Slick Windows Switcher 
