@@ -74,13 +74,13 @@ GlobalMenu is now available in French, Chinese, English, Italian for your conven
 
 ===Links===
 
-DevelopmentHome 
-FAQ 
-Installation
-Ubuntu LaunchPad
-Ubuntu Forum Thread
-Gnome Bug
-Firefox Bug
+[[DevelopmentHome]]  
+[[FAQ]] 
+[[Installation]] 
+[[https://launchpad.net/~globalmenu-team Ubuntu LaunchPad]] 
+[[http://ubuntuforums.org/showthread.php?t=241868 Ubuntu Forum Thread]] 
+[[http://bugzilla.gnome.org/show_bug.cgi?id=353076 Gnome Bug]] 
+[[https://bugzilla.mozilla.org/show_bug.cgi?id=411934 Firefox Bug]] 
 
 ===Project members===
 pierre.slamich, Valiant.Wing, fengshenx, sstasyuk, bis0n.lives, dwatson031, lviggiani, globalmenul10n
