@@ -19,13 +19,14 @@ With true transparency and a lot of fixes, GlobalMenu plays nice with many theme
 
 ===Simple Integrated Settings===
 
-<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Right-click.png">
-
 We’ve reworked GlobalMenu to integrate deep within Gnome Settings a.k.a  GConf. No more tweaks or extra steps: it just works, period. 
+
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Right-click.png">
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Applet-preferences.png">
 
 ===Shortcuts. For (even more) speed===
+
 As if the GlobalMenu didn’t make you gain time by enabling you to actually focus on the document, it now includes fully working shortcuts
 
 ===A Snap to install===
@@ -35,9 +36,9 @@ We’ve built Ubuntu Packages, Fedora RPM and people install GlobalMenu without 
 
 ===Get Graphic===
 
-<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-Label.png">
-
 You can now choose to display the application icon alongside or in place of the title. Because a good drawing is worth a thousand words!  And if you don’t remember the name of that obscure app you’re using,  the application title appears as a tooltip!
+
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-Label.png">
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-no-label-menu.png">
 
@@ -53,23 +54,28 @@ The Global Menu is no longer hacky, and integrates a full Vala rewrite to integr
 
 ===Scrolling.===
 
-<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Scroll.png">
-
 If a menu is too long, Global Menu now detects it, and provides handy buttons to access the remainder of the menus in a very practical and smart way.
+
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Scroll.png">
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Scroll-expanded.png">
 
 
 ===Window Actions.===
 For extra goodness, we’ve built in window actions so that you can get full control on you windows right from the menus, thus reducing visual and usability clutter.  
+
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-no-label.png">  
 
 ===Standard naming=== 
 
+Now, the label in GlobalMenu is consistant with your main menu for extra simplicity!
+
 ===Dans toutes les langues!===
+
 GlobalMenu is now available in French, Chinese, English, Italian for your convenience. If your language is not there yet, just step in and take 20 minutes to make sure the next version of GlobalMenu features your translation work!
 
 ===About Us===
+
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Screenshot-About globalmenu-panel-applet.png">
 
 ===Links===
