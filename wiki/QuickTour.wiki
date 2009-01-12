@@ -75,4 +75,4 @@ pierre.slamich, Valiant.Wing, fengshenx, sstasyuk, bis0n.lives, dwatson031, lvig
 
 ===Vote for us on Ubuntu Brainstorm===
 
-<a href="http://brainstorm.ubuntu.com/idea/3136/" rel="nofollow"><img src="http://brainstorm.ubuntu.com/idea/3136/image/1/?filetype=.png"></a>
+<a href="http://brainstorm.ubuntu.com/idea/3136/"><img src="http://brainstorm.ubuntu.com/idea/3136/image/1/?filetype=.png"></a>
