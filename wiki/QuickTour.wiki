@@ -1,5 +1,4 @@
 #summary Quick graphical tour of Global Menu
-<img align="center" src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Screenshot.png">
 
 We are pleased to announce the release of Gnome GlobalMenu version 0.7. This version brings you a better than ever Global Menu for use with Gnome. It’s packed with new features, more stable than ever and now available in an easy to install way, in your native language!
 
