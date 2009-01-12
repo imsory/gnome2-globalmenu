@@ -13,9 +13,7 @@ Let’s review some of the features of Gnome GlobalMenu 0.7:
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Right-click.png">
 
-<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Screenshot-Applet preferences.png">
 
-<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Screenshot-Credits.png">
 
 ===A Slick Windows Switcher===
 You can now change the program you’re working on with a simple click on that switch, part of GlobalMenu. You’ll be able to start working right away with menus a few pixel right of the switcher!
