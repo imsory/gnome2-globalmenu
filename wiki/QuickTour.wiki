@@ -8,7 +8,7 @@ Let’s review some of the features of Gnome GlobalMenu 0.7:
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-Label.png">
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-no-label-menu.png">
-	
+
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Label.png">
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Right-click.png">
