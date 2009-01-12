@@ -1,4 +1,5 @@
 #summary Quick graphical tour of Global Menu
+<img src="http://code.google.com/p/gnome2-globalmenu/source/browse/wiki/Screenshot.png">
 We are pleased to announce the release of Gnome GlobalMenu version 0.7. This version brings you a better than ever Global Menu for use with Gnome. It’s packed with new features, more stable than ever and now available in an easy to install way, in your native language!
 Let’s review some of the features of Gnome GlobalMenu 0.7:
 A Slick Windows Switcher 
@@ -36,4 +37,3 @@ Gnome Bug
 Firefox Bug
 Project members : pierre.slamich, Valiant.Wing, fengshenx, sstasyuk, bis0n.lives, dwatson031, lviggiani, globalmenul10n
 Vote for us on Ubuntu Brainstorm
-
