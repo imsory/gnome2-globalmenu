@@ -1,0 +1,39 @@
+#summary Quick graphical tour of Global Menu
+We are pleased to announce the release of Gnome GlobalMenu version 0.7. This version brings you a better than ever Global Menu for use with Gnome. It’s packed with new features, more stable than ever and now available in an easy to install way, in your native language!
+Let’s review some of the features of Gnome GlobalMenu 0.7:
+A Slick Windows Switcher 
+You can now change the program you’re working on with a simple click on that switch, part of GlobalMenu. You’ll be able to start working right away with menus a few pixel right of the switcher!
+Themes! Themes! Themes!
+With true transparency and a lot of fixes, GlobalMenu plays nice with many themes, including Mac4Lin, as we’ve worked with its creators to ensure the best experience possible. Not only is GlobalMenu practical, it’s now looking gorgeous!
+Simple Integrated Settings
+We’ve reworked GlobalMenu to integrate deep within Gnome Settings a.k.a  GConf. No more tweaks or extra steps: it just works, period. 
+Shortcuts. For (even more) speed
+As if the GlobalMenu didn’t make you gain time by enabling you to actually focus on the document, it now includes fully working shortcuts
+A Snap to install
+We’ve built Ubuntu Packages, Fedora RPM and people install GlobalMenu without having to mess with the Command Line. And all the other distributions, we’ve streamlined the install process with easy tutorials, and have taken the necessary steps to make packaging a snap. 
+Get Graphic
+You can now choose to display the application icon alongside or in place of the title. Because a good drawing is worth a thousand words!  Anf if you don’t remember the name of that obscure app you’re using,  the application title appears as a tooltip!
+Get personal
+You can as well customize the title font displayed in the Global Menu and completely customize the appearance. You can even skin the Global Menu!
+Under the Hood
+The Global Menu is no longer hacky, and integrates a full Vala rewrite to integrate Gnome’s good practices and follow coding guidelines. Cleaner code means more developers, more progress and less bugs in the future.
+Scrolling.
+If a menu is too long, Global Menu now detects it, and provides handy buttons to access the remainder of the menus in a very practical and smart way.
+Window Actions.
+For extra goodness, we’ve built in window actions so that you can get full control on you windows right from the menus, thus reducing visual and usability clutter.    
+Standard naming 
+
+Dans toutes les langues!
+GlobalMenu is now abailable in French, Chinese, English, Italian for your convenience. If your language is not there yet, just step in and take 20 minutes to make sure the next version of GlobalMenu features your translation work!
+
+About Us
+DevelopmentHome 
+FAQ 
+Installation
+Ubuntu LaunchPad
+Ubuntu Forum Thread
+Gnome Bug
+Firefox Bug
+Project members : pierre.slamich, Valiant.Wing, fengshenx, sstasyuk, bis0n.lives, dwatson031, lviggiani, globalmenul10n
+Vote for us on Ubuntu Brainstorm
+
