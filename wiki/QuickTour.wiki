@@ -4,6 +4,8 @@
 
 We are pleased to announce the release of Gnome GlobalMenu version 0.7. This version brings you a better than ever Global Menu for use with Gnome. It’s packed with new features, more stable than ever and now available in an easy to install way, in your native language!
 
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/GlobalMenuWindows.png">
+
 
 Let’s review some of the features of Gnome GlobalMenu 0.7:
 
@@ -42,6 +44,9 @@ You can now choose to display the application icon alongside or in place of the 
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-no-label-menu.png">
 
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-no-label.png">  
+
+
 ===Get personal===
 
 You can as well customize the title font displayed in the Global Menu and completely customize the appearance. You can even skin the Global Menu!
@@ -51,6 +56,11 @@ You can as well customize the title font displayed in the Global Menu and comple
 ===Under the Hood===
 
 The Global Menu is no longer hacky, and integrates a full Vala rewrite to integrate Gnome’s good practices and follow coding guidelines. Cleaner code means more developers, more progress and less bugs in the future.
+
+===XFCE===
+GlobalMenu is now compatible with XFCE!
+
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/xfce.jpeg">
 
 ===Scrolling.===
 
@@ -64,11 +74,13 @@ If a menu is too long, Global Menu now detects it, and provides handy buttons to
 ===Window Actions.===
 For extra goodness, we’ve built in window actions so that you can get full control on you windows right from the menus, thus reducing visual and usability clutter.  
 
-<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Icon-no-label.png">  
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/ActionsWindows.png">
 
 ===Standard naming=== 
 
 Now, the label in GlobalMenu is consistant with your main menu for extra simplicity!
+
+<img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/ConsistantNaming.png">
 
 ===Dans toutes les langues!===
 
