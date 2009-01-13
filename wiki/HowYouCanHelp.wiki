@@ -17,15 +17,6 @@ Note that unlike GHOP, the only prize you'll get is a special mention and the gr
 
 = Ideas =
 
-  * Task title: Translate GnomeMenu into your language
-  * Benefits:
-  * Requirements:
-  * Task description:
-  * Extra:
-  * Primary contact:
-  * Links:
-  * Estimated time: 
-
 ---- 
   * Task title: Packaging for your favorite distribution
   * Benefits:
