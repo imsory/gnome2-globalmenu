@@ -9,9 +9,9 @@
    * [Translation Translating] it into your language;
    * Taking relevant tips and info from the [http://ubuntuforums.org/showthread.php?t=241868 UbuntuForums.org thread] and summering it;
    * You name it/ any other idea you might propose us.
- # Is it possible for global menu to support Firefox and Openoffice?
+ # Is it possible for global menu to support Firefox and OpenOffice.org?
    * *YES*, in theory it is possible to patch any application to make them global menu aware; 
-   * And *NO*, Firefox and OpenOffice come with XUL and DSO (repectively) which are huge monsters to work with, therefore in practice it is impossible to implement such a plugin on a patch without any expertise in these monsters. If you find a clean solution we'll be all very happy to merge it in the project though;
+   * And *NO*, Firefox and OpenOffice come with XUL and DSO (respectively) which are huge monsters to work with, therefore in practice it is impossible to implement such a plugin on a patch without any expertise in these monsters. If you find a clean solution we'll be all very happy to merge it in the project though;
    * For the moment we don't plan to reinclude the hacks that allowed OpenOffice and some others programs to be natively compatible.
  # Why is the latest version missing functionalities ?
    * We are not software experts (yet);
@@ -20,8 +20,8 @@
  # I would like the Global Menu to have feature X, Y and Z. What can I do to tell the developers ?
    * You can look in *Issues* to see if the feature you want has been already asked for. If so, just star it (and comment it only if you need to);
    * Otherwise, just report it in *Issues* in a clear and professional way.
- # How can I get the latest version for my distro ?
- # How can I get the more feature-full version for my distro ?
+ # How can I get the latest version for my distribution ?
+ # How can I get the more feature-full version for my distribution ?
    * [Installation Read the installation guide]
  # 64 bits support anyone ?
    * The latest revs seems to be compatible. See http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149
