@@ -9,10 +9,10 @@
    * [Translation Translating] it into your language;
    * Taking relevant tips and info from the [http://ubuntuforums.org/showthread.php?t=241868 UbuntuForums.org thread] and summering it;
    * You name it/ any other idea you might propose us.
- # Is it possible for global menu to support Firefox and OpenOffice.org!?
+ # Is it possible for global menu to support Firefox and !OpenOffice.org?
    * *YES*, in theory it is possible to patch any application to make them global menu aware; 
-   * And *NO*, Firefox and OpenOffice! come with XUL and DSO (respectively) which are huge monsters to work with, therefore in practice it is impossible to implement such a plugin on a patch without any expertise in these monsters. If you find a clean solution we'll be all very happy to merge it in the project though;
-   * For the moment we don't plan to reinclude the hacks that allowed OpenOffice! and some others programs to be natively compatible.
+   * And *NO*, Firefox and !OpenOffice come with XUL and DSO (respectively) which are huge monsters to work with, therefore in practice it is impossible to implement such a plugin on a patch without any expertise in these monsters. If you find a clean solution we'll be all very happy to merge it in the project though;
+   * For the moment we don't plan to reinclude the hacks that allowed !OpenOffice and some others programs to be natively compatible.
  # Why is the latest version missing functionalities ?
    * We are not software experts (yet);
    * In order to get accepted in GNOME and for long term stability, we've decided to rewrite Global Menu in Vala. Starting from scratch allowed us to have an overall better design, and for the code to be more simple for new developers;
