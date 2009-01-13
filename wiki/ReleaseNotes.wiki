@@ -14,6 +14,7 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.2
  * Code refactoring, improved speed.
  * More organized switcher menu.
  * es_ES translation
+ * ru_RU translation
 
 -------------------------------
 gnome-globalmenu 0.7.1
