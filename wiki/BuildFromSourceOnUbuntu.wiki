@@ -14,7 +14,7 @@ Get Vala
 
 {{{
 cd ~/
-wget -c http://download.gnome.org/sources/vala/0.5/vala-0.5.1.tar.bz2
+wget -c http://download.gnome.org/sources/vala/0.5/vala-0.5.3.tar.bz2
 tar xjvf vala-0.5.1.tar.bz2
 cd vala-0.5.1/
 }}}
