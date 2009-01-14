@@ -1,16 +1,15 @@
 = Introduction =
 Based on a [http://ayozone.org/2009/01/08/install-gnome-globalmenu-07-series/ guide by Ayoli]
 
-
-1. Get the required packages to build vala and gnome-globalmenu :
+= Step 0: Prerequisites =
+Get the required packages to build vala and gnome-globalmenu :
 
 {{{
 sudo apt-get install build-essential flex bison gnome-common libglib2.0-dev gtk-doc-tools autoconf2.13 automake1.9 libgtk2.0-dev libdbus-glib-1-dev libwnck-dev libpanel-applet2-dev libgnome-menu-dev
 }}}
 
-2. Get, compile and install vala 0.5.3 :
 
-Get Vala
+= Step 1: Obtain the Source for Vala 0.5.3 =
 
 {{{
 cd ~/
@@ -19,14 +18,14 @@ tar xjvf vala-0.5.3.tar.bz2
 cd vala-0.5.3/
 }}}
 
-Make sure that no older version of vala is installed 
+= Step 2: Make sure that no older version of vala is installed = 
 
 {{{
 sudo make uninstall
 sudo apt-get remove vala
 }}}
 
-Configure and Compile Vala
+= Step 3: Configure and Compile Vala =
 
 {{{
 ./configure
@@ -35,7 +34,7 @@ sudo make install
 sudo ldconfig
 }}}
 
-3. Grab the latest revision of GlobalMenu, compile and install it :
+= Step 4: Obtain the Source for GlobalMenu =
 
 Download GlobalMenu
 
@@ -45,7 +44,7 @@ svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/ gnome-globalmenu
 cd gnome-globalmenu-0.7
 }}}
 
-Configure and Compile GlobalMenu
+= Step 5: Configure and Compile GlobalMenu =
 
 {{{
 ./autogen.sh
@@ -54,11 +53,12 @@ make
 sudo make install
 }}}
 
-4. If you had globalmenu before and have this line in your ~/.gnomerc or ~/.profile : remove it
+= Step 6: Remove an obsolete line if you used GlobalMenu before = 
+If you had globalmenu before and have this line in your ~/.gnomerc or ~/.profile : remove it
 
 export GTK_MODULES=globalmenu-gnome
 
-5. Add the GlobalMenu to your panel and enable it
+= Step 7: Add the GlobalMenu to your panel and enable it =
 
     * Right click on an empty part of your panel
     * choose “Add to panel” from the popup menu
@@ -68,6 +68,9 @@ export GTK_MODULES=globalmenu-gnome
     * Right Click on the applet
     * Choose preferences
     * Check the first option : “Enable Global Menu For GTK Applications”.
+
+= Step 8: Enjoy =
+And report any bug or features you'd want to see in Issues.
 
 
 And voilà ! :) 
