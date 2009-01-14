@@ -8,7 +8,8 @@
 Gloobus has a working version with non standard libs, but the new version hasn't reimplemented it yet with standard libs
 
 - Sidebar should categorize items displayed with headings http://bugzilla.gnome.org/show_bug.cgi?id=508404
-A mockup has been created and Discussion is on going
+
+A patch has been created and discussion is ongoing
 
 -Thumbnails and GNOME: http://bugzilla.gnome.org/show_bug.cgi?id=347694 Needs love.
 
