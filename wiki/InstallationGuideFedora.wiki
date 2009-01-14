@@ -1,9 +1,8 @@
-#summary How to install Global Menu on Fedora ?
+﻿#summary How to install Global Menu on Fedora ?
 #labels Phase-Deploy,Deprecated
 
 = Installation Guide =
 
  # 
-
-
-Alternatively you can [BuildFromScratch build from latest source]
+Seperated Installation Guide for Fedora is deprecated.
+Refer to [Installation].

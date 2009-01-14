@@ -1,4 +1,4 @@
-#summary Ubuntu Gusty/Hardy/Intrepid的安装指南
+﻿#summary Ubuntu Gusty/Hardy/Intrepid的安装指南
 #labels installation
 这只是一份草案文档，它可能会导致一些计算机故障。
 = 引言 =
@@ -101,6 +101,6 @@ sudo apt-get install libgtk2.0-0=2.12.9-3ubuntu3 gtk2-engines-pixbuf=2.12.9-3ubu
 
 
 === 64位系统 ===
-目前暂时没有64位系统的deb包，有人向我们反映64位系统下存在编译错误。我们没有64位的系统去研究错误的具体原因。这里有一个源码[http://code.google.com/p/gnome2-globalmenu/wiki/BuildFromScratch 编译指南]，如果你在64位系统上成功编译了，请在[http://code.google.com/p/gnome2-globalmenu/issues/list Issue]里面和我们联系。
-
+目前暂时没有64位系统的deb包，有人向我们反映64位系统下存在编译错误。我们没有64位的系统去研究错误的具体原因。这里有一个源码[http://code.google.com/p/gnome2-globalmenu/wiki/BuildFromSource
+编译指南]。
  
