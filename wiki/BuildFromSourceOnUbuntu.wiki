@@ -20,10 +20,25 @@ cd vala-0.5.5/
 }}}
 
 = Step 2: Make sure that no older version of vala is installed = 
+Make sure that no prior version is installed as a deb by typing 
+{{{
+sudo dpkg-query --list |grep vala
+}}}
+
+If that is the case then type: 
 
 {{{
-sudo make uninstall
 sudo apt-get remove vala
+}}}
+
+Make sure that no source install older than 0.5.5 is on your system. As you're in the Vala directory you've just downloaded, just type:
+{{{
+sudo make uninstall
+}}}
+
+You can check which version of Vala is installed by typing: 
+{{{
+valac --version
 }}}
 
 = Step 3: Configure and Compile Vala =
@@ -35,7 +50,7 @@ sudo make install
 sudo ldconfig
 }}}
 
-Note: you can check that Vala 0.5.5 is installed and that you ready to go on by typing: 
+You can check that Vala 0.5.5 is installed and that you ready to go on by typing: 
 {{{
 valac --version
 }}}
