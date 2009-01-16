@@ -10,13 +10,13 @@ sudo apt-get install build-essential flex bison gnome-common libglib2.0-dev gtk-
 }}}
 
 
-= Step 1: Obtain the Source for Vala 0.5.3 =
+= Step 1: Obtain the Source for Vala 0.5.5 =
 
 {{{
 cd ~/
-wget -c http://download.gnome.org/sources/vala/0.5/vala-0.5.3.tar.bz2
-tar xjvf vala-0.5.3.tar.bz2
-cd vala-0.5.3/
+wget -c http://download.gnome.org/sources/vala/0.5/vala-0.5.5.tar.bz2
+tar xjvf vala-0.5.5.tar.bz2
+cd vala-0.5.5/
 }}}
 
 = Step 2: Make sure that no older version of vala is installed = 
