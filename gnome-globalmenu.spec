@@ -1,7 +1,7 @@
 %define 	base_version 	0.7.2
-%define 	svn_version 	svn2097
+#%define 	svn_version 	svn2097
 Name:		gnome-globalmenu
-Version:	%{base_version}.%{svn_version}
+Version:	%{base_version}
 Release:	1%{?dist}
 Summary:	Global Menu for GNOME
 
@@ -108,6 +108,8 @@ gconftool-2 --makefile-uninstall-rule \
 %{_libdir}/gtk-2.0/modules/libglobalmenu-gnome-%{base_version}.so
 
 %changelog
+* Fri Jan 16 2009 Feng Yu <rainwoodman@gmail.com>
+- 0.7.2 release
 * Thu Jan 8 2009 Feng Yu <rainwoodman@gmail.com>
 - Add XFCE4 plugin
 * Thu Jan 8 2009 Feng Yu <rainwoodman@gmail.com>
