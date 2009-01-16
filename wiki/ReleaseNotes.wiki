@@ -15,7 +15,7 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.2
 export GTK_MODULES=globalmenu-gnome
 . /etc/xdg/xfce4/xinitrc
 }}}
-
+ * Removed explicit GIO dependency; the gtk plugin module compiles and works with GTK 2.10.
  * Updated to vala 0.5.5; pre-0.5.5 vala no longer compiles the svn source;
  * Improved documentation
  * Code refactoring, improved speed, bigger memory foot print (6-8 MiB RSS)
