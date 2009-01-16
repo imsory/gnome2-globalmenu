@@ -35,7 +35,7 @@ sudo make install
 sudo ldconfig
 }}}
 
-Note: you can check that Vala 5.5 is installed and that you ready to go on by typing: 
+Note: you can check that Vala 0.5.5 is installed and that you ready to go on by typing: 
 {{{
 valac --version
 }}}
