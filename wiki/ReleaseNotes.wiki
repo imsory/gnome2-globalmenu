@@ -2,19 +2,27 @@
 #labels Featured
 
 -------------------------------
-gnome-globalmenu 0.7.2 (draft)
+gnome-globalmenu 0.7.2 
 
-{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk}}}
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.2}}}
 Downloads:
 
 http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.2
+ 
+ * Experimental XFCE Plugin; edit `~/.config/xfce4/xinitrc`(and chmod +x) to enable the GTK Plugin
+{{{
+#!/bin/sh
+export GTK_MODULES=globalmenu-gnome
+. /etc/xdg/xfce4/xinitrc
+}}}
 
- * Bug fixes
- * Added XFCE Plugin
- * Code refactoring, improved speed.
- * More organized switcher menu.
+ * Updated to vala 0.5.5; pre-0.5.5 vala no longer compiles the svn source;
+ * Improved documentation
+ * Code refactoring, improved speed, bigger memory foot print (6-8 MiB RSS)
  * es_ES translation
  * ru_RU translation
+ * Fixed issues when AWN is the active window
+ * Fixed Several leaks in the GTK plugin module
 
 -------------------------------
 gnome-globalmenu 0.7.1
