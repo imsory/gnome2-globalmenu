@@ -23,6 +23,7 @@ export GTK_MODULES=globalmenu-gnome
  * ru_RU translation
  * Fixed issues when AWN is the active window
  * Fixed Several leaks in the GTK plugin module
+ * Fixed the wrong size allocation of icon in menu items.
 
 -------------------------------
 gnome-globalmenu 0.7.1
