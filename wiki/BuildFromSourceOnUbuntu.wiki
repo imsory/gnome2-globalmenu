@@ -9,8 +9,15 @@ Open a Terminal (Applications >> Accessories >> Terminal)
 sudo apt-get install build-essential flex bison gnome-common libglib2.0-dev gtk-doc-tools autoconf2.13 automake1.9 libgtk2.0-dev libdbus-glib-1-dev libwnck-dev libpanel-applet2-dev libgnome-menu-dev
 }}}
 
+You have two methods to get vala. *Either* 1a or 1b.
+If you've installed Vala before by compiling it, make sure to do 1a and 1b before going to Step 2 (to be able to remove all traces of a previous manual Vala install)
 
-= Step 1: Obtain the Source for Vala 0.5.5 =
+= Step 1-a: Install Vala from the PPA Repository =
+
+You should add the Repository and update (or install Vala)
+https://edge.launchpad.net/~bruce89/+archive/ppa
+
+= Step 1-b: Obtain the Source for Vala 0.5.5 =
 
 {{{
 cd ~/
@@ -20,7 +27,8 @@ cd vala-0.5.5/
 }}}
 
 = Step 2: Make sure that no older version of vala is installed = 
-Make sure that no prior version is installed as a deb by typing 
+
+If you're using the source version, make sure that no prior version is installed as a deb by typing 
 {{{
 sudo dpkg-query --list |grep vala
 }}}
