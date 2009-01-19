@@ -17,6 +17,16 @@ If you don't have time to help, you can also...
 <p align="center">[http://brainstorm.ubuntu.com/idea/111/ http://brainstorm.ubuntu.com/idea/111/image/1/?filetype=.png]
  * test Gloobus and [https://bugs.edge.launchpad.net/gloobus report any bug] you may find. 
 
+Gloobus is a preview software that lets you view files so quickly witouth having to open them in their normal software. It's based on apple's "quicklook" and it has 2 main options. The coverflow effect for a folder and the preview window for the files.
+
+[http://gloobus.wordpress.com/ Blog]
+[http://ubuntuforums.org/showthread.php?t=828774 Ubuntuforums Thread]
+[http://sourceforge.net/projects/gloobus Screenshots]
+[http://www.youtube.com/profile_videos?user=badchoice Screencasts]
+[https://edge.launchpad.net/gloobus/+download Downloads]
+[http://www.getdeb.net/app/Gloobus Deb Package for Ubuntu]
+[https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=guitarboy000%40gmail%2ecom&item_name=Gloobus%2c%20A%20Quicklook%20for%20linux&no_shipping=0&no_note=1&tax=0&currency_code=EUR&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8 Donate]
+
 = Step 1: Get the Gloobus Code =
 In a terminal, to install Bazaar, type:
 {{{
