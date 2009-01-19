@@ -1,4 +1,20 @@
 #summary A quick install Guide for Gloobus
+
+Gloobus is an extension of Gnome designed to enable a full screen preview of any kind of file.
+
+Ever been annoyed by those tiny miniatures of your files that are helpless. Outraged by the fact that there's no miniature for half of the file formats you're using. Excruciated by the painful loading time to see if you're dealing with the right file?
+
+Hail to Gloobus, for tis' is the Holy Grail of preview!
+Designed as an extendable, standards-compliant previewer , so that it plays nice with Gnome and can be easily extended to support any kind of file, Gloobus enables instant previewing of your files, without even having to open them. Hit space, and BANG, here's the content of your file, displayed as it would if it was opened.
+
+Currently, Gloobus supports MP3, TXT , PDF, JPG, PNG.
+It has a sleek black interface which will put your files in focus
+
+Please spread the word. We need documentation writers, translators, programmers, hackers, evangelists.
+If you don't have time to help, you can also show your support by donating a couple of €/£/$/whatever to the developpers.
+You can vote for us on Ubuntu Brainstorm.
+You can test Gloobus and report any bug you may find. 
+
 = Step 1: Get the Gloobus Code =
 In a terminal, to install Bazaar, type:
 {{{
