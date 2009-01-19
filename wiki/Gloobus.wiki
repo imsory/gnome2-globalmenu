@@ -10,13 +10,12 @@ Designed as an extendable, standards-compliant previewer , so that it plays nice
 Currently, Gloobus supports MP3, TXT , PDF, JPG, PNG.
 It has a sleek black interface which will put your files in focus
 
-Please spread the word. We need documentation writers, translators, programmers, hackers, evangelists.
-If you don't have time to help, you can also show your support by donating a couple of €/£/$/whatever to the developpers.
-You can vote for us on Ubuntu Brainstorm.
-<a href="http://brainstorm.ubuntu.com/idea/111/">
-<img src="http://brainstorm.ubuntu.com/idea/111/image/1/">
-</a>
-You can test Gloobus and report any bug you may find. 
+Please spread the word on forums, on planets, on your blog. We need documentation writers, translators, programmers, hackers, evangelists.
+If you don't have time to help, you can also...
+ * show your support by donating a couple of €/£/$/whatever to the developpers.
+ * vote for us on Ubuntu Brainstorm.
+<p align="center">[http://brainstorm.ubuntu.com/idea/111/ http://brainstorm.ubuntu.com/idea/111/image/1/?filetype=.png]
+ * test Gloobus and [https://bugs.edge.launchpad.net/gloobus report any bug] you may find. 
 
 = Step 1: Get the Gloobus Code =
 In a terminal, to install Bazaar, type:
