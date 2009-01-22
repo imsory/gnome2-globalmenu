@@ -1,4 +1,5 @@
 #summary Français ? English ? Espanol ? 中文 ? Русский ? Links to help in your language are provided here.
+#labels Phase-Support
 
 
 Français: http://forum.ubuntu-fr.org/viewtopic.php?id=151539
@@ -9,6 +10,6 @@ Italiano: http://forum.ubuntu-it.org/index.php/topic,189135.0.html
 
 Espanol:
 
-中文:
+中文: http://forum.ubuntu.org.cn/viewtopic.php?f=33&t=108167&start=90
 
 Русский:
