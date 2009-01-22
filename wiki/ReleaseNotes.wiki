@@ -5,6 +5,7 @@
 gnome-globalmenu 0.7.3 (Draft, don't follow the links)
 
 {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.3}}}
+
 Downloads:
 
 http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.3
@@ -26,6 +27,7 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.3
 gnome-globalmenu 0.7.2 
 
 {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.2}}}
+
 Downloads:
 
 http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.2
@@ -50,6 +52,7 @@ export GTK_MODULES=globalmenu-gnome
 gnome-globalmenu 0.7.1
 
 {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.1}}}
+
 Downloads:
 
 http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.1
