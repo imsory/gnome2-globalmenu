@@ -1,4 +1,5 @@
 #summary The page users will see when clicking on the Help button
+#labels Phase-Support
 
 = Introduction =
 
@@ -7,4 +8,4 @@ Welcome to Global Menu's webpage. Than you for downloading and testing this alph
  * If you would like to suggest a feature or an improvement, head to FeatureRequest
  * If you would like to help, see the [FAQ FAQ]
  * If you're asking yourself a question about Global Menu, head to the [FAQ FAQ]
- * If you...
+ * To get connected with other users in your local language, please visit [LocalSupport Local User Groups]
