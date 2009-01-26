@@ -4,8 +4,6 @@
 
 Gloobus is an extension of Gnome designed to enable a full screen preview of any kind of file.
 
-<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/7Ixs9baVy_o&hl=fr&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/7Ixs9baVy_o&hl=fr&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
-
 Ever been annoyed by those tiny miniatures of your files that are helpless. Outraged by the fact that there's no miniature for half of the file formats you're using. Excruciated by the painful loading time to see if you're dealing with the right file?
 
 Hail to Gloobus, for tis' is the Holy Grail of preview!
