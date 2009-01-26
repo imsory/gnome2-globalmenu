@@ -1,13 +1,17 @@
 #summary A quick install Guide for Gloobus
 
+
+
 Gloobus is an extension of Gnome designed to enable a full screen preview of any kind of file.
+
+<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/7Ixs9baVy_o&hl=fr&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/7Ixs9baVy_o&hl=fr&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
 
 Ever been annoyed by those tiny miniatures of your files that are helpless. Outraged by the fact that there's no miniature for half of the file formats you're using. Excruciated by the painful loading time to see if you're dealing with the right file?
 
 Hail to Gloobus, for tis' is the Holy Grail of preview!
 Designed as an extendable, standards-compliant previewer , so that it plays nice with Gnome and can be easily extended to support any kind of file, Gloobus enables instant previewing of your files, without even having to open them. Hit space, and BANG, here's the content of your file, displayed as it would if it was opened.
 
-Currently, Gloobus supports MP3, TXT , PDF, JPG, PNG.
+Currently, Gloobus supports MP3, TXT , PDF, JPG, PNG, TTF
 It has a sleek black interface which will put your files in focus
 
 Please spread the word on forums, on planets, on your blog. We need documentation writers, translators, programmers, hackers, evangelists.
@@ -30,34 +34,3 @@ Gloobus is a preview software that lets you view files so quickly witouth having
 [https://edge.launchpad.net/gloobus/+download Downloads]
 
 [http://www.getdeb.net/app/Gloobus Deb Package for Ubuntu]
-
-
-
-= Step 1: Get the Gloobus Code =
-In a terminal, to install Bazaar, type:
-{{{
-sudo apt-get install bzr
-}}}
-
-Then, to get the code, type
-{{{
-bzr branch lp:~guitarboy000/gloobus/Gloobus-Preview
-}}}
-
-Type 
-{{{ 
-cd Gloobus-Preview
-ls
-sudo ./install.sh
-}}}
-
-Make sure you have the package nautilus-actions, use either Synaptic or Terminal to install 
-{{{
-sudo apt-get install nautilus-actions
-}}}
-
-Nautilus Actions is located in System > Preferences. With Nautilus-actions create two scripts. One will be used to coverflow, and one to preview.  You will need to fill in the sections Name, Path, and Parameter in each.
-	Name        Path     					 Parameter	
-	
-	coverflow  gloobus    					 %d/
-	preview    /usr/share/gloobus/preview                    %d/%f
