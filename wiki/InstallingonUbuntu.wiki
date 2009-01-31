@@ -6,6 +6,25 @@ THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 A step-by-step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
 <wiki:toc max_depth="5" />
 
+==Installing from bmhm's PPA ==
+# Add the apt sources.list entries.
+
+{{{
+deb http://ppa.launchpad.net/vala-team/ppa/ubuntu intrepid main
+
+deb-src http://ppa.launchpad.net/vala-team/ppa/ubuntu intrepid main
+
+deb http://ppa.launchpad.net/bmhm/ppa/ubuntu intrepid main
+
+deb-src http://ppa.launchpad.net/bmhm/ppa/ubuntu intrepid main
+
+}}}
+
+
+Beta: try clicking this link to add the repository and install gnome2-globalmenu at the same time.
+
+apt://ppa.launchpad.net/bmhm/ppa/ubuntu?package=gnome-globalmenu?dist=intrepid?section=main
+
 
 ==Installing from the GNOME Global Menu PPA (Intrepid) ==
 
