@@ -21,6 +21,7 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.3
   * Added a svn version in applet's about dialog(only if built from svn)
   * Smarter applet: if the gtk module is not loaded, send a desktop notify to guide the user. NEW BUILDING DEPENDENCY: libnotify-dev/libnotify-devel.
   * Place icons correctly in a vertical panel
+  * Added many translations
 
 
 -------------------------------
