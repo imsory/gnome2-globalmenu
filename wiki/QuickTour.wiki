@@ -84,7 +84,7 @@ Now, the label in GlobalMenu is consistant with your main menu for extra simplic
 
 ===Dans toutes les langues!===
 
-GlobalMenu is now available in French, Chinese, English, Italian for your convenience. If your language is not there yet, just step in and take 20 minutes to make sure the next version of GlobalMenu features your translation work!
+GlobalMenu is now available in French, Chinese, English, Italian, Spanish, Hungarian, Russian for your convenience. If your language is not there yet, just step in and take 20 minutes to make sure the next version of GlobalMenu features your translation work!
 
 ===About Us===
 
