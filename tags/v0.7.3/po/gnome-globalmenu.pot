@@ -1,0 +1,210 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-01-29 14:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../libgnomenu/menuitem.c:1305
+msgid "Indicator Size"
+msgstr ""
+
+#: ../libgnomenu/menuitem.c:1305
+msgid "Size of check or radio indicator"
+msgstr ""
+
+#: ../gtk-modules/globalmenu/module-main.c:29 ../applet/main.c:23
+msgid "Be verbose"
+msgstr ""
+
+#: ../gtk-modules/globalmenu/module-main.c:29
+msgid "disable serializing pixbuf"
+msgstr ""
+
+#: ../gtk-modules/globalmenu/module-main.c:29
+msgid "Disable the Plugin"
+msgstr ""
+
+#: ../gtk-modules/globalmenu/module-main.c:29
+msgid "File to save the log, default to ~/.gnomenu.log"
+msgstr ""
+
+#: ../gtk-modules/globalmenu/module-main.c:157
+msgid "- Global Menu plugin Module for GTK"
+msgstr ""
+
+#: ../gtk-modules/globalmenu/module-main.c:158
+msgid ""
+"These parameters should be supplied in environment GLOBALMENU_GNOME_ARGS "
+"instead of the command line.\n"
+"\t\tNOTE: Environment GTK_MENUBAR_NO_MAC contains the applications to be "
+"ignored by the plugin.\n"
+"\t\t"
+msgstr ""
+
+#: ../applet/applet.c:38
+msgid "globalmenu-panel-applet"
+msgstr ""
+
+#: ../applet/applet.c:312
+msgid ""
+"\n"
+"<popup name=\"button3\">\n"
+"\t<menuitem name=\"Preferences\" \n"
+"\t\tverb=\"Preferences\" \n"
+"\t\t_label=\"_Preferences\" \n"
+"\t\tpixtype=\"stock\" \n"
+"\t\tpixname=\"gtk-preferences\"/>\n"
+"\t<menuitem name=\"Help\" \n"
+"\t\tverb=\"Help\" \n"
+"\t\t_label=\"_Help\" \n"
+"\t\tpixtype=\"stock\" \n"
+"\t\tpixname=\"gtk-help\"/>\n"
+"\t<menuitem name=\"About\" \n"
+"\t\tverb=\"About\" _label=\"_About...\" \n"
+"\t\tpixtype=\"stock\" \n"
+"\t\tpixname=\"gtk-about\"/>\n"
+"</popup>\n"
+"\t\t"
+msgstr ""
+
+#: ../applet/applet.c:446
+msgid "Project Home"
+msgstr ""
+
+#: ../applet/applet.c:469
+msgid "On-line help"
+msgstr ""
+
+#: ../applet/switcher.c:469 ../applet/switcher.c:1271
+msgid "no windows"
+msgstr ""
+
+#: ../applet/switcher.c:497
+msgid "Show _Desktop"
+msgstr ""
+
+#: ../applet/switcher.c:526
+msgid "Mi_nimize"
+msgstr ""
+
+#: ../applet/switcher.c:538
+msgid "Ma_ximize"
+msgstr ""
+
+#: ../applet/switcher.c:548
+msgid "Unma_ximize"
+msgstr ""
+
+#: ../applet/switcher.c:560
+msgid "_Move"
+msgstr ""
+
+#: ../applet/switcher.c:571
+msgid "_Resize"
+msgstr ""
+
+#: ../applet/switcher.c:586 ../applet/switcher.c:596
+msgid "Always on _Top"
+msgstr ""
+
+#: ../applet/switcher.c:608 ../applet/switcher.c:618
+msgid "_Always on visible Workspace"
+msgstr ""
+
+#: ../applet/switcher.c:632
+msgid "_Close"
+msgstr ""
+
+#: ../applet/switcher.c:767
+msgid "Desktop"
+msgstr ""
+
+#: ../applet/switcher.c:1268
+msgid "File Manager"
+msgstr ""
+
+#: ../applet/switcher.c:1273
+msgid "no actions"
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:1
+msgid "Add window action menu entries to active application name menu"
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:2
+msgid "Enable Global Menu For GTK applications"
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:3
+msgid "Icon"
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:4
+msgid ""
+"If this key is true, libglobalmenu-gnome, the GTK plugin for Global Menu is "
+"loaded."
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:5
+msgid "Label"
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:6
+msgid "Max title length"
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:7
+msgid "Show/Hide the icon of the active window"
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:8
+msgid "Show/Hide the name of the active application"
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:9
+msgid "The Maximum length of name of the active application"
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:10
+msgid "Uses active application lablel as application switcher"
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:11
+msgid "Window Actions"
+msgstr ""
+
+#: ../gnome-globalmenu.schemas.in.h:12
+msgid "Window List"
+msgstr ""
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:1
+msgid "Global Menu Panel Applet"
+msgstr ""
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:2
+msgid "GlobalMenu.PanelApplet Factory"
+msgstr ""
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:3
+msgid "The factory to build GlobalMenu.PanelApplet objects"
+msgstr ""
+
+#: ../xfce/GlobalMenu_XFCEPlugin.desktop.in.in.h:1
+msgid "Global Menu Plugin for XFCE Panel"
+msgstr ""
+
+#: ../xfce/GlobalMenu_XFCEPlugin.desktop.in.in.h:2
+msgid "The Global Menu Plugin for XFCE Panel"
+msgstr ""
