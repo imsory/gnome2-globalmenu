@@ -2,7 +2,7 @@
 #labels Featured
 
 ------------------------------
-gnome-globalmenu 0.7.3 (Draft, don't follow the links)
+gnome-globalmenu 0.7.3
 
 {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.3}}}
 
@@ -13,15 +13,19 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.3
   * Improved XFCE Plugin
     * (1) dependency to gmenu removed.
     * (2) border (1 pixel at topmost) (need to be verified)
-  * Improved Swicher on 
+  * Improved Switcher on 
     * (1) application name detection
-    * (2) menu layout (not yet finished)
+    * (2) menu layout
+    * (3) Rebased the switcher with libgnomenu
+  * libgnomenu.so seperately installed
+  * libgnomenu is gir ready under namespace Gnomenu, configure with --enable-gir. 
   * Gracefully loading and unloading the gtk module
-  * Avoid the bazzar 'Global Menu Bar' label at startup.
+  * Avoid the bazzar 'Global Menu Bar' label at startup ASAP
   * Added a svn version in applet's about dialog(only if built from svn)
   * Smarter applet: if the gtk module is not loaded, send a desktop notify to guide the user. NEW BUILDING DEPENDENCY: libnotify-dev/libnotify-devel.
   * Place icons correctly in a vertical panel
   * Added many translations
+  * Fixed several memory issues (core dump at about/pref dialog)
 
 
 -------------------------------
