@@ -4,7 +4,7 @@
 
 DESCRIPTION="Global menubar applet for Gnome2."
 HOMEPAGE="http://code.google.com/p/gnome2-globalmenu/"
-SRC_URI="http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.7.1.tar.gz"
+SRC_URI="http://gnome2-globalmenu.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
