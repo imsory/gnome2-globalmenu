@@ -1,5 +1,5 @@
 #summary A step by step guide for Gutsy/Hardy/Intrepid
-#labels ubuntu,Phase-Deploy,installation
+#labels ubuntu,Phase-Deploy,installation,Deprecated
 
 THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
