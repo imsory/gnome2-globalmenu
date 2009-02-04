@@ -1,43 +1,5 @@
 #summary A list of compatible applications
 
-= Introduction =
-
-The way we deal with compatibility issues is via quirks. Quirks are located at two position:
-  * /etc/libgnomenu.conf (depends on how you invoke `autogen.sh` or `configure`)
-  * ~/.libgnomenu.conf
-
-Quirks tells `libgnomenu` and `gtk-aqd` to deal with applications that (1) can't seamlessly transport to Global Menu; (2) can transport to Global Menu but need special care. 
-
-For (1) some menu in the application shall not be a Global Menu at all. For (2) wxMaxima is an example; its menu bar can not switch between global and local on the fly. 
-
-== Quirk File Format ==
-
-{{{
-line ::= comment | quirk_entry
-comment ::= '#' any_other_words
-quirk_entry ::= default_quirk_entry | detail_quirk_entry
-default_quirk_entry ::= app_name_reg_exp ':' quirks
-detail_quirk_entry ::= app_name_reg_exp '/' detail_reg_exp ':' quirks
-quirks :: = quirk [ ',' quirks ]
-quirk ::= 'force-show-all' | 'hide-on-quit' | 'ignore' | 'roaming'
-}}}
-
-Example:
-{{{
-# appname(regular exp)      :       quirk(ignore, class)
-gnome-panel         :   ignore
-fast-user-switch-applet     :   ignore
-nautilus/Desktop    :   force-show-all, hide-on-quit
-wx*                 :   roaming
-#f-spot             :   roaming
-*terminal           : ignore
-#pidgin             : ignore
-}}}
-
-== How does Quirks work ==
- * when `libgnomenu` is loaded as a gtk module, it tries to match a default quirk for current application. If `ignore` quirk is NOT found, it will set a exported boolean variable(`gnomenu_compatible`) to TRUE, which is then used by `gtk2-aqd` to determine whether or not use Global Menu for menu bars.
- * `GnomenuMenuBar` has a property `quirk`. When the menu bar is attached to a toplevel window, it register property notifies on the toplevels `role` and `title` property. When those property are changed, it matches `role`( or `title` if `role` is NULL) against detail quirks for this application. If matched, `quirk` will be set as the detail quirk. Then every component in `GnomenuMenuBar` with take special cares to the application according to the quirk.
-
 = Compatibility List =
 Here is a list of applications' compatibility with gnome-globalmenu. These applications works with `libgnomenu` via gtk-aqd patch.
 
