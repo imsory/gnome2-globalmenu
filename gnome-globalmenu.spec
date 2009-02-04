@@ -1,7 +1,7 @@
 %define 	base_version 	0.7.3
 %define 	svn_version 	svn2220
 Name:		gnome-globalmenu
-Version:	%{base_version}.%{svn_version}
+Version:	%{base_version}
 Release:	1%{?dist}
 Summary:	Global Menu for GNOME
 
