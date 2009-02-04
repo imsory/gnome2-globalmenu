@@ -13,7 +13,7 @@ IUSE=""
 
 DEPEND="x11-libs/gtk+
 	>=x11-libs/libwnck-2.24.1
-	=dev-lang/vala-0.5.1
+	>=dev-lang/vala-0.5.5
 	>=gnome-base/gnome-panel-2.24.1
 	>=gnome-base/gnome-menus-2.24.1"
 
