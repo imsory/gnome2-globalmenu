@@ -1,3 +1,4 @@
+#labels Deprecated
 = Uninstall instructions =
 OUTDATED: DO NOT USE OR MODIFY FOR THE MOMENT
 <wiki:toc max_depth="5" />
