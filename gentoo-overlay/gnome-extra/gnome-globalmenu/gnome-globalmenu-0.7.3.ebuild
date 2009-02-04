@@ -8,7 +8,7 @@ SRC_URI="http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.7.1.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-amd64 -x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="x11-libs/gtk+
