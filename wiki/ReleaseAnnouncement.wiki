@@ -1,0 +1,28 @@
+#summary Release Announcement.
+
+= Introduction =
+
+The GlobalMenu Development and Release Team proudly presents GlobalMenu X.XX.X - "The XXXX release"
+GlobalMenu is a global menu for Gnome and XFCE. It is designed to let the user focus on its work by putting the menus outside the work window, and displaying only the active application menus.
+This version is a bugfix release/a major release/an API breaking release. It especially provides xxx, xx and xxxx and focuses on xxx.
+
+Chan 
+one sentece to say we are pleased.
+- a link to downloading
+
+- changes since last version
+
+- introduction to the project + link to the home page.
+
+- the person/team who made the release.
+
+It has to be pure text because it goes into maillists.
+
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
