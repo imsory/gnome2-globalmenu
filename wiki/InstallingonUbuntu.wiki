@@ -8,7 +8,7 @@ A step-by-step guide which assumes that you've never compiled anything on your s
 
 
 ==Installing from the GNOME Global Menu PPA (Intrepid) ==
-
+This is the best way to get the latest version of the GlobalMenu.
  # Add the apt sources.list entries.
 
 {{{
@@ -17,208 +17,18 @@ deb http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
 deb-src http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
 }}}
 
+ # Install the GlobalMenu package.
 
-==Installing with debs==
-===on a 32 bit system===
-====older version of the Global Menu====
+==Installing with debs on a 32 or 64 bit system==
+You can download the deb directly from the PPA page and install it manually.
 
-=====0.4=====
-  * Open a terminal
-  * Create a folder
-    {{{ mkdir global-menu-install}}} 
-  * Go to this folder
-    {{{ cd global-menu-install}}}
-  * Get the patched gtk debs and panel applet with the following instruction
-    * For Gusty:
-    {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4.2_ubuntu-gusty-svn679.tar.gz}}}
-    {{{ wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4_ubuntu-gusty-svn679.tar.gz}}}
-    * For Hardy:
-    {{{wget http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-0.4-svn964.tar.gz}}}
-   
-    
-  * Unarchive them
-    * For Gusty:
-    {{{tar zxvf gnome-globalmenu-0.4.2_ubuntu-gusty-svn679.tar.gz }}}
-    * For Hardy:
-    {{{tar zxvf gnome-globalmenu-0.4-svn964.tar.gz}}}
-  
-  * Install them
-    * For Gusty:
-     # {{{cd gnome-globalmenu }}}
-     # {{{sudo dpkg -i *.deb}}}
-    * For Hardy:
-     # {{{cd globalmenu}}}
-     # {{{sudo dpkg -i *.deb}}}
-
-  * *NOTE* if you have installed previous version of gnome-globalmenu and meet a dependency error of {{{libgtk-directfb-2.0-0 libgtk-directfb-2.0-dev libgtk2.0-0-dbg libgtk2.0-dev}}}, you can just remove them, since they are not installed by default.
-   {{{sudo dpkg -r libgtk-directfb-2.0-0 libgtk-directfb-2.0-dev libgtk2.0-0-dbg libgtk2.0-dev}}}
-    
-    if you still meet some errors here, try
-{{{
-    sudo dpkg -i --force-overwrite *.deb 
-}}}
-
-   * Edit ~/.gnomerc (Gusty Only)
-     * You won't need this step for Hardy
-     # add a line to it
-     {{{export GTK_MODULES=libgnomenu }}}
-
-  * Restart your computer and right-click on the panel and click add to the panel. Look for Global Menubar. Add it. And voila. It should work.
-
-====newer version of the Global Menu====
-
-===on a 64 bit system===
-====older version of the Global Menu====
-For Ubuntu Hardy, 8.04, compiled from svn 899
-
-http://www.mediafire.com/?n4sz14fiwcj
-
-kudos goes to ferdil
-
-====newer version of the Global Menu====
-
-There are no 64-bit Ubuntu packages yet. You can build from source by yourself.The latest revs seems to be compatible. For more information, see [http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149 Issue 149]
+There are now 64-bit Ubuntu packages in the PPA. Please test them and report any bug you may find (after checking for duplicates). For more information, see [http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149 Issue 149]
 
 ==Installing from source==
-===older version of the Global Menu===
-
-====MacMenu 0.1 ====
-
-Install this before
-
-{{{
-sudo apt-get install build-essential libwnck-dev libpanelappletmm-2.6-dev
-}}}
-
-Then unpack the applet source and go in its folder
-
-{{{
-tar -xvzf macmenu-applet-0.1.tar.gz
-cd macmenu-applet-0.1/
-}}}
-Then compile and install
-
-{{{
-make
-sudo make install
-}}}
-
-NOTE: Be Patient, this compiles from source, which will take considerably longer than installing from the Binary Package (Binary ~1 Minute | Source ~30 Minutes)
-
+===older versions of the Global Menu===
 ====very old adq's original code====
 If you really want the very old adq's original code you can check it out from:
 http://gnome2-globalmenu.googlecode.com/svn/tags/0.1_11/
-=====using autotools=====
-
-We're first going to install the MacMenu applet:
-
- * Download this file (note: you must be a member of ubuntuforums.org to be able to download it)
-{{{
-http://ubuntuforums.org/attachment.php?attachmentid=47781&d=1193338299
-}}}
-
- * Open a terminal, go to the directory where you've downloaded the file using cd and execute the following command lines.
-
-{{{
-tar jxvf gnome-macmenu-applet-1.0.11.tar.bz2
-
-cd gnome-macmenu-applet-1.0.11
-
-sudo cp gnome-macmenu-applet /usr/lib/gnome-applets/
-
-sudo cp GNOME_MacMenuApplet.server /usr/lib/bonobo/servers/
-}}}
-
-
-We're now gonna patch gtk+ with a gtk+ patch
-
--But we need dependencies installed first. I don't know what is needed exactly, here is the list of dev packages I have:
-
-{{{
-autotools-dev comerr-dev dpkg-dev libart-2.0-dev libatk1.0-dev libaudiofile-dev libavahi-client-dev libavahi-common-dev libavahi-glib-dev libbonobo2-dev libbonoboui2-dev libc6-dev libcairo-directfb2-dev libcairo2-dev libcupsys2-dev libdbus-1-dev libdirectfb-dev libesd0-dev libexpat1-dev libfontconfig1-dev libfreetype6-dev libgail-dev libgconf2-dev libgcrypt11-dev libgdk-pixbuf-dev libglade2-dev libglib1.2-dev libglib2.0-dev libgnome-keyring-dev libgnome2-dev libgnomecanvas2-dev libgnomeui-dev libgnomevfs2-dev libgnutls-dev libgpg-error-dev libgtk1.2-dev libgtk2.0-dev libhal-dev libhal-storage-dev libice-dev libidl-dev libjpeg62-dev libkrb5-dev liblzo2-dev libopencdk8-dev liborbit2-dev libpanel-applet2-dev libpango1.0-dev libpng12-dev libpopt-dev libselinux1-dev libsepol1-dev libsm-dev libstartup-notification0-dev libstdc++6-4.1-dev libsysfs-dev libtasn1-3-dev libtiff4-dev libusplash-dev libwnck-dev libx11-dev libxau-dev libxcomposite-dev libxcursor-dev libxdamage-dev libxdmcp-dev libxext-dev libxfixes-dev libxft-dev libxi-dev libxinerama-dev libxkbfile-dev libxml2-dev libxrandr-dev libxrender-dev libxres-dev libxt-dev linux-libc-dev x11proto-composite-dev x11proto-core-dev x11proto-damage-dev x11proto-fixes-dev x11proto-input-dev x11proto-kb-dev x11proto-randr-dev x11proto-render-dev x11proto-resource-dev x11proto-xext-dev x11proto-xinerama-dev xtrans-dev xutils-dev zlib1g-dev
-}}}
-
-you can install them before patching gtk+ by typing
-{{{
-sudo apt-get install ...packages from the list above...
-}}}
-
-Then we're starting the patching itself.
-
--Download this file (note: you must be a member of ubuntuforums.org to be able to download it)
-http://ubuntuforums.org/attachment.php?attachmentid=47782&d=1193338357 
-
--Open a terminal, go to the directory where you've downloaded the file using cd and execute the following command lines.
-
-{{{
-gzip -d gtk+-2.12.0-r2-gtkmenubar.diff.gz
-
-sudo apt-get install build-essential
-
-apt-get source gtk+2.0
-
-tar zxvf gtk+2.0_2.12.0.orig.tar.gz
-
-cd gtk+2.0-2.12.0
-
-patch -p0 < ../gtk+-2.12.0-r2-gtkmenubar.diff
-
-./configure --prefix=/usr
-
-make
-
-sudo make install
-}}}
-
-'''NOTE''' Be Patient, this compiles from source, which will take considerably longer than installing from the Binary Package (Binary ~1 Minute | Source ~30 Minutes)
-
-====using apt-build====
-
-Install the mac menu applet deb package (note: you must be a member of ubuntuforums.org to be able to download it: http://ubuntuforums.org/attachment.php?attachmentid=47899&d=1193414016) , then in a terminal, type in this to install apt-build
-
-{{{
-sudo apt-get install apt-build
-}}}
-Choose to add apt-build repository to your sources.list when asked.
-
-After, I told apt-build to get libgtk2.0-0 source package (apt-build takes care of the build deps for you, ie: -dev packages)
-You need to have the Ubuntu sources repositories enabled (menu System > Administration > Software sources, then pick Ubuntu software tab and check Source Code box).
-
-{{{
-sudo apt-build source libgtk2.0-0
-}}}
-Next step was to copy the downloaded patch (http://ubuntuforums.org/attachment.php?attachmentid=48015&d=1193500579) from where is was (on the desktop in _this_ case, replace "~/Desktop/" with the path where you downloaded the gzipped patch) to the libgtk2.0-0 source package directory
-If you also want to remove the underlines use the patch 098_no_label_underline.patch (http://ayozone.org/wp-content/uploads/2007/11/098_no_label_underline.patch)
-
-First, uncompress 099_mac_menubar.patch.gz :
-
-{{{
-gzip -d ~/Desktop/099_mac_menubar.patch.gz
-}}}
-then copy the patches to the patches directory (assuming they are on your Desktop, if it's not the case replace ~/Desktop/ with the path were the patches are located)
-
-{{{
-sudo cp ~/Desktop/099_mac_menubar.patch /var/cache/apt-build/build/gtk+2.0-2.12.0/debian/patches/
-sudo cp ~/Desktop/098_no_label_underline.patch /var/cache/apt-build/build/gtk+2.0-2.12.0/debian/patches/
-}}}
-And, add the name of the patches you have added (i.e."099_mac_menubar.patch", "098_no_label_underline.patch")to the debian/patches/series list
-
-{{{
-sudo gedit /var/cache/apt-build/build/gtk+2.0-2.12.0/debian/patches/series
-}}}
-
-
-Now we use use apt-build to build the packages
-
-{{{
-sudo apt-build install libgtk2.0-0
-}}}
-
-NOTE: Be Patient, this compiles from source, which will take considerably longer than installing from the Binary Package (Binary ~1 Minute | Source ~30 Minutes)
-
-
-After that you'll have an update for libgtk in your update manager (it won't install automatically because local apt-build repository isn't signed), let update manager install them and finally, add the applet to the top panel.
-Now you need to log out/in gnome to see the changes.
 
 ====Ayoli's guide====
 
