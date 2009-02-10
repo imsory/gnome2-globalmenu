@@ -9,13 +9,17 @@ A step-by-step guide which assumes that you've never compiled anything on your s
 
 ==Installing from the GNOME Global Menu PPA (Intrepid) ==
 This is the best way to get the latest version of the GlobalMenu.
- # Add the apt sources.list entries.
+For detailed explanations on how to install software from a PPA, please consult [https://help.launchpad.net/Packaging/PPA#Installing%20software%20from%20a%20PPA this page]
+
+ # Add those lines as software sources.
 
 {{{
 deb http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
 
 deb-src http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
 }}}
+
+ # Add our GPG key.
 
  # Install the GlobalMenu package.
 
