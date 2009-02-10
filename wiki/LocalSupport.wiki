@@ -6,6 +6,9 @@ Français: http://forum.ubuntu-fr.org/viewtopic.php?id=151539
 
 English: http://ubuntuforums.org/showthread.php?t=241868
 
+Deutsch: http://wiki.ubuntuusers.de/Baustelle/Gnome_Globalmenu?highlight=baustell
+%20globalmenu
+
 Italiano: http://forum.ubuntu-it.org/index.php/topic,189135.0.html
 
 Espanol:
