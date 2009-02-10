@@ -19,6 +19,16 @@ deb-src http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
 
  # Install the GlobalMenu package.
 
+{{{
+sudo apt-get remove gnome2-globalmenu
+}}}
+
+and then execute:
+
+{{{
+sudo apt-get install gnome-globalmenu 
+}}}
+
 ==Installing with debs on a 32 or 64 bit system==
 You can download the deb directly from the PPA page and install it manually.
 
