@@ -1,4 +1,4 @@
-#summary A step by step guide for Gutsy/Hardy/Intrepid
+#summary A step by step guide for Hardy/Intrepid/Jaunty
 #labels ubuntu,Phase-Deploy,installation,Deprecated
 
 THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
@@ -7,7 +7,7 @@ A step-by-step guide which assumes that you've never compiled anything on your s
 <wiki:toc max_depth="5" />
 
 ==Installing from the GNOME Global Menu PPA ==
-This is the best way to get the latest version of the GlobalMenu.
+This is the best way to get the latest version of the !GlobalMenu.
 PPAs work like normal Ubuntu archives. You can install software in the usual way -- for example, through apt-get or synaptic -- and whenever there's an update Ubuntu will prompt you to install it.
 
 ===Adding the PPA to your Ubuntu repositories===
@@ -37,20 +37,18 @@ deb-src http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu hardy main
 
   # Press Add Source and then click Close to save your changes.
   # You will be notified that the information about available software is out-of-date. Press Reload.
-  # You now need to import and accept our GPG key with which we digitally sign the files we provide, which makes it easy to check that the files have not been tampered with since their creation. In order for apt to be able to check this, you need the public key that corresponds to the signatures. 
-
-[http://gnome2-globalmenu.googlecode.com/files/GlobalMenuKey.gpg http://gnome2-globalmenu.googlecode.com/files/GlobalMenuKey.gpg]
+  # You now need to import and accept our GPG key with which we digitally sign the files we provide, which makes it easy to check that the files have not been tampered with since their creation. In order for apt to be able to check this, you need the public key that corresponds to the signatures. [http://gnome2-globalmenu.googlecode.com/files/GlobalMenuKey.gpg http://gnome2-globalmenu.googlecode.com/files/GlobalMenuKey.gpg]
 
   # Once you have downloaded the GPG key, import the key by selecting the Authentication tab, clicking on Import Key File, and then selecting the GPG key to be imported.
 
 
-===Remove older versions of GlobalMenu (if necessary)===
+===Remove older versions of !GlobalMenu (if necessary)===
 
 {{{
 sudo apt-get remove gnome2-globalmenu
 }}}
 
-===Install the GlobalMenu package===
+===Install the !GlobalMenu package===
 
 {{{
 sudo apt-get install gnome-globalmenu 
