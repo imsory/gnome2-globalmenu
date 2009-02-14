@@ -3,13 +3,80 @@
 
 THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
-A step-by-step guide which assumes that you've never compiled anything on your system, and that this system is Gutsy Gibbon.
+A step-by-step guide which assumes that you've never compiled anything on your system.
 <wiki:toc max_depth="5" />
 
-
-==Installing from the GNOME Global Menu PPA (Intrepid) ==
+==Installing from the GNOME Global Menu PPA ==
 This is the best way to get the latest version of the GlobalMenu.
-For detailed explanations on how to install software from a PPA, please consult [https://help.launchpad.net/Packaging/PPA#Installing%20software%20from%20a%20PPA this page]
+PPAs work like normal Ubuntu archives. You can install software in the usual way -- for example, through apt-get or synaptic -- and whenever there's an update Ubuntu will prompt you to install it.
+
+Adding the PPA to your Ubuntu repositories
+
+To install packages from our PPA, you need to tell Ubuntu where to find it. You do this by giving Ubuntu the PPA's URL, which you can find on the PPA's overview page.
+
+   1. Open System → Administration → Software Sources and press Third Party Software.
+   2. Press Add to add a new repository.
+   3. Enter the APT line for the extra repository.
+
+If you're using Jaunty Jackalope:
+deb http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu jaunty main
+deb-src http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu jaunty main
+
+If you're usng Intrepid Ibex:
+deb http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu intrepid main
+deb-src http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu intrepid main
+
+If you're usng Hardy Heron:
+deb http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu hardy main
+deb-src http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu hardy main
+
+
+   4. Press Add Source and then click Close to save your changes.
+   5. You will be notified that the information about available software is out-of-date. Press Reload.
+   6. You now need to import and accept our GPG key with which we digitally sign the files we provide, which makes it easy to check that the files have not been tampered with since their creation. In order for apt to be able to check this, you need the public key that corresponds to the signatures. 
+
+The key should be available for download on the repository's website.
+   7. Once you have downloaded the GPG key, import the key by selecting the Authentication tab, clicking on Import Key File, and then selecting the GPG key to be imported.
+
+
+Adding a PPA's keys to your system
+
+Each PPA has its own unique key that is used to sign the packages in that archive. This lets you know that:
+
+    * the packages you're downloading haven't been altered since Launchpad built them
+    * you are downloading from the PPA you wanted. 
+
+Important: You download and install PPA packages at your own risk. Ubuntu, Launchpad and Canonical do not endorse these packages. You must be certain that you trust the PPA owner before you install their software.
+
+Until you add the PPA's key to your own system, you'll see warnings that you're downloading from an untrusted source. If you trust the PPA owner, add the PPA's key to your system.
+
+Tip: for a general introduction to GPG keys and signing, see Ubuntu's GPG help page.
+
+Adding the keys using Gnome
+
+The easiest way to add a PPA's key to your system is to follow our screen cast: Ogg Theora version, YouTube version.
+
+Here's what the screencast tells you:
+
+Download our key following this link
+
+Step 6: Open System->Administration->Software Sources and click the Authentication tab.
+
+Step 7: Click Import Key File, select the key you saved earlier and you're done!
+
+Adding the keys in the terminal
+
+If you're used to adding keys to your personal keyring, you'll still want to read this section as we're going to add the PPA's key to apt's keyring.
+
+First up, visit the PPA's overview page. Let's go back to the AWN Testing team's PPA that we were looking at earlier.
+
+Here you can see the fingerprint of the PPA's key. It'll look something like this: B0BE17C2A0C914F086B7B8327D2C7A23BF810CD5. Copy it and then open a terminal.
+
+To add the AWN key, you'd enter this:
+
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B0BE17C2A0C914F086B7B8327D2C7A23BF810CD5
+
+Replace B0BE17C2A0C914F086B7B8327D2C7A23BF810CD5 with the fingerprint of the PPA key you're dealing with.For detailed explanations on how to install software from a PPA, please consult [https://help.launchpad.net/Packaging/PPA#Installing%20software%20from%20a%20PPA this page]
 
  # Add those lines as software sources.
 
