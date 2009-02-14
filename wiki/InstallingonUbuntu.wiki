@@ -1,12 +1,10 @@
 #summary A step by step guide for Hardy/Intrepid/Jaunty
 #labels ubuntu,Phase-Deploy,installation
 
-THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
+<wiki:toc max_depth="5" />
 = Introduction =
 A step-by-step guide which assumes that you've never compiled anything on your system.
-<wiki:toc max_depth="5" />
-
-==Installing from the GNOME Global Menu PPA ==
+=Installing from the GNOME Global Menu PPA =
 This is the best way to get the latest version of the !GlobalMenu. PPAs work like normal Ubuntu archives. You can install software in the usual way (for example, through apt-get or synaptic) and whenever there's an update Ubuntu will prompt you to install it.
 
 ===Adding the PPA to your Ubuntu repositories===
@@ -49,23 +47,14 @@ sudo apt-get install gnome-globalmenu
 }}}
 
 
-
-
-
-
-
-
-
-
-
-==Installing with DEBs on a 32 or 64 bit system==
+=Installing with DEBs on a 32 or 64 bit system=
 You can download the deb directly from the PPA page and install it manually. Note that using this method, you won't get automatic updates!
 
 [https://edge.launchpad.net/~globalmenu-team/+archive/ppa https://edge.launchpad.net/~globalmenu-team/+archive/ppa]
 
 There are now 64-bit Ubuntu packages in the PPA. Please test them and report any bug you may find (after checking for duplicates). For more information, see [http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149 Issue 149]
 
-==Installing from source==
+=Installing from source=
 ===latest version of the Global Menu===
 Please refer to the [BuildFromSource] page.
 ===older versions of the Global Menu===
