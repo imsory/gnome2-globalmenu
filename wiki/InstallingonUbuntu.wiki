@@ -1,5 +1,5 @@
 #summary A step by step guide for Hardy/Intrepid/Jaunty
-#labels ubuntu,Phase-Deploy,installation,Deprecated
+#labels ubuntu,Phase-Deploy,installation
 
 THIS IS A DRAFT. DO NOT USE. IT KILLS KITTENS AND COMPUTERS TOO
 = Introduction =
