@@ -10,94 +10,47 @@ A step-by-step guide which assumes that you've never compiled anything on your s
 This is the best way to get the latest version of the GlobalMenu.
 PPAs work like normal Ubuntu archives. You can install software in the usual way -- for example, through apt-get or synaptic -- and whenever there's an update Ubuntu will prompt you to install it.
 
-Adding the PPA to your Ubuntu repositories
+===Adding the PPA to your Ubuntu repositories===
 
 To install packages from our PPA, you need to tell Ubuntu where to find it. You do this by giving Ubuntu the PPA's URL, which you can find on the PPA's overview page.
+  # Open *System* → *Administration* → *Software Sources* and press Third Party Software.
+  # Press Add to add a new repository.
+  # Enter the APT line for the extra repository.
 
-   1. Open System → Administration → Software Sources and press Third Party Software.
-   2. Press Add to add a new repository.
-   3. Enter the APT line for the extra repository.
-
-If you're using Jaunty Jackalope:
+     * If you're using Jaunty Jackalope:
+{{{
 deb http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu jaunty main
 deb-src http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu jaunty main
+}}}
 
-If you're usng Intrepid Ibex:
+     * If you're usng Intrepid Ibex:
+{{{
 deb http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu intrepid main
 deb-src http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu intrepid main
+}}}
 
-If you're usng Hardy Heron:
+     * If you're usng Hardy Heron:
+{{{
 deb http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu hardy main
 deb-src http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu hardy main
-
-
-   4. Press Add Source and then click Close to save your changes.
-   5. You will be notified that the information about available software is out-of-date. Press Reload.
-   6. You now need to import and accept our GPG key with which we digitally sign the files we provide, which makes it easy to check that the files have not been tampered with since their creation. In order for apt to be able to check this, you need the public key that corresponds to the signatures. 
-
-The key should be available for download on the repository's website.
-   7. Once you have downloaded the GPG key, import the key by selecting the Authentication tab, clicking on Import Key File, and then selecting the GPG key to be imported.
-
-
-Adding a PPA's keys to your system
-
-Each PPA has its own unique key that is used to sign the packages in that archive. This lets you know that:
-
-    * the packages you're downloading haven't been altered since Launchpad built them
-    * you are downloading from the PPA you wanted. 
-
-Important: You download and install PPA packages at your own risk. Ubuntu, Launchpad and Canonical do not endorse these packages. You must be certain that you trust the PPA owner before you install their software.
-
-Until you add the PPA's key to your own system, you'll see warnings that you're downloading from an untrusted source. If you trust the PPA owner, add the PPA's key to your system.
-
-Tip: for a general introduction to GPG keys and signing, see Ubuntu's GPG help page.
-
-Adding the keys using Gnome
-
-The easiest way to add a PPA's key to your system is to follow our screen cast: Ogg Theora version, YouTube version.
-
-Here's what the screencast tells you:
-
-Download our key following this link
-
-Step 6: Open System->Administration->Software Sources and click the Authentication tab.
-
-Step 7: Click Import Key File, select the key you saved earlier and you're done!
-
-Adding the keys in the terminal
-
-If you're used to adding keys to your personal keyring, you'll still want to read this section as we're going to add the PPA's key to apt's keyring.
-
-First up, visit the PPA's overview page. Let's go back to the AWN Testing team's PPA that we were looking at earlier.
-
-Here you can see the fingerprint of the PPA's key. It'll look something like this: B0BE17C2A0C914F086B7B8327D2C7A23BF810CD5. Copy it and then open a terminal.
-
-To add the AWN key, you'd enter this:
-
-sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B0BE17C2A0C914F086B7B8327D2C7A23BF810CD5
-
-Replace B0BE17C2A0C914F086B7B8327D2C7A23BF810CD5 with the fingerprint of the PPA key you're dealing with.For detailed explanations on how to install software from a PPA, please consult [https://help.launchpad.net/Packaging/PPA#Installing%20software%20from%20a%20PPA this page]
-
- # Add those lines as software sources.
-
-{{{
-deb http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
-
-deb-src http://ppa.launchpad.net/gnome2-globalmenu/ubuntu intrepid main
 }}}
 
- # Add our GPG key.
+  # Press Add Source and then click Close to save your changes.
+  # You will be notified that the information about available software is out-of-date. Press Reload.
+  # You now need to import and accept our GPG key with which we digitally sign the files we provide, which makes it easy to check that the files have not been tampered with since their creation. In order for apt to be able to check this, you need the public key that corresponds to the signatures. 
 
-{{{
-gpg --no-default-keyring --keyring /tmp/awn.keyring --keyserver keyserver.ubuntu.com --recv   E97F4DB8F1F0EC20FF792CA37889D725DA6DEEAA && gpg --no-default-keyring --keyring /tmp/awn.keyring --export --armor  E97F4DB8F1F0EC20FF792CA37889D725DA6DEEAA | sudo apt-key add - && rm /tmp/awn.keyring 
-}}}
- # Install the GlobalMenu package.
+[http://gnome2-globalmenu.googlecode.com/files/GlobalMenuKey.gpg http://gnome2-globalmenu.googlecode.com/files/GlobalMenuKey.gpg]
+
+  # Once you have downloaded the GPG key, import the key by selecting the Authentication tab, clicking on Import Key File, and then selecting the GPG key to be imported.
+
+
+===Remove older versions of GlobalMenu (if necessary)===
 
 {{{
 sudo apt-get remove gnome2-globalmenu
 }}}
 
-and then execute:
+===Install the GlobalMenu package===
 
 {{{
 sudo apt-get install gnome-globalmenu 
@@ -114,20 +67,6 @@ There are now 64-bit Ubuntu packages in the PPA. Please test them and report any
 If you really want the very old adq's original code you can check it out from:
 http://gnome2-globalmenu.googlecode.com/svn/tags/0.1_11/
 
-====Ayoli's guide====
+====Ayoli's guide for the 0.7 version====
 
 Refer to the [http://ayozone.org/2009/01/08/install-gnome-globalmenu-07-series/  guide] written by Ayoli.
-
-====Official Guides====
-=====in English=====
-[BuildSourceOnUbuntu guide in English]
-
-=====in Chinese=====
-[BuildSourceOnUbuntuInChinese guide in Chinese]
-
-===newer version of the Global Menu===
-Refer to the Building from Source on Ubuntu page
-
-
-====in English====
-[NewBuildFromSourceOnUbuntu guide in English]
