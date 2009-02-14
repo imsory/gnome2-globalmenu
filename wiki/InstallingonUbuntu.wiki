@@ -15,29 +15,24 @@ To install packages from our PPA, you need to tell Ubuntu where to find it. You 
   # Open *System* → *Administration* → *Software Sources* and press Third Party Software.
   # Press Add to add a new repository.
   # Enter the APT line for the extra repository.
-
-    If you're using Jaunty Jackalope:
+   * If you're using Jaunty Jackalope:
        {{{
         deb http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu jaunty main
         deb-src http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu jaunty main
        }}}
-
-    If you're usng Intrepid Ibex:
+   * If you're usng Intrepid Ibex:
        {{{
         deb http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu intrepid main
         deb-src http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu intrepid main
        }}}
-
-    If you're usng Hardy Heron:
+   * If you're usng Hardy Heron:
        {{{
         deb http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu hardy main
         deb-src http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu hardy main
        }}}
-
   # Press Add Source and then click Close to save your changes.
   # You will be notified that the information about available software is out-of-date. Press Reload.
   # You now need to import and accept our GPG key with which we digitally sign the files  we provide, which makes it easy to check that the files have not been tampered with since their creation. In order for apt to be able to check this, you need the public key that corresponds to the signatures. [http://gnome2-globalmenu.googlecode.com/files/GlobalMenuKey.gpg http://gnome2-globalmenu.googlecode.com/files/GlobalMenuKey.gpg]
-
   # Once you have downloaded the GPG key, import the key by selecting the Authentication tab, clicking on Import Key File, and then selecting the GPG key to be imported.
 
 
