@@ -2,8 +2,6 @@
 #labels ubuntu,Phase-Deploy,installation
 
 <wiki:toc max_depth="5" />
-= Introduction =
-A step-by-step guide which assumes that you've never compiled anything on your system.
 =Installing from the GNOME Global Menu PPA =
 This is the best way to get the latest version of the !GlobalMenu. PPAs work like normal Ubuntu archives. You can install software in the usual way (for example, through apt-get or synaptic) and whenever there's an update Ubuntu will prompt you to install it.
 
