@@ -48,6 +48,16 @@ sudo apt-get remove gnome2-globalmenu
 sudo apt-get install gnome-globalmenu 
 }}}
 
+
+
+
+
+
+
+
+
+
+
 ==Installing with debs on a 32 or 64 bit system==
 You can download the deb directly from the PPA page and install it manually.
 
