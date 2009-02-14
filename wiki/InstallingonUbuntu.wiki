@@ -1,6 +1,6 @@
 #summary A step by step guide for Hardy/Intrepid/Jaunty
 #labels ubuntu,Phase-Deploy,installation
-
+*Table Of Contents*
 <wiki:toc max_depth="2" />
 =Installing from the GNOME Global Menu PPA =
 This is the best way to get the latest version of the !GlobalMenu. PPAs work like normal Ubuntu archives. You can install software in the usual way (for example, through apt-get or synaptic) and whenever there's an update Ubuntu will prompt you to install it.
