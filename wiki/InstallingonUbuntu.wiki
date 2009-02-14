@@ -58,12 +58,16 @@ sudo apt-get install gnome-globalmenu
 
 
 
-==Installing with debs on a 32 or 64 bit system==
-You can download the deb directly from the PPA page and install it manually.
+==Installing with DEBs on a 32 or 64 bit system==
+You can download the deb directly from the PPA page and install it manually. Note that using this method, you won't get automatic updates!
+
+[https://edge.launchpad.net/~globalmenu-team/+archive/ppa https://edge.launchpad.net/~globalmenu-team/+archive/ppa]
 
 There are now 64-bit Ubuntu packages in the PPA. Please test them and report any bug you may find (after checking for duplicates). For more information, see [http://code.google.com/p/gnome2-globalmenu/issues/detail?id=149 Issue 149]
 
 ==Installing from source==
+===latest version of the Global Menu===
+Please refer to the [BuildFromSource] page.
 ===older versions of the Global Menu===
 ====very old adq's original code====
 If you really want the very old adq's original code you can check it out from:
