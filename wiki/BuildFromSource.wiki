@@ -27,15 +27,15 @@ svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/ gnome-globalmenu
 == configure ==
 {{{
 cd gnome-globalmenu
-./autogen.sh --prefix=/usr
+./autogen.sh --prefix=/usr --sysconfdir=/etc
 make
 }}}
 
-For most linux flavors I know, `--prefix=/usr` is more preferable than `--prefix=/usr/local`.
-Other things you can change are (useful for packagers)
+For most linux flavors I know, `--prefix=/usr` is more preferable than `--prefix=/usr/local`. The `sysconfdir` parameter is to make `gconf` happy.
+Other things you may want to change are (useful for packagers)
 {{{
 --disable-tests # disable building the tests (they take some time)
---disable-schemas-install # disable installing the gconf schemas
+--disable-schemas-install # disable installing the gconf schemas. DON'T use this unless you know what you are doing
 }}}
 == components ==
 
