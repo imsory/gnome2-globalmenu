@@ -2,6 +2,34 @@
 #labels Featured
 
 ------------------------------
+gnome-globalmenu 0.7.4 (draft)
+
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.5}}}
+
+Downloads:
+
+http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.4
+
+  * update to vala 0.5.6 (issue 317)
+  * backported to RHEL5 (glib 2.12 + gtk 2.10 + libwnck 2.16)
+  * many efforts on packaging
+
+  * workspace chooser (issue 311 in progress)
+  * Switch to max label width (pixel) rather than max label length (chars) (issue 312 in progess)
+  * Online help goes to HelpCentral wiki page (issue 290)
+  * if the schema for the gconf key is not found, show some thing instead of giving an empty preference dialog (issue 332)
+  * Improve the race with docks (Issue 316)
+  * install the xfce plugin to correct location on xfce 4.6. (issue 304)
+
+  * refactor libgnomenu, introducing Gnomenu.Shell and Gnomenu.Item interfaces 
+  * rewrite Gnomenu.Parser to remove the dependency on g_markup_parse_context_push and _pop.
+  * new approach for globally grabbing F10 (issue 298), compatible with gnome-shell
+  * monitoring _NET_GLOBAL_MENU_XXX properties (issue 306), compatible with gnome-shell.
+  * aware of 'gtk-icon-size' (issue 320)
+  * Fixed crashing on OSX theme. (issue 314)
+
+
+------------------------------
 gnome-globalmenu 0.7.3
 
 {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.3}}}
