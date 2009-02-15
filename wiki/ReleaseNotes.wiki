@@ -4,7 +4,7 @@
 ------------------------------
 gnome-globalmenu 0.7.4 (draft)
 
-{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.5}}}
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.4}}}
 
 Downloads:
 
