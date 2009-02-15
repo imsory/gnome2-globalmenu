@@ -134,7 +134,7 @@ Because some of the c source code is built from vala code, prepend a `make` befo
 = Step 5: Remove =
 
 {{{
-make uninstall
+su -c 'make uninstall'
 }}}
 
 = Troubleshooting =
