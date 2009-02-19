@@ -28,7 +28,7 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.4
   * aware of 'gtk-icon-size' (issue 320)
   * Fixed crashing on OSX theme. (issue 314)
   
-  * skip menubars in GtkNotebook, workaround Monodevelop and gnome-appearence-properties. (issue 350, issue 346)
+  * skip menubars in GtkNotebook, workaround Monodevelop and gnome-appearence-properties. (issue 350, issue 341)
 
 
 
