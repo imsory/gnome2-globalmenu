@@ -22,3 +22,5 @@ Rainwoodman (...@....com) is willing to mentor this project.
 -KDE port of GlobalMenu
 
 -True default desktop menu
+
+-Windows port of GlobalMenu
