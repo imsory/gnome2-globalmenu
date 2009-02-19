@@ -15,7 +15,7 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.4
   * many efforts on packaging
 
   * workspace chooser (issue 311 in progress)
-  * Switch to max label width (pixel) rather than max label length (chars) (issue 312 in progess)
+  * Switch to max label width (pixel) rather than max label length (chars) (issue 312)
   * Online help goes to HelpCentral wiki page (issue 290)
   * if the schema for the gconf key is not found, show some thing instead of giving an empty preference dialog (issue 332)
   * Improve the race with docks (Issue 316)
@@ -27,6 +27,9 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.4
   * monitoring _NET_GLOBAL_MENU_XXX properties (issue 306), compatible with gnome-shell.
   * aware of 'gtk-icon-size' (issue 320)
   * Fixed crashing on OSX theme. (issue 314)
+  
+  * skip menubars in GtkNotebook, workaround Monodevelop and gnome-appearence-properties. (issue 350, issue 346)
+
 
 
 ------------------------------
