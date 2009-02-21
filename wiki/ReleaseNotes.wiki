@@ -138,7 +138,16 @@ gnome-globalmenu 0.6 (current development version)
   * +aware of transient_for windows.
  * svn1401 
   * +major theming issues are solved.
+ * svn900+
+  * NOTE: When you switch to svn 900+, the line GTK_MODULE=libgnomenu should be removed.
 
+ * Wednesday, Oct 29 2008, the GTK module is renamed to libglobalmenu-gnome.so and installed to `$libdir/gtk-2.0/modules`. `GTK_MODULE=globlamenu-gnome` is sufficient to load the module.
+
+ * Friday, Oct 10 2008, the DBus branch is merged into trunk. GTK_MODULE=libgnomenugtk is back.
+
+ * Thursday, Oct 09 2008, the project turns to DBus for IPC backend. in branches/0.6-devel
+
+ * Monday, Aug 08 2008, A series of new modification is pushed to trunk and it becomes completely broken(for everyday users) before new development is done.
 ------------------------------
 
 gnome-globalmenu 0.5 
@@ -152,6 +161,8 @@ gnome-globalmenu 0.4
  * svn790 (Friday, March 14th 2008)
   * +Treatment of overflowed menu items.
   * +Customize title font.
+
+ * Sunday, March 09 2008, GNOME Global Menu 0.4 shall be considered as available(via svn or packages) for daily use. ReleaseNotes.
 
  * svn570 (Friday, February 29th 2008)
   * Some one write something here.
