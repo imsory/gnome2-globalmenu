@@ -1,28 +1,28 @@
 #summary Release Announcement.
 
+The team proudly presents Global Menu {{{VERSION}}} to the public.
+
+The source code has been frozen at:
+
+svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v{{{VERSION}}}
+
+Downloads:
+
+Source: http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q={{{VERSION}}}
+
+Ubuntu: !!!PPA???
+
+Fedora: http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q={{{VERSION}}}
+
 = Introduction =
 
-The GlobalMenu Development and Release Team proudly presents GlobalMenu X.XX.X - "The XXXX release"
-GlobalMenu is a global menu for Gnome and XFCE. It is designed to let the user focus on its work by putting the menus outside the work window, and displaying only the active application menus.
-This version is a bugfix release/a major release/an API breaking release. It especially provides xxx, xx and xxxx and focuses on xxx.
+GlobalMenu is a global menu for Gnome and XFCE. It eases the user to focus on her work by removing the menus from inside the work window. Only the active application menus are presented to the user at any given time.
 
-Chan 
-one sentece to say we are pleased.
-- a link to downloading
+This version is a ( bugfix release | a major release | an API breaking release). It especially provides xxx, xx and xxxx and focuses on xxx.
 
-- changes since last version
+= Change Log =
 
-- introduction to the project + link to the home page.
-
-- the person/team who made the release.
-
-It has to be pure text because it goes into maillists.
-
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Issue ###: summary
+Issue ###: summary
+Issue ###: summary
+Issue ###: summary
