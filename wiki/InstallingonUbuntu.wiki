@@ -1,5 +1,5 @@
 #summary A step by step guide for Hardy/Intrepid/Jaunty
-#labels ubuntu,Phase-Deploy,installation
+#labels ubuntu,Phase-Deploy,installation,Featured
 *Table Of Contents*
 <wiki:toc max_depth="2" />
 =Installing from the GNOME Global Menu PPA =
