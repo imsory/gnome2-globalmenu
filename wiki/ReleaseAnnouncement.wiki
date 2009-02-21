@@ -22,7 +22,7 @@ This version is a ( bugfix release | a major release | an API breaking release).
 
 = Change Log =
 
-Issue ###: summary
-Issue ###: summary
-Issue ###: summary
-Issue ###: summary
+  * Issue ###: summary
+  * Issue ###: summary
+  * Issue ###: summary
+  * Issue ###: summary
