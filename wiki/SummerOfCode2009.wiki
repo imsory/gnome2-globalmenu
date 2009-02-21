@@ -1,7 +1,7 @@
 #summary Page about the summer of Code 2009 with modalities, ideas..
 = Introduction =
 
-Add your content here.
+Google is sponsoring students to work during this summer on open source projects.
 
 = Mentors =
 
