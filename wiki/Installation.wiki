@@ -6,7 +6,7 @@
 Global Menu works out of box.
 
   # Install a pre-built binary package
-    * Ubuntu: `deb http://ppa.launchpad.net/globalmenu-team/ubuntu intrepid main`
+    * Ubuntu: Install from our [InstallationonUbuntu PPA repository]
     * Fedora: [http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=rpm&colspec=Filename+Summary+Uploaded+Size+DownloadCount Download the latest RPM]
     * Not lucky? You can always [BuildFromSource make install]
   # Add `Global Menu Panel Applet` (or an equivalent name in you language) to the top panel
