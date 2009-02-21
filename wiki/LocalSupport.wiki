@@ -1,4 +1,4 @@
-#summary Français ? English ? Espanol ? 中文 ? Русский ? Links to help in your language are provided here.
+#summary Français ? English ? Español ? 中文 ? Русский ? Links to help in your language are provided here.
 #labels Phase-Support
 
 
