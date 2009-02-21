@@ -14,13 +14,13 @@ Ubuntu: !!!PPA???
 
 Fedora: http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q={{{VERSION}}}
 
-= Introduction =
+= About the Project =
 
 GlobalMenu is a global menu for Gnome and XFCE. It eases the user to focus on her work by removing the menus from inside the work window. Only the active application menus are presented to the user at any given time.
 
 This version is a ( bugfix release | a major release | an API breaking release). It especially provides xxx, xx and xxxx and focuses on xxx.
 
-= Change Log =
+= ChangeLog =
 
   * Issue ###: summary
   * Issue ###: summary
