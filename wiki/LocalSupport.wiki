@@ -10,7 +10,7 @@ Deutsch: http://wiki.ubuntuusers.de/GNOME_Globalmenu
 
 Italiano: http://forum.ubuntu-it.org/index.php/topic,189135.0.html
 
-Espanol:
+Español:
 
 中文: http://forum.ubuntu.org.cn/viewtopic.php?f=33&t=108167&start=90
 
