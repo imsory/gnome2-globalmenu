@@ -10,7 +10,7 @@ Add your content here.
 gnome-globalmenu: A GlobalMenu Applet for Gnome
 http://code.google.com/p/gnome2-globalmenu
 
--Firefox and/or OpenOffice and/or Java compatibility patch (or native rewrite of menus)
+==Firefox and/or OpenOffice and/or Java compatibility patch (or native rewrite of menus)==
 
 Benefits: Would remove the latest big blocker for a truly useable GlobalMenu
 Requirements: Some experience with VALA and GTK is needed. Would need a knowledge of the Firefox and/or OpenOffice toolkit and maybe dbus
@@ -19,8 +19,8 @@ Requirements: Some experience with VALA and GTK is needed. Would need a knowledg
 
 Rainwoodman (...@....com) is willing to mentor this project.
 
--KDE port of GlobalMenu
+==KDE port of GlobalMenu==
 
--True default desktop menu
+==True default desktop menu==
 
--Windows port of GlobalMenu
+==Windows port of GlobalMenu==
