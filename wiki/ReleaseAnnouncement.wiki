@@ -16,7 +16,9 @@ Fedora: http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q={{{VER
 
 = About the Project =
 
-GlobalMenu is a global menu for Gnome and XFCE. It eases the user to focus on her work by removing the menus from inside the work window. Only the active application menus are presented to the user at any given time.
+Global Menu implements a global menu for GTK applications under Gnome and XFCE desktop environments. A global menu eases the user to focus on the tasks by eliminating the disattractive menus from inside the application windows. At any given time, only the menus of the active window are presented to the user at the topmost edge of the screen.
+
+In Gnome desktop environment, Global Menu also implements an new active window switching mechanism via an global menu entry.
 
 This version is a ( bugfix release | a major release | an API breaking release). It especially provides xxx, xx and xxxx and focuses on xxx.
 
