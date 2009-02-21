@@ -24,3 +24,4 @@ Rainwoodman (...@....com) is willing to mentor this project.
 ==True default desktop menu==
 
 ==Windows port of GlobalMenu==
+Windows users could benefit for GTK (and possibly Qt) applications of a Global Menu bar
