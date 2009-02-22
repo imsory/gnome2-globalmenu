@@ -14,15 +14,15 @@ gnome-globalmenu 0.7.4 (draft)
     * 6. Looking Forward to GlobalMenu 0.7.5
     * 7. Credits
 
-{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.4}}}
-
-Downloads:
-
-http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.4
    
     * 1. Introduction
 
 We are pleased to announce the release of Gnome GlobalMenu version 0.7.4. This version brings you a better than ever Global Menu for use with Gnome. It’s packed with new features, more stable than ever and now available in an easy to install way, in your native language!
+
+
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.4}}}
+
+[http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.4 Downloads]
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/GlobalMenuWindows.png">
 
@@ -74,10 +74,12 @@ You can as well customize the title font displayed in the Global Menu and comple
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Label.png">
 
-  * backported to RHEL5 (glib 2.12 + gtk 2.10 + libwnck 2.16)
-* workspace chooser (issue 311 in progress)
- * many efforts on packaging
- * Switch to max label width (pixel) rather than max label length (chars) (issue 312)
+===Now available on RHEL 5===
+Due to popular request, we've backported GlobalMenu to RHEL5 (glib 2.12 + gtk 2.10 + libwnck 2.16)
+
+===The Mighty Workspace chooser===
+(issue 311 in progress)
+
 ===XFCE===
 GlobalMenu is now compatible with XFCE!
 
@@ -104,13 +106,16 @@ Now, the label in GlobalMenu is consistant with your main menu for extra simplic
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/ConsistantNaming.png">
 
     * 3. What's New For Developers
-===Under the Hood===
-
+===A full Vala rewrite===
 The Global Menu is no longer hacky, and integrates a full Vala rewrite to integrate Gnome’s good practices and follow coding guidelines. Cleaner code means more developers, more progress and less bugs in the future.
-  * update to vala 0.5.6 (issue 317)
-* new approach for globally grabbing F10 (issue 298), compatible with gnome-shell
-  * monitoring _NET_GLOBAL_MENU_XXX properties (issue 306), compatible with gnome-shell.
-  * aware of 'gtk-icon-size' (issue 320)
+As a result, we now require Vala 0.5.6 (issue 317).
+
+===Fully Compatible with Gnome-Shell, ready for a possible inclusion in Gnome 3.0===
+
+We also have a brand new approach for globally grabbing F10 (issue 298), compatible with gnome-shell.
+We also implemented monitoring _NET_GLOBAL_MENU_XXX properties (issue 306), compatible with gnome-shell.
+We're now also aware of 'gtk-icon-size' (issue 320) and we switched to max label width (pixel) rather than max label length (chars) (issue 312)
+In short, GlobalMenu longs to be a good GNOME citizen, and we look forward your feedback.
 
     * 4. Internationalisation
 ===Dans toutes les langues!===
@@ -121,7 +126,6 @@ GlobalMenu is now available in French, Chinese, English, Italian, Spanish, Hunga
     * 7. Credits
 ===Project members===
 pierre.slamich, Valiant.Wing, fengshenx, sstasyuk, bis0n.lives, dwatson031, lviggiani, globalmenul10n
-
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/Credits.png">
 ===About Us===
