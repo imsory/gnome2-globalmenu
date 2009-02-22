@@ -4,9 +4,9 @@
 ------------------------------
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/globalmenu.png">
-<wiki:toc max_depth="5" />
+
 =gnome-globalmenu 0.7.4 (draft)=
-   
+<wiki:toc max_depth="5" />   
 == 1. Introduction ==
 
 We are pleased to announce the release of Gnome GlobalMenu version 0.7.4. This version brings you a better than ever Global Menu for use with Gnome. It’s packed with new features, more stable than ever and now available in an easy to install way, in your native language!
