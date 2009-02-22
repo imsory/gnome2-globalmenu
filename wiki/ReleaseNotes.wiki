@@ -15,7 +15,7 @@ gnome-globalmenu 0.7.4 (draft)
     * 7. Credits
 
    
-    * 1. Introduction
+== 1. Introduction ==
 
 We are pleased to announce the release of Gnome GlobalMenu version 0.7.4. This version brings you a better than ever Global Menu for use with Gnome. It’s packed with new features, more stable than ever and now available in an easy to install way, in your native language!
 
@@ -29,7 +29,7 @@ We are pleased to announce the release of Gnome GlobalMenu version 0.7.4. This v
 
 Let’s review some of the features of Gnome GlobalMenu 0.7
 
-    * 2. What's New For Users
+==2. What's New For Users==
 ===A Slick Windows Switcher===
 You can now change the program you’re working on with a simple click on that switch, part of GlobalMenu. You’ll be able to start working right away with menus a few pixel right of the switcher!
 
@@ -105,7 +105,7 @@ Now, the label in GlobalMenu is consistant with your main menu for extra simplic
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/ConsistantNaming.png">
 
-    * 3. What's New For Developers
+== 3. What's New For Developers==
 ===A full Vala rewrite===
 The Global Menu is no longer hacky, and integrates a full Vala rewrite to integrate Gnome’s good practices and follow coding guidelines. Cleaner code means more developers, more progress and less bugs in the future.
 As a result, we now require Vala 0.5.6 (issue 317).
@@ -116,14 +116,13 @@ We also have a brand new approach for globally grabbing F10 (issue 298), compati
 We also implemented monitoring _NET_GLOBAL_MENU_XXX properties (issue 306), compatible with gnome-shell.
 We're now also aware of 'gtk-icon-size' (issue 320) and we switched to max label width (pixel) rather than max label length (chars) (issue 312)
 In short, GlobalMenu longs to be a good GNOME citizen, and we look forward your feedback.
-
-    * 4. Internationalisation
+== 4. Internationalisation==
 ===Dans toutes les langues!===
 
 GlobalMenu is now available in French, Chinese, English, Italian, Spanish, Hungarian, Russian for your convenience. If your language is not there yet, just step in and take 20 minutes to make sure the next version of GlobalMenu features your translation work!
-    * 5. Installing GlobalMenu
-    * 6. Looking Forward to GlobalMenu 0.7.5
-    * 7. Credits
+== 5. Installing GlobalMenu==
+== 6. Looking Forward to GlobalMenu 0.7.5==
+== 7. Credits==
 ===Project members===
 pierre.slamich, Valiant.Wing, fengshenx, sstasyuk, bis0n.lives, dwatson031, lviggiani, globalmenul10n
 
