@@ -4,16 +4,8 @@
 ------------------------------
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/globalmenu.png">
-
-gnome-globalmenu 0.7.4 (draft)
-    * 1. Introduction
-    * 2. What's New For Users
-    * 3. What's New For Developers
-    * 4. Internationalisation
-    * 5. Installing GlobalMenu
-    * 6. Looking Forward to GlobalMenu 0.7.5
-    * 7. Credits
-
+<wiki:toc max_depth="5" />
+=gnome-globalmenu 0.7.4 (draft)=
    
 == 1. Introduction ==
 
