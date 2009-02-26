@@ -1,16 +1,46 @@
 #summary Page about the summer of Code 2009 with modalities, ideas..
 = Introduction =
 
+== About Google SOC ==
 Google is sponsoring students to work during this summer on open source projects.
+
+== About Global Menu ==
+
+Global Menu is the globally-shared menu bar of all applications launched in your desktop session.
+
+This project introduces document-oriented concepts into GNOME, and improves GNOME's respect for Fitts's law. Most GTK applications work just fine with Global Menu. See ApplicationCompatibility for a list of them.
 
 = Mentors =
 
 = Ideas =
 
-gnome-globalmenu: A GlobalMenu Applet for Gnome
-http://code.google.com/p/gnome2-globalmenu
+Ordered by the priority.
 
-==Firefox and/or OpenOffice and/or Java compatibility patch (or native rewrite of menus)==
+== XFCE port of Global Menu ==
+
+=== Background ===
+Although there is already an XFCE panel plugin out there, its lacks functionalities comparing with the Gnome panel applet. The either switcher is missing, and there is no way to enable/disable Global Menu without modifying magic configuration files.
+
+The XFCE port shares the same GTK plugin module with the current Gnome port. Therefore a complete XFCE port of Global Menu should finish the panel plugin:
+  * Tracking the current application (activity)'s title,
+  * Switching focus between applications (NOT windows, refer to the application mode of metacity),
+  * Launching new applications.
+  * Enabling / Disabling the GTK Plugin module on the fly by modifying the GtkSettings on the screen.
+  * Also, design a default menu when the desktop is focused, the default menu may incorporate the features listed above, or not.
+
+The XFCE port is crucial for the Global Menu project to survive in a long run. Because as we know, the next generation of Gnome will ship with Gnome Shell, introducing a completely redesigned way of human-computer interaction. Whether Global Menu still can make sense in this new design is still an open question. Besides the design issue, there is also technical obstacles to integrate Clutter based Gnome Shell Panel and Gtk based Global Menu widget sets together.
+On the other hand XFCE, targeting at low-end computers, may stick with the traditional GTK and panels for a longer period.
+
+=== Requirements ===
+
+  * GTK programming experience with C or Vala
+  * experience with XFCE software development
+
+== Patch XUL runner, enable Global Menu with Firefox == 
+
+== Patch OpenOffice ==
+
+== Patch Java Swing library ==
 
 Benefits: Would remove the latest big blocker for a truly useable GlobalMenu
 Requirements: Some experience with VALA and GTK is needed. Would need a knowledge of the Firefox and/or OpenOffice toolkit and maybe dbus
@@ -19,9 +49,12 @@ Requirements: Some experience with VALA and GTK is needed. Would need a knowledg
 
 Rainwoodman (...@....com) is willing to mentor this project.
 
-==KDE port of GlobalMenu==
+== KDE port of GlobalMenu ==
+We need to talk to the KDE people on this.
 
-==True default desktop menu==
+
 
 ==Windows port of GlobalMenu==
+
+This is not suitable yet. Too far away.
 Windows users could benefit for GTK (and possibly Qt) applications of a Global Menu bar
