@@ -1,11 +1,13 @@
-%define 	base_version 	@PACKAGE_VERSION@
+%define 	base_version 	0.7.4
+
+# automatic svn version detection
 %define full_version	%{base_version}
 
 # special steps in rhel5
-%if %(test x%{?dist} == x.el5x ; echo $?)
-%define 	not_rhel5 0
-%else
+%if %(test x%{?dist} == x.el5 ; echo $?)
 %define 	not_rhel5 1
+%else
+%define 	not_rhel5 0
 %endif
 
 Name:		gnome-globalmenu
