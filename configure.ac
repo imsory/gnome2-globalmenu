@@ -1,4 +1,4 @@
-AC_INIT(gnome-globalmenu, [0.7.3], [rainwoodman@gmail.com], [gnome-globalmenu])
+AC_INIT(gnome-globalmenu, [0.7.4], [rainwoodman@gmail.com], [gnome-globalmenu])
 
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([1.9 tar-ustar])
