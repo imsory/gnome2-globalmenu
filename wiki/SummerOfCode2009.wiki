@@ -37,10 +37,26 @@ On the other hand XFCE, targeting at low-end computers, may stick with the tradi
   * GTK programming experience with C or Vala
   * experience with XFCE software development
 
+== KDE Unification ==
+=== Background ===
+Back in KDE 3.x, a global menu was implemented; however the implementation is incompatable with current Global Menu. In KDE 4.x, that global menu implementation is removed. KDE people, have come up with a QStyle plugin for QT4, and a Plasma applet XBar, for their own global menu(referred as XBar). However, this implementation is not designed to be GUI toolkit independent. As a result, XBar is incompatible with Global Menu.
+
+References: 
+ * XBar - http://frinring.wordpress.com/2009/01/29/mac-style-menubar-for-kde-4-and-others/
+ * Global Menu Specification - http://code.google.com/p/gnome2-globalmenu/wiki/GlobalMenuSpecification
+
+=== Goals ===
+Modify XBar to fully implement the Global Menu specification, so that QT applications and GTK applications can share the same, unified Global Menu.
+
+=== Requirements ===
+  * QStyle knowledge
+  * X Programming skills
+  * C++ experience
+
 == Patch XUL runner, enable Global Menu with Firefox == 
 
 === Background ===
-It has been long known that XUL runner programs doesn't use native GTK, and therefore can not benefit from the Global Menu's GTK Plugin. However most distributions nowadays ship their GNOME desktop with Firefox or Firefox variations instead of the default GNOME browser Epiphany. The result is direct: on a desktop with Global Menu enabled, the default web browser, which is accessed by the user almost everyday becomes an exception that behaves differently from all other applications. Too bad. This project aims to fix the issue.
+It has been long known that XUL runner programs doesn't use native GTK, and therefore can not benefit from the Global Menu's GTK Plugin. However most distributions nowadays ship their GNOME desktop with Firefox or Firefox variations instead of the default GNOME browser Epiphany. The result is direct: on a desktop with Global Menu enabled, the default web browser, which is accessed by the user almost everyday becomes an exception that behaves differently from all other applications. Too bad. This proposed SOC project aims to fix the issue.
 
 === Goals ===
 Patch XUL runner to implement a Global Menu client inside it. 
@@ -54,11 +70,23 @@ Patch XUL runner to implement a Global Menu client inside it.
  * X Programming skills or Gdk Programming skills
 
 == Patch OpenOffice ==
+It has been long known that OpenOffice doesn't use native GTK, and therefore can not benefit from the Global Menu's GTK Plugin. However no fully usable office suite that utilizes native GTK is available. The result is direct: on a desktop with Global Menu enabled, the default office suite, which is accessed by the user almost everyday becomes an exception that behaves differently from all other applications. Too bad. This proposed SOC project aims to fix the issue.
+
+=== Goals ===
+Patch XUL runner to implement a Global Menu client inside it. 
+ * Interpolate the menu into Global Menu XML
+ * Bind the XML to the toplevel window
+ * Receive and understands the Global Menu events
+
+=== Requirements ===
+ * Experience with Openoffice programming model
+ * C++ experience
+ * X Programming skills or Gdk Programming skills
 
 == Patch Java Swing library ==
 
-== KDE port of GlobalMenu ==
-We need to talk to the KDE people on this.
+=== Background ===
+Java Swing programs are yet another catagory of 
 
 
 ==Windows port of GlobalMenu==
