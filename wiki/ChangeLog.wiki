@@ -13,7 +13,7 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.4
   * install the xfce plugin to correct location on xfce 4.6. (issue 304)
 
   * refactor libgnomenu, introducing Gnomenu.Shell and Gnomenu.Item interfaces 
-  * rewrite Gnomenu.Parser to remove the dependency on g_markup_parse_context_push and _pop.
+  * rewrite Gnomenu.Parser to remove the dependency on `g_markup_parse_context_push` and `_pop`.
   
   * Fixed crashing on OSX theme. (issue 314)
   * skip menubars in GtkNotebook, workaround Monodevelop and gnome-appearence-properties. (issue 350, issue 341)
