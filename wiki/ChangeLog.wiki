@@ -1,0 +1,199 @@
+------------------------------
+gnome-globalmenu 0.7.4
+
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.4}}}
+
+Downloads:
+
+http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.4
+
+  * Online help goes to HelpCentral wiki page (issue 290)
+  * if the schema for the gconf key is not found, show some thing instead of giving an empty preference dialog (issue 332)
+  * Improve the race with docks (Issue 316)
+  * install the xfce plugin to correct location on xfce 4.6. (issue 304)
+
+  * refactor libgnomenu, introducing Gnomenu.Shell and Gnomenu.Item interfaces 
+  * rewrite Gnomenu.Parser to remove the dependency on g_markup_parse_context_push and _pop.
+  
+  * Fixed crashing on OSX theme. (issue 314)
+  * skip menubars in GtkNotebook, workaround Monodevelop and gnome-appearence-properties. (issue 350, issue 341)
+  * Fixed the overflown menu items. (issue 360)
+
+------------------------------
+gnome-globalmenu 0.7.3
+
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.3}}}
+
+Downloads:
+
+http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.3
+
+  * Improved XFCE Plugin
+    * (1) dependency to gmenu removed.
+    * (2) border (1 pixel at topmost) (need to be verified)
+  * Improved Switcher on 
+    * (1) application name detection
+    * (2) menu layout
+    * (3) Rebased the switcher with libgnomenu
+  * libgnomenu.so seperately installed
+  * libgnomenu is gir ready under namespace Gnomenu, configure with --enable-gir. 
+  * Gracefully loading and unloading the gtk module
+  * Avoid the bazzar 'Global Menu Bar' label at startup ASAP
+  * Added a svn version in applet's about dialog(only if built from svn)
+  * Smarter applet: if the gtk module is not loaded, send a desktop notify to guide the user. NEW BUILDING DEPENDENCY: libnotify-dev/libnotify-devel.
+  * Place icons correctly in a vertical panel
+  * Added many translations
+  * Fixed several memory issues (core dump at about/pref dialog)
+
+
+-------------------------------
+gnome-globalmenu 0.7.2 
+
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.2}}}
+
+Downloads:
+
+http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.2
+ 
+ * Experimental XFCE Plugin; edit `~/.config/xfce4/xinitrc`(and chmod +x) to enable the GTK Plugin
+{{{
+#!/bin/sh
+export GTK_MODULES=globalmenu-gnome
+. /etc/xdg/xfce4/xinitrc
+}}}
+ * Removed explicit GIO dependency; the gtk plugin module compiles and works with GTK 2.10.
+ * Updated to vala 0.5.5; pre-0.5.5 vala no longer compiles the svn source;
+ * Improved documentation
+ * Code refactoring, improved speed, bigger memory foot print (6-8 MiB RSS)
+ * es_ES translation
+ * ru_RU translation
+ * Fixed issues when AWN is the active window
+ * Fixed Several leaks in the GTK plugin module
+ * Fixed the wrong size allocation of icon in menu items.
+
+-------------------------------
+gnome-globalmenu 0.7.1
+
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.1}}}
+
+Downloads:
+
+http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.1
+
+ * Bug fixes
+ * Enable/Disable Global Menu via GtkSettings and the applet.
+   * loading globalmenu-gnome via GTK_MODULES is no longer supported.
+   * suid applications now also respect global menu. (security!)
+ * Disable RGBA by default due to stability issues.
+ * it_IT, fr_FR, zh_CN Translations 
+-----------------------------
+gnome-globalmenu 0.7 (alpha)
+ * svn1845 All children in PanelApplet and subclass of GnomenuMenuBar changed to 'local' by default. No need of GTK_MENUBAR_NO_MAC(still supported) for gnome-panel, user swither, unit tests, and most panel related applications.
+ * svn1833 Added window list and window title to switcher.
+ * svn1830 Theming issue
+ * svn1823 Switcher
+ * svn1816 Awareness of gnome_settings_daemon/gtk-modules. 
+   * Unloading is yet unstable. perhaps bugs of GTK/gsd.
+   * No need to use GTK_MODULES=globalmenu-gnome. (still supported)
+ * svn1796 gconf configuration for the applet
+ * svn1795 register the gtk module in gnome-settings-daemon's gconf key
+ * svn1762 all parameters of libglobalmenu-gnome are combined to GLOBALMENU_GNOME_ARGS
+   * --verbose
+   * --disable
+   * --log-file="filename"
+ * svn1725
+  * 0.7-devel branch starts
+ * svn1723
+  * RGBA support for Gnomenu.Menu
+ * svn1711
+  * grab F10(or what ever in GtkSettings)
+ * svn1696
+  * + alpha: the core is ready. please test the stability.
+
+-------------------------------
+gnome-globalmenu 0.6 (current development version)
+
+ * svn1509 
+  * +window selector
+ * svn1446 
+  * +GTK_MENUBAR_NO_MAC is back.
+ * svn1478 
+  * +relatively stable global menu core.
+ * svn1415 
+  * +Adding accelerator labels.
+ * svn1408 
+  * +aware of transient_for windows.
+ * svn1401 
+  * +major theming issues are solved.
+ * svn900+
+  * NOTE: When you switch to svn 900+, the line GTK_MODULE=libgnomenu should be removed.
+
+ * Wednesday, Oct 29 2008, the GTK module is renamed to libglobalmenu-gnome.so and installed to `$libdir/gtk-2.0/modules`. `GTK_MODULE=globlamenu-gnome` is sufficient to load the module.
+
+ * Friday, Oct 10 2008, the DBus branch is merged into trunk. GTK_MODULE=libgnomenugtk is back.
+
+ * Thursday, Oct 09 2008, the project turns to DBus for IPC backend. in branches/0.6-devel
+
+ * Monday, Aug 08 2008, A series of new modification is pushed to trunk and it becomes completely broken(for everyday users) before new development is done.
+------------------------------
+
+gnome-globalmenu 0.5 
+
+ * aborted
+
+------------------------------
+
+gnome-globalmenu 0.4 
+
+ * svn790 (Friday, March 14th 2008)
+  * +Treatment of overflowed menu items.
+  * +Customize title font.
+
+ * Sunday, March 09 2008, GNOME Global Menu 0.4 shall be considered as available(via svn or packages) for daily use. ReleaseNotes.
+
+ * svn570 (Friday, February 29th 2008)
+  * Some one write something here.
+
+------------------------------
+
+gnome2-globalmenu 0.3 
+
+ * svn323 
+    * + Users can now customize the appearance. 
+    * + A new deploying script reduces difficulty for building from scratch. (Hopefully will also reduce packaging difficulty.)
+
+Downloading from svn is preferred.
+svn checkout http://gnome2-globalmenu.googlecode.com/tags/0.3_323 gnome2-globalmenu
+
+------------------------------
+
+gnome2-globalmenu 0.3
+
+Completely new patch/code for gtkmenubar. Reconstructed menu server.
+
+    * + Stupid Menu Bar Scrolling
+    * - No Window icon
+    * + Skinning(partially working)
+    * + New Protocol: Connectionless, Asynchronous(Should update the Specification)
+    * + True Server/Client Architecture
+    * + Stability
+    * + Menu server auto detection
+    * + Auto Guessing whether the menubar is a global one instead of hard coded window names. 
+
+http://gnome2-globalmenu.googlecode.com/svn/branches/0.3/
+
+------------------------------
+
+gnome2-globalmenu 0.2.1
+
+    * + Press Alt and F10 in application window will invoke menus
+    * + New look and feel for scrolling long menubars
+    * + Added Application Icon, and application title appears as a tooltip.
+    * + Automatic gtk2-aqd build tool for fedora with guide README
+    * + Sample bonobo .server file for the Applet
+    * + Standalone mode applet for easy debugging
+    * - Removed application title's label
+    * - Doesn't respect KDE's floating menubars.
+    * + Packaging tarball of the applet works 
+
+http://gnome2-globalmenu.googlecode.com/svn/branches/0.2.1/ 
