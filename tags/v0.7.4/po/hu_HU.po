@@ -1,0 +1,258 @@
+# Hungarian Translation for gnome2-globalmenu 1.0 RC
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome2-globalmenu package.
+# Juhász Ádám <jadaml@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome2-globalmenu-1.0-RC\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-16 13:02+0100\n"
+"PO-Revision-Date: 2009-02-12 12:00+0100\n"
+"Last-Translator: Juhász Ádám <jadaml@gmail.com>\n"
+"Language-Team: hu_HU <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../libgnomenu/menuitem.c:1306
+#, fuzzy
+msgid "Indicator Size"
+msgstr "Kijelző mérete"
+
+#: ../libgnomenu/menuitem.c:1306
+#, fuzzy
+msgid "Size of check or radio indicator"
+msgstr "Jelölőnégyzet vagy rádiógomb mérete"
+
+#: ../gtk-modules/globalmenu/module-main.c:29
+msgid "Be verbose"
+msgstr "Részletes kimenet"
+
+#: ../gtk-modules/globalmenu/module-main.c:29
+#, fuzzy
+msgid "disable serializing pixbuf"
+msgstr "pixbuf srosorításának tiltása"
+
+#: ../gtk-modules/globalmenu/module-main.c:29
+msgid "Disable the Plugin"
+msgstr "Beépülő modul letiltása"
+
+#: ../gtk-modules/globalmenu/module-main.c:29
+msgid "File to save the log, default to ~/.gnomenu.log"
+msgstr "A fájl, ahová a log mentésre kerül. (Alap: ~/.gnomenu.log)"
+
+#: ../gtk-modules/globalmenu/module-main.c:157
+msgid "- Global Menu plugin Module for GTK"
+msgstr "- Globális Menü beépülő GTK-hoz"
+
+#: ../gtk-modules/globalmenu/module-main.c:158
+msgid ""
+"These parameters should be supplied in environment GLOBALMENU_GNOME_ARGS "
+"instead of the command line.\n"
+"\t\tNOTE: Environment GTK_MENUBAR_NO_MAC contains the applications to be "
+"ignored by the plugin.\n"
+"\t\t"
+msgstr ""
+"Ezek a paraméterek a GLOBALMENU_GNOME_ARGS környezetben kell megadni,nem a "
+"parancssorban.\n"
+"\t\tMEGJEGYZÉS: GTK_MENUBAR_NO_MAC környezet tartalmazza azon alkalmazásokat,"
+"Amelyeket figyelmen kívül hagy a beépülő modul.\n"
+"\t\t"
+
+#: ../applet/applet.c:40
+msgid "globalmenu-panel-applet"
+msgstr "globalmenu-panel-applet"
+
+#: ../applet/applet.c:296
+msgid "_Preferences"
+msgstr ""
+
+#: ../applet/applet.c:296
+msgid "_Help"
+msgstr ""
+
+#: ../applet/applet.c:296
+msgid "_About"
+msgstr ""
+
+#: ../applet/applet.c:449
+msgid "Project Home"
+msgstr "Projekt honlap"
+
+#: ../applet/applet.c:455
+msgid "translator-credits"
+msgstr ""
+
+#: ../applet/applet.c:473
+msgid "On-line help"
+msgstr "Online súgó"
+
+#: ../applet/switcher.c:535
+msgid "Show _Desktop"
+msgstr "Asztal _megjelenítése"
+
+#: ../applet/switcher.c:723
+msgid "Desktop"
+msgstr "Asztal"
+
+#: ../applet/switcher.c:1417
+msgid "File Manager"
+msgstr "Fájl kerelő"
+
+#: ../applet/switcher.c:1420
+msgid "no windows"
+msgstr "nincsenek ablakok"
+
+#: ../applet/switcher.c:1422
+msgid "no actions"
+msgstr "Nincs műveletek"
+
+#: ../applet/switcher.c:1436
+msgid "Mi_nimize"
+msgstr "Mi_nimalizálás"
+
+#: ../applet/switcher.c:1436
+msgid "Ma_ximize"
+msgstr "Ma_ximalizálás"
+
+#: ../applet/switcher.c:1436
+msgid "Unma_ximize"
+msgstr "_Eredeti méret"
+
+#: ../applet/switcher.c:1436
+msgid "_Move"
+msgstr "_Mozgatás"
+
+#: ../applet/switcher.c:1436
+msgid "_Resize"
+msgstr "Át_méretezés"
+
+#: ../applet/switcher.c:1436
+msgid "Always on _Top"
+msgstr "Mindig _felül"
+
+#: ../applet/switcher.c:1436
+msgid "_Always on visible Workspace"
+msgstr "Mindig a látható m_unkaterületen"
+
+#: ../applet/switcher.c:1436
+msgid "_Workspace..."
+msgstr ""
+
+#: ../applet/switcher.c:1436
+msgid "_Close"
+msgstr "_Bezárás"
+
+#: ../gnome-globalmenu.schemas.in.h:1
+msgid "Add window action menu entries to active application name menu"
+msgstr "Ablak műveletek rendelése az alkalmazás-név menühöz"
+
+#: ../gnome-globalmenu.schemas.in.h:2
+msgid "Enable Global Menu For GTK applications"
+msgstr "Globális menü engedélyezése GTK alkalmazásokhoz"
+
+#: ../gnome-globalmenu.schemas.in.h:3
+msgid "Icon"
+msgstr "Ikon"
+
+#: ../gnome-globalmenu.schemas.in.h:4
+msgid ""
+"If this key is true, libglobalmenu-gnome, the GTK plugin for Global Menu is "
+"loaded."
+msgstr ""
+"Ha ez az érték igaz, akkor libglobalmenu-gnome, a GTK beépülő a Globális "
+"Menühöz be van töltve."
+
+#: ../gnome-globalmenu.schemas.in.h:5
+msgid "Label"
+msgstr "Címke"
+
+#: ../gnome-globalmenu.schemas.in.h:6
+msgid "Max title length"
+msgstr "Maximum cím hossz"
+
+#: ../gnome-globalmenu.schemas.in.h:7
+msgid "Show/Hide the icon of the active window"
+msgstr "Mutasd/Rejtsed el az ikonját az aktív ablaknak"
+
+#: ../gnome-globalmenu.schemas.in.h:8
+msgid "Show/Hide the name of the active application"
+msgstr "Mutasd/Rejtsed el az aktív alkalmazás címét"
+
+#: ../gnome-globalmenu.schemas.in.h:9
+msgid "The Maximum length of name of the active application"
+msgstr "A maximális hossza az aktív alkalmazás nevének"
+
+#: ../gnome-globalmenu.schemas.in.h:10
+msgid "Uses active application lablel as application switcher"
+msgstr "Aktív alkalmazás címkéjének használata az alkalmazás váltójaként"
+
+#: ../gnome-globalmenu.schemas.in.h:11
+msgid "Window Actions"
+msgstr "Ablak műveletek"
+
+#: ../gnome-globalmenu.schemas.in.h:12
+msgid "Window List"
+msgstr "Ablak lista"
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:1
+msgid "Global Menu Panel Applet"
+msgstr "Globális Menü Panel Kisalkalmazás"
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:2
+#, fuzzy
+msgid "GlobalMenu.PanelApplet Factory"
+msgstr "GlobalMenu.PanelApplet gyár"
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:3
+#, fuzzy
+msgid "The factory to build GlobalMenu.PanelApplet objects"
+msgstr "A GlobalMenu.PanelApplet objektumok gyára"
+
+#: ../xfce/GlobalMenu_XFCEPlugin.desktop.in.in.h:1
+msgid "Global Menu Plugin for XFCE Panel"
+msgstr "Globális Menü beépülő XFCE Panelhez"
+
+#: ../xfce/GlobalMenu_XFCEPlugin.desktop.in.in.h:2
+msgid "The Global Menu Plugin for XFCE Panel"
+msgstr "A Globális Menü Beépülő XFCE Panelhez"
+
+#~ msgid ""
+#~ "\n"
+#~ "<popup name=\"button3\">\n"
+#~ "\t<menuitem name=\"Preferences\" \n"
+#~ "\t\tverb=\"Preferences\" \n"
+#~ "\t\t_label=\"_Preferences\" \n"
+#~ "\t\tpixtype=\"stock\" \n"
+#~ "\t\tpixname=\"gtk-preferences\"/>\n"
+#~ "\t<menuitem name=\"Help\" \n"
+#~ "\t\tverb=\"Help\" \n"
+#~ "\t\t_label=\"_Help\" \n"
+#~ "\t\tpixtype=\"stock\" \n"
+#~ "\t\tpixname=\"gtk-help\"/>\n"
+#~ "\t<menuitem name=\"About\" \n"
+#~ "\t\tverb=\"About\" _label=\"_About...\" \n"
+#~ "\t\tpixtype=\"stock\" \n"
+#~ "\t\tpixname=\"gtk-about\"/>\n"
+#~ "</popup>\n"
+#~ "\t\t"
+#~ msgstr ""
+#~ "\n"
+#~ "<popup name=\"button3\">\n"
+#~ "\t<menuitem name=\"Preferences\" \n"
+#~ "\t\tverb=\"Preferences\" \n"
+#~ "\t\t_label=\"_Tulajdonságok\" \n"
+#~ "\t\tpixtype=\"stock\" \n"
+#~ "\t\tpixname=\"gtk-preferences\"/>\n"
+#~ "\t<menuitem name=\"Help\" \n"
+#~ "\t\tverb=\"Help\" \n"
+#~ "\t\t_label=\"_Súgó\" \n"
+#~ "\t\tpixtype=\"stock\" \n"
+#~ "\t\tpixname=\"gtk-help\"/>\n"
+#~ "\t<menuitem name=\"About\" \n"
+#~ "\t\tverb=\"About\" _label=\"_Névjegy...\" \n"
+#~ "\t\tpixtype=\"stock\" \n"
+#~ "\t\tpixname=\"gtk-about\"/>\n"
+#~ "</popup>\n"
+#~ "\t\t"
