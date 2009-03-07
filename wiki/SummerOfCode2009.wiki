@@ -49,14 +49,17 @@ References:
 Modify XBar to fully implement the Global Menu specification, so that QT applications and GTK applications can share the same, unified Global Menu.
 
 === Requirements ===
-  * QStyle knowledge
-  * X Programming skills
-  * C++ experience
+ * QStyle knowledge
+ * Knowledge in X11 program development
+ * C++ experience
 
 == Patch XUL runner, enable Global Menu with Firefox == 
 
 === Background ===
 It has been long known that XUL runner programs doesn't use native GTK, and therefore can not benefit from the Global Menu's GTK Plugin. However most distributions nowadays ship their GNOME desktop with Firefox or Firefox variations instead of the default GNOME browser Epiphany. The result is direct: on a desktop with Global Menu enabled, the default web browser, which is accessed by the user almost everyday becomes an exception that behaves differently from all other applications. Too bad. This proposed SOC project aims to fix the issue.
+
+References: 
+ * Global Menu Specification - http://code.google.com/p/gnome2-globalmenu/wiki/GlobalMenuSpecification
 
 === Goals ===
 Patch XUL runner to implement a Global Menu client inside it. 
@@ -67,10 +70,13 @@ Patch XUL runner to implement a Global Menu client inside it.
 === Requirements ===
  * Experience with XUL runner programming
  * C++ experience
- * X Programming skills or Gdk Programming skills
+ * Knowledge in X11 or GDK
 
 == Patch OpenOffice ==
 It has been long known that OpenOffice doesn't use native GTK, and therefore can not benefit from the Global Menu's GTK Plugin. However no fully usable office suite that utilizes native GTK is available. The result is direct: on a desktop with Global Menu enabled, the default office suite, which is accessed by the user almost everyday becomes an exception that behaves differently from all other applications. Too bad. This proposed SOC project aims to fix the issue.
+
+References: 
+ * Global Menu Specification - http://code.google.com/p/gnome2-globalmenu/wiki/GlobalMenuSpecification
 
 === Goals ===
 Patch XUL runner to implement a Global Menu client inside it. 
@@ -81,15 +87,22 @@ Patch XUL runner to implement a Global Menu client inside it.
 === Requirements ===
  * Experience with Openoffice programming model
  * C++ experience
- * X Programming skills or Gdk Programming skills
+ * Knowledge in X11 or GDK
 
 == Patch Java Swing library ==
 
 === Background ===
-Java Swing programs are yet another catagory of 
+Java Swing programs are yet another catagory of Global Menu exceptions. Back in 2 years ago, the mac-menu patch was able to steal the Java Swing menu bar without stability. Without digging deep into Java Swing library's source code, a stable patch is impossible.
+This proposed SOC project aims to study the Swing library, to patch the library, and to make the library global menu friendly.
 
+References: 
+ * Global Menu Specification - http://code.google.com/p/gnome2-globalmenu/wiki/GlobalMenuSpecification
 
-==Windows port of GlobalMenu==
+=== Goals ===
+Patch Java Swing Library to implement a Global Menu client inside it. 
 
-This is not suitable yet. Too far away.
-Windows users could benefit for GTK (and possibly Qt) applications of a Global Menu bar
+=== Requirements ===
+ * Familiarity with Java Swing library
+ * Skills in Java programming language 
+ * Perhaps also C/C++ depending on the language the swing library uses.
+ * Knowledge in X11
