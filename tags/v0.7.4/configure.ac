@@ -180,7 +180,6 @@ AC_SUBST(abs_top_srcdir)
 
 AC_CONFIG_FILES(
 	[Makefile
-	gnome-globalmenu.spec
 	libcompat/Makefile
 	libgnomenu/Makefile
 	libgnomenu/tests/Makefile
