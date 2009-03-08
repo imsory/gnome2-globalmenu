@@ -3,13 +3,6 @@
 # automatic svn version detection
 %define full_version	%{base_version}
 
-# special steps in rhel5
-%if %(test x%{?dist} == x.el5 ; echo $?)
-%define 	not_rhel5 1
-%else
-%define 	not_rhel5 0
-%endif
-
 Name:		gnome-globalmenu
 Version:	%{full_version}
 Release:	1%{?dist}
@@ -19,11 +12,15 @@ License:	GPLv2+
 URL:		http://code.google.com/p/gnome2-globalmenu/
 Source0:		http://gnome2-globalmenu.googlecode.com/files/gnome-globalmenu-%{base_version}.tar.gz
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXXX)
+BuildRequires: libwnck-devel
+BuildRequires: intltool
+BuildRequires: libXres-devel
 BuildRequires: gnome-panel-devel
 BuildRequires: libnotify-devel
 BuildRequires: gnome-menus-devel
 
-%if %{not_rhel5}
+%if 0%{?rhel5}
+%else
 BuildRequires: xfce4-panel-devel
 %endif
 
@@ -40,7 +37,8 @@ can be enabled on all GTK applications.
 Summary:		Shared data and libraries  of Global Menu packages
 Group:			User Interface/Desktops
 %description	common
-This package contains shared data and libraries of various Global Menu packages.
+This package contains shared data and libraries of various Global Menu 
+packages.
 
 %package		devel
 Summary:		Header files for writing Global Menu applets
@@ -62,8 +60,6 @@ Summary:		GNOME panel applet of Global Menu
 Group:			User Interface/Desktops
 Requires:		gtk2
 Requires:		gnome-panel
-Requires:		libwnck
-Requires:		libnotify
 Requires:		gnome-menus
 Requires:		gnome-globalmenu-common
 %description 	gnome-panel
@@ -72,13 +68,13 @@ with GTK widgets. The applet can be inserted to the default top panel to
 provide access to the Global Menu of the applications. 
 The applet also provides limited window management functionalities.
 
-%if %{not_rhel5}
+%if 0%{?rhel5}
+%else
 %package		xfce-panel
 Summary:		XFCE panel applet of Global Menu
 Group:			User Interface/Desktops
 Requires:		gtk2
 Requires:		xfce4-panel
-Requires:		libwnck
 Requires:		gnome-globalmenu-common
 %description 	xfce-panel
 The XFCE panel applet of Global Menu is a representation of Global Menu 
@@ -91,10 +87,10 @@ to provide access to the Global Menu of the applications.
 
 
 %build
-%if %{not_rhel5}
-%configure --disable-schemas-install --disable-static --disable-tests --with-gnome-panel --with-xfce4-panel
-%else
+%if %{?not_rhel5}
 %configure --disable-schemas-install --disable-static --disable-tests --with-gnome-panel --without-xfce4-panel
+%else
+%configure --disable-schemas-install --disable-static --disable-tests --with-gnome-panel --with-xfce4-panel
 %endif
 make %{?_smp_mflags}
 
@@ -116,9 +112,13 @@ if [ "$1" -gt 1 ] ; then
 fi
 
 %post common
+/sbin/ldconfig
 export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
 gconftool-2 --makefile-install-rule \
 		%{_sysconfdir}/gconf/schemas/gnome-globalmenu.schemas > /dev/null || :
+
+%postun common
+/sbin/ldconfig
 
 %preun common
 if [ "$1" -eq 0 ] ; then
@@ -134,7 +134,6 @@ gconftool-2 --makefile-uninstall-rule \
 %{_libdir}/libgnomenu-%{base_version}.so.2
 %{_libdir}/libgnomenu-%{base_version}.so.2.0.0
 %{_libdir}/libgnomenu.so
-%{_libdir}/pkgconfig/libgnomenu.pc
 %{_mandir}/man1/gnome-globalmenu.1.gz
 
 %files devel
@@ -155,6 +154,7 @@ gconftool-2 --makefile-uninstall-rule \
 %{_includedir}/libgnomenu/window.h
 %{_includedir}/libgnomenu/interface-item.h
 %{_includedir}/libgnomenu/interface-shell.h
+%{_libdir}/pkgconfig/libgnomenu.pc
 
 
 %files gnome-panel
@@ -162,7 +162,8 @@ gconftool-2 --makefile-uninstall-rule \
 %{_libdir}/bonobo/servers/GlobalMenu_PanelApplet.server
 %{_libexecdir}/GlobalMenu.PanelApplet
 
-%if %{not_rhel5}
+%if 0%{?rhel5}
+%else
 %files xfce-panel
 %defattr(-,root,root,-)
 %{_datadir}/xfce4/panel-plugins/GlobalMenu_XFCEPlugin.desktop
@@ -176,6 +177,9 @@ gconftool-2 --makefile-uninstall-rule \
 %{_libdir}/gtk-2.0/modules/libglobalmenu-gnome-%{base_version}.so
 
 %changelog
+* Sun Mar 8 2009 Feng Yu <rainwoodman@gmail.com>
+- Update to version 0.7.4.
+- Generate the versioned .spec file from .spec.in with configure
 * Thu Feb 14 2009 Feng Yu <rainwoodman@gmail.com>
 - Valentine's day. 
 - Update to version (post) 0.7.3.
