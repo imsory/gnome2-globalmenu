@@ -1,6 +1,4 @@
 %define 	base_version 	0.7.4
-
-# automatic svn version detection
 %define full_version	%{base_version}
 
 Name:		gnome-globalmenu
