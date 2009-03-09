@@ -31,14 +31,14 @@
    * Remove the package in the same way as removing other packages.
  # How to let XFCE work with global menu?
    * XFCE doesn't have a nice way to edit gtk-modules in GtkSettings. What you can do is to create `~/.config/xfce4/xinitrc` with the following content:
-{{{
-#!/bin/sh
+     {{{
+      #!/bin/sh
 
-export GTK_MODULES=globalmenu-gnome
-. /etc/xdg/xfce4/xinitrc
-}}}
+      export GTK_MODULES=globalmenu-gnome
+      . /etc/xdg/xfce4/xinitrc
+      }}}
    * and login again.
- # On Hardy after clicking Enable Global Menu in the applet's preference window, nothing happens.
+ # On Hardy, after clicking "Enable Global Menu" in the applet's preference window, nothing happens.
    * gnome-settings-daemon in hardy is old and doesn't support loading external Gtk plugin modules. You have to export GTK_MODULES=globalmenu-gnome manually in either .gnomerc or .bash_profile.
 
  # Ask your questions about Global Menu in Issue 223 (so that project members are notified)
