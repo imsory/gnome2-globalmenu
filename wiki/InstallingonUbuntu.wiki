@@ -44,6 +44,8 @@ sudo apt-get remove gnome2-globalmenu
 sudo apt-get install gnome-globalmenu 
 }}}
 
+NOTE:
+On Hardy, after clicking "Enable Global Menu" in the applet's preference window, nothing happens. It's because gnome-settings-daemon in hardy is old and doesn't support loading external Gtk plugin modules. You can either upgrade to Intrepid or you have to export GTK_MODULES=globalmenu-gnome manually in either .gnomerc or .bash_profile. 
 
 =Installing with DEBs on a 32 or 64 bit system=
 You can download the deb directly from the PPA page and install it manually. Note that using this method, you won't get automatic updates!
