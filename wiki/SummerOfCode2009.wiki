@@ -1,5 +1,72 @@
 #summary Page about the summer of Code 2009 with modalities, ideas..
 = Introduction =
+Link ID:
+	(required) 	
+Group Name:
+	(required) 
+The GlobalMenu Project	
+Home Page URL:
+	(required) 	
+http://code.google.com/p/gnome2-globalmenu/
+Public Email:
+	(required) 	
+pierre.slamich@gmail.com
+Description:
+	(required) 	
+
+The GlobalMenu Project aims to bring the features of modern document-centric desktops to Linux, especially global menus in its first phase. This task is actually quite hefty, given our aim for a standards-based cross-desktop solution, including Gnome, KDE and XFCE, and possibly more, thanks to a carefully designed specification.
+Our other task is to enable the most popular toolkits and applications to detach their menus and thus provide compatibility.
+
+Why is your group applying to participate? What do you hope to gain by participating?
+	(required) 	
+We hope to foster the growth of the Document-centric approach as the Open Source scene is trying to catch up on MacOSX which is the only other big player in that area. We also hope to find students passionate about this approach to the Desktop, and to expand their skills who would like  already have skills in Free Software
+
+What is the main public mailing list for your group?
+	(required) 	
+Where is the main IRC channel for your group?
+	(required) 	
+What criteria do you use to select the members of your group? Please be as specific as possible.
+	(required) 	
+Has your group participated previously? If so, please summarize your involvement and any past successes and failures.
+		
+If your group has not previously participated, have you applied in the past? If so, for what sort of participation?
+		
+What license does your organization use?
+	(required) 	See the official list.
+What is the URL to the ideas list of your organization?
+	(required) 	
+What is the main development mailing list for your group?
+	(required) 	
+What is the application template you would like contributors to your organization to use.
+						
+	
+	
+	
+								
+Font family	
+	
+Font size	
+	
+Paragraph	
+	
+																											
+	(required) 	
+What is your plan for dealing with disappearing contributors?
+	(required) 	
+What is your plan for dealing with disappearing members?
+	(required) 	
+We have members in Germany, China, France, England and Italy to chase them and hunt them down ;-)
+More seriously, we'll do all that you'd expect, and more.
+I'd say:
+-listen for any problems, and make it clear to announce any snags proactively (even if they don't actually happen)
+-provide very quick feedback
+-never give up without being intrusive or annoying in a way that could further hinder the motivation.
+What steps will you take to encourage contributors to interact with your community before, during, and after the program?
+	(required) 	
+What will you do to ensure that your accepted contributors stick with the project after the program concludes?
+	(required) 	
+Please select your backup group administrator.
+
 
 == About Google SOC ==
 Google is sponsoring students to work during this summer on open source projects.
