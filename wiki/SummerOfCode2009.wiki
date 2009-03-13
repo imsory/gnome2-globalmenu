@@ -18,8 +18,6 @@ Yu Feng, Luca, Mingxi Wu; the assignment will be decided later on.
 
 = Ideas =
 
-Ordered by the priority.
-
 == XFCE port of Global Menu ==
 
 === Background ===
