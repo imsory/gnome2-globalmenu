@@ -4,10 +4,12 @@ Link ID:
 	(required) 	
 Group Name:
 	(required) 
-The GlobalMenu Project	
+The GlobalMenu Project
+	
 Home Page URL:
 	(required) 	
 http://code.google.com/p/gnome2-globalmenu/
+
 Public Email:
 	(required) 	
 pierre.slamich@gmail.com
@@ -33,11 +35,16 @@ Has your group participated previously? If so, please summarize your involvement
 If your group has not previously participated, have you applied in the past? If so, for what sort of participation?
 		
 What license does your organization use?
-	(required) 	See the official list.
+	(required) 	
+GNU General Public License v2
+
+See the official list.
 What is the URL to the ideas list of your organization?
 	(required) 	
+http://code.google.com/p/gnome2-globalmenu/wiki/SummerOfCode2009
 What is the main development mailing list for your group?
 	(required) 	
+http://groups.google.com/group/gnome-globalmenu
 What is the application template you would like contributors to your organization to use.
 						
 	
