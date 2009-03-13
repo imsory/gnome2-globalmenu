@@ -1,103 +1,90 @@
 #summary Page about the summer of Code 2009 with modalities, ideas..
 = Introduction =
-Link ID:
-	(required) 	
-Group Name:
-	(required) 
-The GlobalMenu Project
-	
-Home Page URL:
-	(required) 	
-http://code.google.com/p/gnome2-globalmenu/
+Link ID:	
+Group Name: The GlobalMenu Project
+Home Page URL: http://code.google.com/p/gnome2-globalmenu/
+Public Email: pierre.slamich@gmail.com
 
-Public Email:
-	(required) 	
-pierre.slamich@gmail.com
 Description:
-	(required) 	
 
 The GlobalMenu Project aims to bring the features of modern document-centric desktops to Linux, especially global menus in its first phase. This task is actually quite hefty, given our aim for a standards-based cross-desktop solution, including Gnome, KDE and XFCE, and possibly more, thanks to a carefully designed specification.
 Our other task is to enable the most popular toolkits and applications to detach their menus and thus provide compatibility.
 
 Why is your group applying to participate? What do you hope to gain by participating?
-	(required) 	
-We hope to foster the growth of the Document-centric approach as the Open Source scene is trying to catch up on MacOSX which is the only other big player in that area. We also hope to find students passionate about this approach to the Desktop, and to expand their skills to enable them to make further progress in the Free Desktop area, and possibly as a member of the GlobalMenu project. who would like already have skills in Free Software
+We hope to foster the growth of the Document-centric approach as the Open Source scene is trying to catch up on MacOSX which is the only other big player in that area. We also hope to find students passionate about this approach to the Desktop, and to expand their skills to enable them to make further progress in the Free Desktop area, and possibly as a member of the GlobalMenu project. 
 
 What is the main public mailing list for your group?
-	(required) 	
 http://groups.google.com/group/gnome-globalmenu
+
 Where is the main IRC channel for your group?
-	(required) 	
+We don't have an IRC channel. 
+
 What criteria do you use to select the members of your group? Please be as specific as possible.
-	(required) 	
-We use patch submissions as a basis, as well as clear motivation (members have to step forward, explain what they can bring
+
+We use patch submissions as a basis, as well as clear motivation. Members have to step forward, explain what they can bring - not neccesarily in a formal way.
 
 Has your group participated previously? If so, please summarize your involvement and any past successes and failures.
 
 We never applied to SoC. 
 		
-
-
 If your group has not previously participated, have you applied in the past? If so, for what sort of participation?
 
-The project lead sucessfully applied to GHOP though. He also applied for GSoc, his application wasn't selected but nevertheless went on to implement its summer project.
+The project itself applied for GSOC2008 as a project mentored by GNOME project. The project was not selected, although the planned summer code project were eventually implemented, as decribed in the application. (ref needed)
 		
 What license does your organization use?
-	(required) 	
 GNU General Public License v2
 
-See the official list.
-
-
 What is the URL to the ideas list of your organization?
-	(required) 	
 http://code.google.com/p/gnome2-globalmenu/wiki/SummerOfCode2009
 
-
 What is the main development mailing list for your group?
-	(required) 	
 http://groups.google.com/group/gnome-globalmenu
 
 What is the application template you would like contributors to your organization to use.
 
+Your application must be written in English and contain a detailed description of your project proposal, even if it is a proposed idea. If you are confused, post a message to the main mail list of the project at http://groups.google.com/group/gnome-globalmenu.
 
-Your application must be written in English and contain a detailed description of your project proposal (even if it's a proposed idea).  We're especially interested in the following questions (but not exclusively):
+We are especially interested in the following questions. Feel free to add your own thoughts, these are not exclusive.
 
-    * What is its ultimate goal?
-    * What components will it have?
+    * What is the project's ultimate goal?
     * What benefits does it have for GlobalMenu, its community and the upstream desktop projects?
+    * What components will the project have?
     * Why you'd like to complete this particular project?
     * How do you plan to achieve completion of your project?
-          o We' like to see a schedule with dates and important milestones/deliveries. 
-    * Why do you think you are be the best person to work on this project?
-    * What are your past experiences (if any) with the open source world?
-    * Could you describe us your view of the ideal desktop ? Why are you interested in Document-centric ideas? 
-    * Please (if possible) attach a link to a bug containing a patch you've written (in any project related to your application - be it GlboalMenu, an upstream project or any relevant open-source project.			
+       o A schedule with dates and important milestones/deliveries will be sufficient.
+    * Why shouble you be the right one to work on this project?
+    * What are your past experiences (if any) within the open source software?
+    * Could you describe us your perspective of an ideal desktop? Why are you interested in the Document-Centric idea? 
+    * Please (if applicable) attach a link to a bug containing a patch you've written (in any project related to your application - be it GlboalMenu, an upstream project or any relevant open-source project.			
 	
-We love neat application and do not have clear guidelines for the format. BUT It will of course influence us in our selection. We indeed tend to think that both content and presentation are important (why else would we work on a document-centric desktop ?) .
+We love neat application and do not have clear guidelines for the format. BUT it will of course influence us in our selection. Proofreading is a must. We indeed tend to think that both content and presentation are important. Anyways, why else would we work on a document-centric desktop ?
 																					
-	(required) 	
 What is your plan for dealing with disappearing contributors?
-	(required) 	
-We have members in Germany, China, France, England and Italy to chase them and hunt them down ;-)
-More seriously, we'll do all that you'd expect, and more.
-I'd say:
--listen for any problems, and make it clear to announce any snags proactively (even if they don't actually happen)
--provide very quick feedback
--never give up without being intrusive or annoying in a way that could further hinder the motivation.
+
+We have people in Germany, China, France, England and Italy to chase them and hunt them down ;-)
+More seriously, we can do all that you would expect, and more.
+ - Listen for any problems, and make it clear to announce any snags proactively (even if they don't actually happen)
+ - Provide very quick feedback
+ - Never give up without being intrusive or annoying in a way that could further hinder the motivation.
+
 We need a physical address and phone number, or any way to communicate face to face with the students (more than chat or IRC)
-A regular meeting will be set up between the mentor and the student and it is the student's responsibility to show up in the meeting to ensure his existence and the good progress of the Summer project. If the student doesn't show up for couple of meetings (say 2 or 3) without valid reason, we'll consider the project as aborted.
+A regular meeting will be set up between the mentor and the student. The student is responsible to show up in the meeting to ensure his existence and the good progress of the summer project. If the student does not show up for 2 continues meetings without valid reason, we consider the student as disappeared, and project as aborted.
 
 What is your plan for dealing with disappearing members?
-	(required) 	
-We've never faced disappearing members, and we have a policy of warning other members ahead when we expect a rough week due to personal work. What we do is to document our work in a detailed basis so that we could all theoretically drop dead without jeopardizing the project. This stems from the history of the project which developed from an orphaned hack.
+We have never faced disappearing members.
+The team's policy is to 
+- Politely warn other members ahead when a rough week due to personal work arrives. 
+- Document the work in a detailed basis so that we could all theoretically drop dead without jeopardizing the project. 
+
+This policy stems from the history of the project which developed from an orphaned hack.
 
 What steps will you take to encourage contributors to interact with your community before, during, and after the program?
-	(required) 
-We believe in the Release Early , Release Often Mantra, so we'll make sure that the code can be tested early by the community and users, for the student to get additional feedback beyond its mentor. We'll also make sure that he gets feedback from upstream if applicable thanks to our connexion with upstream devs.	
+Release Early Release Often. 
+If a project is chosen, we will introduce the contributor to the community at the first time. 
+Whenever it is practical, we encourage the contributor to push the code to the community and the users, in order to receive additional feedback beyond the mentors. We will also make sure that he gets feedback from upstream(if applicable) thanks to our connection with upstream projects.	
 
 What will you do to ensure that your accepted contributors stick with the project after the program concludes?
-	(required) 	
+
 Normally, selection and the very special nature of the project should do the work, but we have many ideas to keep people busy, very rewarding mini-projects that are not too much time consuming, especially for students, and we hope that the relationship (Guanxi) built from this summer will last. We focus on reward, as all the work is highly visible. We'll of course take care ourselves after the summer of the code, and keep looking and solving potential bugs. We want to avoid the "Big Patch unsuitable for inclusion and waiting for review" which demotivates the student. We'll try to merge his work even before completion if possible and where relevant.
 
 Please select your backup group administrator.
