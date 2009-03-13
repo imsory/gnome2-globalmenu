@@ -23,6 +23,7 @@ We hope to foster the growth of the Document-centric approach as the Open Source
 
 What is the main public mailing list for your group?
 	(required) 	
+http://groups.google.com/group/gnome-globalmenu
 Where is the main IRC channel for your group?
 	(required) 	
 What criteria do you use to select the members of your group? Please be as specific as possible.
