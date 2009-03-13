@@ -1,8 +1,13 @@
 #summary Page about the summer of Code 2009 with modalities, ideas..
 = Introduction =
+
+http://socghop.appspot.com/
+
 Link ID:	
 Group Name: The GlobalMenu Project
+
 Home Page URL: http://code.google.com/p/gnome2-globalmenu/
+
 Public Email: pierre.slamich@gmail.com
 
 Description:
