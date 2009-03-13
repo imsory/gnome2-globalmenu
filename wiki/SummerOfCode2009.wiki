@@ -1,7 +1,6 @@
 #summary Page about the summer of Code 2009 with modalities, ideas..
 
-= TOC =
-<wiki:toc max_depth="1" />
+<wiki:toc max_depth="2" />
 
 = About Google SOC =
 
@@ -76,8 +75,8 @@ Patch XUL runner to implement a Global Menu client inside it.
  * C++ experience
  * Knowledge in X11 or GDK
 
-== Patch OpenOffice ==
-It has been long known that OpenOffice doesn't use native GTK, and therefore can not benefit from the Global Menu's GTK Plugin. However no fully usable office suite that utilizes native GTK is available. The result is direct: on a desktop with Global Menu enabled, the default office suite, which is accessed by the user almost everyday becomes an exception that behaves differently from all other applications. Too bad. This proposed SOC project aims to provide a patch for the OpenOffice & Global Menu users.
+== Patch Open Office ==
+It has been long known that Open Office doesn't use native GTK, and therefore can not benefit from the Global Menu's GTK Plugin. However no fully usable office suite that utilizes native GTK is available. The result is direct: on a desktop with Global Menu enabled, the default office suite, which is accessed by the user almost everyday becomes an exception that behaves differently from all other applications. Too bad. This proposed SOC project aims to provide a patch for the Open Office & Global Menu users.
 
 References: 
  * Global Menu Specification - http://code.google.com/p/gnome2-globalmenu/wiki/GlobalMenuSpecification
@@ -113,9 +112,9 @@ Patch Java Swing Library to implement a Global Menu client inside it.
 
 
 
-= Application =
+= Application as an GSoC Organization =
 
- - Link to the SOC application page: http://socghop.appspot.com/
+ - Link to the GSoC application page: http://socghop.appspot.com/
 
  - Group Name: The GlobalMenu Project
 
