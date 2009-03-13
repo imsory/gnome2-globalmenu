@@ -79,18 +79,27 @@ We love neat application and do not have clear guidelines for the format. BUT It
 	(required) 	
 What is your plan for dealing with disappearing contributors?
 	(required) 	
-What is your plan for dealing with disappearing members?
-	(required) 	
 We have members in Germany, China, France, England and Italy to chase them and hunt them down ;-)
 More seriously, we'll do all that you'd expect, and more.
 I'd say:
 -listen for any problems, and make it clear to announce any snags proactively (even if they don't actually happen)
 -provide very quick feedback
 -never give up without being intrusive or annoying in a way that could further hinder the motivation.
-What steps will you take to encourage contributors to interact with your community before, during, and after the program?
+We need a physical address and phone number, or any way to communicate face to face with the students (more than chat or IRC)
+A regular meeting will be set up between the mentor and the student and it is the student's responsibility to show up in the meeting to ensure his existence and the good progress of the Summer project. If the student doesn't show up for couple of meetings (say 2 or 3) without valid reason, we'll consider the project as aborted.
+
+What is your plan for dealing with disappearing members?
 	(required) 	
+We've never faced disappearing members, and we have a policy of warning other members ahead when we expect a rough week due to personal work. What we do is to document our work in a detailed basis so that we could all theoretically drop dead without jeopardizing the project. This stems from the history of the project which developed from an orphaned hack.
+
+What steps will you take to encourage contributors to interact with your community before, during, and after the program?
+	(required) 
+We believe in the Release Early , Release Often Mantra, so we'll make sure that the code can be tested early by the community and users, for the student to get additional feedback beyond its mentor. We'll also make sure that he gets feedback from upstream if applicable thanks to our connexion with upstream devs.	
+
 What will you do to ensure that your accepted contributors stick with the project after the program concludes?
 	(required) 	
+Normally, selection and the very special nature of the project should do the work, but we have many ideas to keep people busy, very rewarding mini-projects that are not too much time consuming, especially for students, and we hope that the relationship (Guanxi) built from this summer will last. We focus on reward, as all the work is highly visible. We'll of course take care ourselves after the summer of the code, and keep looking and solving potential bugs. We want to avoid the "Big Patch unsuitable for inclusion and waiting for review" which demotivates the student. We'll try to merge his work even before completion if possible and where relevant.
+
 Please select your backup group administrator.
 
 
