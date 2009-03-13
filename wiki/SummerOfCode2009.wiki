@@ -37,7 +37,7 @@ If your group has not previously participated, have you applied in the past? If 
 The project itself applied for GSOC2008 as a project mentored by GNOME project. The project was not selected, although the planned summer code project were eventually implemented, as decribed in the application. (ref needed)
 		
 What license does your organization use?
-GNU General Public License v2
+GNU General Public License v2, and GNU Lesser General Public License v2.
 
 What is the URL to the ideas list of your organization?
 http://code.google.com/p/gnome2-globalmenu/wiki/SummerOfCode2009
