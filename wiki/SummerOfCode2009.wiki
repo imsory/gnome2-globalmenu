@@ -33,9 +33,13 @@ What criteria do you use to select the members of your group? Please be as speci
 We use patch submissions as a basis, as well as clear motivation (members have to step forward, explain what they can bring
 
 Has your group participated previously? If so, please summarize your involvement and any past successes and failures.
+
 We never applied to SoC. 
 		
+
+
 If your group has not previously participated, have you applied in the past? If so, for what sort of participation?
+
 The project lead sucessfully applied to GHOP though. He also applied for GSoc, his application wasn't selected but nevertheless went on to implement its summer project.
 		
 What license does your organization use?
@@ -43,14 +47,20 @@ What license does your organization use?
 GNU General Public License v2
 
 See the official list.
+
+
 What is the URL to the ideas list of your organization?
 	(required) 	
 http://code.google.com/p/gnome2-globalmenu/wiki/SummerOfCode2009
+
+
 What is the main development mailing list for your group?
 	(required) 	
 http://groups.google.com/group/gnome-globalmenu
 
 What is the application template you would like contributors to your organization to use.
+
+
 Your application must be written in English and contain a detailed description of your project proposal (even if it's a proposed idea).  We're especially interested in the following questions (but not exclusively):
 
     * What is its ultimate goal?
