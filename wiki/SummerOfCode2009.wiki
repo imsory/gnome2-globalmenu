@@ -85,7 +85,12 @@ Whenever it is practical, we encourage the contributor to push the code to the c
 
 What will you do to ensure that your accepted contributors stick with the project after the program concludes?
 
-Normally, selection and the very special nature of the project should do the work, but we have many ideas to keep people busy, very rewarding mini-projects that are not too much time consuming, especially for students, and we hope that the relationship (Guanxi) built from this summer will last. We focus on reward, as all the work is highly visible. We'll of course take care ourselves after the summer of the code, and keep looking and solving potential bugs. We want to avoid the "Big Patch unsuitable for inclusion and waiting for review" which demotivates the student. We'll try to merge his work even before completion if possible and where relevant.
+Normally, the selection and the very special nature of the project should do the work, but we have many ideas to keep people busy, very rewarding mini-projects that are not too much time consuming, especially for students. 
+
+The team sincerely hope that the relationship (关系) built from this summer will last far more beyond this short period. We focus on reward, as all the work is highly visible. 
+After the summer code period, we will be maintaining the projects in case if the contributor decides to leave the project.
+
+In order to avoid frustrating the students with the so called 'Big Patch unsuitable for inclusion and waiting for review' issue, we will try to merge the work before completion, if possible and where relevant.
 
 Please select your backup group administrator.
 
@@ -100,6 +105,8 @@ Global Menu is the globally-shared menu bar of all applications launched in your
 This project introduces document-oriented concepts into GNOME, and improves GNOME's respect for Fitts's law. Most GTK applications work just fine with Global Menu. See ApplicationCompatibility for a list of them.
 
 = Mentors =
+
+Yu Feng, Luca, Mingxi Wu.
 
 = Ideas =
 
