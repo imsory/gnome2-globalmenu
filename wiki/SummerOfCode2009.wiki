@@ -10,7 +10,7 @@ Google is sponsoring students to work during this summer on open source projects
 
 Global Menu is the globally-shared menu bar of all applications launched in your desktop session.
 
-This project introduces document-oriented concepts into GNOME, and improves GNOME's respect for Fitts's law. Most GTK applications work just fine with Global Menu. See ApplicationCompatibility for a list of them.
+This project introduces document-oriented concepts into open source desktop enviroments. In GNOME, it improves GNOME's respect for Fitts's law. Most GTK applications work just fine with the current GNOME portion of Global Menu. 
 
 = Mentors =
 
