@@ -7,6 +7,7 @@ AM_CPPFLAGS = \
 		$(NULL)
 
 man_MANS = gnome-globalmenu.1
+doc_DATA = README COPYING
 
 EXTRA_DIST = \
 	$(man_MANS) \
