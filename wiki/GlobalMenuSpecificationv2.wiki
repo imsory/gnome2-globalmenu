@@ -7,8 +7,8 @@
  * Client 
  * Server 
  * ...
- * Local Popup Menu
- * Remote Popup Menu
+ * Client-side Popup Menu
+ * Server-side Popup Menu
 
 = Roles ==
 == Client ==
@@ -23,6 +23,7 @@
 = X11 Specified Topics =
 == Window Properties ==
 == Popup Menu Life Cycle ==
-
+=== Client-side ===
+=== Server-side ===
 
 = Disclaimer =
