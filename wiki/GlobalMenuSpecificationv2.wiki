@@ -1,0 +1,28 @@
+#summary One-sentence summary of this page.
+<wiki:toc />
+
+= Introduction =
+
+= Synopsis =
+ * Client 
+ * Server 
+ * ...
+ * Local Popup Menu
+ * Remote Popup Menu
+
+= Roles ==
+== Client ==
+
+== Server ==
+
+= Interfaces =
+
+== XML: Interface betwen Client and Server ==
+== Binary Encoded XML ==
+
+= X11 Specified Topics =
+== Window Properties ==
+== Popup Menu Life Cycle ==
+
+
+= Disclaimer =
