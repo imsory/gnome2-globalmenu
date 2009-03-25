@@ -1,0 +1,7 @@
+This is the idea page for an GNOME GSoC Project Project.
+
+= Global Menu integration of GnomeShell =
+
+Benefits: 
+
+Requirements:
