@@ -108,7 +108,21 @@ Patch Java Swing Library to implement a Global Menu client inside it.
  * Perhaps also C/C++ depending on the language the swing library uses.
  * Knowledge in X11
 
+==Add an instant preview of files functionnality to Nautilus== (mentor: BadChoice)
+=== Background ===
+Gloobus is an extension of Gnome designed to enable a full screen preview of any kind of file. Designed as an extendable, standards-compliant previewer , Gloobus enables instant previewing of your files, without even having to open them. Hit space, and BANG, here's the content of your file, displayed as it would if it was opened. Currently, Gloobus supports MP3, TXT , PDF, JPG, PNG, TTF. There's also a Coverflow-like part which is being set aside for the time being.
 
+Your proposal may include refactoring and propose a Nautilus extension to integrate the Coverflow-like plugin into Nautilus. 
+It may alternatively (or in addition) propose a given number of preview plugins for some extensions (eg odt, xcf...)
+=== Requirements ===
+ * C++ knoweldege
+ * Orientated object knoweldege
+ * GTK knoweldege appreciated but it can be easily learned
+ * for the Coverflow part, openGL or Clutter is required.
+ * Note: https://edge.launchpad.net/gloobus
+
+
+For guidance on how to shape your proposal, feel free to contact BadChoice at the above
 
 = Application as an GSoC Organization =
 
