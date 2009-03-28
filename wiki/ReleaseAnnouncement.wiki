@@ -1,6 +1,6 @@
 #summary Release Announcement.
 
-The team proudly presents Global Menu {{{VERSION}}} to the public.
+The Global Menu Team proudly presents Global Menu {{{VERSION}}} to the public.
 
 The source code has been frozen at:
 
@@ -10,7 +10,7 @@ Downloads:
 
 Source: http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q={{{VERSION}}}
 
-Ubuntu: !!!PPA???
+Ubuntu: http://code.google.com/p/gnome2-globalmenu/wiki/InstallingonUbuntu
 
 Fedora: http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q={{{VERSION}}}
 
