@@ -93,7 +93,7 @@ For extra goodness, we’ve built in window actions so that you can get full con
 
 ===Standard naming=== 
 
-Now, the label in GlobalMenu is consistant with your main menu for extra simplicity!
+Now, the label in GlobalMenu is consistent with your main menu for extra simplicity!
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/ConsistantNaming.png">
 
