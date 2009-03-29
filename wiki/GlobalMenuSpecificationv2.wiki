@@ -12,13 +12,24 @@
 
 = Roles ==
 == Client ==
-
+A client is a document window which requests a menu shown in the global menu area.
+Typical examples of a client are
+ * 
+ *
+ *
 == Server ==
+A server is an application or a component of an application that provide an area to show menus for the clients.
+
+*It is not specified which client's menu is shown in the server.*
 
 = Interfaces =
+== Communication Channel ==
+The communication channel is established via XWindow PropertyNotify and window properties.
 
-== XML: Interface betwen Client and Server ==
-== Binary Encoded XML ==
+== Global Menu XML ==
+The client and 
+
+== Binary Encoded XML? ==
 
 = X11 Specified Topics =
 == Window Properties ==
