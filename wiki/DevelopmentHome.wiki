@@ -48,9 +48,11 @@ We are at 0.7.
       * f10 to activate the menubar.
       * window management
       * rgba support (->murrine)
-  * 0.8: `plasma`
-    * experimental plasma plugin
-    * experimental xfce plugin
+  * 0.8: `unification`
+    * Global Menu Specification V2
+    * QT/KDE unification
+    * `?` Switcher + Default Menu replaces gnome-panel-menu-bar and gnome-panel-menu
+    * `?` Better user experience with compiz
   * 1.0: `futurama`
     * Stable Release!
     * work on 64bit and PPC.
