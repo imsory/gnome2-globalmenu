@@ -1,0 +1,58 @@
+#summary One-sentence summary of this page.
+
+== GlobalMenu Application for inclusion as a GNOME module ==
+
+Steps to follow
+
+   1. Read the task-oriented requirements of GNOME Module maintainers.
+   2. Read MaintainersCorner so you know about the day-to-day tasks of a GNOME maintainer.
+   3. Have the maintainer (non-maintainer proposals are invalid) send an email to the desktop-devel mailing list. Requirements for the email:
+          * Purpose: Describe what your module is and what it does.
+
+          * Target: Mention which release set the module is being proposed for (admin, desktop, developer tools, developer platform, platform bindings)
+
+          * Dependencies: Specify any new external dependencies your module would introduce (or any newer version of an existing external dependency that you would need). If there are no new external dependencies, say so.
+
+          * Resource usage: Currently we don't use any part of the GNOME infrastructure or ressources for the project. We use Google Code and Launchpad to some extent (for Ubuntu packages and translations)Specify which resources are and will be used for tarball hosting, source control, and bug tracking (e.g. GNOME FTP, GNOME SVN, GNOME bugzilla).
+
+          * Adoption: GlobalMenu hasn't been adopted by any distribution as far as we know, as it only reached maturity and suitability for inclusion in mainstream releases. We also faced some inclusion problems: when asking for slots List any distros/OSes, apps, libraries, etc. that already use your software. This is particularly important if you intend for several other GNOME modules to have a hard dependency on yours (e.g. core libraries).
+
+          * GNOME-ness, community: 
+Briefly list steps taken to work with the community and fit in with the various sub-projects of GNOME (internationalization, user documentation, accessibility, usability, bugsquad, etc.), or planned work with these groups. (We understand that most small new modules may not be thoroughly integrated yet; this requirement is mostly here because of a high profile project which made no attempt to work with the community or use GNOME resources and did the bare minimum amount of work (or less) with others when complaints came out.)
+          * License
+GlobalMenu, in order to be compatible with GNOME is licensed under the LGPL 2+, as other Gnome applets. Our documentation is licensed under µµµ to follo the GNOME guidelines, and we're willing to make any changes should it be necessary in the future. We have tracked and listed all our contributors so that our licensing changes can be dealt with promptly.
+          * Miscellaneous: Please list any additional special requirements, helpful information, etc. that would be useful in considering your module. 
+   4.Build testing: Make sure the module is added to the proposed modules list in the jhbuild moduleset. Ping the GARNOME mailing list to include it too.
+   5.Record the proposal: Maintainers of proposed modules should make sure their modules are listed in the relevant wiki pages (for example, 2.23 desktop suite page: http://live.gnome.org/TwoPointTwentythree/Desktop) with all the details (module name, link to svn, branch to use in svn, maintainers names, etc.) 
+
+FAQ
+
+    * When should I propose a new module?
+          o The module isn't a library being requested by other official modules.
+    * I need a new dependency. What should I do?
+          o We don't need any new dependancies., we just need an up-to-date version of New dependencies for features should be added as soon as possible. There are three possibilities for dependencies: make them optional, bless them as external or include them in one of our suites. New dependencies should be known before feature freezes. A dependency can be proposed for inclusion AFTER the 2.23.1 release because it might need more time to be ready. 
+    * How to propose an external dependency?
+          o If you want to add a new dependency, make a good case for it on desktop-devel-list (this may only require a few sentences). In particular, explain any impact (compile and run time) on other modules, and list any additional external dependencies it would pull in as well as any requirements on newer versions of existing external dependencies. Be prepared for others to take a few days to test it (in particular, to ensure it builds) before giving a thumbs up or down. 
+
+How are decisions taken
+
+Judgement Criteria
+
+Modules are declared by the release-team, who base their decision on community consensus. Since new module decisions are predominantly subjective, this can make the decisions seem somewhat fickle at times. However, we do have some general guidelines for the judgement of modules:
+
+    * Our pool of developpers with way too much time on their hands, committed doc writers, bug hunters and translators is an asset to keep deadlines, and to bring innovation, along with quality assurance. We have a good track record, as can be seen throughout our issue tracker and our Ubuntuforum thread. We strive to keep aware of all the evolutions going around, we successfully coordinated with KDE for the spread of the GlobalMenu spec beyond our initial GNOME focus.Willingness and ability to follow release rules and release schedule.
+    * Progress on a regular basis: Modules should show a steady progress throughout the release cycle. Module owners should show they can hit release deadlines and towards the end concentrate on stabilization over feature addition. Maintainers must be able to maintain regular releases in sync with the rest of the desktop.
+    * Improving overall desktop usability: New applications should make the GNOME Desktop a more useful place to hack, work, and play in. That might include, for example, better feature parity with other desktops, cool new things other desktops don't have, feature upgrades from older GNOME versions, or better opportunities for integration with other GNOME applications. The goal is not to include every gtk2 application available, but to include the highest quality applications that will make us competitive and which offer a stable platform for improvement and integration going forward.
+    * Developer attitude: Lead hackers of new applications have to be willing to work with other teams, including UI, a11y, etc. We want to have a community committed to working together towards building the best possible desktop - where best is not just 'coolest' and 'most powerful' but also 'most usable' and 'most accessible.' That definitely means flexibility and compromise are important, both for maintainers and team members.
+    *
+
+      GNOME-ness: Apps must use gtk2 and other GNOME2 technologies, and have a GNOME look and feel. Deprecated parts of the platform (like gnome-config) have to be avoided, in favor of GNOME2 technologies (like gconf.) Glade should be used whenever possible to aid in a11y and i18n work. The GNOME2 porting guide has more details on making an app a GNOME2 app.
+    * Free-ness: Apps must be under a Free or Open license and support open standards and protocols. In case of doubt about the module license, send an email to the Release Team and the desktop-devel mailing list. Support of proprietary protocols and closed standards is part of the world we live in, but all applications that support closed protocols should also support open equivalents where those exist, and should default to those if at all possible while still serving their intended purpose.
+    * Quality: The app has basically no repeatable/repeated known crashers. Major features/buttons/options/etc. work or are removed. The developers are working to fix other bugs at a reasonable rate. The developers care about bug reports in bugzilla.gnome.org.
+    * UI: The hackers should cooperate as much as possible with the UI team to improve the general usability of the app. This might be expected to minimally include (but is certainly not limited to) UI issues like GNOME look and feel, HIG compliance, careful choice of default settings, and clean interface design.
+    * Accessibility: The app is compliant with a11y documentation to as great an extent as possible, and the maintainers have made good faith efforts to fix all a11y bugs filed in a timely manner by the a11y team.
+    * Internationalization is already done in the Gnome compliant: All text is i18n-ized. POTFILES.in and POTFILES.skip should be updated regularly. In addition, all reasonable steps have been taken to localize other parts of the application that might be region-dependent, like temperatures, times, etc.
+    * Use of GNOME resources: Modules must use GNOME FTP for releases. Modules ought to use GNOME Bugzilla and GNOME SVN (there had better be a very good reason for not doing so, such as freedesktop.org hosted libraries designed to be used by both GNOME and KDE).
+    *
+
+      Documentation: We already have some existing documentation, and our code is clear and clean. We're willing whether to help the existing docs team, let them do as they please or join them. It's really up to them, but we're motivated to make great documentation available, even if we strive to make GlobalMenu as simple as it can possibly be while increasing its power.Maintainers must be willing to work with the docs team, making sure that docs are accessible through help buttons and build properly during the build process. Documentation of new modules must use gnome-doc-utils so it can be easily translated. New modules are not expected to have documentation already. Maintainers of proposed modules are, however, expected to contact the GNOME Documentation Team between the proposals and the decisions (earlier is better). Please do this even if your module already has documentation. 
