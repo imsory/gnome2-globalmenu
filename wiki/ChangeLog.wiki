@@ -14,7 +14,7 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.5
   * Improved GTK Module efficiency, especially with GVIM (Issue 365)
   * Vertical Panel unusable because of the ellipsizing (Issue 379)
   * Reworked overflown menu, improving the transparency (Issue 104)
-  * Alt-<Key> (Issue 301)
+  * `Alt-<Key>` (Issue 301)
   * License cleaned up
   
 
