@@ -16,7 +16,8 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.5
   * Reworked overflown menu, improving the transparency (Issue 104)
   * `Alt-<Key>` (Issue 301)
   * License cleaned up (Issue 383)
-  
+  * Added some translations
+  * Updated some translations
 
 ------------------------------
 gnome-globalmenu 0.7.4
