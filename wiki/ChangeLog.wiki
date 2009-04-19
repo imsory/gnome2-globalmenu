@@ -18,6 +18,8 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.5
   * License cleaned up (Issue 383)
   * Experimental hybrid submenu(popup menu) handling,
     Enabled by `export GLOBALMENU_GNOME_ARGS=--hybrid`
+  * Search Box is now case-insensitive.
+  * Mention about `export GTK_MODULES=globalmenu-gnome` if the module is not detected (Issue 399)
   * Added some translations
   * Updated some translations
 
