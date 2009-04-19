@@ -24,10 +24,20 @@ A server is an application or a component of an application that provide an area
 
 = Interfaces =
 == Communication Channel ==
+
 The communication channel is established via XWindow PropertyNotify and window properties.
+ * `_NET_GLOBALMENU_COMM_WINDOW`: xid of the communication window tied to the toplevel;
+   if set, the communication will be via this window instead of the toplevel window.
+ * `_NET_GLOBALMENU_MENU_EVENT`: an item is activated.
+   "%s", path of the activated item
+ * `_NET_GLOBALMENU_CLIENT_POPUP`: request a client side popup of the sub menu located by the given path at the given absolution screen coordinate.
+  "%s@%d,%d", path, abs_x, abs_y
+ * `_NET_GLOBALMENU_MENU_CONTEXT`: the global menu xml.
 
 == Global Menu XML ==
-The client and 
+
+Attributes:
+ * `client-side`
 
 == Binary Encoded XML? ==
 
