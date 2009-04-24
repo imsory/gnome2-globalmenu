@@ -1,5 +1,5 @@
 ------------------------------
-gnome-globalmenu 0.7.5(draft)
+gnome-globalmenu 0.7.5
 
 {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.5}}}
 
@@ -21,6 +21,7 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.5
   * Special case for GnomeDo's docky, patch from jassmith. (Issue 400)
   * Search Box is now case-insensitive.
   * Mention about `export GTK_MODULES=globalmenu-gnome` if the module is not detected (Issue 399)
+  * Completely quite-nize the applet when --verbose not given (Issue 406)
   * Added some translations
   * Updated some translations
 
