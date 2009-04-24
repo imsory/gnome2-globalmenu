@@ -9,11 +9,11 @@ Steps to follow
    3. Have the maintainer (non-maintainer proposals are invalid) send an email to the desktop-devel mailing list. Requirements for the email:
           * Purpose: Describe what your module is and what it does.
 
-          * Target: Mention which release set the module is being proposed for (admin, desktop, developer tools, developer platform, platform bindings)
+          * Target: The module is proposed for the desktop module set
 
-          * Dependencies: Specify any new external dependencies your module would introduce (or any newer version of an existing external dependency that you would need). If there are no new external dependencies, say so.
+          * Dependencies: We just need Vala 0.6.0 to build (0.7.0 has currently a bug which prevents us from bumping to 0.7.0). But no new dependency.
 
-          * Resource usage: Currently we don't use any part of the GNOME infrastructure or ressources for the project. We use Google Code and Launchpad to some extent (for Ubuntu packages and translations)Specify which resources are and will be used for tarball hosting, source control, and bug tracking (e.g. GNOME FTP, GNOME SVN, GNOME bugzilla).
+          * Resource usage: Currently we don't use any part of the GNOME infrastructure or ressources for the project. We use Google Code (for issue tracking, tarball and code hosting) and Launchpad to some extent (for Ubuntu packages and translations). We'll be of course very happy to move everything to the GNOME infrastructure should our inclusion be accepted.
 
           * Adoption: GlobalMenu hasn't been adopted by any distribution as far as we know, as it only reached maturity and suitability for inclusion in mainstream releases. We also faced some inclusion problems: when asking for slots List any distros/OSes, apps, libraries, etc. that already use your software. This is particularly important if you intend for several other GNOME modules to have a hard dependency on yours (e.g. core libraries).
 
