@@ -1,7 +1,10 @@
 #summary One-sentence summary of this page.
-
+desktop-devel   ddd-list at --- gnome.org
 == GlobalMenu Application for inclusion as a GNOME module ==
-
+Hi,
+I'm proposing on behalf on the developpers working on GlobalMenu its inclusion either in gnome-applets or as a dependancy of GNOME.
+GlobalMenu is an applet that lets the user have its application menus be displayed in the Panel rather than in the Windows. For those who have used it, it's a bit like GNUStep or MacOS.
+It
 Steps to follow
 
    1. Read the task-oriented requirements of GNOME Module maintainers.
