@@ -4,28 +4,17 @@ desktop-devel   ddd-list at --- gnome.org
 Hi,
 I'm proposing on behalf on the developpers working on GlobalMenu its inclusion either in gnome-applets or as a dependancy of GNOME.
 GlobalMenu is an applet that lets the user have its application menus be displayed in the Panel rather than in the Windows. For those who have used it, it's a bit like GNUStep or MacOS.
-It
-Steps to follow
+You can see a screenshot of what it does at http://code.google.com/p/gnome2-globalmenu
 
-   1. Read the task-oriented requirements of GNOME Module maintainers.
-   2. Read MaintainersCorner so you know about the day-to-day tasks of a GNOME maintainer.
-   3. Have the maintainer (non-maintainer proposals are invalid) send an email to the desktop-devel mailing list. Requirements for the email:
-          * Purpose: Describe what your module is and what it does.
+ * Target: The module is proposed for the desktop module set
+ * Dependencies: We just need Vala 0.6.0 to build (0.7.0 has currently a bug which prevents us from bumping to 0.7.0). But no new dependency.
+ * Resource usage: Currently we don't use any part of the GNOME infrastructure or ressources for the project. We use Google Code (for issue tracking, tarball and code hosting) and Launchpad to some extent (for Ubuntu packages and translations). We'll be of course very happy to move everything to the GNOME infrastructure should our inclusion be accepted.
+ * Adoption: GlobalMenu hasn't been adopted by any distribution as far as we know, as it only reached maturity and suitability for inclusion in mainstream releases recently. We also faced some inclusion problems: when asking for inclusion, we're asked for reference. We currently face a chicken and egg problem.
+ * GNOME-ness, community: For the moment we've been mostly active in the development of VALA. We haven't had the strong need to interact for the moment with the internationalization, user documentation, accessibility, usability, bugsquad, etc. But we've filed several bugs related to this on our BTS and we will of course engage gracefully where needed.
+ * License : GlobalMenu, in order to be compatible with GNOME is licensed under the GPL 2+ and LGPL 2+, as other Gnome applets. Our documentation has been written by team members only and its license can be changed at any time (currently GPL 2+). We're willing to make any changes should it be necessary in the future. We have tracked and listed all our contributors so that our licensing changes can be dealt with promptly.
+ * Miscellaneous: Please list any additional special requirements, helpful information, etc. that would be useful in considering your module. 
 
-          * Target: The module is proposed for the desktop module set
-
-          * Dependencies: We just need Vala 0.6.0 to build (0.7.0 has currently a bug which prevents us from bumping to 0.7.0). But no new dependency.
-
-          * Resource usage: Currently we don't use any part of the GNOME infrastructure or ressources for the project. We use Google Code (for issue tracking, tarball and code hosting) and Launchpad to some extent (for Ubuntu packages and translations). We'll be of course very happy to move everything to the GNOME infrastructure should our inclusion be accepted.
-
-          * Adoption: GlobalMenu hasn't been adopted by any distribution as far as we know, as it only reached maturity and suitability for inclusion in mainstream releases recently. We also faced some inclusion problems: when asking for inclusion, we're asked for reference. We currently face a chicken and egg problem.
-
-          * GNOME-ness, community: 
-Briefly list steps taken to work with the community and fit in with the various sub-projects of GNOME (internationalization, user documentation, accessibility, usability, bugsquad, etc.), or planned work with these groups. (We understand that most small new modules may not be thoroughly integrated yet; this requirement is mostly here because of a high profile project which made no attempt to work with the community or use GNOME resources and did the bare minimum amount of work (or less) with others when complaints came out.)
-          * License
-GlobalMenu, in order to be compatible with GNOME is licensed under the LGPL 2+, as other Gnome applets. Our documentation is licensed under µµµ to follo the GNOME guidelines, and we're willing to make any changes should it be necessary in the future. We have tracked and listed all our contributors so that our licensing changes can be dealt with promptly.
-          * Miscellaneous: Please list any additional special requirements, helpful information, etc. that would be useful in considering your module. 
-   4.Build testing: Make sure the module is added to the proposed modules list in the jhbuild moduleset. Ping the GARNOME mailing list to include it too.
+4.Build testing: Make sure the module is added to the proposed modules list in the jhbuild moduleset. Ping the GARNOME mailing list to include it too.
    5.Record the proposal: Maintainers of proposed modules should make sure their modules are listed in the relevant wiki pages (for example, 2.23 desktop suite page: http://live.gnome.org/TwoPointTwentythree/Desktop) with all the details (module name, link to svn, branch to use in svn, maintainers names, etc.) 
         o We don't need any new dependancies., we just need an up-to-date version of New dependencies for features should be added as soon as possible. There are three possibilities for dependencies: make them optional, bless them as external or include them in one of our suites. New dependencies should be known before feature freezes. A dependency can be proposed for inclusion AFTER the 2.23.1 release because it might need more time to be ready. 
     * How to propose an external dependency?
@@ -43,3 +32,7 @@ GlobalMenu, in order to be compatible with GNOME is licensed under the LGPL 2+, 
     * Internationalization is already done in the Gnome compliant fashion. All text is i18n-ized and the app is localized (RTL).
     * Use of GNOME resources: While we don't currently use them, we'll be happy to switch should our inclusion be accepted
    * Documentation: We already have some existing documentationin our wiki, and our code is clear and clean. We're willing whether to help the existing docs team, let them do as they please or join them. It's really up to them, but we're motivated to make great documentation available, even if we strive to make GlobalMenu as simple as it can possibly be while increasing its power. We'll contact soon the GNOME Documentation Team to organize about the matter.
+
+ 1. Read the task-oriented requirements of GNOME Module maintainers.
+   2. Read MaintainersCorner so you know about the day-to-day tasks of a GNOME maintainer.
+   3. Have the maintainer (non-maintainer proposals are invalid) send an email to the desktop-devel mailing list. Requirements for the email:
