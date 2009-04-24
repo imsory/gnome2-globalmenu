@@ -13,13 +13,6 @@ You can see a screenshot of what it does at http://code.google.com/p/gnome2-glob
  * GNOME-ness, community: For the moment we've been mostly active in the development of VALA. We haven't had the strong need to interact for the moment with the internationalization, user documentation, accessibility, usability, bugsquad, etc. But we've filed several bugs related to this on our BTS and we will of course engage gracefully where needed.
  * License : GlobalMenu, in order to be compatible with GNOME is licensed under the GPL 2+ and LGPL 2+, as other Gnome applets. Our documentation has been written by team members only and its license can be changed at any time (currently GPL 2+). We're willing to make any changes should it be necessary in the future. We have tracked and listed all our contributors so that our licensing changes can be dealt with promptly.
  * Miscellaneous: Please list any additional special requirements, helpful information, etc. that would be useful in considering your module. 
-
-4.Build testing: Make sure the module is added to the proposed modules list in the jhbuild moduleset. Ping the GARNOME mailing list to include it too.
-   5.Record the proposal: Maintainers of proposed modules should make sure their modules are listed in the relevant wiki pages (for example, 2.23 desktop suite page: http://live.gnome.org/TwoPointTwentythree/Desktop) with all the details (module name, link to svn, branch to use in svn, maintainers names, etc.) 
-        o We don't need any new dependancies., we just need an up-to-date version of New dependencies for features should be added as soon as possible. There are three possibilities for dependencies: make them optional, bless them as external or include them in one of our suites. New dependencies should be known before feature freezes. A dependency can be proposed for inclusion AFTER the 2.23.1 release because it might need more time to be ready. 
-    * How to propose an external dependency?
-          o If you want to add a new dependency, make a good case for it on desktop-devel-list (this may only require a few sentences). In particular, explain any impact (compile and run time) on other modules
-
     * Our pool of developpers with way too much time on their hands, committed doc writers, bug hunters and translators is an asset to keep deadlines, and to bring innovation, along with quality assurance. We have a good track record, as can be seen throughout our issue tracker and our Ubuntuforum thread. We strive to keep aware of all the evolutions going around, we successfully coordinated with KDE for the spread of the GlobalMenu spec beyond our initial GNOME focus.Willingness and ability to follow release rules and release schedule.
     * Progress on a regular basis: We have an Italian dev, but we also have a German dev and a Chinese dev. Overall, we have thus time-conscious people ;-)
     * Improving overall desktop usability: New applications should make the GNOME Desktop a more useful place to hack, work, and play in. That might include, for example, better feature parity with other desktops, cool new things other desktops don't have, feature upgrades from older GNOME versions, or better opportunities for integration with other GNOME applications. The goal is not to include every gtk2 application available, but to include the highest quality applications that will make us competitive and which offer a stable platform for improvement and integration going forward.
@@ -33,6 +26,18 @@ You can see a screenshot of what it does at http://code.google.com/p/gnome2-glob
     * Use of GNOME resources: While we don't currently use them, we'll be happy to switch should our inclusion be accepted
    * Documentation: We already have some existing documentationin our wiki, and our code is clear and clean. We're willing whether to help the existing docs team, let them do as they please or join them. It's really up to them, but we're motivated to make great documentation available, even if we strive to make GlobalMenu as simple as it can possibly be while increasing its power. We'll contact soon the GNOME Documentation Team to organize about the matter.
 
+Thanks a lot for bearing with that long and overly detailed proposal. I look forward to your reviews, comments, suggestions, bashings, etc :-)
+
+Pierre
+
+-------
+
  1. Read the task-oriented requirements of GNOME Module maintainers.
    2. Read MaintainersCorner so you know about the day-to-day tasks of a GNOME maintainer.
-   3. Have the maintainer (non-maintainer proposals are invalid) send an email to the desktop-devel mailing list. Requirements for the email:
+   3. Have the maintainer (non-maintainer proposals are invalid) send an email to the desktop-devel mailing list. 
+
+4.Build testing: Make sure the module is added to the proposed modules list in the jhbuild moduleset. Ping the GARNOME mailing list to include it too.
+   5.Record the proposal: Maintainers of proposed modules should make sure their modules are listed in the relevant wiki pages (for example, 2.23 desktop suite page: http://live.gnome.org/TwoPointTwentythree/Desktop) with all the details (module name, link to svn, branch to use in svn, maintainers names, etc.) 
+        o We don't need any new dependancies., we just need an up-to-date version of New dependencies for features should be added as soon as possible. There are three possibilities for dependencies: make them optional, bless them as external or include them in one of our suites. New dependencies should be known before feature freezes. A dependency can be proposed for inclusion AFTER the 2.23.1 release because it might need more time to be ready. 
+    * How to propose an external dependency?
+          o If you want to add a new dependency, make a good case for it on desktop-devel-list (this may only require a few sentences). In particular, explain any impact (compile and run time) on other modules
