@@ -64,3 +64,5 @@ Here is a list of applications' compatibility with gnome-globalmenu. These appli
    * Firefox
    * Openoffice
  * Any application runs under another user account. e.g. all the system management applications. This is also a security consideration.
+ * Wine Apps
+ * VirtualBox OSE
