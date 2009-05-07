@@ -39,6 +39,10 @@
       }}}
    * and login again.
  # On Hardy, after clicking "Enable Global Menu" in the applet's preference window, nothing happens.
-   * gnome-settings-daemon in hardy is old and doesn't support loading external Gtk plugin modules. You have to export GTK_MODULES=globalmenu-gnome manually in either .gnomerc or .bash_profile.
+   * gnome-settings-daemon in hardy is old and doesn't support loading external Gtk plugin modules. You have to add manually in either your .gnomerc or .bash_profile file(which is in your home directory).
+{{{
+export GTK_MODULES=globalmenu-gnome
+}}}
+
 
  # Ask your questions about Global Menu in Issue 223 (so that project members are notified)
