@@ -32,13 +32,11 @@ cd Gloobus-Preview
 make && sudo make install && sudo make plugins
 }}}
 In the bzr gloobus-preview/DATA there should be two images: close_button.png and gloobus_button.png. 
-gloobus_button is not currently in trunk, so you need to download it in the DATA folder. You can find the file at http://ubuntuforums.org/attachment.php?attachmentid=113029&stc=1&d=1241873097. 
-Then rename it into gloobus_button.png. 
+ 
 Copy them in /usr/share/gloobus:
 {{{
 cd DATA
-sudo cp gloobus_button.png /usr/share/gloobus/
-sudo cp close_button.png /usr/share/gloobus/
+sudo cp *.png /usr/share/gloobus/
 }}}
 
 
