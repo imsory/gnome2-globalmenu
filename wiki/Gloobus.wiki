@@ -24,31 +24,22 @@ Gloobus is a preview software that lets you view files so quickly witouth having
 HowTo Install
 {{{
 sudo apt-get install bzr
-
-
 sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-ttf2.0-dev libsdl-gfx1.2-dev libmagic-dev
-
 sudo apt-get install libgtk2.0-dev libgvfscommon-dev libgstreamer-plugins-base0.10-dev libcairomm-1.0-dev libtag1-dev libpoppler-glib-dev 
-
 bzr branch lp:gloobus/gloobus-0.03
-
 cd gloobus-0.03
-
 cd Gloobus-Preview
-
 make && sudo make install && sudo make plugins
 }}}
-In the bzr gloobus-preview/DATA there are two images: close_button.png and gloobus_button.png, copy them in /usr/share/gloobus.
-
+In the bzr gloobus-preview/DATA there should be two images: close_button.png and gloobus_button.png. 
+gloobus_button is not currently in trunk, so you need to download it in the DATA folder. You can find the file at http://ubuntuforums.org/attachment.php?attachmentid=113029&stc=1&d=1241873097. 
+Then rename it into gloobus_button.png. 
+Copy them in /usr/share/gloobus:
+{{{
 cd DATA
 sudo cp gloobus_button.png /usr/share/gloobus/
 sudo cp close_button.png /usr/share/gloobus/
-
-gloobus_button is not currently in trunk, so you need to download it at http://ubuntuforums.org/attachment.php?attachmentid=113029&stc=1&d=1241873097
-
-Rename it into gloobus_button.png
-
-sudo cp gloobus_button.png /usr/share/gloobus/
+}}}
 
 
 
