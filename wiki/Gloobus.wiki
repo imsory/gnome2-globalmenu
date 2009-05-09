@@ -38,7 +38,17 @@ make && sudo make install
 
 sudo cp ./gloobus-preview /usr/bin/gloobus-preview
 
-sudo cp settings-triangle.png /usr/share/gloobus/gloobus_button.png
+In the bzr gloobus-preview/DATA there are two images: close_button.png and gloobus_button.png, copy them in /usr/share/gloobus.
+
+cd DATA
+sudo cp gloobus_button.png /usr/share/gloobus/
+sudo cp close_button.png /usr/share/gloobus/
+
+gloobus_button is not currently in trunk, so you need to download it at http://ubuntuforums.org/attachment.php?attachmentid=113029&stc=1&d=1241873097
+
+Rename it into gloobus_button.png
+
+sudo cp gloobus_button.png /usr/share/gloobus/
 
 
 
