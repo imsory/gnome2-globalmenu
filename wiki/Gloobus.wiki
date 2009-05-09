@@ -34,9 +34,7 @@ cd gloobus-0.03
 
 cd Gloobus-Preview
 
-make && sudo make install
-
-sudo cp ./gloobus-preview /usr/bin/gloobus-preview
+make && sudo make install && sudo make plugins
 
 In the bzr gloobus-preview/DATA there are two images: close_button.png and gloobus_button.png, copy them in /usr/share/gloobus.
 
