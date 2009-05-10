@@ -21,7 +21,11 @@ If you don't have time to help, you can also...
 
 Gloobus is a preview software that lets you view files so quickly witouth having to open them in their normal software. It's based on apple's "quicklook" and it has 2 main options. The coverflow effect for a folder and the preview window for the files.
 
-HowTo Install
+Install from a DEB 32/64bits:
+http://www.deviantart.com/download/122054947/Gloobus_Preview_0_03_2_by_JordiHP.gz
+
+
+Install from bzr trunk
 {{{
 sudo apt-get install bzr
 sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-ttf2.0-dev libsdl-gfx1.2-dev libmagic-dev
