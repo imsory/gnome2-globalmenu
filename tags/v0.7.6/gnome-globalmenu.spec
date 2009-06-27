@@ -4,7 +4,7 @@
 
 Name:		gnome-globalmenu
 Version:	%{base_version}
-Release:	3%{?dist}
+Release:	1%{?dist}
 Summary:	Global Menu for GNOME
 Group:		User Interface/Desktops
 License:	GPLv2 and LGPLv2
