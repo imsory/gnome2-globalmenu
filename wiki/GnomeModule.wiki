@@ -1,18 +1,30 @@
 #summary One-sentence summary of this page.
-desktop-devel   ddd-list at --- gnome.org
-== GlobalMenu Application for inclusion as a GNOME module ==
-Hi,
-I'm proposing on behalf on the developpers working on GlobalMenu its inclusion either in gnome-applets or as a dependancy of GNOME.
-GlobalMenu is an applet that lets the user have its application menus be displayed in the Panel rather than in the Windows. For those who have used it, it's a bit like GNUStep or MacOS.
-You can see a screenshot of what it does at http://code.google.com/p/gnome2-globalmenu
 
- * Target: The module is proposed for the desktop module set
- * Dependencies: We just need Vala 0.6.0 to build (0.7.0 has currently a bug which prevents us from bumping to 0.7.0). But no new dependency.
- * Resource usage: Currently we don't use any part of the GNOME infrastructure or ressources for the project. We use Google Code (for issue tracking, tarball and code hosting) and Launchpad to some extent (for Ubuntu packages and translations). We'll be of course very happy to move everything to the GNOME infrastructure should our inclusion be accepted.
- * Adoption: GlobalMenu hasn't been adopted by any distribution as far as we know, as it only reached maturity and suitability for inclusion in mainstream releases recently. We also faced some inclusion problems: when asking for inclusion, we're asked for reference. We currently face a chicken and egg problem.
- * GNOME-ness, community: For the moment we've been mostly active in the development of VALA. We haven't had the strong need to interact for the moment with the internationalization, user documentation, accessibility, usability, bugsquad, etc. But we've filed several bugs related to this on our BTS and we will of course engage gracefully where needed.
- * License : GlobalMenu, in order to be compatible with GNOME is licensed under the GPL 2+ and LGPL 2+, as other Gnome applets. Our documentation has been written by team members only and its license can be changed at any time (currently GPL 2+). We're willing to make any changes should it be necessary in the future. We have tracked and listed all our contributors so that our licensing changes can be dealt with promptly.
- * Miscellaneous: Please list any additional special requirements, helpful information, etc. that would be useful in considering your module. 
+Send this application to 
+
+desktop-devel   ddd-list at --- gnome.org
+
+
+== GlobalMenu Application for inclusion as a GNOME module ==
+
+Dear list,
+
+This is a proposal on behalf of the GlobalMenu developers for its inclusion either in gnome-applets or as a dependancy of GNOME.
+
+GlobalMenu is an applet that lets the user have its application menus displayed in the Panel rather than in the Windows. For those who haven't heard about it, think of GNUStep or MacOS as an example. Or you can look at a screenshot to get an idea  http://code.google.com/p/gnome2-globalmenu
+
+ * Target: proposed for the desktop module set
+ * Dependencies: No new dependencies are introduced for either compiling the released tarball or the runtime. An up-to-date vala compiler for the developers.
+ * Resource usage: currently no NOME infrastructure are allocated for the project.  Google Code is the main hosting service and Launchpad is used for Ubuntu packaging and translations. If accepted the team would transport the project onto the GNOME infrastructure.
+ * Adoption in Distributions: none so far.
+
+ * GNOME-ness & community: The project uses vala as the main programming language. Various bugs in vala were discovered and fixed by the Global Menu developers. For the moment the team doesn't strongly need to cooperate with the internationalization, user documentation, accessibility, usability, bugsquad teams(and etc) of the community. The team is always open to such cooperation.
+
+ * License : GlobalMenu is currently licensed under the GPLv2+ and LGPLv2+. The documentation and the majority of the code have all been written by team members; therefore the project can be easily re-licensed to meet the GNOME requirements. 
+
+------ Reviewed up-to here by rainwoodman -----
+
+ * Miscellaneous: 
     * Our pool of developpers with way too much time on their hands, committed doc writers, bug hunters and translators is an asset to keep deadlines, and to bring innovation, along with quality assurance. We have a good track record, as can be seen throughout our issue tracker and our Ubuntuforum thread. We strive to keep aware of all the evolutions going around, we successfully coordinated with KDE for the spread of the GlobalMenu spec beyond our initial GNOME focus.Willingness and ability to follow release rules and release schedule.
     * Progress on a regular basis: We have an Italian dev, but we also have a German dev and a Chinese dev. Overall, we have thus time-conscious people ;-)
     * Improving overall desktop usability: New applications should make the GNOME Desktop a more useful place to hack, work, and play in. That might include, for example, better feature parity with other desktops, cool new things other desktops don't have, feature upgrades from older GNOME versions, or better opportunities for integration with other GNOME applications. The goal is not to include every gtk2 application available, but to include the highest quality applications that will make us competitive and which offer a stable platform for improvement and integration going forward.
