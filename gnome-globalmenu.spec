@@ -164,6 +164,9 @@ fi
 %endif
 
 %changelog
+* Sat Jun 27 2009 Yu Feng <rainwoodman@gmail.com> - 0.7.6-1
+- Update to 0.7.6
+
 * Mon May 25 2009 Christoph Wickert <cwickert@fedorakrojekt.org> - 0.7.5-3
 - Fix conditionals
 - Rename base package to -common
