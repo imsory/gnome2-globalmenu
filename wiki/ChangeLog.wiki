@@ -1,4 +1,22 @@
 ------------------------------
+gnome-globalmenu 0.7.6
+
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.6}}}
+
+Downloads:
+
+http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.6
+
+  * Catch-up release
+  * UPdate to VALA 0.7.3 (Issue 370)
+  * Removed excessive xsession log (Issue 406)
+  * Improved multithread (Issue 408)
+  * Added new event types SELECTED and UNSELECTED (Issue 412)
+  * Various improvements
+  * Added some translations
+  * Updated some translations
+
+------------------------------
 gnome-globalmenu 0.7.5
 
 {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.5}}}
