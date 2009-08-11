@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Draft of the application asa GNOME module.
 
 Send this application to 
 
@@ -11,11 +11,11 @@ Dear list,
 
 This is a proposal on behalf of the GlobalMenu developers for its inclusion either in gnome-applets or as a dependancy of GNOME.
 
-GlobalMenu is an applet that lets the user have its application menus displayed in the Panel rather than in the Windows. For those who haven't heard about it, think of GNUStep or MacOS as an example. Or you can look at a screenshot to get an idea  http://code.google.com/p/gnome2-globalmenu
+GlobalMenu is an applet that lets the user have its application menus displayed in the Panel rather than in the windows. For those who haven't heard about it, think of GNUStep or MacOS as an example. Or you can look at a screenshot to get an idea  http://code.google.com/p/gnome2-globalmenu
 
  * Target: proposed for the desktop module set
  * Dependencies: No new dependencies are introduced for either compiling the released tarball or the runtime. An up-to-date vala compiler for the developers.
- * Resource usage: currently no NOME infrastructure are allocated for the project.  Google Code is the main hosting service and Launchpad is used for Ubuntu packaging and translations. If accepted the team would transport the project onto the GNOME infrastructure.
+ * Resource usage: currently no NOME infrastructure are allocated for the project.  Google Code is the main hosting service and Launchpad is used for Ubuntu packaging and translations. We have sent a mail to apply for GNOME ressources. Delete? >>If accepted the team would transport the project onto the GNOME infrastructure.<<
  * Adoption in Distributions: none so far.
 
  * GNOME-ness & community: The project uses vala as the main programming language. Various bugs in vala were discovered and fixed by the Global Menu developers. For the moment the team doesn't strongly need to cooperate with the internationalization, user documentation, accessibility, usability, bugsquad teams(and etc) of the community. The team is always open to such cooperation.
@@ -25,8 +25,9 @@ GlobalMenu is an applet that lets the user have its application menus displayed 
 ------ Reviewed up-to here by rainwoodman -----
 
  * Miscellaneous: 
-    * Our pool of developpers with way too much time on their hands, committed doc writers, bug hunters and translators is an asset to keep deadlines, and to bring innovation, along with quality assurance. We have a good track record, as can be seen throughout our issue tracker and our Ubuntuforum thread. We strive to keep aware of all the evolutions going around, we successfully coordinated with KDE for the spread of the GlobalMenu spec beyond our initial GNOME focus.Willingness and ability to follow release rules and release schedule.
-    * Progress on a regular basis: We have an Italian dev, but we also have a German dev and a Chinese dev. Overall, we have thus time-conscious people ;-)
+    * Our pool of developpers with way too much time on their hands, committed doc writers, bug hunters and translators is an asset to keep deadlines, and to bring innovation, along with quality assurance. We have a good track record, as can be seen throughout our issue tracker and our Ubuntuforums thread. We strive to keep aware of all the evolutions going around, we successfully coordinated with KDE for the spread of the GlobalMenu spec beyond our initial GNOME focus. 
+
+    * Willingness and ability to follow release rules and release schedule/Progress on a regular basis: We have an Italian dev, but we also have a German dev and a Chinese dev. Overall, we have thus time-conscious people ;-)
     * Improving overall desktop usability: New applications should make the GNOME Desktop a more useful place to hack, work, and play in. That might include, for example, better feature parity with other desktops, cool new things other desktops don't have, feature upgrades from older GNOME versions, or better opportunities for integration with other GNOME applications. The goal is not to include every gtk2 application available, but to include the highest quality applications that will make us competitive and which offer a stable platform for improvement and integration going forward.
     * Developer attitude: We like to engage with upstream (GNOME for the moment :-) and downstream, as well as our user base. We're very open and our forum thread and our bug tracker testifies that. We engaged with GNOME, we engaged with XFCE and KDE. We're nice and cool people (really :-)
     * GNOME-ness: We use gtk2 and other GNOME2 technologies (VALA, all the standard GNOME guidelines and techniques) and we have a GNOME look and feel. We rewrote the software from ground to bottom to use the state of the art technologies.
