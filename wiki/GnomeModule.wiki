@@ -54,3 +54,18 @@ Pierre
         o We don't need any new dependancies., we just need an up-to-date version of New dependencies for features should be added as soon as possible. There are three possibilities for dependencies: make them optional, bless them as external or include them in one of our suites. New dependencies should be known before feature freezes. A dependency can be proposed for inclusion AFTER the 2.23.1 release because it might need more time to be ready. 
     * How to propose an external dependency?
           o If you want to add a new dependency, make a good case for it on desktop-devel-list (this may only require a few sentences). In particular, explain any impact (compile and run time) on other modules
+
+
+
+
+---------------
+
+Relation with GNOME 3.0
+
+As proposed in GNOME 3.0, the Shell features a menu item which provides the access to the application's actions. 
+
+The idea is good, however most current applications in GNOME doesn't support this feature. Neither does the toolkit GTK provides the necessary facilities for it. While we need to invent this facility in GNOME 3.0(eg, by extending GtkUIBuilder), some kind of legacy support should also be provided. This is where Global Menu becomes relevant to GNOME 3.0.
+
+Global Menu already has the code to extract the main bar from the applications. Once the global menu plugin for GTK is enabled(and it can be selectively enabled), each GtkWindow instance will carry a special property containing an introspection of its menu bar, and the sub menus. This information can be used to reconstruct a menu in the Shell's application menu item. Global Menu also provides a protocol to sync the selection and activation of menu items.
+
+-------
