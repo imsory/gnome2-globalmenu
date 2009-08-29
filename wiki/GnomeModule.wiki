@@ -31,7 +31,7 @@ GlobalMenu is an applet that lets the user have its application menus displayed 
 
  * Improving overall desktop usability: The document-centric functionnalities of Global Menu are available on GNUStep and MacOS, but most importantly we think that it's a very nice addition to the already strong GTK stack that will, playing along GNOME Shell, enable application developpers to build upon it. Moreover, it's implemented in a better way than the other globalmenu implementations, listening to user feedback and building upon Gnome's unique features. We have relatively wide compatibility, and we believe adoption in Gnome 2.30/3.0 would enable further adoption and standardisation on the developper side, pushing ISV to provide native GTK interfaces for at least the menus (Firefox, OpenOffice, Java to name a few). This will both push GNOME's interface forward, and push the GTK-toolkit forward.
 
- * Developer attitude: We like to engage with upstream (GNOME for the moment :-), possibly the Freedesktop's project afterwards for standardization) and downstream, as well as our user base. We're very open and our forum thread and our bug tracker testifies that. We engaged with GNOME, we also engaged with XFCE and KDE. We're nice and cool people (really :-)
+ * Developer attitude: We like to engage with upstream (GNOME for the moment :-), possibly the Freedesktop's project afterwards for standardization) and downstream, as well as our user base. We're very open and our forum thread and our bug tracker testifies that. We have an open developpement process and we prefer daily commits to large code drops. We engaged with GNOME, we also engaged with XFCE and KDE. We're nice and cool people (really :-)
 
  * GNOME-ness: We use GTK2 and other GNOME2 technologies (VALA, all the standard GNOME guidelines and techniques) and we have a GNOME look and feel. We rewrote the software from ground to bottom to use the state of the art technologies. We of course don't use the obsolete stuff that GNOME 3 aims to get rid of.
 
@@ -45,20 +45,16 @@ GlobalMenu is an applet that lets the user have its application menus displayed 
 
  * Documentation: We already have some existing documentation in our wiki, and our code is clear and clean. We're willing whether to help the existing docs team, let them do as they please or join them. It's really up to them, but we're motivated to make great documentation available, even if we strive to make GlobalMenu as simple as it can possibly be while increasing its power. We'll contact soon the GNOME Documentation Team to organize about the matter. We love ducks.
 
- * Relation with GNOME 3.0
-
-As proposed in GNOME 3.0, the Shell features a menu item which provides the access to the application's actions. 
-
+ * Relation with GNOME 3.0: As proposed in GNOME 3.0, the Shell features a menu item which provides the access to the application's actions. 
 The idea is good, however most current applications in GNOME doesn't support this feature. Neither does the toolkit GTK provides the necessary facilities for it. While we need to invent this facility in GNOME 3.0 (eg, by extending GtkUIBuilder), some kind of legacy support should also be provided. This is where Global Menu becomes relevant to GNOME 3.0.
-
 Global Menu already has the code to extract the main bar from the applications. Once the global menu plugin for GTK is enabled (and it can be selectively enabled), each GtkWindow instance will carry a special property containing an introspection of its menu bar, and the sub menus. This information can be used to reconstruct a menu in the Shell's application menu item. Global Menu also provides a protocol to sync the selection and activation of menu items.
 
 Thanks a lot for bearing with that long and overly detailed proposal. I look forward to your reviews, comments, suggestions, bashings, etc :-)
 
-Pierre
+Yu and Pierre, on behalf of the whole GlobalMenu team
 ---------------------
 
-We have an open developpement process and we prefer daily commits to large code drops.
+TODO:
 
 4.Build testing: Make sure the module is added to the proposed modules list in the jhbuild moduleset. Ping the GARNOME mailing list to include it too.
 5.Record the proposal: Maintainers of proposed modules should make sure their modules are listed in the relevant wiki pages (for example, 2.23 desktop suite page: http://live.gnome.org/TwoPointTwentythree/Desktop) with all the details (module name, link to svn, branch to use in svn, maintainers names, etc.) 
