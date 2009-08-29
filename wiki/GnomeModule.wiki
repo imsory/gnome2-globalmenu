@@ -24,48 +24,41 @@ GlobalMenu is an applet that lets the user have its application menus displayed 
 
 ------ Reviewed up-to here by rainwoodman -----
 
- * Miscellaneous: 
-    * Our pool of developpers with way too much time on their hands, committed doc writers, bug hunters and translators is an asset to keep deadlines, and to bring innovation, along with quality assurance. We have a good track record, as can be seen throughout our issue tracker and our Ubuntuforums thread. We strive to keep aware of all the evolutions going around, we successfully coordinated with KDE for the spread of the GlobalMenu spec beyond our initial GNOME focus. 
 
-    * Willingness and ability to follow release rules and release schedule and progress on a regular basis: We have an Italian dev, but we also have a German dev and a Chinese dev. Overall, we have thus time-conscious people ;-)
-    * Improving overall desktop usability: The document-centric functionnalities of Global Menu are available on GNUStep and MacOS, but most importantly we think that it's a very nice addition to the already strong GTK stack that will, playing along Gnome Shell, enable application developpers to build upon it. Moreover, it's implemented in a better way than the other globalmenu implementations, listening to user feedback and building upon Gnome's unique features. We have relatively wide compatibility, and we believe adoption in Gnome 2.30/3.0 would enable further adoption and standardisation on the developper side, pushing ISV to provide native GTK interfaces for at least the menus (Firefox, OpenOffice, Java to name a few). this will both push Gnome's interface forward, and push the GTK-toolkit forward.
-    * Developer attitude: We like to engage with upstream (GNOME for the moment :-) and downstream, as well as our user base. We're very open and our forum thread and our bug tracker testifies that. We engaged with GNOME, we also engaged with XFCE and KDE. We're nice and cool people (really :-)
-    * GNOME-ness: We use gtk2 and other GNOME2 technologies (VALA, all the standard GNOME guidelines and techniques) and we have a GNOME look and feel. We rewrote the software from ground to bottom to use the state of the art technologies.
-    * Free-ness: We're using GPL v2 and later and LGPL2 and later (for some Vala files). We have an open developpement process and we prefer daily commits to large code drops.
-    * Quality: We fix reported bugs at a very quick pace due to our various devs and motivation. We have no known showstopper. We're using Google Code for bug tracking, but we're perfectly fine with moving to Bugzilla should we be included.
-    * UI: We have no problem engaging with the UI team to make GlobalMenu even better UI-wise. We strive to keep in line with the GNOME look and feel, HIG compliance, a careful choice of default settings, and clean interface design.
-    * Accessibility: Though we haven't delved into the matter, we're also ready to engage should issues arise.
-    * Internationalization is already done in the Gnome compliant fashion. All text is i18n-ized and the app is localized (RTL).
-    * Use of GNOME resources: While we don't currently use them, we'll be happy to switch should our inclusion be accepted, and we have actually already applied to get GlobalMenu on GNOME's infrastructure.
-   * Documentation: We already have some existing documentationin our wiki, and our code is clear and clean. We're willing whether to help the existing docs team, let them do as they please or join them. It's really up to them, but we're motivated to make great documentation available, even if we strive to make GlobalMenu as simple as it can possibly be while increasing its power. We'll contact soon the GNOME Documentation Team to organize about the matter. We love ducks
+ * We have a pool of developpers, committed doc writers, bug hunters and translators which is an asset to keep deadlines, and to bring innovation, along with quality assurance. We have a good track record, as can be seen throughout our issue tracker and our Ubuntuforums thread. We strive to keep aware of all the evolutions going around, we successfully coordinated with KDE for the spread of the GlobalMenu spec beyond our initial GNOME focus. 
+ 
+ * Willingness and ability to follow release rules and release schedule and progress on a regular basis: We have an Italian dev, but we also have a German dev and a Chinese dev. Overall, we have thus time-conscious people ;-)
+
+ * Improving overall desktop usability: The document-centric functionnalities of Global Menu are available on GNUStep and MacOS, but most importantly we think that it's a very nice addition to the already strong GTK stack that will, playing along GNOME Shell, enable application developpers to build upon it. Moreover, it's implemented in a better way than the other globalmenu implementations, listening to user feedback and building upon Gnome's unique features. We have relatively wide compatibility, and we believe adoption in Gnome 2.30/3.0 would enable further adoption and standardisation on the developper side, pushing ISV to provide native GTK interfaces for at least the menus (Firefox, OpenOffice, Java to name a few). This will both push GNOME's interface forward, and push the GTK-toolkit forward.
+
+ * Developer attitude: We like to engage with upstream (GNOME for the moment :-), possibly the Freedesktop's project afterwards for standardization) and downstream, as well as our user base. We're very open and our forum thread and our bug tracker testifies that. We engaged with GNOME, we also engaged with XFCE and KDE. We're nice and cool people (really :-)
+
+ * GNOME-ness: We use GTK2 and other GNOME2 technologies (VALA, all the standard GNOME guidelines and techniques) and we have a GNOME look and feel. We rewrote the software from ground to bottom to use the state of the art technologies. We of course don't use the obsolete stuff that GNOME 3 aims to get rid of.
+
+ * UI: We have no problem engaging with the UI team to make GlobalMenu even better UI-wise. We strive to keep in line with the GNOME look and feel, HIG compliance, a careful choice of default settings, and clean interface design.
+
+ * Accessibility: Though we haven't delved into the matter, we're also ready to engage should issues arise.
+
+ * Internationalization is already done in the GNOME-compliant fashion. All text is i18n-ized and the app is localized (RTL).
+
+ * Use of GNOME resources: While we don't currently use them, we'll be happy to switch should our inclusion be accepted, and we have actually already applied to get GlobalMenu on GNOME's infrastructure.
+
+ * Documentation: We already have some existing documentation in our wiki, and our code is clear and clean. We're willing whether to help the existing docs team, let them do as they please or join them. It's really up to them, but we're motivated to make great documentation available, even if we strive to make GlobalMenu as simple as it can possibly be while increasing its power. We'll contact soon the GNOME Documentation Team to organize about the matter. We love ducks.
+
+ * Relation with GNOME 3.0
+
+As proposed in GNOME 3.0, the Shell features a menu item which provides the access to the application's actions. 
+
+The idea is good, however most current applications in GNOME doesn't support this feature. Neither does the toolkit GTK provides the necessary facilities for it. While we need to invent this facility in GNOME 3.0 (eg, by extending GtkUIBuilder), some kind of legacy support should also be provided. This is where Global Menu becomes relevant to GNOME 3.0.
+
+Global Menu already has the code to extract the main bar from the applications. Once the global menu plugin for GTK is enabled (and it can be selectively enabled), each GtkWindow instance will carry a special property containing an introspection of its menu bar, and the sub menus. This information can be used to reconstruct a menu in the Shell's application menu item. Global Menu also provides a protocol to sync the selection and activation of menu items.
 
 Thanks a lot for bearing with that long and overly detailed proposal. I look forward to your reviews, comments, suggestions, bashings, etc :-)
 
 Pierre
+---------------------
 
--------
-
- 1. Read the task-oriented requirements of GNOME Module maintainers.
-   2. Read MaintainersCorner so you know about the day-to-day tasks of a GNOME maintainer.
-   3. Have the maintainer (non-maintainer proposals are invalid) send an email to the desktop-devel mailing list. 
+We have an open developpement process and we prefer daily commits to large code drops.
 
 4.Build testing: Make sure the module is added to the proposed modules list in the jhbuild moduleset. Ping the GARNOME mailing list to include it too.
-   5.Record the proposal: Maintainers of proposed modules should make sure their modules are listed in the relevant wiki pages (for example, 2.23 desktop suite page: http://live.gnome.org/TwoPointTwentythree/Desktop) with all the details (module name, link to svn, branch to use in svn, maintainers names, etc.) 
-        o We don't need any new dependancies., we just need an up-to-date version of New dependencies for features should be added as soon as possible. There are three possibilities for dependencies: make them optional, bless them as external or include them in one of our suites. New dependencies should be known before feature freezes. A dependency can be proposed for inclusion AFTER the 2.23.1 release because it might need more time to be ready. 
-    * How to propose an external dependency?
-          o If you want to add a new dependency, make a good case for it on desktop-devel-list (this may only require a few sentences). In particular, explain any impact (compile and run time) on other modules
-
-
-
-
----------------
-
-Relation with GNOME 3.0
-
-As proposed in GNOME 3.0, the Shell features a menu item which provides the access to the application's actions. 
-
-The idea is good, however most current applications in GNOME doesn't support this feature. Neither does the toolkit GTK provides the necessary facilities for it. While we need to invent this facility in GNOME 3.0(eg, by extending GtkUIBuilder), some kind of legacy support should also be provided. This is where Global Menu becomes relevant to GNOME 3.0.
-
-Global Menu already has the code to extract the main bar from the applications. Once the global menu plugin for GTK is enabled(and it can be selectively enabled), each GtkWindow instance will carry a special property containing an introspection of its menu bar, and the sub menus. This information can be used to reconstruct a menu in the Shell's application menu item. Global Menu also provides a protocol to sync the selection and activation of menu items.
-
--------
+5.Record the proposal: Maintainers of proposed modules should make sure their modules are listed in the relevant wiki pages (for example, 2.23 desktop suite page: http://live.gnome.org/TwoPointTwentythree/Desktop) with all the details (module name, link to svn, branch to use in svn, maintainers names, etc.) 
