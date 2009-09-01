@@ -155,7 +155,11 @@ The specification captures this gap but does not define the default behavior of 
 
 == Multihead ==
 
-Multihead is not supported due to the limitations of Server.
+Undefined.
+
+= Application Compatibility Guidelines =
+
+Refer to [AppGuideLines Application Guildlines]
 
 = Acknowledgements =
 
@@ -164,7 +168,9 @@ Multihead is not supported due to the limitations of Server.
   * The mavericks: 
     * `Aqd`, the first Global Menu implementation with GNOME 2
     * `Jason McBrayer`, the first Global Menu implementation with GNOME
- 
+
+
+
 = Appendix A : GTK Implementation =
   == GTK Plug-in Module =
   * [GlobalMenuGTKModule globalmenu-gnome]
