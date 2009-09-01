@@ -22,13 +22,16 @@ Implmentations are listed in the appendix.
 == Definations ==
   * Client
   * Server
+  * Desktop
+  * Active Document
+  * Transient-For Window
   * Menu Context
-  * Menu Event
-  * Highlight
+  * Menu Event/Activate
+  * Highlight/Select
+  * Dehighlient/Deselect
   * Representation
   * Menu: Menu is a collection of Items. It can be the root element of the XML Representation, or a submenu of an Item if presents as a child of the Item.
   * Item: Item is the entry in a menu. 
-  * Activate
   * Path: Refer to the section in XML Representation of Menu Context.
 
 == Extensions to EWMH Protocol ==
@@ -36,7 +39,9 @@ Implmentations are listed in the appendix.
 
   * `_NET_GLOBALMENU_MENU_CONTEXT`
   * `_NET_GLOBALMENU_MENU_EVENT`
-  * `_NET_GLOBALMENU_MENU_HIGHLIGHT`
+  * `_NET_GLOBALMENU_MENU_SELECT`
+  * `_NET_GLOBALMENU_MENU_DESELECT`
+  * `WM_TRANSIENT_FOR`
 
 === XML Representation of Menu Context ===
 ==== FIXME: DTD ====
@@ -105,7 +110,9 @@ The `_NET_GLOBALMENU_MENU_EVENT` property on the Client is changed by the Server
   * If the `revision` is invalid, the Client can either ignore it or try to recovery. The behavior is implementation dependent.
 Whether the property is immediately deleted is undefined.
 
-`_NET_GLOBALMENU_MENU_HIGHLIGHT` property on the Client is set when a menu item is highlighted. (NOTE: on GTK highlighted == selected.)
+`_NET_GLOBALMENU_MENU_SELECT` property on the Client is triggered when a menu item is highlighted. (NOTE: on GTK highlighted == selected.)
+
+`_NET_GLOBALMENU_MENU_DESELECT` property on the Client is triggered when a menu item is highlighted. (NOTE: on GTK highlighted == selected.)
 
 When the Menu Context of a Client changes, the Client should change the `_NET_GLOBALMENU_MENU_CONTEXT` property on its window. 
 The Client should make efforts to reduce the number of changes because: 
@@ -127,7 +134,7 @@ The specification does not require the Server to cache the Representation for Me
 EHWM and X Window Manager Protocol implement the mechanisms for active window determination. Refer to the documentation for 
   * `_NET_ACTIVE_WINDOW` and
   * `WM_TRANSIENT_FOR`
-Other higher-level choices are 
+Other higher-level apis are available,
   * `libwnck-1.0`
 
 The Server captures events in which the user activates a representation of an Item in the representation of the Menu Context. After that the server should find the Path for the activated Item and write that Path to the `_NET_GLOBALMENU_MENU_EVENT` property of the corresponding Client as a Menu Event.
