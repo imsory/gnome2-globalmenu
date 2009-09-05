@@ -1,4 +1,22 @@
 ------------------------------
+gnome-globalmenu 0.7.7 (Draft)
+
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.7}}}
+
+Downloads:
+
+http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.7
+
+  * UPdate to VALA 0.7.5 
+  * The package is now rebuiltable from the vala source code.
+  * Fix crashing 64bit apps (Issue 408)
+  * Added the option to disable the search box in window list (Issue 439)
+  * Toggle RGBA via preference dialog (Issue 431)
+  * Improved Preference dialog usability (Issue 424)
+  * Fixed excess cpu time(regression) (issue 484)
+  * Updated some translations 
+
+------------------------------
 gnome-globalmenu 0.7.6
 
 {{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.6}}}
