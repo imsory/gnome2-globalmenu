@@ -66,9 +66,9 @@ public class Applet : Panel.Applet {
 
 		menubars.add(main_menubar);
 
-		switcher.current_window = Wnck.Window.get(main_menubar.current_window.get_xid());
+		switcher.current_window = Wnck.Window.get(main_menubar.current_window.xid);
 		main_menubar.notify["current-window"] += () => {
-			switcher.current_window = Wnck.Window.get(main_menubar.current_window.get_xid());
+			switcher.current_window = Wnck.Window.get(main_menubar.current_window.xid);
 		};
 
 		menubars.child_set(main_menubar, "shrink", true, null);
@@ -259,46 +259,10 @@ public class Applet : Panel.Applet {
 		switcher.show_window_list = gconf_get_bool("show_window_list");
 		switcher.enable_search_box = gconf_get_bool("enable_search_box");
 		Gnomenu.Menu.default_use_rgba_colormap = gconf_get_bool("use_rgba_colormap");
-		main_menubar.grab_keys = gconf_get_bool("grab_mnemonic_keys");
-
 		this.has_handle = gconf_get_bool("has_handle");
 		this.disable_module_check = gconf_get_bool("disable_module_check");
 	}
 
-	private Gtk.Dialog get_pref_dialog() {
-		var gcd = new GConfDialog(_("Global Menu Applet Preferences"));
-		
-		string root = get_preferences_key();
-
-		gcd.add_key_group(
-			_("General Settings"),
-			new string[] {
-				"/apps/gnome_settings_daemon/gtk-modules/globalmenu-gnome",
-				root + "/disable_module_check"
-			}
-		);
-
-		gcd.add_key_group(
-			_("Global Menu"),
-			new string[]{
-				root + "/has_handle",
-				root + "/use_rgba_colormap",
-				root + "/grab_mnemonic_keys"
-			}
-		);
-		gcd.add_key_group(
-			_("Switcher"),
-			new string[] {
-				root + "/show_icon",
-				root + "/show_name",
-				root + "/title_max_width",
-				root + "/show_window_actions",
-				root + "/show_window_list",
-				root + "/enable_search_box"
-			}
-		);
-		return gcd;
-	}
 	[CCode (instance_pos = 1.1)]
 	private void applet_menu_clicked (BonoboUI.Component component, 
 			string cname) {
@@ -347,7 +311,32 @@ public class Applet : Panel.Applet {
 	
 	}
 	private void show_preferences() {
-		var gcd = get_pref_dialog();
+		GConfDialog gcd = new GConfDialog(_("Global Menu Applet Preferences"));
+		
+		string root = get_preferences_key();
+
+		gcd.add_key_group(
+			_("System Preferences"),
+			new string[] {
+				"/apps/gnome_settings_daemon/gtk-modules/globalmenu-gnome",
+				root + "/disable_module_check"
+			}
+		);
+
+		gcd.add_key_group(
+			_("Applet Behaviors"),
+			new string[]{
+				root + "/has_handle",
+				root + "/show_icon",
+				root + "/show_name",
+				root + "/title_max_width",
+				root + "/show_window_actions",
+				root + "/show_window_list",
+				root + "/enable_search_box",
+				root + "/use_rgba_colormap"
+			}
+		);
+
 		switch(gcd.run()) {
 			case Gtk.ResponseType.HELP:
 				show_help();

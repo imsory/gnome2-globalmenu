@@ -46,9 +46,13 @@ public class Gnomenu.Background {
 public class Gnomenu.MenuBar : Gtk.MenuBar, Shell {
 	public MenuBar() {}
 	const uint PROP_IMPORTANT = 1;
-static const string EMPTY_OVERFLOWN_MENU =
+static const string OVERFLOWER_TEMPLATE =
 """
-<menu/>
+<menu>
+<item type="a" id="_arrow_">
+%s
+</item>
+</menu>
 """;
 	static construct {
 		/*FIXME: this is not awared yet
@@ -67,9 +71,10 @@ static const string EMPTY_OVERFLOWN_MENU =
 	
 	}
 	construct {
-		setup_overflown_arrow();
+		disposed = false;
+		_background = new Background();
+		setup_overflown_item();
 	}
-
 	public override void dispose() {
 		if(!disposed) {
 			disposed = true;
@@ -77,23 +82,23 @@ static const string EMPTY_OVERFLOWN_MENU =
 		base.dispose();
 	}
 	private MenuItem resolve_item_maybe_from_overflown(MenuItem item) {
-		if(item.is_child_of(_overflown_arrow)) {
+		if(item.is_child_of(_overflown_item)) {
 			string path = overflown_path_to_path(item.item_path);
 			debug("real_item is %s", path);
 			MenuItem real_item = get(path);
 			return real_item;
 		}
-		return item;
+		return item;	
 	}
 	/**
 	 * This signal is emitted when a child item is activated
 	 */
 	public signal void activate(MenuItem item);
 	public virtual void emit_activate(MenuItem item) {
-		if(item == _overflown_arrow) {
+		if(item == _overflown_item) {
 			rebuild_overflown_menu();
 			return;
-		}
+		} 
 		debug("item %s activated", item.item_path);
 		activate(resolve_item_maybe_from_overflown(item));
 	}
@@ -101,14 +106,14 @@ static const string EMPTY_OVERFLOWN_MENU =
 	public signal void select(MenuItem item);
 	public signal void deselect(MenuItem item);
 	public virtual void emit_select(MenuItem item) {
-		if(item == _overflown_arrow) {
+		if(item == _overflown_item) {
 			return;
 		}
 		debug("item %s selected", item.item_path);
 		select(resolve_item_maybe_from_overflown(item));
 	}
 	public virtual void emit_deselect(MenuItem item) {
-		if(item == _overflown_arrow) {
+		if(item == _overflown_item) {
 			return;
 		}
 		deselect(resolve_item_maybe_from_overflown(item));
@@ -192,7 +197,7 @@ static const string EMPTY_OVERFLOWN_MENU =
 			foreach(var child in get_children()) {
 				(child as MenuItem).gravity = value;
 			}
-			_overflown_arrow.gravity = value;
+			_overflown_item.gravity = value;
 		}
 	}
 	/**
@@ -258,75 +263,65 @@ static const string EMPTY_OVERFLOWN_MENU =
 	/**
 	 * Holding the background object
 	 */
-	private Background _background = new Background();
+	private Background _background;
 	/**
 	 * Storing the text gravity
 	 */
 	private Gravity _gravity;
 
-	private MenuItem _overflown_arrow = new Gnomenu.MenuItem();
+	private MenuItem _overflown_item = new Gnomenu.MenuItem();
 
-	private bool disposed = false;
+	private bool disposed;
 
 	public override void style_set(Gtk.Style? old_style) {
-		/* FIXME: do we need to manually chain up the style_set
-		 * to overflown arrow */
 		base.style_set(old_style);
-		_overflown_arrow.style = this.style;
-		/* reset_bg_pixmap is also weird, because it will
-		 * emit a style set! */
+		_overflown_item.style = this.style;
 		reset_bg_pixmap();
 	}
 
-	private void setup_overflown_arrow() {
-		/* this function is invoked by construct */
-		_overflown_arrow.set_parent(this);
-		_overflown_arrow.style = style;
-		_overflown_arrow.has_sub_shell = true;
-		_overflown_arrow.visible = true;
-		_overflown_arrow.item_id = "_arrow_";
-		_overflown_arrow.item_type = ItemType.ARROW;
-		Gnomenu.Shell shell = _overflown_arrow.sub_shell;
+	private void setup_overflown_item() {
+		_overflown_item.set_parent(this);
+		_overflown_item.style = style;
+		_overflown_item.has_sub_shell = true;
+		_overflown_item.visible = true;
+		_overflown_item.item_id = "_arrow_";
+		_overflown_item.item_type = ItemType.ARROW;
+		Gnomenu.Shell shell = _overflown_item.sub_shell;
 		try {
-			Parser.parse(shell , EMPTY_OVERFLOWN_MENU);
+			Parser.parse(shell ,OVERFLOWER_TEMPLATE.printf("<menu/>"));
 		} catch(GLib.Error e) {
 			warning("%s", e.message);
 		}
 	}
 	private void rebuild_overflown_menu() {
-		/* this is essentially copying the menubar to
-		 * the submenu of the overflown arrow */
 		debug("rebuild_overflown_menu");
-
-		/* we first serialize this menu to the global menu xml */
-		var xml = Serializer.to_string(this);
-
-		Gnomenu.Shell shell = _overflown_arrow.sub_shell;
+		Gnomenu.Shell shell = _overflown_item.sub_shell;
+		StringBuilder sb = new StringBuilder("");
+		sb.append(Serializer.to_string(this));
 		try {
-			Parser.parse(shell, xml);
+			Parser.parse(shell, sb.str);
 		} catch(GLib.Error e) {
 			warning("%s", e.message);
 		}
 
-		/* set the visibility of each item in overflown menu */
 		for(int i = 0; i < this.length; i++) {
 			var item = this.get_item(i);
 			var proxy_item = shell.get_item(i);
 
 			var child = item as Gtk.Widget;
-			proxy_item.item_visible = item.item_visible && child_need_overflown_arrow(child);
+			proxy_item.item_visible = item.item_visible && child_need_overflown_item(child);
 		}
 	}
-
-	private bool child_need_overflown_arrow(Gtk.Widget child) {
+	private bool child_need_overflown_item(Gtk.Widget child) {
 		int lhs = 0;
 		int rhs = 0;
 		var a = child.allocation;
-		var oa = _overflown_arrow.allocation;
+		var oa = _overflown_item.allocation;
 		switch(pack_direction) {
 			case Gtk.PackDirection.LTR:
 				lhs = a.x + a.width;
 				rhs = allocation.width - oa.width;
+
 			break;
 			case Gtk.PackDirection.RTL:
 				lhs = 0 + oa.width;
@@ -343,57 +338,38 @@ static const string EMPTY_OVERFLOWN_MENU =
 		}
 		return lhs > rhs;
 	}
-
 	private void reset_bg_pixmap() {
 		if(background.type != BackgroundType.PIXMAP) return;
-		if(!this.is_realized()) return;
-
-		assert(window is Gdk.Drawable);
-		assert(_background.pixmap is Gdk.Drawable);
-
-		/* Create the target pixmap */
-		Gdk.Pixmap pixmap = new Gdk.Pixmap(window, allocation.width, allocation.height, -1);
-		assert(pixmap is Gdk.Drawable);
-		/* and the cairo context */
-		Cairo.Context cairo = Gdk.cairo_create(pixmap);
-		assert(cairo != null);
-		/* copy the pixmap from background to the target pixmap
-		 * notice the offsets are negative, clipping the unwanted
-		 * area */
-		Gdk.cairo_set_source_pixmap(cairo, _background.pixmap,
-		    - _background.offset_x,
-		    - _background.offset_y);
-		weak Cairo.Pattern pattern = cairo.get_source();
-		pattern.set_extend(Cairo.Extend.REPEAT);
-		cairo.rectangle (0, 0, allocation.width, allocation.height);
-		cairo.fill();
-
-		/* put the new pixmap into the widget style */
-		style.bg_pixmap[(int)Gtk.StateType.NORMAL] = pixmap;
-
-		/* because style is always already attached to window
-		 * we don't need to handle the possibility of a newly
-		 * created style */
-		/* FIXME: then why the hell need I attach it again? */
-		style.attach(this.window);
-		style.set_background(window, Gtk.StateType.NORMAL);
-		/* make sure the attach_count is reduced */
-		style.detach();
-		/* FIXME: Do we need this redraw */
-		this.queue_draw();
+		if(0 != (get_flags() & Gtk.WidgetFlags.REALIZED)) {
+			Gdk.Pixmap pixmap = new Gdk.Pixmap(window, allocation.width, allocation.height, -1);
+			assert(window is Gdk.Drawable);
+			assert(pixmap is Gdk.Drawable);
+			Cairo.Context cairo = Gdk.cairo_create(pixmap);
+			assert(cairo != null);
+			assert(_background.pixmap is Gdk.Drawable);
+			Gdk.cairo_set_source_pixmap(cairo, _background.pixmap, 
+					-(_background.offset_x), 
+					-(_background.offset_y));
+			weak Cairo.Pattern pattern = cairo.get_source();
+			pattern.set_extend(Cairo.Extend.REPEAT);
+			cairo.rectangle (0, 0, allocation.width, allocation.height);
+			cairo.fill();
+			style.bg_pixmap[(int)Gtk.StateType.NORMAL] = pixmap;
+			style.attach(window);
+			style.set_background(window, Gtk.StateType.NORMAL);
+			queue_draw();
+		}
 	}
 	public override bool move_selected(int distance) {
-		if(active_menu_item == _overflown_arrow) {
-			/* from overflown arrow */
+		if(active_menu_item == _overflown_item) {
 			if(distance == 1) {
 				select_first(true);
 			} else {
-				/* the last non overflown item */
 				for(int i = this.length - 1; i >= 0; i--) {
 					var item = this.get_item(i);
 
 					var child = item as Gtk.Widget;
-					if(!child_need_overflown_arrow(child)) {
+					if(!child_need_overflown_item(child)) {
 						select_item(child);
 					}
 				}
@@ -402,8 +378,8 @@ static const string EMPTY_OVERFLOWN_MENU =
 		} else {
 
 			/*FIXME:
-			 * Move from the last visible item to _overflown_arrow
-			 * or from the first visible item to _overflown_arrow
+			 * Move from the last visible item to _overflown_item
+			 * or from the first visible item to _overflown_item
 			 */
 
 			return base.move_selected(distance);
@@ -411,40 +387,36 @@ static const string EMPTY_OVERFLOWN_MENU =
 	}
 	public override void forall_internal(bool include_internals, Gtk.Callback callback) {
 		if(include_internals) {
-			callback(_overflown_arrow);
+			callback(_overflown_item);
 		}
 		base.forall_internal(include_internals, callback);
 	}
-
 	public override void realize() {
 		base.realize();
 		reset_bg_pixmap();
 	}
-
+	public override void map() {
+		base.map();
+	}
 	public override void size_allocate(Gdk.Rectangle a) {
 		bool need_reset_bg_pixmap = false;
-
-		/* Shift the background image */
 		int delta_x = a.x - allocation.x;
 		int delta_y = a.y - allocation.y;
-		if(  delta_x != 0 || delta_y != 0
-		  || a.width != allocation.width
-		  || a.height != allocation.height) {
+		if(delta_x != 0 || delta_y != 0
+				|| a.width != allocation.width
+				|| a.height != allocation.height)
 			need_reset_bg_pixmap = true;
-		}
-		background.offset_x += delta_x;
+		
+		background.offset_x += delta_x; 
 		background.offset_y += delta_y;
 		
-		/* FIXME: is this line useful at all? */
-		/* update the allocation before base.size_allocate */
-		allocation = (Gtk.Allocation) a;
+		allocation = (Gtk.Allocation) a; /*To make 'overflown' happy*/
 
-		base.size_allocate(a);
-
-		/* calculate the allocation of the overflown arrow */
 		Gdk.Rectangle oa = {0, 0, 0, 0};
 		Gtk.Requisition or;
-		_overflown_arrow.get_child_requisition(out or);
+		base.size_allocate(a);
+
+		_overflown_item.get_child_requisition(out or);
 		switch(pack_direction) {
 			case Gtk.PackDirection.TTB:
 				oa.height = or.height;
@@ -472,36 +444,30 @@ static const string EMPTY_OVERFLOWN_MENU =
 				oa.y = 0;
 				break;
 		}
-		_overflown_arrow.size_allocate(oa);
+		_overflown_item.size_allocate(oa);
 
-		/*
-		 * decide showing the overflown array or not.
-		 * at this stage we already know the allocation
-		 * of every item, because base.allocate has been called.
-		 * */
 		if(overflown) {
-			_overflown_arrow.set_child_visible(true);
+			_overflown_item.set_child_visible(true);
 			for(int i = 0; i < this.length; i++) {
 				var item = this.get_item(i);
+
 				var child = item as Gtk.Widget;
-				child.set_child_visible(!child_need_overflown_arrow(child));
+				child.set_child_visible(!child_need_overflown_item(child));
 			}
 		} else {
-			_overflown_arrow.set_child_visible(false);
+			_overflown_item.set_child_visible(false);
 			for(int i = 0; i < this.length; i++) {
 				var item = this.get_item(i);
+
 				var child = item as Gtk.Widget;
 				child.set_child_visible(true);
 			}
 		}
-		/* reset the bg pixmap at the very end of the process,
-		 * using the new allocation. */
 		if(need_reset_bg_pixmap) {
 			reset_bg_pixmap();
 		}
 	}
 	public override bool expose_event(Gdk.EventExpose event) {
-		/* FIXME: why do we need to paint the focus? */
 		if((get_flags() & Gtk.WidgetFlags.HAS_FOCUS) != 0) {
 			Gtk.paint_focus(style,
 					window,
@@ -514,11 +480,9 @@ static const string EMPTY_OVERFLOWN_MENU =
 		foreach(var child in get_children()) {
 			propagate_expose(child, event);
 		}
-		propagate_expose(_overflown_arrow, event);
+		propagate_expose(_overflown_item, event);
 		return false;
 	}
-
-	/* FIXME: remove focus_in/out_event and investigate the effects */
 	public override bool focus_out_event (Gdk.EventFocus event) {
 		queue_draw();
 		return false;
@@ -527,17 +491,13 @@ static const string EMPTY_OVERFLOWN_MENU =
 		queue_draw();
 		return false;
 	}
-
 	public override void size_request(out Gtk.Requisition req) {
 		Gtk.Requisition r = {0, 0};
 		base.size_request(out req);
-		_overflown_arrow.size_request(out r);
-		/* the minimal requisition is the size request of the
-		 * overflown arrow */
+		_overflown_item.size_request(out r);
 		if(r.width > req.width) req.width = r.width;
 		if(r.height > req.height) req.height = r.height;
 	}
-
 	public override void insert(Gtk.Widget child, int position) {
 		base.insert(child, position);
 		(child as MenuItem).gravity = gravity;
