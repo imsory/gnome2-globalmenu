@@ -3,7 +3,7 @@
 
 Name:		gnome-globalmenu
 Version:	0.7.7
-Release:	0%{?dist}
+Release:	1%{?dist}
 Summary:	Global Menu for GNOME
 Group:		User Interface/Desktops
 License:	GPLv2 and LGPLv2

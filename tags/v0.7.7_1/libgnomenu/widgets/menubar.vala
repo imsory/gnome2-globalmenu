@@ -355,7 +355,6 @@ static const string OVERFLOWER_TEMPLATE =
 			cairo.rectangle (0, 0, allocation.width, allocation.height);
 			cairo.fill();
 			style.bg_pixmap[(int)Gtk.StateType.NORMAL] = pixmap;
-			style.attach(window);
 			style.set_background(window, Gtk.StateType.NORMAL);
 			queue_draw();
 		}
