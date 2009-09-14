@@ -1,0 +1,256 @@
+# Simplified Chinese translation for globalmenu
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the globalmenu package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: globalmenu\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-05-05 17:11-0400\n"
+"PO-Revision-Date: 2009-07-02 13:02+0000\n"
+"Last-Translator: elite <Unknown>\n"
+"Language-Team: Simplified Chinese <zh_CN@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-09-05 15:52+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../libgnomenu/menuitem.vala:30
+msgid "Indicator Size"
+msgstr "复选指示器的大小"
+
+#: ../libgnomenu/menuitem.vala:31
+msgid "Size of check or radio indicator"
+msgstr "单选指示器的大小"
+
+#: ../gnome-globalmenu.schemas.in.h:2
+msgid "Add window action menu entries to active application name menu"
+msgstr "在应用程序名字标签的子菜单中包括窗口操作"
+
+#: ../gtk-modules/globalmenu/module-main.vala:82 ../applet/main.vala:7
+msgid "Be verbose"
+msgstr "显示调试信息"
+
+#: ../gtk-modules/globalmenu/module-main.vala:83
+msgid "disable serializing pixbuf"
+msgstr "禁用 pixbuf 位图信息持续化"
+
+#: ../gtk-modules/globalmenu/module-main.vala:84
+msgid "Disable the Plugin"
+msgstr "禁用本插件"
+
+#: ../gtk-modules/globalmenu/module-main.vala:85
+msgid "File to save the log, default to ~/.gnomenu.log"
+msgstr "把日志保存到文件中，缺省文件是 ~/.gnomenu.log"
+
+#: ../gtk-modules/globalmenu/module-main.vala:86
+msgid "Enable hybrid mode"
+msgstr "激活混合模式"
+
+#: ../gtk-modules/globalmenu/module-main.vala:101
+msgid "- Global Menu plugin Module for GTK"
+msgstr "- 全局菜单 GTK 插件"
+
+#: ../gtk-modules/globalmenu/module-main.vala:103
+msgid ""
+"These parameters should be supplied in environment GLOBALMENU_GNOME_ARGS "
+"instead of the command line."
+msgstr "要将这些参数提供给Global Menu, 请将其放置于环境变量 GLOBALMENU_GNOME_ARGS 中。"
+
+#: ../applet/applet.vala:169
+msgid "globalmenu-panel-applet"
+msgstr "全局菜单小程序"
+
+#: ../applet/applet.vala:216
+msgid "_Preferences"
+msgstr "首选项(_P)"
+
+#: ../applet/applet.vala:217
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: ../applet/applet.vala:218
+msgid "_About"
+msgstr "关于(_A)"
+
+#: ../applet/applet.vala:246
+msgid "No Global Menu?"
+msgstr "没有全局菜单？"
+
+#: ../applet/applet.vala:247
+msgid "The Global Menu Plugin is not enabled on this desktop."
+msgstr "没有加载全局菜单 GTK 插件。"
+
+#: ../applet/applet.vala:248
+msgid ""
+"Enable the plugin by accessing the preferences dialog via a right-click,"
+msgstr "要激活插件，可从首选项进行设置。"
+
+#: ../applet/applet.vala:249
+msgid "or by exporting GTK_MODULES=globalmenu-gnome in your profile."
+msgstr "或者在环境变量中导出 GTK_MODULES=globalmenu-gnome"
+
+#: ../applet/applet.vala:283
+msgid "Project Home"
+msgstr "项目主页"
+
+#: ../applet/applet.vala:301
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Yu Feng https://launchpad.net/~rainwoodman\n"
+"  elite https://launchpad.net/~era-elite\n"
+"  niuze https://launchpad.net/~carlosloveleo"
+
+#: ../applet/applet.vala:313
+msgid "On-line help"
+msgstr "在线帮助"
+
+#: ../applet/applet.vala:324
+msgid "Global Menu Applet Preferences"
+msgstr "全局菜单首选项"
+
+#: ../applet/switcher.vala:68
+msgid "no windows"
+msgstr "没有窗口"
+
+#: ../applet/switcher.vala:69
+msgid "no actions"
+msgstr "无可用操作"
+
+#: ../applet/switcher.vala:72
+msgid "Mi_nimize"
+msgstr "最小化(_N)"
+
+#: ../applet/switcher.vala:73
+msgid "Ma_ximize"
+msgstr "最大化(_X)"
+
+#: ../applet/switcher.vala:74
+msgid "Unma_ximize"
+msgstr "取消最大化(_X)"
+
+#: ../applet/switcher.vala:75
+msgid "_Move"
+msgstr "移动(_M)"
+
+#: ../applet/switcher.vala:76
+msgid "_Resize"
+msgstr "改变大小(_R)"
+
+#: ../applet/switcher.vala:78 ../applet/switcher.vala:79
+msgid "Always on _Top"
+msgstr "常居顶端(_T)"
+
+#: ../applet/switcher.vala:80 ../applet/switcher.vala:81
+msgid "_Always on visible Workspace"
+msgstr "总是可见(_A)"
+
+#: ../applet/switcher.vala:82
+msgid "_Workspace..."
+msgstr "工作区(_W)..."
+
+#: ../applet/switcher.vala:84
+msgid "_Close"
+msgstr "关闭(_C)"
+
+#: ../applet/switcher.vala:249
+msgid "Show _Desktop"
+msgstr "显示桌面(_D)"
+
+#: ../applet/switcher.vala:292
+msgid "Desktop"
+msgstr "桌面"
+
+#: ../applet/workspaceselector.vala:115
+msgid "Follow the window"
+msgstr "跟随窗口"
+
+#: ../gnome-globalmenu.schemas.in.h:1
+msgid "Add a handle to the applet"
+msgstr "向小程序中添加一个处理程序"
+
+#: ../gnome-globalmenu.schemas.in.h:3
+msgid "Disable checking the GTK plugin module at startup"
+msgstr "启动时不检查GTK插件模块"
+
+#: ../gnome-globalmenu.schemas.in.h:4
+msgid ""
+"Disable checking the GTK plugin module at startup. If you know the module is "
+"loaded but for some reasons the applet cannot correctly detect this fact, "
+"set this key to true to skip the checking."
+msgstr "在程序启动时不检查GTK插件模块。如果你确定此模块已经被加载，但基于某些原因小程序不能正确的检测到它，你可以启用此设置来跳过检查。"
+
+#: ../gnome-globalmenu.schemas.in.h:5
+msgid "Enable Global Menu For GTK applications"
+msgstr "启用 GTK 程序的全局菜单支持"
+
+#: ../gnome-globalmenu.schemas.in.h:6
+msgid "Enable the Window Actions"
+msgstr "启用窗口操作"
+
+#: ../gnome-globalmenu.schemas.in.h:7
+msgid "Enabled the Window List"
+msgstr "启用窗口列表"
+
+#: ../gnome-globalmenu.schemas.in.h:8
+msgid ""
+"If this key is true, libglobalmenu-gnome, the GTK plugin for Global Menu is "
+"loaded."
+msgstr "如果本设置被激活，全局菜单的 GTK 插件 (libglobalmenu-gnome) 会被加载。"
+
+#: ../gnome-globalmenu.schemas.in.h:9
+msgid "Maximum length of the title area"
+msgstr "标题最大宽度"
+
+#: ../gnome-globalmenu.schemas.in.h:10
+msgid "Show the icon of the action window in the applet"
+msgstr "显示当前窗口图标"
+
+#: ../gnome-globalmenu.schemas.in.h:11
+msgid "Show the icon of the active window in the applet when enabled."
+msgstr "启用本选项，将在小程序中显示当前窗口图标"
+
+#: ../gnome-globalmenu.schemas.in.h:12
+msgid "Show the name of the active application in the applet"
+msgstr "显示当前程序名称"
+
+#: ../gnome-globalmenu.schemas.in.h:13
+msgid "Show the name of the active application in the applet when enabled"
+msgstr "启用本选项，将在小程序中显示当前程序名称"
+
+#: ../gnome-globalmenu.schemas.in.h:14
+msgid ""
+"Specify if the applet has a handle. When the handle is enabled, the applet "
+"will not expand to occupy the remaining empty area on the panel."
+msgstr "确保小程序中有一个处理程序，当启用此处理程序时，小程序将不会占用整个面板的空闲区域"
+
+#: ../gnome-globalmenu.schemas.in.h:15
+msgid "Switch among applications via the application name label"
+msgstr "利用应用程序标签来切换活动程序。"
+
+#: ../gnome-globalmenu.schemas.in.h:16
+msgid "The maximum length of name of the active application, in pixels"
+msgstr "活动程序名称标签的最大长度，以像素计。"
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:1
+msgid "Global Menu Panel Applet"
+msgstr "全局菜单小程序"
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:2
+msgid "GlobalMenu.PanelApplet Factory"
+msgstr "全局菜单小程序工厂"
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:3
+msgid "The factory to build GlobalMenu.PanelApplet objects"
+msgstr "组建全局菜单面板小程序的工厂"
+
+#: ../xfce/GlobalMenu_XFCEPlugin.desktop.in.in.h:1
+msgid "Global Menu Plugin for XFCE Panel"
+msgstr "全局菜单 XFCE 面板插件"
+
+#: ../xfce/GlobalMenu_XFCEPlugin.desktop.in.in.h:2
+msgid "The Global Menu Plugin for XFCE Panel"
+msgstr "全局菜单 XFCE 面板插件"

@@ -1,0 +1,280 @@
+# Spanish translation for globalmenu
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the globalmenu package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: globalmenu\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-05-05 17:11-0400\n"
+"PO-Revision-Date: 2009-09-05 12:03+0000\n"
+"Last-Translator: Javier García Díaz <Unknown>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-09-05 15:52+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../libgnomenu/menuitem.vala:31
+msgid "Size of check or radio indicator"
+msgstr "Tamaño del indicador de radio o de la casilla"
+
+#: ../gtk-modules/globalmenu/module-main.vala:82 ../applet/main.vala:7
+msgid "Be verbose"
+msgstr "Proporcionar detalles"
+
+#: ../gtk-modules/globalmenu/module-main.vala:101
+msgid "- Global Menu plugin Module for GTK"
+msgstr "Módulo del complemento Global Menu para GTK"
+
+#: ../applet/applet.vala:169
+msgid "globalmenu-panel-applet"
+msgstr "globalmenu-panel-applet"
+
+#: ../applet/applet.vala:283
+msgid "Project Home"
+msgstr "Página principal del proyecto"
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:1
+msgid "Global Menu Panel Applet"
+msgstr "Complemento de menú global para el panel"
+
+#: ../libgnomenu/menuitem.vala:30
+msgid "Indicator Size"
+msgstr "Tamaño del indicador"
+
+#: ../gtk-modules/globalmenu/module-main.vala:83
+msgid "disable serializing pixbuf"
+msgstr "Deshabilitar serialización de pixbuf"
+
+#: ../gtk-modules/globalmenu/module-main.vala:84
+msgid "Disable the Plugin"
+msgstr "Deshabilitar el complemento"
+
+#: ../gtk-modules/globalmenu/module-main.vala:85
+msgid "File to save the log, default to ~/.gnomenu.log"
+msgstr ""
+"Archivo donde guardar el registro, por defecto se usara ~/.gnomenu.log"
+
+#: ../gtk-modules/globalmenu/module-main.vala:86
+msgid "Enable hybrid mode"
+msgstr "Activar modo híbrido"
+
+#: ../gtk-modules/globalmenu/module-main.vala:103
+msgid ""
+"These parameters should be supplied in environment GLOBALMENU_GNOME_ARGS "
+"instead of the command line."
+msgstr ""
+"Esos parámetros deben darse en la sección GLOBALMENU_GNOME_ARGS en vez de "
+"por línea de órdenes"
+
+#: ../applet/applet.vala:216
+msgid "_Preferences"
+msgstr "_Preferencias"
+
+#: ../applet/applet.vala:217
+msgid "_Help"
+msgstr "Ay_uda"
+
+#: ../applet/applet.vala:218
+msgid "_About"
+msgstr "Acerca _de"
+
+#: ../applet/applet.vala:246
+msgid "No Global Menu?"
+msgstr "¿Sin menú global?"
+
+#: ../applet/applet.vala:247
+msgid "The Global Menu Plugin is not enabled on this desktop."
+msgstr "El complemento de menú global no está activado en este escritorio."
+
+#: ../applet/applet.vala:248
+msgid ""
+"Enable the plugin by accessing the preferences dialog via a right-click,"
+msgstr ""
+"Active el complemento accediendo a las preferencias mediante una pulsación "
+"secundaria del ratón"
+
+#: ../applet/applet.vala:249
+msgid "or by exporting GTK_MODULES=globalmenu-gnome in your profile."
+msgstr "o exportando GTK_MODULES=globalmenu-gnome en su perfil."
+
+#: ../applet/applet.vala:301
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Amaeth https://launchpad.net/~dfoxpro\n"
+"  Denis Fuenzalida https://launchpad.net/~denis-fuenzalida\n"
+"  DiegoJ https://launchpad.net/~diegojromerolopez\n"
+"  Fidelinho https://launchpad.net/~fidel-vales\n"
+"  Javier García Díaz https://launchpad.net/~jgd\n"
+"  hitokiri_red https://launchpad.net/~hitokiri-red\n"
+"  huzzam https://launchpad.net/~clarinet\n"
+"  raziel https://launchpad.net/~zimbiozix"
+
+#: ../applet/applet.vala:313
+msgid "On-line help"
+msgstr "Ayuda en línea"
+
+#: ../applet/applet.vala:324
+msgid "Global Menu Applet Preferences"
+msgstr "Preferencias del menú global"
+
+#: ../applet/switcher.vala:68
+msgid "no windows"
+msgstr "sin ventanas"
+
+#: ../applet/switcher.vala:69
+msgid "no actions"
+msgstr "sin acciones"
+
+#: ../applet/switcher.vala:72
+msgid "Mi_nimize"
+msgstr "Mi_nimizar"
+
+#: ../applet/switcher.vala:73
+msgid "Ma_ximize"
+msgstr "Ma_ximizar"
+
+#: ../applet/switcher.vala:74
+msgid "Unma_ximize"
+msgstr "_Desmaximizar"
+
+#: ../applet/switcher.vala:75
+msgid "_Move"
+msgstr "_Mover"
+
+#: ../applet/switcher.vala:76
+msgid "_Resize"
+msgstr "_Redimensionar"
+
+#: ../applet/switcher.vala:78 ../applet/switcher.vala:79
+msgid "Always on _Top"
+msgstr "Siempre _encima"
+
+#: ../applet/switcher.vala:80 ../applet/switcher.vala:81
+msgid "_Always on visible Workspace"
+msgstr "Siempre en el área de trabajo _visible"
+
+#: ../applet/switcher.vala:82
+msgid "_Workspace..."
+msgstr "_Área de trabajo"
+
+#: ../applet/switcher.vala:84
+msgid "_Close"
+msgstr "_Cerrar"
+
+#: ../applet/switcher.vala:249
+msgid "Show _Desktop"
+msgstr "Mostrar el _escritorio"
+
+#: ../applet/switcher.vala:292
+msgid "Desktop"
+msgstr "Escritorio"
+
+#: ../applet/workspaceselector.vala:115
+msgid "Follow the window"
+msgstr "Seguir la ventana"
+
+#: ../gnome-globalmenu.schemas.in.h:1
+msgid "Add a handle to the applet"
+msgstr "Añadir un ancla a esta miniaplicación"
+
+#: ../gnome-globalmenu.schemas.in.h:2
+msgid "Add window action menu entries to active application name menu"
+msgstr ""
+"Agregar entradas del menú de acciónes de las ventanas al nombre del menú de "
+"la aplicación actual"
+
+#: ../gnome-globalmenu.schemas.in.h:3
+msgid "Disable checking the GTK plugin module at startup"
+msgstr "Desactivar la comprobación del módulo de complementos GTK al iniciar"
+
+#: ../gnome-globalmenu.schemas.in.h:4
+msgid ""
+"Disable checking the GTK plugin module at startup. If you know the module is "
+"loaded but for some reasons the applet cannot correctly detect this fact, "
+"set this key to true to skip the checking."
+msgstr ""
+"Desactivar la comprobación del módulo de complementos GTK al iniciar. Si "
+"sabe que el módulo está cargado pero por algún motivo la miniapliación no "
+"detecta este hecho correctamente, active esta opción para omitir la "
+"comprobación."
+
+#: ../gnome-globalmenu.schemas.in.h:5
+msgid "Enable Global Menu For GTK applications"
+msgstr "Activar el menú global para aplicaciones GTK"
+
+#: ../gnome-globalmenu.schemas.in.h:6
+msgid "Enable the Window Actions"
+msgstr "Activar acciones de ventanas"
+
+#: ../gnome-globalmenu.schemas.in.h:7
+msgid "Enabled the Window List"
+msgstr "Activar la lista de ventanas"
+
+#: ../gnome-globalmenu.schemas.in.h:8
+msgid ""
+"If this key is true, libglobalmenu-gnome, the GTK plugin for Global Menu is "
+"loaded."
+msgstr ""
+"Si se activa esta opción, se cargará el complemento de menú global GTK, "
+"libglobalmenu-gnome."
+
+#: ../gnome-globalmenu.schemas.in.h:9
+msgid "Maximum length of the title area"
+msgstr "Longitud máxima del título"
+
+#: ../gnome-globalmenu.schemas.in.h:10
+msgid "Show the icon of the action window in the applet"
+msgstr "Mostrar el icono de la ventana de activa en la miniaplicación"
+
+#: ../gnome-globalmenu.schemas.in.h:11
+msgid "Show the icon of the active window in the applet when enabled."
+msgstr ""
+"Si se activa, muestra el icono de la ventana activa en la miniaplicación."
+
+#: ../gnome-globalmenu.schemas.in.h:12
+msgid "Show the name of the active application in the applet"
+msgstr "Mostrar el nombre de la aplicación activa en la miniaplicación"
+
+#: ../gnome-globalmenu.schemas.in.h:13
+msgid "Show the name of the active application in the applet when enabled"
+msgstr ""
+"Si se activa, muestra el nombre de la aplicación activa en la miniaplicación"
+
+#: ../gnome-globalmenu.schemas.in.h:14
+msgid ""
+"Specify if the applet has a handle. When the handle is enabled, the applet "
+"will not expand to occupy the remaining empty area on the panel."
+msgstr ""
+"Indicar si la miniaplicación está anclada. Cuando se ancla, la "
+"miniaplicación no se expandirá ocupando el área vacía del panel."
+
+#: ../gnome-globalmenu.schemas.in.h:15
+msgid "Switch among applications via the application name label"
+msgstr ""
+"Cambie de entre las aplicaciones a través de la etiqueta del nombre de la "
+"aplicación"
+
+#: ../gnome-globalmenu.schemas.in.h:16
+msgid "The maximum length of name of the active application, in pixels"
+msgstr "La longitud máxima del nombre de la aplicación activa en píxeles"
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:2
+msgid "GlobalMenu.PanelApplet Factory"
+msgstr "Fábrica GlobalMenu.PanelApplet"
+
+#: ../applet/GlobalMenu_PanelApplet.server.in.in.h:3
+msgid "The factory to build GlobalMenu.PanelApplet objects"
+msgstr "La fábrica para crear objetos GlobalMenu.PanelApplet"
+
+#: ../xfce/GlobalMenu_XFCEPlugin.desktop.in.in.h:1
+msgid "Global Menu Plugin for XFCE Panel"
+msgstr "Complemento Global Menu para el Panel XFCE"
+
+#: ../xfce/GlobalMenu_XFCEPlugin.desktop.in.in.h:2
+msgid "The Global Menu Plugin for XFCE Panel"
+msgstr "El Complemento Global Menu para XFCE Panel"
