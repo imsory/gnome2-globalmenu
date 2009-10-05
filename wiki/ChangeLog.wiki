@@ -11,7 +11,7 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.8
   * Enhanced multihead support(per-monitor-mode)
   * Minor fixes
   * Improved source code readability. More comments.
-
+  * Further improved preference dialog usability.
 
 ------------------------------
 gnome-globalmenu 0.7.7
