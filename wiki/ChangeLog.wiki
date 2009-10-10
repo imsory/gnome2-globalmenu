@@ -7,12 +7,12 @@ Downloads:
 
 http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.8
 
-  * Updated to VALA 0.7.6
+  * Updated to VALA 0.7.7
   * Enhanced multihead support(per-monitor-mode)
-  * Minor fixes
-  * Improved source code readability. More comments.
+  * Improved source code readability with more commented code.
   * Further improved preference dialog usability.
-
+  * Integrate into panel-menu-bar(aka the Applications Places System menu), toggled with gconf://apps/gnome_settings_daemon/gtk-modules/gnomenu-panel
+  * Minor fixes
 ------------------------------
 gnome-globalmenu 0.7.7
 
