@@ -1,5 +1,7 @@
+#summary Obtaining the Source Code
 #labels Phase-Support
-# Obtaining the Source Code
+
+
 === Hosted on GitHub ===
 
 The source code of Global Menu is hosted on github.
