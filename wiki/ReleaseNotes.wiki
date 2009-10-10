@@ -5,16 +5,16 @@
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/globalmenu.png">
 
-=gnome-globalmenu 0.7.4 (draft)=
+=gnome-globalmenu 0.7.8 (draft)=
 <wiki:toc max_depth="5" />   
 == 1. Introduction ==
 
 We are pleased to announce the release of Gnome GlobalMenu version 0.7.4. This version brings you a better than ever Global Menu for use with Gnome. It’s packed with new features, more stable than ever and now available in an easy to install way, in your native language!
 
 
-{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.4}}}
+{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.8}}}
 
-[http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.4 Downloads]
+[http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.8 Downloads]
 
 <img src="http://gnome2-globalmenu.googlecode.com/svn/wiki/GlobalMenuWindows.png">
 
@@ -113,7 +113,7 @@ In short, GlobalMenu longs to be a good GNOME citizen, and we look forward your 
 
 GlobalMenu is now available in French, Chinese, English, Italian, Spanish, Hungarian, Russian for your convenience. If your language is not there yet, just step in and take 20 minutes to make sure the next version of GlobalMenu features your translation work!
 == 5. Installing GlobalMenu==
-== 6. Looking Forward to GlobalMenu 0.7.5==
+== 6. Looking Forward to GlobalMenu 0.7.9==
 == 7. Credits==
 ===Project members===
 pierre.slamich, Valiant.Wing, fengshenx, sstasyuk, bis0n.lives, dwatson031, lviggiani, globalmenul10n
