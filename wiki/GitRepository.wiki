@@ -11,7 +11,7 @@ git clone git://github.com/gnome-globalmenu/gnome-globalmenu.git
 
 Please send mails to gnome-globalmenu@googlegroups.com or contact rainwoodman to obtain the write access to the repository. A github account(free of charge) is required.
 
-Notice that we still track bus on Google Code.
+Notice that we still track bugs on Google Code.
 
 === What about the Google Code SVN Repository ===
 
