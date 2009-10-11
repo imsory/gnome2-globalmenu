@@ -1,8 +1,6 @@
 ------------------------------
 gnome-globalmenu 0.7.8 (draft)
 
-{{{svn checkout http://gnome2-globalmenu.googlecode.com/svn/tags/v0.7.8}}}
-
 Downloads:
 
 http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.8
