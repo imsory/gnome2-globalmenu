@@ -10,11 +10,12 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.8
     (enable per-monitor-mode, and add an applet to each monitor)
   * Improved source code, larger comments/code ratio.
   * Further improved preference dialog usability.
-  * Integrating into panel-menu-bar(aka the 'Applications Places System' menu), 
+  * Integrating into gnome-panel(aka the 'Applications Places System' menu), 
     toggle with gconf://apps/gnome_settings_daemon/gtk-modules/gnomenu-panel.
     -- Experimental, Please TEST.
+  * Enhanced compatability with Ubuntu karmic (Issue 507)
   * Minor fixes
-  ? Merge the Translations.
+  * Update the translations.
 
 ------------------------------
 gnome-globalmenu 0.7.7
