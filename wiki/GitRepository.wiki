@@ -6,6 +6,10 @@
 
 The source code of Global Menu is hosted on github.
 
+Web access is enabled at
+
+http://github.com/gnome-globalmenu/gnome-globalmenu
+
 To obtain a copy, use the following command:
 {{{
 git clone git://github.com/gnome-globalmenu/gnome-globalmenu.git
