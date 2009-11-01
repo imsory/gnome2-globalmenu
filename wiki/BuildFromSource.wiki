@@ -13,6 +13,7 @@ This guide works for the master branch on github.
     * Please also check the configure.ac file for the most updated requirement on VALA
     * `libwnck-1.0`
     * `gtk+-2.0`
+    * `gnome-menus`
     * `libpanelapplet-1.0` (for `GlobalMenu.PanelApplet`)
 
 = Step 1: Obtain the Source =
