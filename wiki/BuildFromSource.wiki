@@ -3,24 +3,21 @@
 
 = Introduction =
 This article will help you to build gnome-globalmenu from a svn snapshot.
-Currently, this guide only works for trunk (svn 1450+).
-The latest known working revision is svn ??. 
+This guide works for the master branch on github. 
 
 = Step 0: Prerequisites =
 
-  * VALA = [http://download.gnome.org/sources/vala/0.5/vala-0.5.6.tar.bz2 0.5.6] is a must for building from svn. Building from a released tarball doesn't need it.
+  * VALA = [http://download.gnome.org/sources/vala/0.7/vala-0.7.7.tar.bz2 0.7.7] is a must for building from svn. Building from a released tarball doesn't need it. 
     * lastest trunk build of vala should work, though not tested.
     * [http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=vala&colspec=Filename+Summary+Uploaded+Size+DownloadCount SRPM]
+    * Please also check the configure.ac file for the most updated requirement on VALA
     * `libwnck-1.0`
     * `gtk+-2.0`
     * `libpanelapplet-1.0` (for `GlobalMenu.PanelApplet`)
 
 = Step 1: Obtain the Source =
 
-{{{
-svn checkout http://gnome2-globalmenu.googlecode.com/svn/trunk/ gnome-globalmenu
-}}}
-
+Read GitRepository for how to get the source code from the git repository.
 
 = Step 2: Compile the Source =
 
@@ -39,7 +36,11 @@ Other things you may want to change are (useful for packagers)
 }}}
 == components ==
 
-The gtk plugin module, `libglobalmenu-gnome`, and the applet, `GlobalMenu.PanelApplet` together forms an implementation of GlobalMenuSpecification.
+Take a look at GlobalMenuSpecification to first understand the required components.
+
+`libglobalmenu-gnome` converts each gtk window to a client.
+`GlobalMenu.PanelApplet` is a Global Menu Server. It is a panel applet that features some window management.
+`libgnomenu-panel` is another Global Menu Server. It is a GTK Plugin that adds global menu entry to the GNOME main menu bar.
 
 === module ===
 
@@ -93,6 +94,8 @@ First check if things are sane.
 make check
 }}}
 
+Sometimes the checks are broken. If that's the case please file a bug report.
+
 == install ==
 
 To install
@@ -102,13 +105,13 @@ su -c 'make install'
 
 == post-install configuration ==
 
-If you disabled the installation of the schema, please install it with the method specified by your distributation.
+If you disabled the installation of the schema, please install it by the method specified by your distributation.
 
 Ensure `libglobalmenu-gnome` is loaded as a Gtk module by setting the gconf key
 {{{
 apps/gnome-settings-daemon/gtk-modules/globalmenu-gnome
 }}}
-Notice that loading and unloading the module on the fly is yet experimental. Random crashes do occur. So please immediately restart your gnome session after changing this key.
+Notice that loading and unloading the module on the fly is yet experimental. Random crashes do occur: Save your work before toggling Global Menu! So please immediately restart your gnome session after changing this key.
 
 Remember to add the applet to your panel. There is also a shortcut to this key in the preference window of the applet.
 
@@ -116,18 +119,8 @@ Remember to add the applet to your panel. There is also a shortcut to this key i
 
 = Step 4: Packaging =
 
-== rpm ==
-Making the rpm is easy. At the toplevel source tree:
+HINTS:
 
-{{{
-make rpm
-}}}
-
-Then a vim will popup. with the spec file, modify the version info, append any change logs, then save the file.
-
-A rpm package will be ready in `~/rpmbuild/RPMS/`, if rpmbuild is set up properly.
-
-== other ==
 Because some of the c source code is built from vala code, prepend a `make` before `make dist` to avoid strange building problems.
 
 
@@ -141,4 +134,4 @@ su -c 'make uninstall'
 ==In General==
 Please report to our project's mail list the detail of the trouble which traps you . We will try to help. the address of the mail list is `googlegroups.com: gnome-globalmenu` . reverse the order and replace `:` with `@`. 
 
-SVN traffic also goes into the groups.
+GIT traffic also goes into the groups.
