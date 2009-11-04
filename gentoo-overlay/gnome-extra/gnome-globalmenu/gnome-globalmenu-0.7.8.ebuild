@@ -32,7 +32,7 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	dev-util/pkgconfig
-	>=dev-lang/vala-0.7.3"
+	>=dev-lang/vala-0.7.7"
 
 pkg_setup() {
 	G2CONF="${G2CONF}
