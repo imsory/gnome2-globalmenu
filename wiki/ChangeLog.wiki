@@ -7,6 +7,9 @@ http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.9
 
   * Complete rewritten gtk plugin
   * introducing Gnomenu.Settings
+  * Issue 355
+  * Issue 470
+
 
 
 ------------------------------
