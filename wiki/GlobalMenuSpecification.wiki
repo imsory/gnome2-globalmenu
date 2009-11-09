@@ -41,6 +41,7 @@ Implmentations are listed in the appendix.
   * `_NET_GLOBALMENU_MENU_EVENT`
   * `_NET_GLOBALMENU_MENU_SELECT`
   * `_NET_GLOBALMENU_MENU_DESELECT`
+  * `_NET_GLOBALMENU_SETTINGS`
   * `WM_TRANSIENT_FOR`
 
 === XML Representation of Menu Context ===
@@ -140,6 +141,14 @@ Other higher-level apis are available,
 The Server captures events in which the user activates a representation of an Item in the representation of the Menu Context. After that the server should find the Path for the activated Item and write that Path to the `_NET_GLOBALMENU_MENU_EVENT` property of the corresponding Client as a Menu Event.
   
 Note: The window whose property is changed is not neccasary the active window, since the active window may have changed after the user activates the representation of the Item.
+
+== Settings ==
+  Settings shared by all Clients on the same screen are stored under `_NET_GLOBAL_MENU_SETTINGS` property of the root window of the screen.
+Clients should watch the changes of the settings and promptly update their state according to the new settings.
+
+  Settings:
+
+  * `show-local-menu` (boolean) whether or not show the menu bar locally in the client window.
 
 = Limitations =
 
