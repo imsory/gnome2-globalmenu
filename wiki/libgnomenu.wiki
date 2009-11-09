@@ -1,5 +1,8 @@
 #summary libgnomenu is the GTK implementation of a representation of Global Menu.
-#labels Phase-Design
+#labels Phase-Design,Deprecated
+
+This module is deprecated by the utility library libserver. The general structure of the new moudle is the same as libgnomenu. Yet no document is written for it.
+
 
 = Introduction =
 
