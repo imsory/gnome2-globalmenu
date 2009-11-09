@@ -1,5 +1,10 @@
 #summary libglobalmenu-gnome, the gtk plugin module of global menu
-#labels Phase-Design
+#labels Phase-Design,Deprecated
+
+This document is deprecated by the new plugin module in globalmenu-plugin/
+
+No design document is yet written for the new plugin module.
+
 
 = Introduction =
 
