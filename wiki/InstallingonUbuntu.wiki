@@ -11,7 +11,7 @@ To install packages from our PPA, you need to tell Ubuntu where to find it. You 
   # Open *System* → *Administration* → *Software Sources* and press Third Party Software.
   # Press Add to add a new repository.
   # Enter the APT line for the extra repository.
- * If you're using Karmic Koala:
+   * If you're using Karmic Koala:
        {{{
         deb http://ppa.launchpad.net/abhidg/ppa/ubuntu karmic main 
         deb-src http://ppa.launchpad.net/abhidg/ppa/ubuntu karmic main 
