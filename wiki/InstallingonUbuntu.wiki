@@ -14,7 +14,7 @@ To install packages from our PPA, you need to tell Ubuntu where to find it. You 
  * If you're using Karmic Koala:
        {{{
         deb http://ppa.launchpad.net/abhidg/ppa/ubuntu karmic main 
-deb-src http://ppa.launchpad.net/abhidg/ppa/ubuntu karmic main 
+        deb-src http://ppa.launchpad.net/abhidg/ppa/ubuntu karmic main 
        }}}
    * If you're using Jaunty Jackalope:
        {{{
