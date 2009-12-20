@@ -1,15 +1,17 @@
 ------------------------------
-gnome-globalmenu 0.7.9 (draft)
+gnome-globalmenu 0.7.9
 
 Downloads:
 
 http://code.google.com/p/gnome2-globalmenu/downloads/list?can=2&q=0.7.9
 
-  * Complete rewritten gtk plugin
-  * introducing Gnomenu.Settings
+  * Feature a completely rewritten gtk plugin
+  * Introducing Gnomenu.Settings
   * Issue 355
   * Issue 470
-
+  * Be sure to cleanly remove 0.7.8 before installing 0.7.9
+    * Remove GConf Key apps/gnome_settings_deamon/gtk-modules/globalmenu-gnome
+    * Remove /usr/lib/gtk-2.0/2.10.0/modules/libglobalmenu-gnome.so
 
 
 ------------------------------
