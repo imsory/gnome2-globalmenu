@@ -53,6 +53,11 @@ We are at 0.7.
     * QT/KDE unification
     * `?` Switcher + Default Menu replaces gnome-panel-menu-bar and gnome-panel-menu
     * `?` Better user experience with compiz
+  * 0.9: 'indicator'?
+    * XML migrates to ubuntu application indicator's.
+    * transport layer/API moves back to DBus, and compatible with application indicator.
+    * integrate with application indicator.
+    * applet compatible with application indicator.
   * 1.0: `futurama`
     * Stable Release!
     * work on 64bit and PPC.
