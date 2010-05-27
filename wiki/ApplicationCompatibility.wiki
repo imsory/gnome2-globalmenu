@@ -66,3 +66,17 @@ Here is a list of applications' compatibility with gnome-globalmenu. These appli
  * Any application runs under another user account. e.g. all the system management applications. This is also a security consideration.
  * Wine Apps
  * VirtualBox OSE
+
+
+== Community Contributed Reports ==
+===Doesn't Work===
+   * gnome-calculator 
+   * netbeans
+   * abiword (no menubar if you open a second document)
+   * Rawtherappe
+   * gxine
+   * Eclipse (64bits)
+   * Songbird
+   * Inkscape (icons missing in menus)
+   * Banshee-1 (shows up as "Nereid" in the app name, and the notification icon must be disabled or a "white" spot on the panel will appear)
+   * wxPython apps (do not respond to the overrides when set by their name. To fix them, you need to add python : roaming.)
