@@ -1,0 +1,15 @@
+#labels Featured
+#work to be done
+
+* Update the code base to recent VALA. (urgent)
+  * Non-trivial because the deprecation of += and the modification in unbound closures
+* Releasing the git head after the update.
+* Fedora Package is out-of-date
+* Merging translations
+
+If you are interested in working on any of these projects please contact rainwoodman.
+
+
+
+
+
