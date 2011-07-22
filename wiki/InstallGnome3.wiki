@@ -1,0 +1,31 @@
+#summary One-sentence summary of this page.
+#labels Phase-Deploy,Featured
+
+= 0.9.x branch installation =
+
+Supposed to be ready after installation and a reboot.
+
+configure with proper prefix (--prefix=/usr --sysconfdir=/etc, usually, but FOLLOW the distributation conventions)
+
+After installation and a reboot, the AppMenu in GnomeShell(the second item on the top left bar) shows the Global Menu. Click and see. All application's menu disappears.
+
+= Installation details =
+
+The installation does the following things:
+
+*  install a GNOME Shell extension to the gnome shell extension directory, system wide (/usr/share/gnome-shell/extensions/) is usually the place
+
+*  install a bash profile plugin to /etc/profile.d globalmenu.sh, to setup GTK_MODULES environment
+
+*  install a DBus autolaunch file to /usr/share/dbus-1/services
+
+*  install a dbus service to /usr/bin (globalmenu-manager)
+
+*  install a gsettings schema to /usr/share/glib/schemas
+
+*  install a GTK-3 module plugin to the GTK-3 plugin directory, usually at /usr/lib(64)/gtk-3.0/3.0/modules
+
+*  install a Gtk-2 module to gtk-2 plugin directory, usually at 
+/usr/lib/gtk-2.0/modules
+
+Confirm everything is at the correct location if you don't get it working.
