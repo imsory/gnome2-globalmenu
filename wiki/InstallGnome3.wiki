@@ -7,6 +7,17 @@ Supposed to be ready after installation and a reboot.
 
 configure with proper prefix (--prefix=/usr --sysconfdir=/etc, usually, but FOLLOW the distributation conventions)
 
+The following settings are relevant:
+
+{{{
+  GTK3_MODULES_DIR     GTK3_MODULES_DIR directory to install the gtk3 plugin module
+  GTK2_MODULES_DIR     GTK2_MODULES_DIR directory to install the gtk2 plugin module
+  EXTDIR      EXTDIR directory to install the extension
+  GSCHEMASDIR GSCHEMASDIR directory to install the gschema
+  SERVICESDIR SERVICESDIR directory to install the dbus service
+}}}
+
+
 After installation and a reboot, the AppMenu in GnomeShell(the second item on the top left bar) shows the Global Menu. Click and see. All application's menu disappears.
 
 = Installation details =
