@@ -3,7 +3,8 @@
 
 = Introduction =
 This article will help you to build gnome-globalmenu from a svn snapshot.
-This guide works for the master branch on github. 
+This guide works for the 0.7.x branch, but not for the current 0.9.x branch.
+
 
 = Step 0: Prerequisites =
 
