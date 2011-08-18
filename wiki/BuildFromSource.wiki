@@ -1,5 +1,5 @@
 #summary how to build global menu from the source.
-#labels Phase-Deploy,Featured,installation
+#labels Phase-Deploy,Deprecated,installation
 
 = Introduction =
 This article will help you to build gnome-globalmenu from a svn snapshot.
